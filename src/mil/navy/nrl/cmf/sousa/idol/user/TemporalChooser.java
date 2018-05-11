@@ -1,0 +1,602 @@
+package mil.navy.nrl.cmf.sousa.idol.user;
+
+import java.awt.*;
+import java.awt.event.*;
+import java.util.*;
+import java.text.*;
+import javax.swing.*;
+import javax.swing.border.*;
+import mil.navy.nrl.cmf.sousa.util.Strings;
+import org.apache.log4j.*;
+
+/**
+   TemporalChooser
+*/
+public final class TemporalChooser
+	extends JPanel
+	implements ActionListener, SetTime
+{
+	/**
+	   _LOG
+	*/
+	private static final Logger _LOG = Logger.getLogger(CLIRenderable.class);
+
+	/**
+	   _gui
+	*/
+	/*@ non_null */ private final GUI _gui;
+
+	private CalendarPanel _timeLowerPanel;
+	private CalendarPanel _timeUpperPanel;
+
+	private class CalendarPanel extends JPanel {
+	    // Protects _timeZone, _timeLower and _timeUpper against
+	    // concurrent modifications
+	    private final Object _updateLock = new Object();
+
+		/**
+		   MONTHS
+		*/
+		private final String MONTHS[] = {
+			"January", "February", "March", "April", "May", "June",
+			"July", "August", "September", "October", "November", "December"
+		};
+
+		/**
+		   DAYS
+		*/
+		private final String DAYS[] = {
+			"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"
+		};
+
+		private final Color WEEK_DAYS_FOREGROUND = Color.black;
+		private final Color DAYS_FOREGROUND = Color.blue;
+		private final Color SELECTED_DAY_FOREGROUND = Color.white;
+		private final Color SELECTED_DAY_BACKGROUND = Color.blue;
+		private final Border EMPTY_BORDER = BorderFactory.createEmptyBorder(1, 1, 1, 1);
+		private final Border FOCUSED_BORDER = BorderFactory.createLineBorder(Color.yellow, 1);
+		private final int FIRST_YEAR = 1900;
+		private final int LAST_YEAR = 2100;
+
+		private JLabel _caption;
+
+		/**
+		   _monthYearLabel
+		*/
+		private JLabel _monthYearLabel;
+
+		/**
+		   _dayLabels
+		*/
+		private JLabel _dayLabels[][];
+
+		/**
+		   _daysPanel
+		*/
+		private JPanel _daysPanel;
+
+		/**
+		   _timeLabel
+		*/
+		private JLabel _timeLabel;
+
+		/**
+		   _timezone
+		*/
+		private JComboBox _timezone;
+
+		/**
+		   _offset
+		*/
+		private int _offset;
+
+		/**
+		   _lastDay
+		*/
+		private int _lastDay;
+
+		/**
+		   _day
+		*/
+		private JLabel _day;
+
+		/**
+		   _timeLower
+		*/
+		private Calendar _cal;
+
+	    // _previousTime can be either null or a copy of _cal.
+	    // When it's a copy if _cal, it's a checkpoint and it is
+	    // used to restore _cal to a previous state.  When it's
+	    // null, it's used to prevent inauspicious calls to
+	    // restoreTime() from changing _cal.
+	    private Calendar _previousTime;
+		/**
+		   _format
+		*/
+		private final DateFormat _format = new SimpleDateFormat("hh:mm:ss.SSS a");
+
+
+		public CalendarPanel(String caption, String leftArrow, String rightArrow) {
+			_cal = Calendar.getInstance();
+			_previousTime = Calendar.getInstance();
+
+			_format.setCalendar(_cal);
+
+ 			_caption = new JLabel(caption);
+			add(_caption, BorderLayout.NORTH);
+
+			GridBagLayout gridbag = new GridBagLayout();
+			GridBagConstraints c = new GridBagConstraints();
+			c.fill = GridBagConstraints.BOTH;
+			c.weightx = 1.0;
+
+			JPanel monthYearPanel = new JPanel(gridbag);
+
+			ImageIcon leftButtonIcon = createImageIcon(leftArrow);
+			JButton left = new JButton(leftButtonIcon);
+			left.setFocusable(false);
+			left.addActionListener(new ActionListener()
+				{
+					public final void
+						actionPerformed(ActionEvent event)
+					{
+						synchronized (_updateLock) {
+							_cal.add(Calendar.MONTH, -1);
+						}
+
+						_daysPanel.requestFocusInWindow();
+					}
+				});
+			gridbag.setConstraints(left, c);
+			monthYearPanel.add(left);
+
+			_monthYearLabel = new JLabel("Month/Year");
+			gridbag.setConstraints(_monthYearLabel, c);
+			monthYearPanel.add(_monthYearLabel);
+
+			ImageIcon rightButtonIcon = createImageIcon(rightArrow);
+			JButton right = new JButton(rightButtonIcon);
+			right.setFocusable(false);
+			right.addActionListener(new ActionListener()
+				{
+					public final void
+						actionPerformed(ActionEvent event)
+					{
+						synchronized (_updateLock) {
+							_cal.add(Calendar.MONTH, 1);
+						}
+
+						_daysPanel.requestFocusInWindow();
+					}
+				});
+			gridbag.setConstraints(right, c);
+			monthYearPanel.add(right);
+
+			MouseAdapter mouse = new MouseAdapter()
+				{
+					public final void
+						mouseClicked(MouseEvent event)
+					{
+						JLabel day = (JLabel)event.getSource();
+						if (!day.getText().equals(" ")) {
+							setSelected(day);
+							Calendar time = Calendar.getInstance(TimeZone.getDefault());
+							time.set(Calendar.DATE, getSelectedDay());
+
+							synchronized (_updateLock) {
+								_cal = time;
+							}
+
+							_daysPanel.requestFocusInWindow();
+						}
+					}
+				};
+
+			_dayLabels = new JLabel[7][7];
+			for (int i = 0; i < 7; i++) {
+				_dayLabels[0][i] = new JLabel(DAYS[i], 4);
+				_dayLabels[0][i].setForeground(WEEK_DAYS_FOREGROUND);
+			}
+
+			for (int i = 1; i < 7; i++) {
+				for (int j = 0; j < 7; j++) {
+					_dayLabels[i][j] = new JLabel(" ", 4);
+					_dayLabels[i][j].setForeground(DAYS_FOREGROUND);
+					_dayLabels[i][j].setBackground(SELECTED_DAY_BACKGROUND);
+					_dayLabels[i][j].setBorder(EMPTY_BORDER);
+					_dayLabels[i][j].addMouseListener(mouse);
+				}
+			}
+
+			_daysPanel = new JPanel(new GridLayout(7, 7, 5, 0));
+			for (int i = 0; i < 7; i++) {
+				for (int j = 0; j < 7; j++) {
+					_daysPanel.add(_dayLabels[i][j]);
+				}
+			}
+
+			updateGrid();
+
+			_daysPanel.setBackground(Color.white);
+			_daysPanel.setBorder(BorderFactory.createLoweredBevelBorder());
+
+			JPanel panel = new JPanel();
+			panel.setPreferredSize(new Dimension(300, 300));
+			panel.add(monthYearPanel, BorderLayout.NORTH);
+			panel.add(_daysPanel, BorderLayout.CENTER);
+			panel.add(_timeLabel = new JLabel("Time"), BorderLayout.SOUTH);
+
+			String[] tzs = TimeZone.getAvailableIDs();
+			Arrays.sort(tzs);
+			panel.add(_timezone = new JComboBox(tzs), BorderLayout.SOUTH);
+
+			_timezone.setSelectedItem(_cal.getTimeZone().getID());
+
+			_timezone.addItemListener(new ItemListener()
+				{
+					public void
+						itemStateChanged(ItemEvent e)
+					{
+						synchronized (_updateLock) {
+							String tz = (String)_timezone.getSelectedItem();
+							_cal.setTimeZone(TimeZone.getTimeZone(tz));
+						}
+					}
+				});
+
+			add(panel, BorderLayout.CENTER);
+		}
+
+	    // Remember the time in case someone wants to revert to it.
+	    public void saveTime() {
+		synchronized(_updateLock) {
+		    _previousTime = Calendar.getInstance();
+		    _previousTime.setTime(_cal.getTime());
+		}
+	    }
+
+	    // Set the time to the last time that saveTime() was called.
+	    public void restoreTime() {
+		synchronized(_updateLock) {
+		    if (null != _previousTime) {
+			setTime(_previousTime);
+			commit();
+		    }
+		}
+	    }
+
+	    // Ensure that _cal cannot revert to _previousTime.
+	    public void commit() {
+		synchronized(_updateLock) {
+		    if (null != _previousTime) {
+			_previousTime = null;
+		    }
+		}
+	    }
+		public void setTime(/*@ non_null */ Calendar cal) {
+		    synchronized(_updateLock) {
+			_cal.setTime(cal.getTime());
+			displayTime();
+		    }
+		}
+
+	    // Don't call displayTime() outside of
+	    // synchronized(_updateLock) {}!
+	    private void displayTime() {
+		_monthYearLabel.setText(MONTHS[_cal.get(Calendar.MONTH)] + 
+					" " + 
+					String.valueOf(_cal.get(Calendar.YEAR)));
+
+		setSelected(_cal.get(Calendar.DATE));
+
+		_timezone.setSelectedItem(_cal.getTimeZone().getID());
+
+		_timeLabel.setText(_format.format(_cal.getTime()));
+		updateGrid();
+	    }
+
+		public Calendar getTime() {
+			return _cal;
+		}
+
+		/**
+		   createImageIcon(String)
+		   @methodtype factory
+		   @param path .
+		   @return ImageIcon
+		*/
+		private ImageIcon createImageIcon(/*@ non_null */ String path)
+		{
+			java.net.URL imgURL = TemporalChooser.class.getResource(path);
+			if (imgURL != null) {
+				return new ImageIcon(imgURL);
+			} else {
+				_LOG.error(new Strings(new Object[]
+					{"Couldn't find file: ", path}));
+				return null;
+			}
+		}
+
+		/**
+		   updateGrid()
+		   @methodtype command
+		*/
+		private void updateGrid()
+		{
+			int iday = getSelectedDay();
+			for (int i = 0; i < 7; i++) {
+				_dayLabels[1][i].setText(" ");
+				_dayLabels[5][i].setText(" ");
+				_dayLabels[6][i].setText(" ");
+			}
+
+			synchronized (_updateLock) {
+				_cal.set(Calendar.DATE, 1);
+				_offset = _cal.get(Calendar.DAY_OF_WEEK) - 1;
+				_lastDay = _cal.getActualMaximum(Calendar.DATE);
+
+				for (int i = 0; i < _lastDay; i++) {
+					_dayLabels[(i + _offset) / 7 + 1][(i + _offset) % 7].setText(String.valueOf(i + 1));
+				}
+
+				if (iday != -1) {
+					if (iday > _lastDay) {
+						iday = _lastDay;
+					}
+					setSelected(iday);
+				}
+
+				_cal.set(Calendar.DATE, getSelectedDay());
+			}
+		}
+
+		/**
+		   getSelectedDay()
+		   @methodtype get
+		   @return int
+		*/
+		private int getSelectedDay()
+		{
+			if (null != _day) {
+				return Integer.parseInt(_day.getText());
+			}
+			return -1;
+		}
+
+		/**
+		   setSelected(JLabel)
+		   @methodtype set
+		   @param newDay
+		*/
+		private void setSelected(/*@ non_null */ JLabel newDay)
+		{
+			if (null != _day) {
+				_day.setForeground(DAYS_FOREGROUND);
+				_day.setOpaque(false);
+				_day.setBorder(EMPTY_BORDER);
+			}
+
+			_day = newDay;
+
+			_day.setForeground(SELECTED_DAY_FOREGROUND);
+			_day.setOpaque(true);
+			if (_daysPanel.hasFocus()) {
+				_day.setBorder(FOCUSED_BORDER);
+			}
+		}
+
+		/**
+		   setSelected(int)
+		   @methodtype set
+		   @param newDay
+		*/
+		private void
+			setSelected(int newDay)
+		{
+			synchronized (_updateLock) {
+				setSelected(_dayLabels[((newDay + _offset) - 1) / 7 + 1][((newDay + _offset) - 1) % 7]);
+			}
+		}
+
+
+	}
+
+	// Protects _timeZone, _timeLower and _timeUpper against
+	// concurrent modifications
+	private final Object _updateLock = new Object();
+
+	// Constructors
+
+	/**
+	   TemporalChooser(GUI)
+	   @methodtype ctor
+	   @param gui .
+	*/
+	public TemporalChooser(/*@ non_null */ GUI gui)
+	{
+		super();
+		this._gui = gui;
+		construct();
+	}
+
+	// mil.navy.nrl.cmf.idol.user.TemporalChooser
+
+	/**
+	   update(Calendar)
+	   @methodtype set
+	   @param time .
+	*/
+	public void setTime(/*@ non_null */ Calendar timeLower,
+						/*@ non_null */ Calendar timeUpper)
+	{
+		// DAVID: Must I synchronize?
+		synchronized (_updateLock) {
+		    if (_normalMode) {
+			_timeLowerPanel.setTime(timeLower);
+			_timeUpperPanel.setTime(timeUpper);
+		    }
+		}
+	}
+
+	// Utility
+
+	private static final String DISPLAY_TIME = "Display Time";
+	private static final String SET_TIME = "Set Time";
+	private static final String CANCEL_SET_TIME = "Cancel";
+	private static final String COMMIT_SET_TIME = "Commit to New Times";
+    
+    // When _normalMode is true, the TemporalChooser simply displays
+    // the time it's given through setTime().
+    //
+    // When _normalMode is false, the TemporalChooser ignores calls to
+    // _setTime.  This permits the user to set the temporal window by
+    // adjusting the CalendarPanels.
+    private boolean _normalMode = true;
+
+    private final JRadioButton _displayTime = new JRadioButton(DISPLAY_TIME);
+    private final JRadioButton _setTime = new JRadioButton(SET_TIME);
+    private final JRadioButton _commitSetTime = new JRadioButton(COMMIT_SET_TIME);
+    private final JRadioButton _cancelSetTime = new JRadioButton(CANCEL_SET_TIME);
+    private final JRadioButton _noSelection = new JRadioButton();
+
+	/**
+	   construct()
+	   @methodtype command
+	*/
+	private void construct()
+	{
+		_timeLowerPanel = new CalendarPanel("Lower Bound", "images/left.gif", "images/right.gif");
+		_timeUpperPanel = new CalendarPanel("Upper Bound", "images/left.gif", "images/right.gif");
+
+		add(_timeLowerPanel, BorderLayout.EAST);
+		add(_timeUpperPanel, BorderLayout.WEST);
+
+		// radio buttons that indicate the mode: display time or set
+		// time.  When the set time button is checked, enable two more
+		// buttons: commit and cancel.  When the commit button is
+		// checked, grab the time from each calendar, put them into a
+		// SetTimeCommand, and send it to the GUI.  When either cancel
+		// button is checked, tell the calendars to revert to their
+		// previous values.  Clicking either commit or cancel returns
+		// the mode button to "display time".  Checking the "display
+		// time" button while the "set time" button is checked is
+		// equivalent to clicking the cancel button.
+
+		_displayTime.setActionCommand(DISPLAY_TIME);
+		_displayTime.addActionListener(this);
+		_displayTime.setSelected(true);
+
+		_setTime.setActionCommand(SET_TIME);
+		_setTime.addActionListener(this);
+
+		ButtonGroup set_or_display_group = new ButtonGroup();
+		set_or_display_group.add(_displayTime);
+		set_or_display_group.add(_setTime);
+
+		JPanel set_or_display_RadioPanel = new JPanel(new GridLayout(0, 1));
+		set_or_display_RadioPanel.add(_displayTime);
+		set_or_display_RadioPanel.add(_setTime);
+		add(set_or_display_RadioPanel, BorderLayout.SOUTH);
+
+		_commitSetTime.setActionCommand(COMMIT_SET_TIME);
+		_commitSetTime.addActionListener(this);
+		_commitSetTime.setEnabled(false);
+
+		_cancelSetTime.setActionCommand(CANCEL_SET_TIME);
+		_cancelSetTime.addActionListener(this);
+		_cancelSetTime.setEnabled(false);
+
+		_noSelection.setEnabled(false);
+		_noSelection.setSelected(true);
+		_noSelection.setVisible(false);
+
+		ButtonGroup cancel_or_commit_group = new ButtonGroup();
+		cancel_or_commit_group.add(_noSelection);
+		cancel_or_commit_group.add(_commitSetTime);
+		cancel_or_commit_group.add(_cancelSetTime);
+
+		JPanel commit_or_cancel_RadioPanel = new JPanel(new GridLayout(0, 1));
+		commit_or_cancel_RadioPanel.add(_noSelection);
+		commit_or_cancel_RadioPanel.add(_commitSetTime);
+		commit_or_cancel_RadioPanel.add(_cancelSetTime);
+		add(commit_or_cancel_RadioPanel, BorderLayout.SOUTH);
+	}
+
+	// java.awt.event.ActionListener
+
+	public void actionPerformed(ActionEvent e) {
+		String action = e.getActionCommand();
+		if (action.equals(DISPLAY_TIME)) {
+			// Cancel set time, returning to previously recorded time
+			// and resuming the application of time updates.
+			_commitSetTime.setEnabled(false);
+			_cancelSetTime.setEnabled(false);
+			_noSelection.setEnabled(false);
+			_noSelection.setSelected(true);
+			synchronized(_updateLock) {
+			    _normalMode = true;
+			    _timeLowerPanel.restoreTime();
+			    _timeUpperPanel.restoreTime();
+			}
+
+		} else if (action.equals(SET_TIME)) {
+			// Begin ignoring time updates.  Activate the
+			// COMMIT_SET_TIME and CANCEL_SET_TIME radio buttons.  Let
+			// the user set the temporal window.
+
+		    _commitSetTime.setSelected(false);
+			_commitSetTime.setEnabled(true);
+			_cancelSetTime.setEnabled(true);
+			_noSelection.setEnabled(true);
+			_noSelection.setSelected(true);
+			
+			synchronized(_updateLock) {
+			    _normalMode = false;
+			    _timeLowerPanel.saveTime();
+			    _timeUpperPanel.saveTime();
+			}
+		} else if (action.equals(COMMIT_SET_TIME)) {
+			// Send the new temporal window to the GUI.  Deactivate
+			// the COMMIT_SET_TIME and CANCEL_SET_TIME radio buttons.
+			// Select the DISPLAY_TIME radio button.  Resume the
+			// application of time updates.
+
+			_commitSetTime.setEnabled(false);
+			_cancelSetTime.setEnabled(false);
+			_noSelection.setEnabled(false);
+			_noSelection.setSelected(true);
+
+			_displayTime.setSelected(true);
+
+			synchronized(_updateLock) {
+			    // Accept the new times and tell the
+			    // GUI of the new temporal window.
+			    _normalMode = true;
+			    _timeLowerPanel.commit();
+			    _timeUpperPanel.commit();
+			    SetTimeCommand c = new SetTimeCommand(_timeLowerPanel.getTime(),
+								  _timeUpperPanel.getTime());
+			    _gui.addCommand(c);
+			}
+		} else if (action.equals(CANCEL_SET_TIME)) {
+			// Restore the previous temporal window value.  Deactivate
+			// the COMMIT_SET_TIME and CANCEL_SET_TIME radio buttons.
+			// Select the DISPLAY_TIME radio button.  Resume the
+			// application of time updates.
+
+		    _commitSetTime.setSelected(false);
+			_commitSetTime.setEnabled(false);
+			_cancelSetTime.setEnabled(false);
+			_noSelection.setEnabled(false);
+			_noSelection.setSelected(true);
+
+			_displayTime.setSelected(true);
+			synchronized(_updateLock) {
+			    _normalMode = true;
+			    _timeLowerPanel.restoreTime();
+			    _timeUpperPanel.restoreTime();
+			}
+		}
+	}
+}; // TemporalChooser

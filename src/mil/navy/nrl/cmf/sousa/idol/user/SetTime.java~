@@ -1,0 +1,7 @@
+package mil.navy.nrl.cmf.sousa.idol.user;
+
+import java.util.Calendar;
+
+public interface SetTime {
+	public void updateTime(Calendar timeLowerBound, Calendar timeUpperBound);
+}

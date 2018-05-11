@@ -1,0 +1,6 @@
+package mil.navy.nrl.cmf.sousa.idol.user;
+
+public interface RemoteCommand extends Command {
+
+	public void execute(RemoteCommandObject c);
+}

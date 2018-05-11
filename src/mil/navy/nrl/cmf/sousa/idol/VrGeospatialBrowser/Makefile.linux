@@ -1,0 +1,24 @@
+# Linux
+CC = g++
+#-L/afs/cmf/project/dc/sys/lib 
+LINKFLAGS = -L/usr/X11R6/lib
+#-I/afs/cmf/project/dc/sys/include 
+DEBUGFLAGS= -DDATALAYER_DEBUG
+CFLAGS = -ansi -I/usr/X11R6/include $(DEBUGFLAGS)
+
+# Irix
+#CC = CC
+#LINKFLAGS = -64 -DARCH64 -L/usr/local/lib64 -L/usr/freeware/lib64
+#CFLAGS = -64 -LANG:std -DARCH64 -DEBUG:woff=1681 -DEBUG:woff=1682 -DEBUG:woff=3303  -I/usr/freeware/include  -I/usr/local/include -I/usr/X11R6/include
+
+osgidolviewer: osgidolviewer.o sysVipc.o
+	$(CC) $(LINKFLAGS) -o osgidolviewer osgidolviewer.o sysVipc.o -losgProducer -lProducer -losgText -losgGA -losgDB -losgUtil -losg -lGLU -lGL -lXext -lXmu -lX11 -lm -lOpenThreads
+
+osgidolviewer.o: osgidolviewer.C Utils.h DataLayer.h IdolConnection.h jglobe3.h sysVipc.h
+	$(CC) $(CFLAGS) -c osgidolviewer.C
+
+sysVipc.o: sysVipc.C sysVipc.h
+	$(CC) $(CFLAGS) -c sysVipc.C
+
+clean:
+	rm -rf core ii_files osgidolviewer *.o

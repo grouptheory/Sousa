@@ -1,0 +1,30 @@
+#!/bin/sh
+# Usage: imagecsv image_program FILES
+#
+# Where
+#   image_program is a tool that prints, among other things, the 
+# longitude and latitude of the upper left and lower right corners
+# of the bounding box of an image file.
+#
+#   FILES are image files
+#
+#
+# For each file named on the command line, imagecsv invokes the
+# image_program, extracts the bounding box from its output, and prints
+# the name of the file followed by the bounding box. The output for is
+# comma separated and of the form
+#
+# file name, upper left lon, upper left lat, lower right lon, lower right lat
+#
+# imagecsv assumes that bounding_box.awk understands the output
+# of image_program.
+#
+IMAGEPROG=$1
+shift
+
+for FILE in $@ ; do
+
+  bounding_box=`${IMAGEPROG} $FILE | awk -f bounding_box.awk`
+  echo $FILE, $bounding_box
+
+done

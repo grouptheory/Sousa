@@ -1,0 +1,17 @@
+package mil.navy.nrl.cmf.sousa.idol.user;
+import mil.navy.nrl.cmf.sousa.ServerContact;
+
+public class SetPositionCommand extends AbstractLocalCommand {
+	private final Vector3d _position;
+	private final Vector3d _width;
+
+    public FetchCommand(Vector3d position, Vector3d width)
+	{
+		_position = new Vector3d(position);
+		_width = new Vector3d(width);
+	}
+
+	public final void execute(LocalCommandObject c) {
+		c.setPosition(_positionCopy, _widthCopy);
+	}
+}

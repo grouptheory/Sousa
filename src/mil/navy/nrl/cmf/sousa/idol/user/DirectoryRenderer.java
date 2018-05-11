@@ -1,0 +1,127 @@
+package mil.navy.nrl.cmf.sousa.idol.user;
+
+import mil.navy.nrl.cmf.sousa.*;
+
+import java.io.IOException;
+import java.util.Calendar;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.TimeZone;
+import mil.navy.nrl.cmf.sousa.Field;
+import mil.navy.nrl.cmf.sousa.Renderable;
+import mil.navy.nrl.cmf.sousa.Renderer;
+import mil.navy.nrl.cmf.sousa.State;
+import mil.navy.nrl.cmf.sousa.directory.*;
+import mil.navy.nrl.cmf.sousa.spatiotemporal.QueryResultHandle;
+import mil.navy.nrl.cmf.sousa.util.Strings;
+import mil.navy.nrl.cmf.stk.*;
+import org.apache.log4j.Logger;
+
+
+public final class DirectoryRenderer extends AbstractRenderer {
+	protected static final Logger _LOG = Logger.getLogger(DirectoryRenderer.class);
+
+	private static final String LAYERNAME = "directory";
+
+	/**
+	   The name of the ADDED field provided by a directory server's
+	   ConsumerViewInterpreter
+	*/
+	private final static String RESULTS_ADDED_FIELDNAME = 
+		ViewInterpreter.getQualifiedFieldName(ConsumerViewInterpreter.class,
+											  DirectoryFields.ADDED);
+
+	/**
+	   The name of the REMOVED field provided by a directory server's
+	   ConsumerViewInterpreter
+	*/
+	private final static String RESULTS_REMOVED_FIELDNAME = 
+		ViewInterpreter.getQualifiedFieldName(ConsumerViewInterpreter.class,
+											  DirectoryFields.REMOVED);
+
+	public DirectoryRenderer() {}
+
+	public void render(State.ChangeMessage msg) {
+		List changes = msg.getMessages();
+
+		DirectoryRenderer._LOG.debug(new Strings(new Object[] 
+			{this, ": render(", msg, ")"}));
+
+		for (Iterator i = changes.iterator(); i.hasNext(); ) {
+			Field.ChangeMessage fnotif = (Field.ChangeMessage)i.next();
+			if (RESULTS_ADDED_FIELDNAME.equals(fnotif._fname)) {
+				showAdded(((Map)fnotif._value).entrySet().iterator());
+			} else if (RESULTS_REMOVED_FIELDNAME.equals(fnotif._fname)) {
+				showRemoved(((Map)fnotif._value).entrySet().iterator());
+			} else {
+				DirectoryRenderer._LOG.warn(new Strings(new Object[] 
+					{this, 
+					 ": render(): expected field",
+					 RESULTS_ADDED_FIELDNAME, " or ",
+					 RESULTS_REMOVED_FIELDNAME, " or ",
+					 " but found ", 
+					 fnotif._fname, " instead."
+					}));
+			}
+		}
+	}
+
+	protected void showAdded(Iterator it) {
+		while (it.hasNext()) {
+			Map.Entry e = (Map.Entry)it.next();
+
+			for (Iterator i = _renderables.iterator(); i.hasNext(); ) {
+				Renderable renderable = (Renderable)i.next();
+
+				// It's up to the Renderable to tell the Client to
+				// scheduleConnectTo((ServerContact)e.getKey()).
+				try {
+					_LOG.debug(new Strings(new Object[] 
+						{this, " Adding ", e.getKey(), "=", e.getValue(), 
+						 " to ", renderable}));
+					renderable.loadObject(LAYERNAME, e);
+				} catch (IOException ex) {
+					_LOG.error(new Strings(new Object[] 
+						{this, ": showAdded(): while adding <",
+						 e.getKey(), ", ", e.getValue(), "> to ", renderable,
+						 ": ", ex}));
+											   
+				}
+			}
+		}
+	}
+
+	protected void showRemoved(Iterator it) {
+		while (it.hasNext()) {
+			Map.Entry e = (Map.Entry)it.next();
+
+			for (Iterator i = _renderables.iterator(); i.hasNext(); ) {
+				Renderable renderable = (Renderable)i.next();
+
+				// BUG? Keys might not be unique among servers.
+				String name = e.getKey().toString();
+
+				try {
+					_LOG.debug(new Strings(new Object[] 
+						{this, " Removing ", e.getKey(), "=", e.getValue(), 
+						 " from ", renderable}));
+					renderable.unloadObject(LAYERNAME, name);
+				} catch (IOException ex) {
+					_LOG.error(new Strings(new Object[] 
+						{this, ": showRemoved(): while removing <",
+						 e.getKey(), ", ", e.getValue(), "> from ", renderable, 
+						 ": ", ex}));
+				}
+			}
+		}
+	}
+
+	protected void add(QueryResultHandle h) {}
+
+	protected void change(QueryResultHandle h) {}
+
+	protected void remove(QueryResultHandle h) {}
+
+}

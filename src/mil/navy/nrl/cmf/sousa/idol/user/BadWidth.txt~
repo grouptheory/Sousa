@@ -1,0 +1,397 @@
+DEBUG [ZUI-INPUT-0] (ZUI.java:117) - :navigator setlatlonelevhpr 0.000120441798253 -90.000000000000000 20410038.258959800004959 0.000000000000000 0.000000000000000 0.000000000000000
+DEBUG [ZUI-INPUT-0] (ZUI.java:427) - Adding command mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@87e704
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@87e704 to mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c
+DEBUG [Browser Command Queue] (ClientInitializer.java:1105) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c: setPosition( position <-90.0, 1.20441798253E-4, 2.04100382589598E7> width null hpr <0.0, 0.0, 0.0> )
+DEBUG [Browser Command Queue] (CommandQueue.java:80) - Not routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@87e704 to its source, Thread[ZUI,5,main]
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@87e704 to mil.navy.nrl.cmf.sousa.idol.user.GUI@b23d12
+DEBUG [ZUI-INPUT-0] (ZUI.java:652) - broadcast(java.net.SocketOutputStream@4fe91e, ":navigator setlatlonelevhpr -90.0 1.20441798253E-4 2.04100382589598E7 0.0 0.0 0.0")
+DEBUG [ZUI-INPUT-0] (ZUI.java:117) - :navigator setlatlonelevhpr 0.000361325407149 -89.999718529663241 20410038.259756661951542 0.000000000000000 0.000000000000000 0.000000000000000
+DEBUG [ZUI-INPUT-0] (ZUI.java:427) - Adding command mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@51ef4e
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@51ef4e to mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c
+DEBUG [Browser Command Queue] (ClientInitializer.java:1105) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c: setPosition( position <-89.99971852966324, 3.61325407149E-4, 2.0410038259756662E7> width null hpr <0.0, 0.0, 0.0> )
+DEBUG [Browser Command Queue] (CommandQueue.java:80) - Not routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@51ef4e to its source, Thread[ZUI,5,main]
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@51ef4e to mil.navy.nrl.cmf.sousa.idol.user.GUI@b23d12
+DEBUG [ZUI-INPUT-0] (ZUI.java:652) - broadcast(java.net.SocketOutputStream@4fe91e, ":navigator setlatlonelevhpr -89.99971852966324 3.61325407149E-4 2.0410038259756662E7 0.0 0.0 0.0")
+DEBUG [ZUI-INPUT-0] (ZUI.java:117) - :navigator setlatlonelevhpr 0.003492765466482 -89.997677851792702 20410038.330698620527983 0.000000000000000 0.000000000000000 0.000000000000000
+DEBUG [ZUI-INPUT-0] (ZUI.java:427) - Adding command mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@135f44e
+DEBUG [ZUI-INPUT-0] (ZUI.java:652) - broadcast(java.net.SocketOutputStream@4fe91e, ":navigator setlatlonelevhpr -89.9976778517927 0.003492765466482 2.041003833069862E7 0.0 0.0 0.0")
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@135f44e to mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c
+DEBUG [Browser Command Queue] (ClientInitializer.java:1105) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c: setPosition( position <-89.9976778517927, 0.003492765466482, 2.041003833069862E7> width null hpr <0.0, 0.0, 0.0> )
+DEBUG [Browser Command Queue] (CommandQueue.java:80) - Not routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@135f44e to its source, Thread[ZUI,5,main]
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@135f44e to mil.navy.nrl.cmf.sousa.idol.user.GUI@b23d12
+DEBUG [ZUI-INPUT-0] (ZUI.java:117) - :navigator setlatlonelevhpr 0.016259465026916 -89.991415119727193 20410039.638876140117645 0.000000000000000 0.000000000000000 0.000000000000000
+DEBUG [ZUI-INPUT-0] (ZUI.java:427) - Adding command mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@13a34af
+DEBUG [ZUI-INPUT-0] (ZUI.java:652) - broadcast(java.net.SocketOutputStream@4fe91e, ":navigator setlatlonelevhpr -89.9914151197272 0.016259465026916 2.041003963887614E7 0.0 0.0 0.0")
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@13a34af to mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c
+DEBUG [Browser Command Queue] (ClientInitializer.java:1105) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c: setPosition( position <-89.9914151197272, 0.016259465026916, 2.041003963887614E7> width null hpr <0.0, 0.0, 0.0> )
+DEBUG [Browser Command Queue] (CommandQueue.java:80) - Not routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@13a34af to its source, Thread[ZUI,5,main]
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@13a34af to mil.navy.nrl.cmf.sousa.idol.user.GUI@b23d12
+DEBUG [ZUI-INPUT-0] (ZUI.java:117) - :navigator setlatlonelevhpr 0.053114436890893 -89.975019517304759 20410037.115956075489521 0.000000000000000 0.000000000000000 0.000000000000000
+DEBUG [ZUI-INPUT-0] (ZUI.java:427) - Adding command mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@58dd2d
+DEBUG [ZUI-INPUT-0] (ZUI.java:652) - broadcast(java.net.SocketOutputStream@4fe91e, ":navigator setlatlonelevhpr -89.97501951730476 0.053114436890893 2.0410037115956075E7 0.0 0.0 0.0")
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@58dd2d to mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c
+DEBUG [Browser Command Queue] (ClientInitializer.java:1105) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c: setPosition( position <-89.97501951730476, 0.053114436890893, 2.0410037115956075E7> width null hpr <0.0, 0.0, 0.0> )
+DEBUG [Browser Command Queue] (CommandQueue.java:80) - Not routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@58dd2d to its source, Thread[ZUI,5,main]
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@58dd2d to mil.navy.nrl.cmf.sousa.idol.user.GUI@b23d12
+ INFO [Entity Multicast Thread] (ClientInitializer.java:748) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c: handle(): new position <-89.97501951730476, 0.053114436890893, 2.0410037115956075E7> time= Fri Dec 07 11:33:16 EST 2007
+DEBUG [ZUI-INPUT-0] (ZUI.java:117) - :navigator setlatlonelevhpr 0.119236675011127 -89.945113342251815 20410038.644212462007999 0.000000000000000 0.000000000000000 0.000000000000000
+DEBUG [ZUI-INPUT-0] (ZUI.java:427) - Adding command mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@1c09624
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@1c09624 to mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c
+DEBUG [Browser Command Queue] (ClientInitializer.java:1105) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c: setPosition( position <-89.94511334225182, 0.119236675011127, 2.0410038644212462E7> width null hpr <0.0, 0.0, 0.0> )
+DEBUG [Browser Command Queue] (CommandQueue.java:80) - Not routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@1c09624 to its source, Thread[ZUI,5,main]
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@1c09624 to mil.navy.nrl.cmf.sousa.idol.user.GUI@b23d12
+DEBUG [ZUI-INPUT-0] (ZUI.java:652) - broadcast(java.net.SocketOutputStream@4fe91e, ":navigator setlatlonelevhpr -89.94511334225182 0.119236675011127 2.0410038644212462E7 0.0 0.0 0.0")
+DEBUG [ZUI-INPUT-0] (ZUI.java:117) - :navigator setlatlonelevhpr 0.216553061735517 -89.901696611737719 20410038.002806086093187 0.000000000000000 0.000000000000000 0.000000000000000
+DEBUG [ZUI-INPUT-0] (ZUI.java:427) - Adding command mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@c1186f
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@c1186f to mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c
+DEBUG [Browser Command Queue] (ClientInitializer.java:1105) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c: setPosition( position <-89.90169661173772, 0.216553061735517, 2.0410038002806086E7> width null hpr <0.0, 0.0, 0.0> )
+DEBUG [Browser Command Queue] (CommandQueue.java:80) - Not routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@c1186f to its source, Thread[ZUI,5,main]
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@c1186f to mil.navy.nrl.cmf.sousa.idol.user.GUI@b23d12
+DEBUG [ZUI-INPUT-0] (ZUI.java:652) - broadcast(java.net.SocketOutputStream@4fe91e, ":navigator setlatlonelevhpr -89.90169661173772 0.216553061735517 2.0410038002806086E7 0.0 0.0 0.0")
+DEBUG [ZUI-INPUT-0] (ZUI.java:117) - :navigator setlatlonelevhpr 0.350122134785332 -89.845261956348466 20410037.285940192639828 0.000000000000000 0.000000000000000 0.000000000000000
+DEBUG [ZUI-INPUT-0] (ZUI.java:427) - Adding command mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@12b3349
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@12b3349 to mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c
+DEBUG [Browser Command Queue] (ClientInitializer.java:1105) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c: setPosition( position <-89.84526195634847, 0.350122134785332, 2.0410037285940193E7> width null hpr <0.0, 0.0, 0.0> )
+DEBUG [Browser Command Queue] (CommandQueue.java:80) - Not routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@12b3349 to its source, Thread[ZUI,5,main]
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@12b3349 to mil.navy.nrl.cmf.sousa.idol.user.GUI@b23d12
+DEBUG [ZUI-INPUT-0] (ZUI.java:652) - broadcast(java.net.SocketOutputStream@4fe91e, ":navigator setlatlonelevhpr -89.84526195634847 0.350122134785332 2.0410037285940193E7 0.0 0.0 0.0")
+DEBUG [ZUI-INPUT-0] (ZUI.java:117) - :navigator setlatlonelevhpr 0.513199368723254 -89.783197893578460 20410034.033618547022343 0.000000000000000 0.000000000000000 0.000000000000000
+DEBUG [ZUI-INPUT-0] (ZUI.java:427) - Adding command mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@134263a
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@134263a to mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c
+DEBUG [Browser Command Queue] (ClientInitializer.java:1105) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c: setPosition( position <-89.78319789357846, 0.513199368723254, 2.0410034033618547E7> width null hpr <0.0, 0.0, 0.0> )
+DEBUG [Browser Command Queue] (CommandQueue.java:80) - Not routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCoommand@134263a to its source, Thread[ZUI,5,main]
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@134263a to mil.navy.nrl.cmf.sousa.idol.user.GUI@b23d12
+DEBUG [ZUI-INPUT-0] (ZUI.java:652) - broadcast(java.net.SocketOutputStream@4fe91e, ":navigator setlatlonelevhpr -89.78319789357846 0.513199368723254 2.0410034033618547E7 0.0 0.0 0.0")
+DEBUG [ZUI-INPUT-0] (ZUI.java:117) - :navigator setlatlonelevhpr 0.702291980349211 -89.714941498635483 20410029.451478511095047 0.000000000000000 0.000000000000000 0.000000000000000
+DEBUG [ZUI-INPUT-0] (ZUI.java:427) - Adding command mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@b9b8d0
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@b9b8d0 to mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c
+DEBUG [Browser Command Queue] (ClientInitializer.java:1105) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c: setPosition( position <-89.71494149863548, 0.702291980349211, 2.041002945147851E7> width null hpr <0.0, 0.0, 0.0> )
+DEBUG [Browser Command Queue] (CommandQueue.java:80) - Not routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@b9b8d0 to its source, Thread[ZUI,5,main]
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@b9b8d0 to mil.navy.nrl.cmf.sousa.idol.user.GUI@b23d12
+DEBUG [ZUI-INPUT-0] (ZUI.java:652) - broadcast(java.net.SocketOutputStream@4fe91e, ":navigator setlatlonelevhpr -89.71494149863548 0.702291980349211 2.041002945147851E7 0.0 0.0 0.0")
+DEBUG [ZUI-INPUT-0] (ZUI.java:117) - :navigator setlatlonelevhpr 0.926914849044587 -89.633737463101241 20410020.946484368294477 0.000000000000000 0.000000000000000 0.000000000000000
+DEBUG [ZUI-INPUT-0] (ZUI.java:427) - Adding command mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@1148603
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@1148603 to mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c
+DEBUG [Browser Command Queue] (ClientInitializer.java:1105) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c: setPosition( position <-89.63373746310124, 0.926914849044587, 2.041002094648437E7> width null hpr <0.0, 0.0, 0.0> )
+DEBUG [Browser Command Queue] (CommandQueue.java:80) - Not routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@1148603 to its source, Thread[ZUI,5,main]
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@1148603 to mil.navy.nrl.cmf.sousa.idol.user.GUI@b23d12
+DEBUG [ZUI-INPUT-0] (ZUI.java:652) - broadcast(java.net.SocketOutputStream@4fe91e, ":navigator setlatlonelevhpr -89.63373746310124 0.926914849044587 2.041002094648437E7 0.0 0.0 0.0")
+DEBUG [ZUI-INPUT-0] (ZUI.java:117) - :navigator setlatlonelevhpr 1.206338298551666 -89.538459892217190 20410008.603852268308401 0.000000000000000 0.000000000000000 0.000000000000000
+DEBUG [ZUI-INPUT-0] (ZUI.java:427) - Adding command mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@6a63d3
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@6a63d3 to mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c
+DEBUG [Browser Command Queue] (ClientInitializer.java:1105) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c: setPosition( position <-89.53845989221719, 1.206338298551666, 2.041000860385227E7> width null hpr <0.0, 0.0, 0.0> )
+DEBUG [Browser Command Queue] (CommandQueue.java:80) - Not routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@6a63d3 to its source, Thread[ZUI,5,main]
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@6a63d3 to mil.navy.nrl.cmf.sousa.idol.user.GUI@b23d12
+DEBUG [ZUI-INPUT-0] (ZUI.java:652) - broadcast(java.net.SocketOutputStream@4fe91e, ":navigator setlatlonelevhpr -89.53845989221719 1.206338298551666 2.041000860385227E7 0.0 0.0 0.0")
+DEBUG [Entity Multicast Thread] (ZUI.java:620) - broadcast(":idolbridge removeChild {Layer raster} {Id /ib_data/NGA_cities2/Osaka_2006_1024.nui} } ")
+DEBUG [ZUI-INPUT-0] (ZUI.java:117) - :navigator setlatlonelevhpr 1.564891539529134 -89.423831285190090 20409988.149032879620790 0.000000000000000 0.000000000000000 0.000000000000000
+DEBUG [Entity Multicast Thread] (ZUI.java:620) - broadcast(":idolbridge removeChild {Layer raster} {Id /ib_data/NGA_cities2/Baghdad_2006_1024.nui} } ")
+Receptor(): State: BEGIN
+[mil.navy.nrl.cmf.sousa.spatiotemporal.QueryViewInterpreter_ResultsAdded]=[]
+[mil.navy.nrl.cmf.sousa.spatiotemporal.QueryViewInterpreter_ResultsChanged]=[]
+[mil.navy.nrl.cmf.sousa.spatiotemporal.QueryViewInterpreter_ResultsRemoved]=[mil.navy.nrl.cmf.sousa.spatiotemporal.QueryResultHandle@279e8259 id:664699481 fields: { mapname:/ib_data/NGA_cities2/Osaka_2006_1024.nui south:0.0 east:0.0 north:0.0 west:0.0 }, mil.navy.nrl.cmf.sousa.spatiotemporal.QueryResultHandle@29c5472d id:700794669 fields: { mapname:/ib_data/NGA_cities2/Baghdad_2006_1024.nui south:0.0 east:0.0 north:0.0 west:0.0 }]
+Receptor(): State: END
+DEBUG [ZUI-INPUT-0] (ZUI.java:427) - Adding command mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@bfed5a
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@bfed5a to mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c
+DEBUG [Browser Command Queue] (ClientInitializer.java:1105) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c: setPosition( position <-89.42383128519009, 1.564891539529134, 2.040998814903288E7> width null hpr <0.0, 0.0, 0.0> )
+DEBUG [Browser Command Queue] (CommandQueue.java:80) - Not routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@bfed5a to its source, Thread[ZUI,5,main]
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@bfed5a to mil.navy.nrl.cmf.sousa.idol.user.GUI@b23d12
+DEBUG [ZUI-INPUT-0] (ZUI.java:652) - broadcast(java.net.SocketOutputStream@4fe91e, ":navigator setlatlonelevhpr -89.42383128519009 1.564891539529134 2.040998814903288E7 0.0 0.0 0.0")
+DEBUG [ZUI-INPUT-0] (ZUI.java:117) - :navigator setlatlonelevhpr 2.000527742712658 -89.288444059543792 20409953.090691056102514 0.000000000000000 0.000000000000000 0.000000000000000
+DEBUG [ZUI-INPUT-0] (ZUI.java:427) - Adding command mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@77eb97
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@77eb97 to mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c
+DEBUG [Browser Command Queue] (ClientInitializer.java:1105) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c: setPosition( position <-89.28844405954379, 2.000527742712658, 2.0409953090691056E7> width null hpr <0.0, 0.0, 0.0> )
+DEBUG [Browser Command Queue] (CommandQueue.java:80) - Not routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@77eb97 to its source, Thread[ZUI,5,main]
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@77eb97 to mil.navy.nrl.cmf.sousa.idol.user.GUI@b23d12
+DEBUG [ZUI-INPUT-0] (ZUI.java:652) - broadcast(java.net.SocketOutputStream@4fe91e, ":navigator setlatlonelevhpr -89.28844405954379 2.000527742712658 2.0409953090691056E7 0.0 0.0 0.0")
+DEBUG [ZUI-INPUT-0] (ZUI.java:117) - :navigator setlatlonelevhpr 2.499756522751627 -89.135042831497444 20409908.138122539967299 0.000000000000000 -0.000000139769481 0.000000000000000
+DEBUG [ZUI-INPUT-0] (ZUI.java:427) - Adding command mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@10c3a08
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@10c3a08 to mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c
+DEBUG [Browser Command Queue] (ClientInitializer.java:1105) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c: setPosition( position <-89.13504283149744, 2.499756522751627, 2.040990813812254E7> width null hpr <0.0, -1.39769481E-7, 0.0> )
+DEBUG [Browser Command Queue] (CommandQueue.java:80) - Not routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@10c3a08 to its source, Thread[ZUI,5,main]
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@10c3a08 to mil.navy.nrl.cmf.sousa.idol.user.GUI@b23d12
+DEBUG [ZUI-INPUT-0] (ZUI.java:652) - broadcast(java.net.SocketOutputStream@4fe91e, ":navigator setlatlonelevhpr -89.13504283149744 2.499756522751627 2.040990813812254E7 0.0 -1.39769481E-7 0.0")
+DEBUG [ZUI-INPUT-0] (ZUI.java:117) - :navigator setlatlonelevhpr 3.066914809596469 -88.967497411834231 20409841.696403086185455 0.000000000000000 0.000000000000000 0.000000000000000
+DEBUG [ZUI-INPUT-0] (ZUI.java:427) - Adding command mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@1b6235b
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@1b6235b to mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c
+DEBUG [Browser Command Queue] (ClientInitializer.java:1105) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c: setPosition( position <-88.96749741183423, 3.066914809596469, 2.0409841696403086E7> width null hpr <0.0, 0.0, 0.0> )
+DEBUG [Browser Command Queue] (CommandQueue.java:80) - Not routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@1b6235b to its source, Thread[ZUI,5,main]
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@1b6235b to mil.navy.nrl.cmf.sousa.idol.user.GUI@b23d12
+DEBUG [ZUI-INPUT-0] (ZUI.java:652) - broadcast(java.net.SocketOutputStream@4fe91e, ":navigator setlatlonelevhpr -88.96749741183423 3.066914809596469 2.0409841696403086E7 0.0 0.0 0.0")
+DEBUG [ZUI-INPUT-0] (ZUI.java:117) - :navigator setlatlonelevhpr 3.693692214785047 -88.790100437565300 20409753.103190332651138 0.000000000000000 0.000000000000000 0.000000000000000
+DEBUG [ZUI-INPUT-0] (ZUI.java:427) - Adding command mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@cb42cf
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@cb42cf to mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c
+DEBUG [Browser Command Queue] (ClientInitializer.java:1105) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c: setPosition( position <-88.7901004375653, 3.693692214785047, 2.0409753103190333E7> width null hpr <0.0, 0.0, 0.0> )
+DEBUG [Browser Command Queue] (CommandQueue.java:80) - Not routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@cb42cf to its source, Thread[ZUI,5,main]
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@cb42cf to mil.navy.nrl.cmf.sousa.idol.user.GUI@b23d12
+DEBUG [ZUI-INPUT-0] (ZUI.java:652) - broadcast(java.net.SocketOutputStream@4fe91e, ":navigator setlatlonelevhpr -88.7901004375653 3.693692214785047 2.0409753103190333E7 0.0 0.0 0.0")
+DEBUG [ZUI-INPUT-0] (ZUI.java:117) - :navigator setlatlonelevhpr 4.357687167201865 -88.607706979401485 20409641.227731458842754 0.000000000000000 0.000000000000000 0.000000000000000
+DEBUG [ZUI-INPUT-0] (ZUI.java:427) - Adding command mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@8f2ca6
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@8f2ca6 to mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c
+DEBUG [Browser Command Queue] (ClientInitializer.java:1105) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c: setPosition( position <-88.60770697940148, 4.357687167201865, 2.040964122773146E7> width null hpr <0.0, 0.0, 0.0> )
+DEBUG [Browser Command Queue] (CommandQueue.java:80) - Not routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@8f2ca6 to its source, Thread[ZUI,5,main]
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@8f2ca6 to mil.navy.nrl.cmf.sousa.idol.user.GUI@b23d12
+DEBUG [ZUI-INPUT-0] (ZUI.java:652) - broadcast(java.net.SocketOutputStream@4fe91e, ":navigator setlatlonelevhpr -88.60770697940148 4.357687167201865 2.040964122773146E7 0.0 0.0 0.0")
+DEBUG [ZUI-INPUT-0] (ZUI.java:117) - :navigator setlatlonelevhpr 5.034329579140215 -88.414898829700164 20409508.176526673138142 0.000000000000000 0.000000000000000 0.000000000000000
+DEBUG [ZUI-INPUT-0] (ZUI.java:427) - Adding command mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@1bc4ec8
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@1bc4ec8 to mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c
+DEBUG [Browser Command Queue] (ClientInitializer.java:1105) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c: setPosition( position <-88.41489882970016, 5.034329579140215, 2.0409508176526673E7> width null hpr <0.0, 0.0, 0.0> )
+DEBUG [Browser Command Queue] (CommandQueue.java:80) - Not routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@1bc4ec8 to its source, Thread[ZUI,5,main]
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@1bc4ec8 to mil.navy.nrl.cmf.sousa.idol.user.GUI@b23d12
+DEBUG [ZUI-INPUT-0] (ZUI.java:652) - broadcast(java.net.SocketOutputStream@4fe91e, ":navigator setlatlonelevhpr -88.41489882970016 5.034329579140215 2.0409508176526673E7 0.0 0.0 0.0")
+DEBUG [ZUI-INPUT-0] (ZUI.java:117) - :navigator setlatlonelevhpr 5.723860801644395 -88.211675698845823 20409355.270891979336739 0.000000000000000 0.000000000000000 0.000000000000000
+DEBUG [ZUI-INPUT-0] (ZUI.java:427) - Adding command mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@1d840d9
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@1d840d9 to mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c
+DEBUG [Browser Command Queue] (ClientInitializer.java:1105) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c: setPosition( position <-88.21167569884582, 5.723860801644395, 2.040935527089198E7> width null hpr <0.0, 0.0, 0.0> )
+DEBUG [Browser Command Queue] (CommandQueue.java:80) - Not routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@1d840d9 to its source, Thread[ZUI,5,main]
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@1d840d9 to mil.navy.nrl.cmf.sousa.idol.user.GUI@b23d12
+DEBUG [ZUI-INPUT-0] (ZUI.java:652) - broadcast(java.net.SocketOutputStream@4fe91e, ":navigator setlatlonelevhpr -88.21167569884582 5.723860801644395 2.040935527089198E7 0.0 0.0 0.0")
+DEBUG [ZUI-INPUT-0] (ZUI.java:117) - :navigator setlatlonelevhpr 6.426281508482426 -88.003033780739443 20409176.572924625128508 0.000000000000000 0.000000215470641 0.000000000000000
+DEBUG [ZUI-INPUT-0] (ZUI.java:427) - Adding command mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@898540
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@898540 to mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c
+DEBUG [Browser Command Queue] (ClientInitializer.java:1105) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c: setPosition( position <-88.00303378073944, 6.426281508482426, 2.0409176572924625E7> width null hpr <0.0, 2.15470641E-7, 0.0> )
+DEBUG [Browser Command Queue] (CommandQueue.java:80) - Not routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@898540 to its source, Thread[ZUI,5,main]
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@898540 to mil.navy.nrl.cmf.sousa.idol.user.GUI@b23d12
+DEBUG [ZUI-INPUT-0] (ZUI.java:652) - broadcast(java.net.SocketOutputStream@4fe91e, ":navigator setlatlonelevhpr -88.00303378073944 6.426281508482426 2.0409176572924625E7 0.0 2.15470641E-7 0.0")
+DEBUG [ZUI-INPUT-0] (ZUI.java:117) - :navigator setlatlonelevhpr 7.141831644653072 -87.788972952446215 20408975.622810751199722 0.000000000000000 -0.000000295388918 0.000000000000000
+DEBUG [ZUI-INPUT-0] (ZUI.java:427) - Adding command mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@8b677f
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@8b677f to mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c
+DEBUG [Browser Command Queue] (ClientInitializer.java:1105) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c: setPosition( position <-87.78897295244622, 7.141831644653072, 2.040897562281075E7> width null hpr <0.0, -2.95388918E-7, 0.0> )
+DEBUG [Browser Command Queue] (CommandQueue.java:80) - Not routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@8b677f to its source, Thread[ZUI,5,main]
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@8b677f to mil.navy.nrl.cmf.sousa.idol.user.GUI@b23d12
+DEBUG [ZUI-INPUT-0] (ZUI.java:652) - broadcast(java.net.SocketOutputStream@4fe91e, ":navigator setlatlonelevhpr -87.78897295244622 7.141831644653072 2.040897562281075E7 0.0 -2.95388918E-7 0.0")
+DEBUG [ZUI-INPUT-0] (ZUI.java:117) - :navigator setlatlonelevhpr 7.870512917653438 -87.574911277612586 20408749.249688018113375 0.000000000000000 -0.000000283849051 0.000000000000000
+DEBUG [ZUI-INPUT-0] (ZUI.java:427) - Adding command mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@37d490
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@37d490 to mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c
+DEBUG [Browser Command Queue] (ClientInitializer.java:1105) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c: setPosition( position <-87.57491127761259, 7.870512917653438, 2.0408749249688018E7> width null hpr <0.0, -2.83849051E-7, 0.0> )
+DEBUG [Browser Command Queue] (CommandQueue.java:80) - Not routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@37d490 to its source, Thread[ZUI,5,main]
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@37d490 to mil.navy.nrl.cmf.sousa.idol.user.GUI@b23d12
+DEBUG [ZUI-INPUT-0] (ZUI.java:652) - broadcast(java.net.SocketOutputStream@4fe91e, ":navigator setlatlonelevhpr -87.57491127761259 7.870512917653438 2.0408749249688018E7 0.0 -2.83849051E-7 0.0")
+DEBUG [ZUI-INPUT-0] (ZUI.java:117) - :navigator setlatlonelevhpr 8.599196864773864 -87.360848997135633 20408502.287080250680447 0.000000000000000 -0.000000185257382 0.000000000000000
+DEBUG [ZUI-INPUT-0] (ZUI.java:427) - Adding command mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@1647278
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@1647278 to mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c
+DEBUG [Browser Command Queue] (ClientInitializer.java:1105) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c: setPosition( position <-87.36084899713563, 8.599196864773864, 2.040850228708025E7> width null hpr <0.0, -1.85257382E-7, 0.0> )
+DEBUG [Browser Command Queue] (CommandQueue.java:80) - Not routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@1647278 to its source, Thread[ZUI,5,main]
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@1647278 to mil.navy.nrl.cmf.sousa.idol.user.GUI@b23d12
+DEBUG [ZUI-INPUT-0] (ZUI.java:652) - broadcast(java.net.SocketOutputStream@4fe91e, ":navigator setlatlonelevhpr -87.36084899713563 8.599196864773864 2.040850228708025E7 0.0 -1.85257382E-7 0.0")
+DEBUG [ZUI-INPUT-0] (ZUI.java:117) - :navigator setlatlonelevhpr 9.341253487432901 -87.146785576219756 20408225.799600057303905 0.000000000000000 0.000000409884737 -0.000000192523289
+DEBUG [ZUI-INPUT-0] (ZUI.java:427) - Adding command mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@1972e3a
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@1972e3a to mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c
+DEBUG [Browser Command Queue] (ClientInitializer.java:1105) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c: setPosition( position <-87.14678557621976, 9.341253487432901, 2.0408225799600057E7> width null hpr <0.0, 4.09884737E-7, -1.92523289E-7> )
+DEBUG [Browser Command Queue] (CommandQueue.java:80) - Not routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@1972e3a to its source, Thread[ZUI,5,main]
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@1972e3a to mil.navy.nrl.cmf.sousa.idol.user.GUI@b23d12
+DEBUG [ZUI-INPUT-0] (ZUI.java:652) - broadcast(java.net.SocketOutputStream@4fe91e, ":navigator setlatlonelevhpr -87.14678557621976 9.341253487432901 2.0408225799600057E7 0.0 4.09884737E-7 -1.92523289E-7")
+DEBUG [ZUI-INPUT-0] (ZUI.java:117) - :navigator setlatlonelevhpr 10.096681038235255 -86.932721723307225 20407925.739757105708122 0.000000000000000 -0.000000659013021 0.000000000000000
+DEBUG [ZUI-INPUT-0] (ZUI.java:427) - Adding command mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@5bf624
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@5bf624 to mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c
+DEBUG [Browser Command Queue] (ClientInitializer.java:1105) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c: setPosition( position <-86.93272172330722, 10.096681038235255, 2.0407925739757106E7> width null hpr <0.0, -6.59013021E-7, 0.0> )
+DEBUG [Browser Command Queue] (CommandQueue.java:80) - Not routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@5bf624 to its source, Thread[ZUI,5,main]
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@5bf624 to mil.navy.nrl.cmf.sousa.idol.user.GUI@b23d12
+DEBUG [ZUI-INPUT-0] (ZUI.java:652) - broadcast(java.net.SocketOutputStream@4fe91e, ":navigator setlatlonelevhpr -86.93272172330722 10.096681038235255 2.0407925739757106E7 0.0 -6.59013021E-7 0.0")
+DEBUG [ZUI-INPUT-0] (ZUI.java:117) - :navigator setlatlonelevhpr 10.865724318609201 -86.713097368213866 20407594.975757353007793 0.000000000000000 0.000000000000000 0.000000000000000
+DEBUG [ZUI-INPUT-0] (ZUI.java:427) - Adding command mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@17cd15d
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@17cd15d to mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c
+DEBUG [Browser Command Queue] (ClientInitializer.java:1105) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c: setPosition( position <-86.71309736821387, 10.865724318609201, 2.0407594975757353E7> width null hpr <0.0, 0.0, 0.0> )
+DEBUG [Browser Command Queue] (CommandQueue.java:80) - Not routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@17cd15d to its source, Thread[ZUI,5,main]
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@17cd15d to mil.navy.nrl.cmf.sousa.idol.user.GUI@b23d12
+DEBUG [ZUI-INPUT-0] (ZUI.java:652) - broadcast(java.net.SocketOutputStream@4fe91e, ":navigator setlatlonelevhpr -86.71309736821387 10.865724318609201 2.0407594975757353E7 0.0 0.0 0.0")
+DEBUG [ZUI-INPUT-0] (ZUI.java:117) - :navigator setlatlonelevhpr 11.648381079350740 -86.487912763491593 20407235.705138146877289 0.000000000000000 0.000000000000000 0.000000129150596
+DEBUG [ZUI-INPUT-0] (ZUI.java:427) - Adding command mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@1955970
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@1955970 to mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c
+DEBUG [Browser Command Queue] (ClientInitializer.java:1105) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c: setPosition( position <-86.4879127634916, 11.64838107935074, 2.0407235705138147E7> width null hpr <0.0, 0.0, 1.29150596E-7> )
+DEBUG [Browser Command Queue] (CommandQueue.java:80) - Not routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@1955970 to its source, Thread[ZUI,5,main]
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@1955970 to mil.navy.nrl.cmf.sousa.idol.user.GUI@b23d12
+DEBUG [ZUI-INPUT-0] (ZUI.java:652) - broadcast(java.net.SocketOutputStream@4fe91e, ":navigator setlatlonelevhpr -86.4879127634916 11.64838107935074 2.0407235705138147E7 0.0 0.0 1.29150596E-7")
+DEBUG [ZUI-INPUT-0] (ZUI.java:117) - :navigator setlatlonelevhpr 12.444894728850022 -86.257026480599635 20406843.985010448843241 0.000000000000000 0.000000880324145 -0.000000142570629
+DEBUG [ZUI-INPUT-0] (ZUI.java:427) - Adding command mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@22ce00
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@22ce00 to mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c
+DEBUG [Browser Command Queue] (ClientInitializer.java:1105) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c: setPosition( position <-86.25702648059963, 12.444894728850022, 2.040684398501045E7> width null hpr <0.0, 8.80324145E-7, -1.42570629E-7> )
+DEBUG [Browser Command Queue] (CommandQueue.java:80) - Not routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@22ce00 to its source, Thread[ZUI,5,main]
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@22ce00 to mil.navy.nrl.cmf.sousa.idol.user.GUI@b23d12
+DEBUG [ZUI-INPUT-0] (ZUI.java:652) - broadcast(java.net.SocketOutputStream@4fe91e, ":navigator setlatlonelevhpr -86.25702648059963 12.444894728850022 2.040684398501045E7 0.0 8.80324145E-7 -1.42570629E-7")
+DEBUG [ZUI-INPUT-0] (ZUI.java:117) - :navigator setlatlonelevhpr 13.255262466491278 -86.020439295407428 20406424.134773179888725 0.000000000000000 -0.000000391673512 0.000000139901731
+DEBUG [ZUI-INPUT-0] (ZUI.java:427) - Adding command mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@102a0a5
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@102a0a5 to mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c
+DEBUG [Browser Command Queue] (ClientInitializer.java:1105) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c: setPosition( position <-86.02043929540743, 13.255262466491278, 2.040642413477318E7> width null hpr <0.0, -3.91673512E-7, 1.39901731E-7> )
+DEBUG [Browser Command Queue] (CommandQueue.java:80) - Not routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@102a0a5 to its source, Thread[ZUI,5,main]
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@102a0a5 to mil.navy.nrl.cmf.sousa.idol.user.GUI@b23d12
+DEBUG [ZUI-INPUT-0] (ZUI.java:652) - broadcast(java.net.SocketOutputStream@4fe91e, ":navigator setlatlonelevhpr -86.02043929540743 13.255262466491278 2.040642413477318E7 0.0 -3.91673512E-7 1.39901731E-7")
+DEBUG [ZUI-INPUT-0] (ZUI.java:117) - :navigator setlatlonelevhpr 14.065638547513361 -85.783850061067113 20405976.007938034832478 0.000000000000000 0.000001372148748 0.000000000000000
+DEBUG [ZUI-INPUT-0] (ZUI.java:427) - Adding command mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@180b22e
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@180b22e to mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c
+DEBUG [Browser Command Queue] (ClientInitializer.java:1105) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c: setPosition( position <-85.78385006106711, 14.06563854751336, 2.0405976007938035E7> width null hpr <0.0, 1.372148748E-6, 0.0> )
+DEBUG [Browser Command Queue] (CommandQueue.java:80) - Not routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@180b22e to its source, Thread[ZUI,5,main]
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@180b22e to mil.navy.nrl.cmf.sousa.idol.user.GUI@b23d12
+DEBUG [ZUI-INPUT-0] (ZUI.java:652) - broadcast(java.net.SocketOutputStream@4fe91e, ":navigator setlatlonelevhpr -85.78385006106711 14.06563854751336 2.0405976007938035E7 0.0 1.372148748E-6 0.0")
+DEBUG [ZUI-INPUT-0] (ZUI.java:117) - :navigator setlatlonelevhpr 14.890109911861835 -85.547259254046793 20405498.498213097453117 0.000000000000000 0.000000199078005 -0.000000203357870
+DEBUG [ZUI-INPUT-0] (ZUI.java:427) - Adding command mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@31fb31
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@31fb31 to mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c
+DEBUG [Browser Command Queue] (ClientInitializer.java:1105) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c: setPosition( position <-85.54725925404679, 14.890109911861835, 2.0405498498213097E7> width null hpr <0.0, 1.99078005E-7, -2.0335787E-7> )
+DEBUG [Browser Command Queue] (CommandQueue.java:80) - Not routing mil.navy.nrl.cmf.sousa.idol..user.SetPositionCommand@31fb31 to its source, Thread[ZUI,5,main]
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@31fb31 to mil.navy.nrl.cmf.sousa.idol.user.GUI@b23d12
+DEBUG [ZUI-INPUT-0] (ZUI.java:652) - broadcast(java.net.SocketOutputStream@4fe91e, ":navigator setlatlonelevhpr -85.54725925404679 14.890109911861835 2.0405498498213097E7 0.0 1.99078005E-7 -2.0335787E-7")
+DEBUG [ZUI-INPUT-0] (ZUI.java:117) - :navigator setlatlonelevhpr 15.728682448153096 -85.310666955188424 20404984.838567279279232 0.000000000000000 0.000001358566025 0.000000000000000
+DEBUG [ZUI-INPUT-0] (ZUI.java:427) - Adding command mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@162522b
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@162522b to mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c
+DEBUG [Browser Command Queue] (ClientInitializer.java:1105) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c: setPosition( position <-85.31066695518842, 15.728682448153096, 2.040498483856728E7> width null hpr <0.0, 1.358566025E-6, 0.0> )
+DEBUG [Browser Command Queue] (CommandQueue.java:80) - Not routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@162522b to its source, Thread[ZUI,5,main]
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@162522b to mil.navy.nrl.cmf.sousa.idol.user.GUI@b23d12
+DEBUG [ZUI-INPUT-0] (ZUI.java:652) - broadcast(java.net.SocketOutputStream@4fe91e, ":navigator setlatlonelevhpr -85.31066695518842 15.728682448153096 2.040498483856728E7 0.0 1.358566025E-6 0.0")
+DEBUG [ZUI-INPUT-0] (ZUI.java:117) - :navigator setlatlonelevhpr 16.567258445970367 -85.074072984281813 20404449.450515341013670 0.000000000000000 -0.000000678551587 0.000000256735039
+DEBUG [ZUI-INPUT-0] (ZUI.java:427) - Adding command mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@89dd
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@89dd to mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c
+DEBUG [Browser Command Queue] (ClientInitializer.java:1105) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c: setPosition( position <-85.07407298428181, 16.567258445970367, 2.040444945051534E7> width null hpr <0.0, -6.78551587E-7, 2.56735039E-7> )
+DEBUG [Browser Command Queue] (CommandQueue.java:80) - Not routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@89dd to its source, Thread[ZUI,5,main]
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@89dd to mil.navy.nrl.cmf.sousa.idol.user.GUI@b23d12
+DEBUG [ZUI-INPUT-0] (ZUI.java:652) - broadcast(java.net.SocketOutputStream@4fe91e, ":navigator setlatlonelevhpr -85.07407298428181 16.567258445970367 2.040444945051534E7 0.0 -6.78551587E-7 2.56735039E-7")
+DEBUG [ZUI-INPUT-0] (ZUI.java:117) - :navigator setlatlonelevhpr 17.405844653277466 -84.837476222302968 20403886.331761587411165 0.000000000000000 0.000000515203066 -0.000000202214338
+DEBUG [ZUI-INPUT-0] (ZUI.java:427) - Adding command mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@15b1773
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@15b1773 to mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c
+DEBUG [Browser Command Queue] (ClientInitializer.java:1105) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c: setPosition( position <-84.83747622230297, 17.405844653277466, 2.0403886331761587E7> width null hpr <0.0, 5.15203066E-7, -2.02214338E-7> )
+DEBUG [Browser Command Queue] (CommandQueue.java:80) - Not routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@15b1773 to its source, Thread[ZUI,5,main]
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@15b1773 to mil.navy.nrl.cmf.sousa.idol.user.GUI@b23d12
+DEBUG [ZUI-INPUT-0] (ZUI.java:652) - broadcast(java.net.SocketOutputStream@4fe91e, ":navigator setlatlonelevhpr -84.83747622230297 17.405844653277466 2.0403886331761587E7 0.0 5.15203066E-7 -2.02214338E-7")
+DEBUG [ZUI-INPUT-0] (ZUI.java:117) - :navigator setlatlonelevhpr 18.244436747473856 -84.600877863382209 20403300.371602416038513 0.000000000000000 0.000000302788373 -0.000000219375774
+DEBUG [ZUI-INPUT-0] (ZUI.java:427) - Adding command mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@160bf50
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@160bf50 to mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c
+DEBUG [Browser Command Queue] (ClientInitializer.java:1105) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c: setPosition( position <-84.60087786338221, 18.244436747473856, 2.0403300371602416E7> width null hpr <0.0, 3.02788373E-7, -2.19375774E-7> )
+DEBUG [Browser Command Queue] (CommandQueue.java:80) - Not routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@160bf50 to its source, Thread[ZUI,5,main]
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@160bf50 to mil.navy.nrl.cmf.sousa.idol.user.GUI@b23d12
+DEBUG [ZUI-INPUT-0] (ZUI.java:652) - broadcast(java.net.SocketOutputStream@4fe91e, ":navigator setlatlonelevhpr -84.60087786338221 18.244436747473856 2.0403300371602416E7 0.0 3.02788373E-7 -2.19375774E-7")
+DEBUG [ZUI-INPUT-0] (ZUI.java:117) - :navigator setlatlonelevhpr 19.083036449222853 -84.364277603089803 20402690.785597577691078 0.000000000000000 0.000000000000000 0.000000000000000
+DEBUG [ZUI-INPUT-0] (ZUI.java:427) - Adding command mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@b05236
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@b05236 to mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c
+DEBUG [Browser Command Queue] (ClientInitializer.java:1105) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c: setPosition( position <-84.3642776030898, 19.083036449222853, 2.0402690785597578E7> width null hpr <0.0, 0.0, 0.0> )
+DEBUG [Browser Command Queue] (CommandQueue.java:80) - Not routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@b05236 to its source, Thread[ZUI,5,main]
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@b05236 to mil.navy.nrl.cmf.sousa.idol.user.GUI@b23d12
+DEBUG [ZUI-INPUT-0] (ZUI.java:652) - broadcast(java.net.SocketOutputStream@4fe91e, ":navigator setlatlonelevhpr -84.3642776030898 19.083036449222853 2.0402690785597578E7 0.0 0.0 0.0")
+DEBUG [ZUI-INPUT-0] (ZUI.java:117) - :navigator setlatlonelevhpr 19.921643760596552 -84.127674714892592 20402057.964867655187845 0.000000000000000 -0.000000402405976 -0.000000170132193
+DEBUG [ZUI-INPUT-0] (ZUI.java:427) - Adding command mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@1e55794
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@1e55794 to mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c
+DEBUG [Browser Command Queue] (ClientInitializer.java:1105) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c: setPosition( position <-84.12767471489259, 19.921643760596552, 2.0402057964867655E7> width null hpr <0.0, -4.02405976E-7, -1.70132193E-7> )
+DEBUG [Browser Command Queue] (CommandQueue.java:80) - Not routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@1e55794 to its source, Thread[ZUI,5,main]
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@1e55794 to mil.navy.nrl.cmf.sousa.idol.user.GUI@b23d12
+DEBUG [ZUI-INPUT-0] (ZUI.java:652) - broadcast(java.net.SocketOutputStream@4fe91e, ":navigator setlatlonelevhpr -84.12767471489259 19.921643760596552 2.0402057964867655E7 0.0 -4.02405976E-7 -1.70132193E-7")
+DEBUG [ZUI-INPUT-0] (ZUI.java:117) - :navigator setlatlonelevhpr 20.760261001245794 -83.891069961309711 20401402.453058905899525 0.000000000000000 0.000000830291191 0.000000000000000
+DEBUG [ZUI-INPUT-0] (ZUI.java:427) - Adding command mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@1d8d237
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@1d8d237 to mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c
+DEBUG [Browser Command Queue] (ClientInitializer.java:1105) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c: setPosition( position <-83.89106996130971, 20.760261001245794, 2.0401402453058906E7> width null hpr <0.0, 8.30291191E-7, 0.0> )
+DEBUG [Browser Command Queue] (CommandQueue.java:80) - Not routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@1d8d237 to its source, Thread[ZUI,5,main]
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@1d8d237 to mil.navy.nrl.cmf.sousa.idol.user.GUI@b23d12
+DEBUG [ZUI-INPUT-0] (ZUI.java:652) - broadcast(java.net.SocketOutputStream@4fe91e, ":navigator setlatlonelevhpr -83.89106996130971 20.760261001245794 2.0401402453058906E7 0.0 8.30291191E-7 0.0")
+DEBUG [ZUI-INPUT-0] (ZUI.java:117) - :navigator setlatlonelevhpr 21.598885379631238 -83.654462594976209 20400725.460176475346088 0.000000000000000 0.000000715686862 0.000000136535748
+DEBUG [ZUI-INPUT-0] (ZUI.java:427) - Adding command mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@146e381
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@146e381 to mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c
+DEBUG [Browser Command Queue] (ClientInitializer.java:1105) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c: setPosition( position <-83.65446259497621, 21.598885379631238, 2.0400725460176475E7> width null hpr <0.0, 7.15686862E-7, 1.36535748E-7> )
+DEBUG [Browser Command Queue] (CommandQueue.java:80) - Not routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@146e381 to its source, Thread[ZUI,5,main]
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@146e381 to mil.navy.nrl.cmf.sousa.idol.user.GUI@b23d12
+DEBUG [ZUI-INPUT-0] (ZUI.java:652) - broadcast(java.net.SocketOutputStream@4fe91e, ":navigator setlatlonelevhpr -83.65446259497621 21.598885379631238 2.0400725460176475E7 0.0 7.15686862E-7 1.36535748E-7")
+DEBUG [ZUI-INPUT-0] (ZUI.java:117) - :navigator setlatlonelevhpr 22.437517441193005 -83.417852704679703 20400026.932927966117859 0.000000000000000 -0.000000481044707 0.000000139020581
+DEBUG [ZUI-INPUT-0] (ZUI.java:427) - Adding command mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@1024994
+DEBUG [ZUI-INPUT-0] (ZUI.java:652) - broadcast(java.net.SocketOutputStream@4fe91e, ":navigator setlatlonelevhpr -83.4178527046797 22.437517441193005 2.0400026932927966E7 0.0 -4.81044707E-7 1.39020581E-7")
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@1024994 to mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c
+DEBUG [Browser Command Queue] (ClientInitializer.java:1105) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c: setPosition( position <-83.4178527046797, 22.437517441193005, 2.0400026932927966E7> width null hpr <0.0, -4.81044707E-7, 1.39020581E-7> )
+DEBUG [Browser Command Queue] (CommandQueue.java:80) - Not routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@1024994 to its source, Thread[ZUI,5,main]
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@1024994 to mil.navy.nrl.cmf.sousa.idol.user.GUI@b23d12
+DEBUG [ZUI-INPUT-0] (ZUI.java:117) - :navigator setlatlonelevhpr 23.276159886015957 -83.181240323710369 20399307.119392409920692 0.000000000000000 -0.000000332501894 0.000000195893101
+DEBUG [ZUI-INPUT-0] (ZUI.java:427) - Adding command mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@12cd19d
+DEBUG [ZUI-INPUT-0] (ZUI.java:652) - broadcast(java.net.SocketOutputStream@4fe91e, ":navigator setlatlonelevhpr -83.18124032371037 23.276159886015957 2.039930711939241E7 0.0 -3.32501894E-7 1.95893101E-7")
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@12cd19d to mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c
+DEBUG [Browser Command Queue] (ClientInitializer.java:1105) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c: setPosition( position <-83.18124032371037, 23.276159886015957, 2.039930711939241E7> width null hpr <0.0, -3.32501894E-7, 1.95893101E-7> )
+DEBUG [Browser Command Queue] (CommandQueue.java:80) - Not routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@12cd19d to its source, Thread[ZUI,5,main]
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@12cd19d to mil.navy.nrl.cmf.sousa.idol.user.GUI@b23d12
+DEBUG [ZUI-INPUT-0] (ZUI.java:117) - :navigator setlatlonelevhpr 24.114811663087561 -82.944625040700458 20398567.135970123112202 0.000000000000000 -0.000000154563759 0.000000000000000
+DEBUG [ZUI-INPUT-0] (ZUI.java:427) - Adding command mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@1759d12
+DEBUG [ZUI-INPUT-0] (ZUI.java:652) - broadcast(java.net.SocketOutputStream@4fe91e, ":navigator setlatlonelevhpr -82.94462504070046 24.11481166308756 2.0398567135970123E7 0.0 -1.54563759E-7 0.0")
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@1759d12 to mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c
+DEBUG [Browser Command Queue] (ClientInitializer.java:1105) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c: setPosition( position <-82.94462504070046, 24.11481166308756, 2.0398567135970123E7> width null hpr <0.0, -1.54563759E-7, 0.0> )
+DEBUG [Browser Command Queue] (CommandQueue.java:80) - Not routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@1759d12 to its source, Thread[ZUI,5,main]
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@1759d12 to mil.navy.nrl.cmf.sousa.idol.user.GUI@b23d12
+DEBUG [ZUI-INPUT-0] (ZUI.java:117) - :navigator setlatlonelevhpr 24.953473663284573 -82.708007446419813 20397808.354925885796547 0.000000000000000 0.000000686823624 0.000000154214781
+DEBUG [ZUI-INPUT-0] (ZUI.java:427) - Adding command mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@9b2a51
+DEBUG [ZUI-INPUT-0] (ZUI.java:652) - broadcast(java.net.SocketOutputStream@4fe91e, ":navigator setlatlonelevhpr -82.70800744641981 24.953473663284573 2.0397808354925886E7 0.0 6.86823624E-7 1.54214781E-7")
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@9b2a51 to mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c
+DEBUG [Browser Command Queue] (ClientInitializer.java:1105) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c: setPosition( position <-82.70800744641981, 24.953473663284573, 2.0397808354925886E7> width null hpr <0.0, 6.86823624E-7, 1.54214781E-7> )
+DEBUG [Browser Command Queue] (CommandQueue.java:80) - Not routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@9b2a51 to its source, Thread[ZUI,5,main]
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@9b2a51 to mil.navy.nrl.cmf.sousa.idol.user.GUI@b23d12
+DEBUG [ZUI-INPUT-0] (ZUI.java:117) - :navigator setlatlonelevhpr 25.792144067415389 -82.471386510962560 20397029.901951856911182 0.000000000000000 0.000000123909496 -0.000000209297238
+DEBUG [ZUI-INPUT-0] (ZUI.java:427) - Adding command mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@f7345b
+DEBUG [ZUI-INPUT-0] (ZUI.java:652) - broadcast(java.net.SocketOutputStream@4fe91e, ":navigator setlatlonelevhpr -82.47138651096256 25.79214406741539 2.0397029901951857E7 0.0 1.23909496E-7 -2.09297238E-7")
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@f7345b to mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c
+DEBUG [Browser Command Queue] (ClientInitializer.java:1105) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c: setPosition( position <-82.47138651096256, 25.79214406741539, 2.0397029901951857E7> width null hpr <0.0, 1.23909496E-7, -2.09297238E-7> )
+DEBUG [Browser Command Queue] (CommandQueue.java:80) - Not routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@f7345b to its source, Thread[ZUI,5,main]
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@f7345b to mil.navy.nrl.cmf.sousa.idol.user.GUI@b23d12
+DEBUG [ZUI-INPUT-0] (ZUI.java:117) - :navigator setlatlonelevhpr 26.630826051240788 -82.234762757793064 20396233.550569735467434 0.000000276881113 0.000001092371794 -0.000000552176606
+DEBUG [ZUI-INPUT-0] (ZUI.java:427) - Adding command mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@18e609b
+DEBUG [ZUI-INPUT-0] (ZUI.java:652) - broadcast(java.net.SocketOutputStream@4fe91e, ":navigator setlatlonelevhpr -82.23476275779306 26.63082605124079 2.0396233550569735E7 2.76881113E-7 1.092371794E-6 -5.52176606E-7")
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@18e609b to mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c
+DEBUG [Browser Command Queue] (ClientInitializer.java:1105) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c: setPosition( position <-82.23476275779306, 26.63082605124079, 2.0396233550569735E7> width null hpr <2.76881113E-7, 1.092371794E-6, -5.52176606E-7> )
+DEBUG [Browser Command Queue] (CommandQueue.java:80) - Not routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@18e609b to its source, Thread[ZUI,5,main]
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@18e609b to mil.navy.nrl.cmf.sousa.idol.user.GUI@b23d12
+DEBUG [ZUI-INPUT-0] (ZUI.java:117) - :navigator setlatlonelevhpr 27.469517220052879 -81.998137034940427 20395419.788115117698908 0.000000000000000 0.000000966101229 0.000000000000000
+DEBUG [ZUI-INPUT-0] (ZUI.java:427) - Adding command mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@687ea9
+DEBUG [ZUI-INPUT-0] (ZUI.java:652) - broadcast(java.net.SocketOutputStream@4fe91e, ":navigator setlatlonelevhpr -81.99813703494043 27.46951722005288 2.0395419788115118E7 0.0 9.66101229E-7 0.0")
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@687ea9 to mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c
+DEBUG [Browser Command Queue] (ClientInitializer.java:1105) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c: setPosition( position <-81.99813703494043, 27.46951722005288, 2.0395419788115118E7> width null hpr <0.0, 9.66101229E-7, 0.0> )
+DEBUG [Browser Command Queue] (CommandQueue.java:80) - Not routing mil.navy.nrll.cmf.sousa.idol.user.SetPositionCommand@687ea9 to its source, Thread[ZUI,5,main]
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@687ea9 to mil.navy.nrl.cmf.sousa.idol.user.GUI@b23d12
+DEBUG [ZUI-INPUT-0] (ZUI.java:117) - :navigator setlatlonelevhpr 28.308218200537517 -81.761507845204960 20394589.940478421747684 0.000000000000000 0.000000149261160 0.000000000000000
+DEBUG [ZUI-INPUT-0] (ZUI.java:427) - Adding command mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@538974
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@538974 to mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c
+DEBUG [Browser Command Queue] (ClientInitializer.java:1105) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c: setPosition( position <-81.76150784520496, 28.308218200537517, 2.039458994047842E7> width null hpr <0.0, 1.4926116E-7, 0.0> )
+DEBUG [Browser Command Queue] (CommandQueue.java:80) - Not routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@538974 to its source, Thread[ZUI,5,main]
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@538974 to mil.navy.nrl.cmf.sousa.idol.user.GUI@b23d12
+DEBUG [ZUI-INPUT-0] (ZUI.java:652) - broadcast(java.net.SocketOutputStream@4fe91e, ":navigator setlatlonelevhpr -81.76150784520496 28.308218200537517 2.039458994047842E7 0.0 1.4926116E-7 0.0")
+DEBUG [ZUI-INPUT-0] (ZUI.java:117) - :navigator setlatlonelevhpr 29.146931657308190 -81.524875759319883 20393742.267797801643610 0.000000000000000 0.000001093011124 0.000000120443902
+DEBUG [ZUI-INPUT-0] (ZUI.java:427) - Adding command mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@6545d2
+DEBUG [ZUI-INPUT-0] (ZUI.java:652) - broadcast(java.net.SocketOutputStream@4fe91e, ":navigator setlatlonelevhpr -81.52487575931988 29.14693165730819 2.03937422677978E7 0.0 1.093011124E-6 1.20443902E-7")
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@6545d2 to mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c
+DEBUG [Browser Command Queue] (ClientInitializer.java:1105) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c: setPosition( position <-81.52487575931988, 29.14693165730819, 2.03937422677978E7> width null hpr <0.0, 1.093011124E-6, 1.20443902E-7> )
+DEBUG [Browser Command Queue] (CommandQueue.java:80) - Not routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@6545d2 to its source, Thread[ZUI,5,main]
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@6545d2 to mil.navy.nrl.cmf.sousa.idol.user.GUI@b23d12
+DEBUG [ZUI-INPUT-0] (ZUI.java:117) - :navigator setlatlonelevhpr 29.985654077699465 -81.288240313619397 20392880.570214185863733 0.000000000000000 0.000000000000000 0.000000000000000
+DEBUG [ZUI-INPUT-0] (ZUI.java:427) - Adding command mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@cade31
+DEBUG [ZUI-INPUT-0] (ZUI.java:652) - broadcast(java.net.SocketOutputStream@4fe91e, ":navigator setlatlonelevhpr -81.2882403136194 29.985654077699465 2.0392880570214186E7 0.0 0.0 0.0")
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@cade31 to mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c
+DEBUG [Browser Command Queue] (ClientInitializer.java:1105) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c: setPosition( position <-81.2882403136194, 29.985654077699465, 2.0392880570214186E7> width null hpr <0.0, 0.0, 0.0> )
+DEBUG [Browser Command Queue] (CommandQueue.java:80) - Not routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@cade31 to its source, Thread[ZUI,5,main]
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@cade31 to mil.navy.nrl.cmf.sousa.idol.user.GUI@b23d12
+DEBUG [ZUI-INPUT-0] (ZUI.java:117) - :navigator setlatlonelevhpr 30.824388420182171 -81.051601253833795 20392003.358635716140270 0.000000287312510 -0.000000124635595 -0.000000481505104
+DEBUG [ZUI-INPUT-0] (ZUI.java:427) - Adding command mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@c1a0eb
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@c1a0eb to mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c
+DEBUG [Browser Command Queue] (ClientInitializer.java:1105) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c: setPosition( position <-81.0516012538338, 30.82438842018217, 2.0392003358635716E7> width null hpr <2.8731251E-7, -1.24635595E-7, -4.81505104E-7> )
+DEBUG [Browser Command Queue] (CommandQueue.java:80) - Not routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@c1a0eb to its source, Thread[ZUI,5,main]
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@c1a0eb to mil.navy.nrl.cmf.sousa.idol.user.GUI@b23d12
+DEBUG [ZUI-INPUT-0] (ZUI.java:652) - broadcast(java.net.SocketOutputStream@4fe91e, ":navigator setlatlonelevhpr -81.0516012538338 30.82438842018217 2.0392003358635716E7 2.8731251E-7 -1.24635595E-7 -4.81505104E-7")
+DEBUG [ZUI-INPUT-0] (ZUI.java:117) - :navigator setlatlonelevhpr 31.663134261697504 -80.814959734142406 20391113.590568371117115 0.000000220948513 -0.000000130591447 -0.000000358261525
+DEBUG [ZUI-INPUT-0] (ZUI.java:427) - Adding command mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@2bccb2
+DEBUG [ZUI-INPUT-0] (ZUI.java:652) - broadcast(java.net.SocketOutputStream@4fe91e, ":navigator setlatlonelevhpr -80.8149597341424 31.663134261697504 2.039111359056837E7 2.20948513E-7 -1.30591447E-7 -3.58261525E-7")
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@2bccb2 to mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c
+DEBUG [Browser Command Queue] (ClientInitializer.java:1105) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c: setPosition( position <-80.8149597341424, 31.663134261697504, 2.039111359056837E7> width null hpr <2.20948513E-7, -1.30591447E-7, -3.58261525E-7> )
+DEBUG [Browser Command Queue] (CommandQueue.java:80) - Not routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@2bccb2 to its source, Thread[ZUI,5,main]
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@2bccb2 to mil.navy.nrl.cmf.sousa.idol.user.GUI@b23d12
+DEBUG [ZUI-INPUT-0] (ZUI.java:117) - :navigator setlatlonelevhpr 32.501891934754383 -80.578314893702171 20390209.319716781377792 0.000000195722647 0.000000219677887 -0.000000307200629
+DEBUG [ZUI-INPUT-0] (ZUI.java:427) - Adding command mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@18bbf55
+DEBUG [ZUI-INPUT-0] (ZUI.java:652) - broadcast(java.net.SocketOutputStream@4fe91e, ":navigator setlatlonelevhpr -80.57831489370217 32.50189193475438 2.039020931971678E7 1.95722647E-7 2.19677887E-7 -3.07200629E-7")
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@18bbf55 to mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c
+DEBUG [Browser Command Queue] (ClientInitializer.java:1105) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c: setPosition( position <-80.57831489370217, 32.50189193475438, 2.039020931971678E7> width null hpr <1.95722647E-7, 2.19677887E-7, -3.07200629E-7> )
+DEBUG [Browser Command Queue] (CommandQueue.java:80) - Not routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@18bbf55 to its source, Thread[ZUI,5,main]
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@18bbf55 to mil.navy.nrl.cmf.sousa.idol.user.GUI@b23d12
+DEBUG [ZUI-INPUT-0] (ZUI.java:117) - :navigator setlatlonelevhpr 33.340660725732768 -80.341666560324796 20389293.826689280569553 0.000000283712123 0.000000000000000 -0.000000431243192
+DEBUG [ZUI-INPUT-0] (ZUI.java:427) - Adding command mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@1be8711
+DEBUG [ZUI-INPUT-0] (ZUI.java:652) - broadcast(java.net.SocketOutputStream@4fe91e, ":navigator setlatlonelevhpr -80.3416665603248 33.34066072573277 2.038929382668928E7 2.83712123E-7 0.0 -4.31243192E-7")
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@1be8711 to mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c
+DEBUG [Browser Command Queue] (ClientInitializer.java:1105) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c: setPosition( position <-80.3416665603248, 33.34066072573277, 2.038929382668928E7> width null hpr <2.83712123E-7, 0.0, -4.31243192E-7> )
+DEBUG [Browser Command Queue] (CommandQueue.java:80) - Not routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@1be8711 to its source, Thread[ZUI,5,main]
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@1be8711 to mil.navy.nrl.cmf.sousa.idol.user.GUI@b23d12
+ INFO [Entity Multicast Thread] (ClientInitializer.java:748) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c: handle(): new position <-80.3416665603248, 33.34066072573277, 2.038929382668928E7> time= Fri Dec 07 11:33:17 EST 2007
+ INFO [Entity Multicast Thread] (ClientInitializer.java:811) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c: handle(): new HPR <2.83712123E-7, 0.0, -4.31243192E-7>
+DEBUG [ZUI-INPUT-0] (ZUI.java:117) - :navigator setlatlonelevhpr 33.760048059667298 -80.223342457919998 20388832.150339119136333 -0.000000398756325 -0.000001515212532 0.000000596554488
+DEBUG [ZUI-INPUT-0] (ZUI.java:427) - Adding command mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@523df
+DEBUG [ZUI-INPUT-0] (ZUI.java:652) - broadcast(java.net.SocketOutputStream@4fe91e, ":navigator setlatlonelevhpr -80.22334245792 33.7600480596673 2.038883215033912E7 -3.98756325E-7 -1.515212532E-6 5.96554488E-7")
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@523df to mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c
+DEBUG [Browser Command Queue] (ClientInitializer.java:1105) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c: setPosition( position <-80.22334245792, 33.7600480596673, 2.038883215033912E7> width null hpr <-3.98756325E-7, -1.515212532E-6, 5.96554488E-7> )
+DEBUG [Browser Command Queue] (CommandQueue.java:80) - Not routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@523df to its source, Thread[ZUI,5,main]
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@523df to mil.navy.nrl.cmf.sousa.idol.user.GUI@b23d12
+ INFO [Entity Multicast Thread] (ClientInitializer.java:748) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c: handle(): new position <-80.22334245792, 33.7600480596673, 2.038883215033912E7> time= Fri Dec 07 11:33:26 EST 2007
+ INFO [Entity Multicast Thread] (ClientInitializer.java:811) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@64023c: handle(): new HPR <-3.98756325E-7, -1.515212532E-6, 5.96554488E-7>

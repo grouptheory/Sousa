@@ -1,0 +1,19 @@
+This directory contains two startup scripts, one for
+starting the SOUSA/IDOL service agents, the other for
+starting the user agent.
+
+NOTE: The top-level Ant build script will filter the *.in
+files replacing the @PREFIX@ with the actual installation
+path.
+
+The scripts handle several essentials:
+1) Setting up the library path, classpath and JNI path for
+all required components.
+2) Setting up the various system properties related to the
+use of Kerberos/GSSAPI.
+3) Setting up other system properties such as JDBC driver,
+AWT configuration, and SOUSA/IDOL configuration file.
+4) Invoking the JVM.
+
+Each script has a --help option listing all supported
+parameters.

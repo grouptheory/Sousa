@@ -1,0 +1,252 @@
+package mil.navy.nrl.cmf.sousa.idol.user;
+import java.awt.Color;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Properties;
+import java.util.Set;
+import mil.navy.nrl.cmf.sousa.Renderable;
+import mil.navy.nrl.cmf.sousa.util.Strings;
+import mil.navy.nrl.cmf.stk.XYZd;
+import org.apache.log4j.*;
+
+/**
+   CLIRenderable
+*/
+final class CLIRenderable
+    implements Renderable
+{
+	/**
+	   _LOG
+	*/
+	private static final Logger _LOG = Logger.getLogger(CLIRenderable.class);
+
+	/**
+	   Part of a hack that assumes that the first image drawn on the
+	   scene graph is the base earth image and ensures that the base
+	   image is drawn as far from the viewer as possible.  This
+	   eliminates flimmer.
+	*/
+	private boolean _nolayers = true;
+
+	/**
+	   Message terminator
+	*/
+	static final String EOC = new String(new char[] { 0 });
+
+
+	// Constructors
+
+	/**
+	   CLIRenderable(Properties, QueryHandler, LocalCommandObject)
+	   @methodtype ctor
+	   @param p .
+	   @param qh .
+	   @param commandQueue .
+	*/
+	CLIRenderable(/*@ non_null */ Properties p)
+	{ }
+
+
+	// mil.navy.nrl.cmf.sousa.Renderer
+
+
+	final public void
+		createlayer(String layername, String bookmark)
+		throws IOException
+	{
+		sendToZUI(":idolbridge createlayer " + layername); // + " {" + bookmark + "}");
+	}
+
+	final public void
+		loadstaticmodel(String layername, String name, String filename, 
+						double scale, XYZd position)
+		throws IOException
+	{
+		String mangledName = name.replaceAll(" ", "_").replaceAll(":", "_");
+		sendToZUI(":idolbridge addchild " + layername + " " + mangledName +
+					" " + position.getY() + " " + position.getX() + 
+					" " + position.getZ() +
+					" {model " + filename + " " + scale + "}" );
+	}
+
+	final public void
+		loaddynamicmodel(String layername, String name, String filename, 
+						 double scale, XYZd position)
+		throws IOException
+	{
+		String mangledName = name.replaceAll(" ", "_").replaceAll(":", "_");
+		sendToZUI(":idolbridge addchild " + layername + " " + mangledName +
+					" " + position.getY() + " " + position.getX() + 
+					" " + position.getZ() + 
+					" {model " + filename + " " + scale + "}" );
+	}
+
+	final public void
+		loadfluxedmodel(String layername, String name, String filename, 
+						double scale, double time, XYZd position, XYZd velocity)
+		throws IOException
+	{
+		String mangledName = name.replaceAll(" ", "_").replaceAll(":", "_");
+		sendToZUI(":idolbridge addchild " + layername + " " + mangledName +
+				  //" {fluxed " + time + " " +
+				  " " +
+				  position.getY() + " " + position.getX() + " " + 
+				  position.getZ() + " " +
+				  //velocity.getY() + " " + velocity.getX() + " " + 
+				  //velocity.getZ() + "}" +
+				  " {model " + filename + " " + scale + "}" );
+	}
+
+	final public void
+		loadstatictext(String layername, String name, String text, Color color,
+					   double scale, XYZd position)
+		throws IOException
+	{
+		String mangledName = name.replaceAll(" ", "_").replaceAll(":", "_");
+		sendToZUI(":idolbridge addchild " + layername + " " + mangledName +
+				  " " + position.getY() + " " + position.getX() + 
+				  " " + position.getZ() + 
+				  " {text {" + text + "} " + (float)(color.getRed()/255.0f) + " " + 
+				  (float)(color.getGreen()/255.0f) + " " + (float)(color.getBlue()/255.0f) + " " + 
+				  (float)(color.getAlpha()/255.0f) + " " + (float)scale + "}" );
+	}
+
+	final public void
+		loaddynamictext(String layername, String name, String text, Color color, 
+						double scale, XYZd position)
+		throws IOException
+	{
+		String mangledName = name.replaceAll(" ", "_").replaceAll(":", "_");
+		sendToZUI(":idolbridge addchild " + layername + " " + mangledName +
+				  " " + position.getY() + " " + position.getX() + 
+				  " " + position.getZ() + 
+				  " {text {" + text + "} " + (float)(color.getRed()/255.0f) + " " + 
+				  (float)(color.getGreen()/255.0f) + " " + (float)(color.getBlue()/255.0f) + " " + 
+				  (float)(color.getAlpha()/255.0f) + " " + (float)scale + "}" );
+	}
+
+	final public void
+		loadfluxedtext(String layername, String name, String text, Color color, 
+					   double scale, double time, XYZd position, XYZd velocity)
+		throws IOException
+	{
+		String mangledName = name.replaceAll(" ", "_").replaceAll(":", "_");
+		sendToZUI(":idolbridge addchild " + layername + " " + mangledName +
+				  " " + time + " " +
+				  position.getY() + " " + position.getX() + " " + 
+				  position.getZ() + " " +
+				  velocity.getY() + " " + velocity.getX() + " " + 
+				  velocity.getZ() + "}" +
+				  " {text {" + text + "} " + (float)(color.getRed()/255.0f) + " " + 
+				  (float)(color.getGreen()/255.0f) + " " + (float)(color.getBlue()/255.0f) + " " + 
+				  (float)(color.getAlpha()/255.0f) + " " + (float)scale + "}" );
+	}
+
+	final public void
+		updatedynamicobject(String layername, String name, XYZd position)
+		throws IOException
+	{
+		String mangledName = name.replaceAll(" ", "_").replaceAll(":", "_");
+		sendToZUI(":idolbridge movechild " + layername + " " + mangledName + " " +
+					" " + position.getY() + " " + position.getX() + 
+					" " + position.getZ());
+	}
+
+	final public void
+		updatefluxedobject(String layername, String name, double time, 
+						   XYZd position, XYZd velocity)
+		throws IOException
+	{
+		String mangledName = name.replaceAll(" ", "_").replaceAll(":", "_");
+		sendToZUI(":idolbridge movechild " + layername + " " + mangledName +
+				  " " +
+				  position.getY() + " " + position.getX() + " " + 
+				  position.getZ());
+	}
+
+	final public void
+		loadpatch(String layername, String name, String filename, 
+				  int displacement)
+		throws IOException
+	{
+		String mangledName = name.replaceAll(" ", "_").replaceAll(":", "_");
+
+		// Assuming that the first patch is the base imagery, this hack
+		// ensures that it is drawn as far away from the viewer as
+		// possible.  All other patches will be drawn at the displacement
+		// specified by the caller.  This eliminates flimmer.
+		if (_nolayers) {
+			displacement = 0;
+			_nolayers = false;
+		}
+
+		// DAVID: This needs lat, lon, elev
+		sendToZUI(":idolbridge addchild " + layername + " " + mangledName + " " + 
+					filename + " " + displacement);
+	}
+
+	final public void
+		unloadSceneGraphObject(String layername, String name)
+		throws IOException
+	{
+		String mangledName = name.replaceAll(" ", "_").replaceAll(":", "_");
+		sendToZUI(":idolbridge removechild " + layername + " " + mangledName);
+	}
+
+	public void 
+		loadObject(String layername, Object obj)
+		throws IOException
+	{
+		_LOG.info(new Strings(new Object[] 
+			{ "loadObject(", layername, ", ", obj, ")" }));
+	}
+
+	public void 
+		unloadObject(String layername, Object obj)
+		throws IOException 
+	{
+		_LOG.info(new Strings(new Object[] 
+			{ "unloadObject(", layername, ", ", obj, ")" }));
+	}
+
+	/**
+	   deletelayer(String, String)
+	   @methodtype command
+	   @param layername .
+	   @throws IOException .
+	*/
+	final public void
+		deletelayer(String layername)
+		throws IOException
+	{
+		sendToZUI(":idolbridge delete " + layername);
+	}
+
+	final public Set getContentTypes() {
+		Set answer = new HashSet();
+		answer.add("x-idol/x-annotation");
+		answer.add("x-idol/x-city");
+		answer.add("x-idol/x-coverage");
+		answer.add("x-idol/x-directory");
+		answer.add("x-idol/x-model");
+		answer.add("x-idol/x-point");
+
+		return answer;
+	}
+
+	// Utility
+
+	/**
+	   sendToZUI(String)
+	   @methodtype command
+	   @param message .
+	   @throws IOException .
+	*/
+	private void
+		sendToZUI(String message)
+		throws IOException
+	{
+		_LOG.info(message);
+	}
+
+}; // CLIRenderable

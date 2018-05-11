@@ -1,0 +1,224 @@
+Last login: Fri May  4 09:27:29 on console
+
+This is a Department of  Defense computer system.  This computer system,
+including   all  related   equipment,  networks   and   network  devices
+(specifically  including   Internet  access),  are   provided  only  for
+authorized U.S. government use.
+
+DOD COMPUTER SYSTEMS MAY BE MONITORED for all lawful purposes, including
+to ensure that their use is authorized, for management of the system, to
+facilitate  protection  against   unauthorized  access,  and  to  verify
+security procedures, survivability and operational security.  Monitoring
+includes active attacks by authorized DoD entities to test or verify the
+security  of  this  system.    During  monitoring,  information  may  be
+examined,  recorded,  copied  and  used for  authorized  purposes.   All
+information, including personal information, placed on or sent over this
+system may be monitored.  Use of this DoD computer system, authorized or
+unauthorized,  constitutes   consent  to  monitoring   of  this  system.
+Unauthorized use  may subject you to criminal  prosecution.  Evidence of
+unauthorized   use  collected   during  monitoring   may  be   used  for
+administrative, criminal or adverse action.
+
+Use of this system constitutes consent to monitoring for these purposes.
+
+      This system is approved for unclassified processing only.
+
+For user support email 'ccshelp' or call (202) 404-7337.
+
+You have mail.
+talmage.sage.cmf.nrl.navy.mil% dict gormless
+talmage.sage.cmf.nrl.navy.mil% dict gaumless
+talmage.sage.cmf.nrl.navy.mil% ssh www.onespeeddave.com
+talmage@www.onespeeddave.com's password: 
+Linux macdonell 2.6.17-11-generic #2 SMP Tue Mar 13 23:32:38 UTC 2007 i686
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+Last login: Mon Apr 30 10:20:56 2007 from sage.cmf.nrl.navy.mil
+talmage@macdonell:~$ screen -d -r
+[detached]
+talmage@macdonell:~$ logout
+Connection to www.onespeeddave.com closed.
+talmage.sage.cmf.nrl.navy.mil% pwd
+/afs/cmf.nrl.navy.mil/users/talmage
+talmage.sage.cmf.nrl.navy.mil% cd _sousa
+talmage.sage.cmf.nrl.navy.mil% ./bin/cmf/zui
+user: no Kerberos credentials cache specified and environment variable $KRB5CCNAME is not set
+Try "user --help" for more information.
+INSTALL KERBEROS!
+DEBUG [main] (IdolInitializer.java:618) - IdolInitializer.initialize_getFieldNames(mil.navy.nrl.cmf.sousa.spatiotemporal.QueryClientFields): adding POSITION_FIELDNAME=Position
+DEBUG [main] (IdolInitializer.java:618) - IdolInitializer.initialize_getFieldNames(mil.navy.nrl.cmf.sousa.spatiotemporal.QueryClientFields): adding WIDTH_FIELDNAME=Width
+DEBUG [main] (IdolInitializer.java:618) - IdolInitializer.initialize_getFieldNames(mil.navy.nrl.cmf.sousa.spatiotemporal.QueryClientFields): adding TIMELOWERBOUND_FIELDNAME=TimeLowerBound
+DEBUG [main] (IdolInitializer.java:618) - IdolInitializer.initialize_getFieldNames(mil.navy.nrl.cmf.sousa.spatiotemporal.QueryClientFields): adding TIMEUPPERBOUND_FIELDNAME=TimeUpperBound
+DEBUG [main] (IdolInitializer.java:618) - IdolInitializer.initialize_getFieldNames(mil.navy.nrl.cmf.sousa.spatiotemporal.QueryClientFields): adding FIELDS_FIELDNAME=Fields
+ INFO [main] (IdolInitializer.java:664) - IdolInitializer.initialize_loadDefaultFieldValues(mil.navy.nrl.cmf.sousa.spatiotemporal.QueryClientFields): factory mil.navy.nrl.cmf.sousa.util.SetFactory
+ INFO [main] (IdolInitializer.java:664) - IdolInitializer.initialize_loadDefaultFieldValues(mil.navy.nrl.cmf.sousa.spatiotemporal.QueryClientFields): factory mil.navy.nrl.cmf.sousa.spatiotemporal.Vector3dFactory
+ INFO [main] (IdolInitializer.java:664) - IdolInitializer.initialize_loadDefaultFieldValues(mil.navy.nrl.cmf.sousa.spatiotemporal.QueryClientFields): factory mil.navy.nrl.cmf.sousa.util.CalendarFactory
+ INFO [main] (IdolInitializer.java:664) - IdolInitializer.initialize_loadDefaultFieldValues(mil.navy.nrl.cmf.sousa.spatiotemporal.QueryClientFields): factory mil.navy.nrl.cmf.sousa.spatiotemporal.Vector3dFactory
+ INFO [main] (IdolInitializer.java:664) - IdolInitializer.initialize_loadDefaultFieldValues(mil.navy.nrl.cmf.sousa.spatiotemporal.QueryClientFields): factory mil.navy.nrl.cmf.sousa.util.CalendarFactory
+ WARN [main] (IdolInitializer.java:564) - Entity State initialized
+DEBUG [main] (ClientInitializer.java:364) - Renderable for x-idol/x-coverage is Thread[ZUI,5,main]
+DEBUG [main] (ClientInitializer.java:364) - Renderable for x-idol/x-city is Thread[ZUI,5,main]
+DEBUG [main] (ClientInitializer.java:364) - Renderable for x-idol/x-point is Thread[ZUI,5,main]
+DEBUG [main] (ClientInitializer.java:364) - Renderable for x-idol/x-model is Thread[ZUI,5,main]
+DEBUG [main] (ZUI.java:618) - broadcast(":idolbridge createlayer base")
+DEBUG [main] (ZUI.java:618) - broadcast(":idolbridge createlayer raster")
+DEBUG [main] (ZUI.java:618) - broadcast(":idolbridge createlayer city")
+DEBUG [main] (ZUI.java:618) - broadcast(":idolbridge createlayer point")
+DEBUG [main] (ZUI.java:618) - broadcast(":idolbridge createlayer model")
+DEBUG [main] (GUI.java:125) - idol.initializer.gui.panel.entry.0.name=Location
+DEBUG [main] (GUI.java:128) - idol.initializer.gui.panel.entry.0.class=mil.navy.nrl.cmf.sousa.idol.user.SpatialChooser
+DEBUG [main] (GUI.java:142) - class mil.navy.nrl.cmf.sousa.idol.user.SpatialChooser is not a Renderable
+DEBUG [main] (GUI.java:125) - idol.initializer.gui.panel.entry.1.name=Date/Time
+DEBUG [main] (GUI.java:128) - idol.initializer.gui.panel.entry.1.class=mil.navy.nrl.cmf.sousa.idol.user.TemporalChooser
+DEBUG [main] (GUI.java:142) - class mil.navy.nrl.cmf.sousa.idol.user.TemporalChooser is not a Renderable
+DEBUG [main] (GUI.java:125) - idol.initializer.gui.panel.entry.2.name=Content
+DEBUG [main] (GUI.java:128) - idol.initializer.gui.panel.entry.2.class=mil.navy.nrl.cmf.sousa.idol.user.ContentPanel
+DEBUG [main] (GUI.java:138) - class mil.navy.nrl.cmf.sousa.idol.user.ContentPanel is Renderable for [x-idol/x-directory]
+DEBUG [main] (GUI.java:125) - idol.initializer.gui.panel.entry.3.name=Directory
+DEBUG [main] (GUI.java:128) - idol.initializer.gui.panel.entry.3.class=mil.navy.nrl.cmf.sousa.idol.user.AdminPanel
+DEBUG [main] (GUI.java:138) - class mil.navy.nrl.cmf.sousa.idol.user.AdminPanel is Renderable for [x-idol/x-directory]
+DEBUG [main] (GUI.java:125) - idol.initializer.gui.panel.entry.4.name=Annotation Manager
+DEBUG [main] (GUI.java:128) - idol.initializer.gui.panel.entry.4.class=mil.navy.nrl.cmf.sousa.idol.user.AnnotationManager
+DEBUG [main] (GUI.java:138) - class mil.navy.nrl.cmf.sousa.idol.user.AnnotationManager is Renderable for [x-idol/x-annotation]
+DEBUG [main] (ClientInitializer.java:406) - Renderable for x-idol/x-directory is [mil.navy.nrl.cmf.sousa.idol.user.ContentPanel[,0,0,0x0,invalid,hidden,layout=java.awt.FlowLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=], mil.navy.nrl.cmf.sousa.idol.user.AdminPanel[,0,0,0x0,invalid,hidden,layout=java.awt.FlowLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]]
+DEBUG [main] (ClientInitializer.java:406) - Renderable for x-idol/x-annotation is [mil.navy.nrl.cmf.sousa.idol.user.AnnotationManager[,0,0,0x0,invalid,hidden,layout=java.awt.FlowLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]]
+DEBUG [main] (ClientInitializer.java:431) - Renderable for x-idol/x-coverage is mil.navy.nrl.cmf.sousa.idol.user.CLIRenderable@5023d2
+DEBUG [main] (ClientInitializer.java:431) - Renderable for x-idol/x-directory is mil.navy.nrl.cmf.sousa.idol.user.CLIRenderable@5023d2
+DEBUG [main] (ClientInitializer.java:431) - Renderable for x-idol/x-city is mil.navy.nrl.cmf.sousa.idol.user.CLIRenderable@5023d2
+DEBUG [main] (ClientInitializer.java:431) - Renderable for x-idol/x-annotation is mil.navy.nrl.cmf.sousa.idol.user.CLIRenderable@5023d2
+DEBUG [main] (ClientInitializer.java:431) - Renderable for x-idol/x-point is mil.navy.nrl.cmf.sousa.idol.user.CLIRenderable@5023d2
+DEBUG [main] (ClientInitializer.java:431) - Renderable for x-idol/x-model is mil.navy.nrl.cmf.sousa.idol.user.CLIRenderable@5023d2
+ INFO [main] (CLIRenderable.java:249) - :idolbridge createlayer base
+ INFO [main] (CLIRenderable.java:249) - :idolbridge createlayer raster
+ INFO [main] (CLIRenderable.java:249) - :idolbridge createlayer city
+ INFO [main] (CLIRenderable.java:249) - :idolbridge createlayer point
+ INFO [main] (CLIRenderable.java:249) - :idolbridge createlayer model
+ WARN [main] (IdolInitializer.java:570) - ControlLogic initialized
+DEBUG [Browser Command Queue] (CommandQueue.java:80) - Not routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionAndTimeCommand@8c666a to its source, mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@97d20c
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionAndTimeCommand@8c666a to Thread[ZUI,5,main]
+DEBUG [Browser Command Queue] (ZUI.java:618) - broadcast(":navigator gotolatlonelev 0.0 0.0 0.0")
+DEBUG [main] (IdolInitializer.java:764) - IdolInitializer.initialize_ContentTypes(): There are 0 content types
+DEBUG [Browser Command Queue] (ZUI.java:618) - broadcast(": settime 1.178296538245E9")
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionAndTimeCommand@8c666a to mil.navy.nrl.cmf.sousa.idol.user.GUI@2ae2bc
+DEBUG [Browser Command Queue] (GUI.java:264) - mil.navy.nrl.cmf.sousa.idol.user.GUI@2ae2bc sending setPosition(<0.0, 0.0, 0.0>, <0.0, 0.0, 0.0>) to mil.navy.nrl.cmf.sousa.idol.user.SpatialChooser[,11,33,1498x430,layout=java.awt.FlowLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+DEBUG [main] (Entity.java:130) - Adding to Executor
+DEBUG [main] (ClientInitializer.java:1513) - Fetching from dcg7.cmf.nrl.navy.mil/134.207.10.79:4400{{class mil.navy.nrl.cmf.sousa.directory.ConsumerViewInterpreter} Content-Type:x-idol/x-directory}
+ WARN [main] (ClientInitializer.java:498) - Using Directory dcg7.cmf.nrl.navy.mil:4400
+ WARN [main] (Main.java:116) - Client initialized.
+DEBUG [Entity Multicast Thread] (Entity.java:577) - Attempting connection: dcg7.cmf.nrl.navy.mil/134.207.10.79:4400{{class mil.navy.nrl.cmf.sousa.directory.ConsumerViewInterpreter} Content-Type:x-idol/x-directory}
+DEBUG [Entity Multicast Thread] (Entity.java:558) - Connection established: P2PChannel to server dcg7.cmf.nrl.navy.mil/134.207.10.79:4400{{class mil.navy.nrl.cmf.sousa.directory.ConsumerViewInterpreter} Content-Type:x-idol/x-directory}
+ INFO [P2PChannelFactory-NIO] (P2PChannel.java:255) - Time writing 1 ms serializing 14 ms 857 bytes
+ INFO [P2PChannelFactory-NIO] (P2PChannel.java:309) - Time reading 0 ms deserializing 19 ms 4 bytes
+binding to local address: 239.192.100.1
+DEBUG [Entity Multicast Thread] (Receptor.java:140) - start(): new NormSession 239.192.100.1:4400
+Receptor(): State: BEGIN
+[mil.navy.nrl.cmf.sousa.directory.ConsumerViewInterpreter_Added]={}
+[mil.navy.nrl.cmf.sousa.directory.ConsumerViewInterpreter_Removed]={}
+Receptor(): State: END
+DEBUG [Entity Multicast Thread] (ClientInitializer.java:566) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@97d20c: receptorReadyIndication(): Server: dcg7.cmf.nrl.navy.mil/134.207.10.79:4400{{class mil.navy.nrl.cmf.sousa.directory.ConsumerViewInterpreter} Content-Type:x-idol/x-directory} Requested Content-Type: x-idol/x-directory
+DEBUG [Entity Multicast Thread] (ClientInitializer.java:634) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@97d20c: receptorReadyIndication(): Renderable(s) for x-idol/x-directory is(are) [mil.navy.nrl.cmf.sousa.idol.user.ContentPanel[,11,33,1498x430,hidden,layout=java.awt.FlowLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=], mil.navy.nrl.cmf.sousa.idol.user.AdminPanel[,11,33,1498x430,hidden,layout=java.awt.FlowLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=], mil.navy.nrl.cmf.sousa.idol.user.CLIRenderable@5023d2]
+DEBUG [Entity Multicast Thread] (DirectoryRenderer.java:49) - mil.navy.nrl.cmf.sousa.idol.user.DirectoryRenderer@38d2fc: render(mil.navy.nrl.cmf.sousa.State$ChangeMessage@a3a52c)
+DEBUG [Entity Multicast Thread] (DirectoryRenderer.java:49) - mil.navy.nrl.cmf.sousa.idol.user.DirectoryRenderer@38d2fc: render(mil.navy.nrl.cmf.sousa.State$ChangeMessage@b41541)
+DEBUG [Entity Multicast Thread] (DirectoryRenderer.java:81) - mil.navy.nrl.cmf.sousa.idol.user.DirectoryRenderer@38d2fc Adding dcg6.cmf.nrl.navy.mil/134.207.10.78:4244{{class mil.navy.nrl.cmf.sousa.spatiotemporal.QueryViewInterpreter} Content-Type:x-idol/x-city}=City names to mil.navy.nrl.cmf.sousa.idol.user.ContentPanel[,11,33,1498x430,hidden,layout=java.awt.FlowLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+DEBUG [Entity Multicast Thread] (DirectoryRenderer.java:81) - mil.navy.nrl.cmf.sousa.idol.user.DirectoryRenderer@38d2fc Adding dcg6.cmf.nrl.navy.mil/134.207.10.78:4244{{class mil.navy.nrl.cmf.sousa.spatiotemporal.QueryViewInterpreter} Content-Type:x-idol/x-city}=City names to mil.navy.nrl.cmf.sousa.idol.user.AdminPanel[,11,33,1498x430,hidden,layout=java.awt.FlowLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+DEBUG [Entity Multicast Thread] (AdminPanel.java:97) - -addPeer(Peer(dcg6.cmf.nrl.navy.mil/134.207.10.78:4244{{class mil.navy.nrl.cmf.sousa.spatiotemporal.QueryViewInterpreter} Content-Type:x-idol/x-city}, City names))
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.FetchCommand@3bbcfd to mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@97d20c
+DEBUG [Entity Multicast Thread] (DirectoryRenderer.java:81) - mil.navy.nrl.cmf.sousa.idol.user.DirectoryRenderer@38d2fc Adding dcg6.cmf.nrl.navy.mil/134.207.10.78:4244{{class mil.navy.nrl.cmf.sousa.spatiotemporal.QueryViewInterpreter} Content-Type:x-idol/x-city}=City names to mil.navy.nrl.cmf.sousa.idol.user.CLIRenderable@5023d2
+DEBUG [Browser Command Queue] (ClientInitializer.java:1392) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@97d20c: scheduleFetch(dcg6.cmf.nrl.navy.mil/134.207.10.78:4244{{class mil.navy.nrl.cmf.sousa.spatiotemporal.QueryViewInterpreter} Content-Type:x-idol/x-city}, -1
+ INFO [Entity Multicast Thread] (CLIRenderable.java:200) - loadObject(directory, dcg6.cmf.nrl.navy.mil/134.207.10.78:4244{{class mil.navy.nrl.cmf.sousa.spatiotemporal.QueryViewInterpreter} Content-Type:x-idol/x-city}=City names)
+DEBUG [Browser Command Queue] (ClientInitializer.java:1402) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@97d20c: scheduleFetch(): fetching qos {class mil.navy.nrl.cmf.sousa.spatiotemporal.QueryViewInterpreter} Content-Type:x-idol/x-city
+DEBUG [Browser Command Queue] (ClientInitializer.java:1513) - Fetching from dcg6.cmf.nrl.navy.mil/134.207.10.78:4244{{class mil.navy.nrl.cmf.sousa.spatiotemporal.QueryViewInterpreter} Content-Type:x-idol/x-city}
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.FetchCommand@3bbcfd to Thread[ZUI,5,main]
+DEBUG [Browser Command Queue] (CommandQueue.java:80) - Not routing mil.navy.nrl.cmf.sousa.idol.user.FetchCommand@3bbcfd to its source, mil.navy.nrl.cmf.sousa.idol.user.GUI@2ae2bc
+DEBUG [Entity Multicast Thread] (Entity.java:577) - Attempting connection: dcg6.cmf.nrl.navy.mil/134.207.10.78:4244{{class mil.navy.nrl.cmf.sousa.spatiotemporal.QueryViewInterpreter} Content-Type:x-idol/x-city}
+DEBUG [Entity Multicast Thread] (Entity.java:558) - Connection established: P2PChannel to server dcg6.cmf.nrl.navy.mil/134.207.10.78:4244{{class mil.navy.nrl.cmf.sousa.spatiotemporal.QueryViewInterpreter} Content-Type:x-idol/x-city}
+ INFO [P2PChannelFactory-NIO] (P2PChannel.java:255) - Time writing 0 ms serializing 0 ms 854 bytes
+DEBUG [Entity Multicast Thread] (Entity.java:558) - Connection established: P2PChannel from client
+ INFO [P2PChannelFactory-NIO] (P2PChannel.java:309) - Time reading 1 ms deserializing 3 ms 4 bytes
+Receptor(): State: BEGIN
+[mil.navy.nrl.cmf.sousa.spatiotemporal.QueryViewInterpreter_ResultsAdded]=[]
+[mil.navy.nrl.cmf.sousa.spatiotemporal.QueryViewInterpreter_ResultsChanged]=[]
+[mil.navy.nrl.cmf.sousa.spatiotemporal.QueryViewInterpreter_ResultsRemoved]=[]
+Receptor(): State: END
+DEBUG [Entity Multicast Thread] (ClientInitializer.java:566) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@97d20c: receptorReadyIndication(): Server: dcg6.cmf.nrl.navy.mil/134.207.10.78:4244{{class mil.navy.nrl.cmf.sousa.spatiotemporal.QueryViewInterpreter} Content-Type:x-idol/x-city} Requested Content-Type: x-idol/x-city
+DEBUG [Entity Multicast Thread] (ClientInitializer.java:634) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@97d20c: receptorReadyIndication(): Renderable(s) for x-idol/x-city is(are) [Thread[ZUI,5,main], mil.navy.nrl.cmf.sousa.idol.user.CLIRenderable@5023d2]
+ INFO [P2PChannelFactory-NIO] (P2PChannel.java:309) - Time reading 0 ms deserializing 2 ms 4 bytes
+DEBUG [Entity Multicast Thread] (Projector.java:136) - Projector(): Authoritative state: BEGIN
+[Fields]=[maxt, lat, east, velocity, type, minelev, lon, south, mapname, north, maxelev, nrows, west, text, mint, pop, elev]
+[Position]=<0.0, 0.0, 0.0>
+[TimeLowerBound]=java.util.GregorianCalendar[time=?,areFieldsSet=false,areAllFieldsSet=false,lenient=true,zone=sun.util.calendar.ZoneInfo[id="America/New_York",offset=-18000000,dstSavings=3600000,useDaylight=true,transitions=235,lastRule=java.util.SimpleTimeZone[id=America/New_York,offset=-18000000,dstSavings=3600000,useDaylight=true,startYear=0,startMode=3,startMonth=2,startDay=8,startDayOfWeek=1,startTime=7200000,startTimeMode=0,endMode=3,endMonth=10,endDay=1,endDayOfWeek=1,endTime=7200000,endTimeMode=0]],firstDayOfWeek=1,minimalDaysInFirstWeek=1,ERA=?,YEAR=2007,MONTH=4,WEEK_OF_YEAR=?,WEEK_OF_MONTH=?,DAY_OF_MONTH=4,DAY_OF_YEAR=?,DAY_OF_WEEK=?,DAY_OF_WEEK_IN_MONTH=?,AM_PM=?,HOUR=?,HOUR_OF_DAY=12,MINUTE=35,SECOND=38,MILLISECOND=?,ZONE_OFFSET=?,DST_OFFSET=?]
+[TimeUpperBound]=java.util.GregorianCalendar[time=?,areFieldsSet=false,areAllFieldsSet=false,lenient=true,zone=sun.util.calendar.ZoneInfo[id="America/New_York",offset=-18000000,dstSavings=3600000,useDaylight=true,transitions=235,lastRule=java.util.SimpleTimeZone[id=America/New_York,offset=-18000000,dstSavings=3600000,useDaylight=true,startYear=0,startMode=3,startMonth=2,startDay=8,startDayOfWeek=1,startTime=7200000,startTimeMode=0,endMode=3,endMonth=10,endDay=1,endDayOfWeek=1,endTime=7200000,endTimeMode=0]],firstDayOfWeek=1,minimalDaysInFirstWeek=1,ERA=?,YEAR=2007,MONTH=4,WEEK_OF_YEAR=?,WEEK_OF_MONTH=?,DAY_OF_MONTH=4,DAY_OF_YEAR=?,DAY_OF_WEEK=?,DAY_OF_WEEK_IN_MONTH=?,AM_PM=?,HOUR=?,HOUR_OF_DAY=12,MINUTE=35,SECOND=38,MILLISECOND=?,ZONE_OFFSET=?,DST_OFFSET=?]
+[Width]=<1.0, 1.0, 0.0>
+DEBUG [Entity Multicast Thread] (Projector.java:138) - Projector(): Authoritative state: END
+DEBUG [Entity Multicast Thread] (Projector.java:176) - Adding to Executor: mil.navy.nrl.cmf.sousa.spatiotemporal.SpatiotemporalViewInterpreter@4c9c17
+ WARN [Entity Multicast Thread] (Entity.java:430) - Entity.createMcastSession(239.192.100.20, 4400)
+binding to local address: 239.192.100.20
+ WARN [Entity Multicast Thread] (Projector.java:260) - Projector(): new NormSession 239.192.100.20:4400
+ INFO [P2PChannelFactory-NIO] (P2PChannel.java:255) - Time writing 0 ms serializing 9 ms 5183 bytes
+DEBUG [AWT-EventQueue-0] (SpatialChooser.java:149) - Map setting _position to <7.03125, 21.09375, 0.0>
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@1eb50b to mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@97d20c
+DEBUG [Browser Command Queue] (ClientInitializer.java:1085) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@97d20c: setPosition( position <7.03125, 21.09375, 0.0> width <0.0, 0.0, 0.0>)
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@1eb50b to Thread[ZUI,5,main]
+DEBUG [Browser Command Queue] (ZUI.java:618) - broadcast(":navigator gotolatlonelev 7.03125 21.09375 0.0")
+DEBUG [Browser Command Queue] (CommandQueue.java:80) - Not routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@1eb50b to its source, mil.navy.nrl.cmf.sousa.idol.user.GUI@2ae2bc
+ INFO [Entity Multicast Thread] (ClientInitializer.java:751) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@97d20c: handle(): new position <7.03125, 21.09375, 0.0> time= Fri May 04 12:36:53 EDT 2007
+DEBUG [AWT-EventQueue-0] (SpatialChooser.java:149) - Map setting _position to <-16.171875, -57.65625, 0.0>
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@14e777 to mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@97d20c
+DEBUG [Browser Command Queue] (ClientInitializer.java:1085) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@97d20c: setPosition( position <-16.171875, -57.65625, 0.0> width <0.0, 0.0, 0.0>)
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@14e777 to Thread[ZUI,5,main]
+DEBUG [Browser Command Queue] (ZUI.java:618) - broadcast(":navigator gotolatlonelev -16.171875 -57.65625 0.0")
+DEBUG [Browser Command Queue] (CommandQueue.java:80) - Not routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@14e777 to its source, mil.navy.nrl.cmf.sousa.idol.user.GUI@2ae2bc
+ INFO [Entity Multicast Thread] (ClientInitializer.java:751) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@97d20c: handle(): new position <-16.171875, -57.65625, 0.0> time= Fri May 04 12:38:09 EDT 2007
+DEBUG [Entity Multicast Thread] (DirectoryRenderer.java:49) - mil.navy.nrl.cmf.sousa.idol.user.DirectoryRenderer@38d2fc: render(mil.navy.nrl.cmf.sousa.State$ChangeMessage@95f75)
+DEBUG [Entity Multicast Thread] (DirectoryRenderer.java:81) - mil.navy.nrl.cmf.sousa.idol.user.DirectoryRenderer@38d2fc Adding dcg4.cmf.nrl.navy.mil/134.207.10.64:4242{{class mil.navy.nrl.cmf.sousa.spatiotemporal.QueryViewInterpreter} Content-Type:x-idol/x-coverage}=Imagery to mil.navy.nrl.cmf.sousa.idol.user.ContentPanel[,11,33,1498x430,hidden,layout=java.awt.FlowLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+DEBUG [Entity Multicast Thread] (DirectoryRenderer.java:81) - mil.navy.nrl.cmf.sousa.idol.user.DirectoryRenderer@38d2fc Adding dcg4.cmf.nrl.navy.mil/134.207.10.64:4242{{class mil.navy.nrl.cmf.sousa.spatiotemporal.QueryViewInterpreter} Content-Type:x-idol/x-coverage}=Imagery to mil.navy.nrl.cmf.sousa.idol.user.AdminPanel[,11,33,1498x430,hidden,layout=java.awt.FlowLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+DEBUG [Entity Multicast Thread] (AdminPanel.java:97) - -addPeer(Peer(dcg4.cmf.nrl.navy.mil/134.207.10.64:4242{{class mil.navy.nrl.cmf.sousa.spatiotemporal.QueryViewInterpreter} Content-Type:x-idol/x-coverage}, Imagery))
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.FetchCommand@270664 to mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@97d20c
+DEBUG [Entity Multicast Thread] (DirectoryRenderer.java:81) - mil.navy.nrl.cmf.sousa.idol.user.DirectoryRenderer@38d2fc Adding dcg4.cmf.nrl.navy.mil/134.207.10.64:4242{{class mil.navy.nrl.cmf.sousa.spatiotemporal.QueryViewInterpreter} Content-Type:x-idol/x-coverage}=Imagery to mil.navy.nrl.cmf.sousa.idol.user.CLIRenderable@5023d2
+DEBUG [Browser Command Queue] (ClientInitializer.java:1392) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@97d20c: scheduleFetch(dcg4.cmf.nrl.navy.mil/134.207.10.64:4242{{class mil.navy.nrl.cmf.sousa.spatiotemporal.QueryViewInterpreter} Content-Type:x-idol/x-coverage}, -1
+ INFO [Entity Multicast Thread] (CLIRenderable.java:200) - loadObject(directory, dcg4.cmf.nrl.navy.mil/134.207.10.64:4242{{class mil.navy.nrl.cmf.sousa.spatiotemporal.QueryViewInterpreter} Content-Type:x-idol/x-coverage}=Imagery)
+DEBUG [Browser Command Queue] (ClientInitializer.java:1402) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@97d20c: scheduleFetch(): fetching qos {class mil.navy.nrl.cmf.sousa.spatiotemporal.QueryViewInterpreter} Content-Type:x-idol/x-coverage
+DEBUG [Browser Command Queue] (ClientInitializer.java:1513) - Fetching from dcg4.cmf.nrl.navy.mil/134.207.10.64:4242{{class mil.navy.nrl.cmf.sousa.spatiotemporal.QueryViewInterpreter} Content-Type:x-idol/x-coverage}
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.FetchCommand@270664 to Thread[ZUI,5,main]
+DEBUG [Browser Command Queue] (CommandQueue.java:80) - Not routing mil.navy.nrl.cmf.sousa.idol.user.FetchCommand@270664 to its source, mil.navy.nrl.cmf.sousa.idol.user.GUI@2ae2bc
+DEBUG [Entity Multicast Thread] (Entity.java:577) - Attempting connection: dcg4.cmf.nrl.navy.mil/134.207.10.64:4242{{class mil.navy.nrl.cmf.sousa.spatiotemporal.QueryViewInterpreter} Content-Type:x-idol/x-coverage}
+DEBUG [Entity Multicast Thread] (Entity.java:558) - Connection established: P2PChannel to server dcg4.cmf.nrl.navy.mil/134.207.10.64:4242{{class mil.navy.nrl.cmf.sousa.spatiotemporal.QueryViewInterpreter} Content-Type:x-idol/x-coverage}
+ INFO [P2PChannelFactory-NIO] (P2PChannel.java:255) - Time writing 0 ms serializing 0 ms 858 bytes
+Receptor(): State: BEGIN
+ INFO [P2PChannelFactory-NIO] (P2PChannel.java:309) - Time reading 0 ms deserializing 3 ms 4 bytes
+[mil.navy.nrl.cmf.sousa.spatiotemporal.QueryViewInterpreter_ResultsAdded]=[]
+[mil.navy.nrl.cmf.sousa.spatiotemporal.QueryViewInterpreter_ResultsChanged]=[]
+[mil.navy.nrl.cmf.sousa.spatiotemporal.QueryViewInterpreter_ResultsRemoved]=[]
+Receptor(): State: END
+DEBUG [Entity Multicast Thread] (ClientInitializer.java:566) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@97d20c: receptorReadyIndication(): Server: dcg4.cmf.nrl.navy.mil/134.207.10.64:4242{{class mil.navy.nrl.cmf.sousa.spatiotemporal.QueryViewInterpreter} Content-Type:x-idol/x-coverage} Requested Content-Type: x-idol/x-coverage
+DEBUG [Entity Multicast Thread] (ClientInitializer.java:634) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@97d20c: receptorReadyIndication(): Renderable(s) for x-idol/x-coverage is(are) [Thread[ZUI,5,main], mil.navy.nrl.cmf.sousa.idol.user.CLIRenderable@5023d2]
+DEBUG [Entity Multicast Thread] (Entity.java:558) - Connection established: P2PChannel from client
+ INFO [P2PChannelFactory-NIO] (P2PChannel.java:309) - Time reading 0 ms deserializing 1 ms 4 bytes
+ INFO [P2PChannelFactory-NIO] (P2PChannel.java:255) - Time writing 0 ms serializing 1 ms 5183 bytes
+ INFO [P2PChannelFactory-NIO] (P2PChannel.java:309) - Time reading 0 ms deserializing 3 ms 4 bytes
+ INFO [Entity Multicast Thread] (CoverageRenderer.java:41) - mil.navy.nrl.cmf.sousa.idol.user.CoverageRenderer@f61bcf: Telling Renderable to load spherepatch "world.200406.3x86400x43200" in layer raster of Thread[ZUI,5,main]
+DEBUG [Entity Multicast Thread] (ZUI.java:618) - broadcast(":idolbridge addchild raster world.200406.3x86400x43200 world.200406.3x86400x43200.spherepatch4 0")
+ INFO [Entity Multicast Thread] (CoverageRenderer.java:41) - mil.navy.nrl.cmf.sousa.idol.user.CoverageRenderer@f61bcf: Telling Renderable to load spherepatch "world.200406.3x86400x43200" in layer raster of mil.navy.nrl.cmf.sousa.idol.user.CLIRenderable@5023d2
+ INFO [Entity Multicast Thread] (CLIRenderable.java:249) - :idolbridge addchild raster world.200406.3x86400x43200 world.200406.3x86400x43200.spherepatch4 0
+DEBUG [AWT-EventQueue-0] (SpatialChooser.java:149) - Map setting _position to <-4.21875, 25.3125, 0.0>
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@7d812b to mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@97d20c
+DEBUG [Browser Command Queue] (ClientInitializer.java:1085) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@97d20c: setPosition( position <-4.21875, 25.3125, 0.0> width <0.0, 0.0, 0.0>)
+DEBUG [Browser Command Queue] (CommandQueue.java:76) - Routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@7d812b to Thread[ZUI,5,main]
+DEBUG [Browser Command Queue] (ZUI.java:618) - broadcast(":navigator gotolatlonelev -4.21875 25.3125 0.0")
+DEBUG [Browser Command Queue] (CommandQueue.java:80) - Not routing mil.navy.nrl.cmf.sousa.idol.user.SetPositionCommand@7d812b to its source, mil.navy.nrl.cmf.sousa.idol.user.GUI@2ae2bc
+ INFO [Entity Multicast Thread] (ClientInitializer.java:751) - mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer$Client_ControlLogic@97d20c: handle(): new position <-4.21875, 25.3125, 0.0> time= Fri May 04 12:40:01 EDT 2007
+ERROR [P2PChannelFactory-NIO] (P2PChannel.java:329) - Socket closed by remote peer
+ERROR [Entity Multicast Thread] (EntityFSM.java:189) - EntityFSM error: P2PChannel to server dcg6.cmf.nrl.navy.mil/134.207.10.78:4244{{class mil.navy.nrl.cmf.sousa.spatiotemporal.QueryViewInterpreter} Content-Type:x-idol/x-city}: java.net.SocketException: Socket closed by remote peer
+ERROR [P2PChannelFactory-NIO] (P2PChannel.java:329) - Socket closed by remote peer
+ERROR [Entity Multicast Thread] (EntityFSM.java:189) - EntityFSM error: P2PChannel from client: java.net.SocketException: Socket closed by remote peer
+ERROR [P2PChannelFactory-NIO] (P2PChannel.java:329) - Socket closed by remote peer
+ERROR [Entity Multicast Thread] (EntityFSM.java:189) - EntityFSM error: P2PChannel to server dcg4.cmf.nrl.navy.mil/134.207.10.64:4242{{class mil.navy.nrl.cmf.sousa.spatiotemporal.QueryViewInterpreter} Content-Type:x-idol/x-coverage}: java.net.SocketException: Socket closed by remote peer
+ERROR [P2PChannelFactory-NIO] (P2PChannel.java:329) - Socket closed by remote peer
+ERROR [Entity Multicast Thread] (EntityFSM.java:189) - EntityFSM error: P2PChannel from client: java.net.SocketException: Socket closed by remote peer
+DEBUG [Entity Multicast Thread] (Entity.java:450) - Entity.returnMcastAddress(239.192.100.20:4400)
+^Ctalmage.sage.cmf.nrl.navy.mil% 

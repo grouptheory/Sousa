@@ -1,0 +1,41 @@
+#!/bin/sh
+
+# Installation prefix
+PREFIX=@PREFIX@
+
+# Java Runtime Environment
+[ -z "$JAVA_HOME" ] && JAVA_HOME=/afs/cmf/project/java/usr/java
+
+UNAME="`uname -s`:`uname -r`:`uname -m`"
+
+# Kerberos bootstrap settings
+KRB5PRINCIPAL=
+KRB5REALM=CMF.NRL.NAVY.MIL
+KRB5KDC=guardian.cmf.nrl.navy.mil
+KRB5_KTNAME=/etc/idol.keytab
+
+case "$UNAME" in
+	Linux:2.6.*:i?86)
+		KRB5PRINCIPAL="idol/`hostname -f`"
+		;;
+	Linux:2.6.*:ia64)
+		KRB5PRINCIPAL="idol/`hostname -f`"
+		;;
+	Linux:2.6.*:x86_64)
+		KRB5PRINCIPAL="idol/`hostname -f`"
+		;;
+	IRIX*:6.5*:*)
+		KRB5PRINCIPAL="idol/`hostname -f`"
+		;;
+	Darwin:8.*.*:i?86)
+		KRB5PRINCIPAL="idol/`hostname`"
+		;;
+	*)
+		echo "WARNING: Unknown OS Platform \""$UNAME"\""
+		;;
+esac
+
+# Service configuration file
+IDOL_CONF=${IDOL_CONF:-$PREFIX/etc/idol/`basename $0`.properties}
+
+$PREFIX/bin/service start -J $JAVA_HOME -p $KRB5PRINCIPAL -r $KRB5REALM -d $KRB5KDC -k $KRB5_KTNAME -c $IDOL_CONF

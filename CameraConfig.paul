@@ -1,0 +1,18 @@
+Camera "Camera 1"
+{
+    RenderSurface "RenderSurface 0"
+    {
+             Visual  { SetSimple }
+             Screen 0;
+             WindowRect 0 0 640 480;
+             Border on;
+    }
+
+    Lens {
+            Frustum -0.55228475 0.55228475 -0.41421356 0.41421356 1 1000.0;
+    }
+
+        Offset {
+                Shear 0.0 0.0;
+        }
+}

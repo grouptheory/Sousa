@@ -1,0 +1,140 @@
+139 matches for "NIO" in buffer: NIO-bug.txt
+     67: WARN [P2PChannelFactory-NIO] (P2PChannel.java:417) - XXX Before: arrayOffset=0 capacity=857 limit=857 position= 857 remaining=0
+     68: WARN [P2PChannelFactory-NIO] (P2PChannel.java:425) - XXX After: arrayOffset=0 capacity=857 limit=857 position= 857 remaining=0
+     69: WARN [P2PChannelFactory-NIO] (P2PChannel.java:432) - serialized mil.navy.nrl.cmf.sousa.ClientSideFSM$FetchRequest@c2060e into buf, with length 857
+     70: WARN [P2PChannelFactory-NIO] (P2PChannel.java:273) - XXX Before reading: arrayOffset=0 capacity=4 limit=4 position= 0 remaining=4
+     71: WARN [P2PChannelFactory-NIO] (P2PChannel.java:279) - XXX Read: 4
+     72: WARN [P2PChannelFactory-NIO] (P2PChannel.java:280) - XXX After reading: arrayOffset=0 capacity=4 limit=4 position= 4 remaining=0
+     73: WARN [P2PChannelFactory-NIO] (P2PChannel.java:300) - NIO reads prefix=2044 _readBytesExpected=2040 _readBytesReceived=0
+     74: WARN [P2PChannelFactory-NIO] (P2PChannel.java:273) - XXX Before reading: arrayOffset=0 capacity=2040 limit=2040 position= 0 remaining=2040
+     75: WARN [P2PChannelFactory-NIO] (P2PChannel.java:279) - XXX Read: 2040
+     76: WARN [P2PChannelFactory-NIO] (P2PChannel.java:280) - XXX After reading: arrayOffset=0 capacity=2040 limit=2040 position= 2040 remaining=0
+     77: WARN [P2PChannelFactory-NIO] (P2PChannel.java:312) - NIO deserialized mil.navy.nrl.cmf.sousa.ServerSideFSM$FetchResponse@223d9b
+    100: WARN [P2PChannelFactory-NIO] (P2PChannel.java:417) - XXX Before: arrayOffset=0 capacity=854 limit=854 position= 854 remaining=0
+    101: WARN [P2PChannelFactory-NIO] (P2PChannel.java:425) - XXX After: arrayOffset=0 capacity=854 limit=854 position= 854 remaining=0
+    102: WARN [P2PChannelFactory-NIO] (P2PChannel.java:432) - serialized mil.navy.nrl.cmf.sousa.ClientSideFSM$FetchRequest@437dcb into buf, with length 854
+    104: WARN [P2PChannelFactory-NIO] (P2PChannel.java:273) - XXX Before reading: arrayOffset=0 capacity=4 limit=4 position= 0 remaining=4
+    105: WARN [P2PChannelFactory-NIO] (P2PChannel.java:279) - XXX Read: 4
+    106: WARN [P2PChannelFactory-NIO] (P2PChannel.java:280) - XXX After reading: arrayOffset=0 capacity=4 limit=4 position= 4 remaining=0
+    107: WARN [P2PChannelFactory-NIO] (P2PChannel.java:300) - NIO reads prefix=1631 _readBytesExpected=1627 _readBytesReceived=0
+    108: WARN [P2PChannelFactory-NIO] (P2PChannel.java:273) - XXX Before reading: arrayOffset=0 capacity=1627 limit=1627 position= 0 remaining=1627
+    109: WARN [P2PChannelFactory-NIO] (P2PChannel.java:279) - XXX Read: 1627
+    110: WARN [P2PChannelFactory-NIO] (P2PChannel.java:280) - XXX After reading: arrayOffset=0 capacity=1627 limit=1627 position= 1627 remaining=0
+    111: WARN [P2PChannelFactory-NIO] (P2PChannel.java:312) - NIO deserialized mil.navy.nrl.cmf.sousa.ServerSideFSM$FetchResponse@19fc9e
+    119: WARN [P2PChannelFactory-NIO] (P2PChannel.java:273) - XXX Before reading: arrayOffset=0 capacity=4 limit=4 position= 0 remaining=4
+    120: WARN [P2PChannelFactory-NIO] (P2PChannel.java:279) - XXX Read: 4
+    121: WARN [P2PChannelFactory-NIO] (P2PChannel.java:280) - XXX After reading: arrayOffset=0 capacity=4 limit=4 position= 4 remaining=0
+    122: WARN [P2PChannelFactory-NIO] (P2PChannel.java:300) - NIO reads prefix=946 _readBytesExpected=942 _readBytesReceived=0
+    123: WARN [P2PChannelFactory-NIO] (P2PChannel.java:273) - XXX Before reading: arrayOffset=0 capacity=942 limit=942 position= 0 remaining=942
+    124: WARN [P2PChannelFactory-NIO] (P2PChannel.java:279) - XXX Read: 942
+    125: WARN [P2PChannelFactory-NIO] (P2PChannel.java:280) - XXX After reading: arrayOffset=0 capacity=942 limit=942 position= 942 remaining=0
+    126: WARN [P2PChannelFactory-NIO] (P2PChannel.java:312) - NIO deserialized mil.navy.nrl.cmf.sousa.ClientSideFSM$FetchRequest@6e056e
+    140: WARN [P2PChannelFactory-NIO] (P2PChannel.java:417) - XXX Before: arrayOffset=0 capacity=5183 limit=5183 position= 5183 remaining=0
+    141: WARN [P2PChannelFactory-NIO] (P2PChannel.java:425) - XXX After: arrayOffset=0 capacity=5183 limit=5183 position= 5183 remaining=0
+    142: WARN [P2PChannelFactory-NIO] (P2PChannel.java:432) - serialized mil.navy.nrl.cmf.sousa.ServerSideFSM$FetchResponse@b1404f into buf, with length 5183
+    150: WARN [P2PChannelFactory-NIO] (P2PChannel.java:273) - XXX Before reading: arrayOffset=0 capacity=4 limit=4 position= 0 remaining=4
+    151: WARN [P2PChannelFactory-NIO] (P2PChannel.java:279) - XXX Read: 4
+    152: WARN [P2PChannelFactory-NIO] (P2PChannel.java:280) - XXX After reading: arrayOffset=0 capacity=4 limit=4 position= 4 remaining=0
+    153: WARN [P2PChannelFactory-NIO] (P2PChannel.java:300) - NIO reads prefix=7715 _readBytesExpected=7711 _readBytesReceived=0
+    154: WARN [P2PChannelFactory-NIO] (P2PChannel.java:273) - XXX Before reading: arrayOffset=0 capacity=7711 limit=7711 position= 0 remaining=7711
+    155: WARN [P2PChannelFactory-NIO] (P2PChannel.java:279) - XXX Read: 4340
+    156: WARN [P2PChannelFactory-NIO] (P2PChannel.java:280) - XXX After reading: arrayOffset=0 capacity=7711 limit=7711 position= 4340 remaining=3371
+    157: WARN [P2PChannelFactory-NIO] (P2PChannel.java:273) - XXX Before reading: arrayOffset=0 capacity=7711 limit=7711 position= 4340 remaining=3371
+    158: WARN [P2PChannelFactory-NIO] (P2PChannel.java:279) - XXX Read: 3371
+    159: WARN [P2PChannelFactory-NIO] (P2PChannel.java:280) - XXX After reading: arrayOffset=0 capacity=7711 limit=7711 position= 7711 remaining=0
+    160: WARN [P2PChannelFactory-NIO] (P2PChannel.java:312) - NIO deserialized mil.navy.nrl.cmf.sousa.State$ChangeMessage@eb494e
+    363: WARN [P2PChannelFactory-NIO] (P2PChannel.java:273) - XXX Before reading: arrayOffset=0 capacity=4 limit=4 position= 0 remaining=4
+    364: WARN [P2PChannelFactory-NIO] (P2PChannel.java:279) - XXX Read: 4
+    365: WARN [P2PChannelFactory-NIO] (P2PChannel.java:280) - XXX After reading: arrayOffset=0 capacity=4 limit=4 position= 4 remaining=0
+    366: WARN [P2PChannelFactory-NIO] (P2PChannel.java:300) - NIO reads prefix=53111 _readBytesExpected=53107 _readBytesReceived=0
+    367: WARN [P2PChannelFactory-NIO] (P2PChannel.java:273) - XXX Before reading: arrayOffset=0 capacity=53107 limit=53107 position= 0 remaining=53107
+    368: WARN [P2PChannelFactory-NIO] (P2PChannel.java:279) - XXX Read: 4340
+    369: WARN [P2PChannelFactory-NIO] (P2PChannel.java:280) - XXX After reading: arrayOffset=0 capacity=53107 limit=53107 position= 4340 remaining=48767
+    370: WARN [P2PChannelFactory-NIO] (P2PChannel.java:273) - XXX Before reading: arrayOffset=0 capacity=53107 limit=53107 position= 4340 remaining=48767
+    371: WARN [P2PChannelFactory-NIO] (P2PChannel.java:279) - XXX Read: 4344
+    372: WARN [P2PChannelFactory-NIO] (P2PChannel.java:280) - XXX After reading: arrayOffset=0 capacity=53107 limit=53107 position= 8684 remaining=44423
+    373: WARN [P2PChannelFactory-NIO] (P2PChannel.java:273) - XXX Before reading: arrayOffset=0 capacity=53107 limit=53107 position= 8684 remaining=44423
+    374: WARN [P2PChannelFactory-NIO] (P2PChannel.java:279) - XXX Read: 2896
+    375: WARN [P2PChannelFactory-NIO] (P2PChannel.java:280) - XXX After reading: arrayOffset=0 capacity=53107 limit=53107 position= 11580 remaining=41527
+    376: WARN [P2PChannelFactory-NIO] (P2PChannel.java:273) - XXX Before reading: arrayOffset=0 capacity=53107 limit=53107 position= 11580 remaining=41527
+    377: WARN [P2PChannelFactory-NIO] (P2PChannel.java:279) - XXX Read: 5792
+    378: WARN [P2PChannelFactory-NIO] (P2PChannel.java:280) - XXX After reading: arrayOffset=0 capacity=53107 limit=53107 position= 17372 remaining=35735
+    379: WARN [P2PChannelFactory-NIO] (P2PChannel.java:273) - XXX Before reading: arrayOffset=0 capacity=53107 limit=53107 position= 17372 remaining=35735
+    380: WARN [P2PChannelFactory-NIO] (P2PChannel.java:279) - XXX Read: 1448
+    381: WARN [P2PChannelFactory-NIO] (P2PChannel.java:280) - XXX After reading: arrayOffset=0 capacity=53107 limit=53107 position= 18820 remaining=34287
+    382: WARN [P2PChannelFactory-NIO] (P2PChannel.java:273) - XXX Before reading: arrayOffset=0 capacity=53107 limit=53107 position= 18820 remaining=34287
+    383: WARN [P2PChannelFactory-NIO] (P2PChannel.java:279) - XXX Read: 2896
+    384: WARN [P2PChannelFactory-NIO] (P2PChannel.java:280) - XXX After reading: arrayOffset=0 capacity=53107 limit=53107 position= 21716 remaining=31391
+    385: WARN [P2PChannelFactory-NIO] (P2PChannel.java:273) - XXX Before reading: arrayOffset=0 capacity=53107 limit=53107 position= 21716 remaining=31391
+    386: WARN [P2PChannelFactory-NIO] (P2PChannel.java:279) - XXX Read: 7240
+    387: WARN [P2PChannelFactory-NIO] (P2PChannel.java:280) - XXX After reading: arrayOffset=0 capacity=53107 limit=53107 position= 28956 remaining=24151
+    388: WARN [P2PChannelFactory-NIO] (P2PChannel.java:273) - XXX Before reading: arrayOffset=0 capacity=53107 limit=53107 position= 28956 remaining=24151
+    389: WARN [P2PChannelFactory-NIO] (P2PChannel.java:279) - XXX Read: 8688
+    390: WARN [P2PChannelFactory-NIO] (P2PChannel.java:280) - XXX After reading: arrayOffset=0 capacity=53107 limit=53107 position= 37644 remaining=15463
+    391: WARN [P2PChannelFactory-NIO] (P2PChannel.java:273) - XXX Before reading: arrayOffset=0 capacity=53107 limit=53107 position= 37644 remaining=15463
+    392: WARN [P2PChannelFactory-NIO] (P2PChannel.java:279) - XXX Read: 5792
+    393: WARN [P2PChannelFactory-NIO] (P2PChannel.java:280) - XXX After reading: arrayOffset=0 capacity=53107 limit=53107 position= 43436 remaining=9671
+    394: WARN [P2PChannelFactory-NIO] (P2PChannel.java:273) - XXX Before reading: arrayOffset=0 capacity=53107 limit=53107 position= 43436 remaining=9671
+    395: WARN [P2PChannelFactory-NIO] (P2PChannel.java:279) - XXX Read: 8688
+    396: WARN [P2PChannelFactory-NIO] (P2PChannel.java:280) - XXX After reading: arrayOffset=0 capacity=53107 limit=53107 position= 52124 remaining=983
+    397: WARN [P2PChannelFactory-NIO] (P2PChannel.java:273) - XXX Before reading: arrayOffset=0 capacity=53107 limit=53107 position= 52124 remaining=983
+    398: WARN [P2PChannelFactory-NIO] (P2PChannel.java:279) - XXX Read: 983
+    399: WARN [P2PChannelFactory-NIO] (P2PChannel.java:280) - XXX After reading: arrayOffset=0 capacity=53107 limit=53107 position= 53107 remaining=0
+    400: WARN [P2PChannelFactory-NIO] (P2PChannel.java:312) - NIO deserialized mil.navy.nrl.cmf.sousa.State$ChangeMessage@927ba1
+   1770: WARN [P2PChannelFactory-NIO] (P2PChannel.java:273) - XXX Before reading: arrayOffset=0 capacity=4 limit=4 position= 0 remaining=4
+   1771: WARN [P2PChannelFactory-NIO] (P2PChannel.java:279) - XXX Read: 4
+   1772: WARN [P2PChannelFactory-NIO] (P2PChannel.java:280) - XXX After reading: arrayOffset=0 capacity=4 limit=4 position= 4 remaining=0
+   1773: WARN [P2PChannelFactory-NIO] (P2PChannel.java:300) - NIO reads prefix=102083 _readBytesExpected=102079 _readBytesReceived=0
+   1774: WARN [P2PChannelFactory-NIO] (P2PChannel.java:273) - XXX Before reading: arrayOffset=0 capacity=102079 limit=102079 position= 0 remaining=102079
+   1775: WARN [P2PChannelFactory-NIO] (P2PChannel.java:279) - XXX Read: 4340
+   1776: WARN [P2PChannelFactory-NIO] (P2PChannel.java:280) - XXX After reading: arrayOffset=0 capacity=102079 limit=102079 position= 4340 remaining=97739
+   1777: WARN [P2PChannelFactory-NIO] (P2PChannel.java:273) - XXX Before reading: arrayOffset=0 capacity=102079 limit=102079 position= 4340 remaining=97739
+   1778: WARN [P2PChannelFactory-NIO] (P2PChannel.java:279) - XXX Read: 7240
+   1779: WARN [P2PChannelFactory-NIO] (P2PChannel.java:280) - XXX After reading: arrayOffset=0 capacity=102079 limit=102079 position= 11580 remaining=90499
+   1780: WARN [P2PChannelFactory-NIO] (P2PChannel.java:273) - XXX Before reading: arrayOffset=0 capacity=102079 limit=102079 position= 11580 remaining=90499
+   1781: WARN [P2PChannelFactory-NIO] (P2PChannel.java:279) - XXX Read: 2896
+   1782: WARN [P2PChannelFactory-NIO] (P2PChannel.java:280) - XXX After reading: arrayOffset=0 capacity=102079 limit=102079 position= 14476 remaining=87603
+   1783: WARN [P2PChannelFactory-NIO] (P2PChannel.java:273) - XXX Before reading: arrayOffset=0 capacity=102079 limit=102079 position= 14476 remaining=87603
+   1784: WARN [P2PChannelFactory-NIO] (P2PChannel.java:279) - XXX Read: 5792
+   1785: WARN [P2PChannelFactory-NIO] (P2PChannel.java:280) - XXX After reading: arrayOffset=0 capacity=102079 limit=102079 position= 20268 remaining=81811
+   1786: WARN [P2PChannelFactory-NIO] (P2PChannel.java:273) - XXX Before reading: arrayOffset=0 capacity=102079 limit=102079 position= 20268 remaining=81811
+   1787: WARN [P2PChannelFactory-NIO] (P2PChannel.java:279) - XXX Read: 5792
+   1788: WARN [P2PChannelFactory-NIO] (P2PChannel.java:280) - XXX After reading: arrayOffset=0 capacity=102079 limit=102079 position= 26060 remaining=76019
+   1789: WARN [P2PChannelFactory-NIO] (P2PChannel.java:273) - XXX Before reading: arrayOffset=0 capacity=102079 limit=102079 position= 26060 remaining=76019
+   1790: WARN [P2PChannelFactory-NIO] (P2PChannel.java:279) - XXX Read: 5792
+   1791: WARN [P2PChannelFactory-NIO] (P2PChannel.java:280) - XXX After reading: arrayOffset=0 capacity=102079 limit=102079 position= 31852 remaining=70227
+   1792: WARN [P2PChannelFactory-NIO] (P2PChannel.java:273) - XXX Before reading: arrayOffset=0 capacity=102079 limit=102079 position= 31852 remaining=70227
+   1793: WARN [P2PChannelFactory-NIO] (P2PChannel.java:279) - XXX Read: 7240
+   1794: WARN [P2PChannelFactory-NIO] (P2PChannel.java:280) - XXX After reading: arrayOffset=0 capacity=102079 limit=102079 position= 39092 remaining=62987
+   1795: WARN [P2PChannelFactory-NIO] (P2PChannel.java:273) - XXX Before reading: arrayOffset=0 capacity=102079 limit=102079 position= 39092 remaining=62987
+   1796: WARN [P2PChannelFactory-NIO] (P2PChannel.java:279) - XXX Read: 7240
+   1797: WARN [P2PChannelFactory-NIO] (P2PChannel.java:280) - XXX After reading: arrayOffset=0 capacity=102079 limit=102079 position= 46332 remaining=55747
+   1798: WARN [P2PChannelFactory-NIO] (P2PChannel.java:273) - XXX Before reading: arrayOffset=0 capacity=102079 limit=102079 position= 46332 remaining=55747
+   1799: WARN [P2PChannelFactory-NIO] (P2PChannel.java:279) - XXX Read: 2896
+   1800: WARN [P2PChannelFactory-NIO] (P2PChannel.java:280) - XXX After reading: arrayOffset=0 capacity=102079 limit=102079 position= 49228 remaining=52851
+   1801: WARN [P2PChannelFactory-NIO] (P2PChannel.java:273) - XXX Before reading: arrayOffset=0 capacity=102079 limit=102079 position= 49228 remaining=52851
+   1802: WARN [P2PChannelFactory-NIO] (P2PChannel.java:279) - XXX Read: 7240
+   1803: WARN [P2PChannelFactory-NIO] (P2PChannel.java:280) - XXX After reading: arrayOffset=0 capacity=102079 limit=102079 position= 56468 remaining=45611
+   1804: WARN [P2PChannelFactory-NIO] (P2PChannel.java:273) - XXX Before reading: arrayOffset=0 capacity=102079 limit=102079 position= 56468 remaining=45611
+   1805: WARN [P2PChannelFactory-NIO] (P2PChannel.java:279) - XXX Read: 7240
+   1806: WARN [P2PChannelFactory-NIO] (P2PChannel.java:280) - XXX After reading: arrayOffset=0 capacity=102079 limit=102079 position= 63708 remaining=38371
+   1807: WARN [P2PChannelFactory-NIO] (P2PChannel.java:273) - XXX Before reading: arrayOffset=0 capacity=102079 limit=102079 position= 63708 remaining=38371
+   1808: WARN [P2PChannelFactory-NIO] (P2PChannel.java:279) - XXX Read: 1448
+   1809: WARN [P2PChannelFactory-NIO] (P2PChannel.java:280) - XXX After reading: arrayOffset=0 capacity=102079 limit=102079 position= 65156 remaining=36923
+   1810: WARN [P2PChannelFactory-NIO] (P2PChannel.java:273) - XXX Before reading: arrayOffset=0 capacity=102079 limit=102079 position= 65156 remaining=36923
+   1811: WARN [P2PChannelFactory-NIO] (P2PChannel.java:279) - XXX Read: 8688
+   1812: WARN [P2PChannelFactory-NIO] (P2PChannel.java:280) - XXX After reading: arrayOffset=0 capacity=102079 limit=102079 position= 73844 remaining=28235
+   1813: WARN [P2PChannelFactory-NIO] (P2PChannel.java:273) - XXX Before reading: arrayOffset=0 capacity=102079 limit=102079 position= 73844 remaining=28235
+   1814: WARN [P2PChannelFactory-NIO] (P2PChannel.java:279) - XXX Read: 8688
+   1815: WARN [P2PChannelFactory-NIO] (P2PChannel.java:280) - XXX After reading: arrayOffset=0 capacity=102079 limit=102079 position= 82532 remaining=19547
+   1816: WARN [P2PChannelFactory-NIO] (P2PChannel.java:273) - XXX Before reading: arrayOffset=0 capacity=102079 limit=102079 position= 82532 remaining=19547
+   1817: WARN [P2PChannelFactory-NIO] (P2PChannel.java:279) - XXX Read: 4344
+   1818: WARN [P2PChannelFactory-NIO] (P2PChannel.java:280) - XXX After reading: arrayOffset=0 capacity=102079 limit=102079 position= 86876 remaining=15203
+   1819: WARN [P2PChannelFactory-NIO] (P2PChannel.java:273) - XXX Before reading: arrayOffset=0 capacity=102079 limit=102079 position= 86876 remaining=15203
+   1820: WARN [P2PChannelFactory-NIO] (P2PChannel.java:279) - XXX Read: 10136
+   1821: WARN [P2PChannelFactory-NIO] (P2PChannel.java:280) - XXX After reading: arrayOffset=0 capacity=102079 limit=102079 position= 97012 remaining=5067
+   1822: WARN [P2PChannelFactory-NIO] (P2PChannel.java:273) - XXX Before reading: arrayOffset=0 capacity=102079 limit=102079 position= 97012 remaining=5067
+   1823: WARN [P2PChannelFactory-NIO] (P2PChannel.java:279) - XXX Read: 5067
+   1824: WARN [P2PChannelFactory-NIO] (P2PChannel.java:280) - XXX After reading: arrayOffset=0 capacity=102079 limit=102079 position= 102079 remaining=0
+   1825:ERROR [P2PChannelFactory-NIO] (P2PChannel.java:381) - java.io.StreamCorruptedException
+   1826: WARN [P2PChannelFactory-NIO] (P2PChannel.java:312) - NIO deserialized null

@@ -1,0 +1,70 @@
+package mil.navy.nrl.cmf.annotation;
+
+import mil.navy.nrl.cmf.sousa.*;
+
+import java.awt.Color;
+import java.io.IOException;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+import mil.navy.nrl.cmf.sousa.Field;
+import mil.navy.nrl.cmf.sousa.Renderer;
+import mil.navy.nrl.cmf.sousa.Renderable;
+import mil.navy.nrl.cmf.sousa.State;
+import mil.navy.nrl.cmf.sousa.spatiotemporal.*;
+import mil.navy.nrl.cmf.sousa.util.Strings;
+import mil.navy.nrl.cmf.stk.*;
+import org.apache.log4j.Logger;
+
+
+public final class AnnotationRenderer extends AbstractRenderer {
+	protected static final Logger _LOG = Logger.getLogger(AnnotationRenderer.class);
+
+	private static final String LAYERNAME = "annotation";
+
+	public AnnotationRenderer() {}
+
+	public void render(State.ChangeMessage msg) {
+		List changes = msg.getMessages();
+
+		for (Iterator i = changes.iterator(); i.hasNext(); ) {
+			Field.ChangeMessage fnotif = (Field.ChangeMessage)i.next();
+		}
+	}
+
+
+	private void showAdded(Iterator it) {
+		while (it.hasNext()) {
+			QueryResultHandle h = (QueryResultHandle)it.next();
+
+			AnnotationRenderer._LOG.info(new Strings(new Object[] 
+				{this, ": Added ", h}));
+
+			add(h);
+		}
+	}
+
+	private void showRemoved(Iterator it) {
+		while (it.hasNext()) {
+			QueryResultHandle h = (QueryResultHandle)it.next();
+
+			AnnotationRenderer._LOG.info(new Strings(new Object[] 
+				{this, ": Removed ", h}));
+
+			remove(h);
+		}
+	}
+
+	private void add(QueryResultHandle h) {
+		if (null != _renderable) {
+			// TODO: add h to the display
+		}
+	}
+
+
+	private void remove(QueryResultHandle h) {
+		String name = (String)h.getFieldValue(_mapnameField);
+
+		removeObject(LAYERNAME, name);
+	}
+}

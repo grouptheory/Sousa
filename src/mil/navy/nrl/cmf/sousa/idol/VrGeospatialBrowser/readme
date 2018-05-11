@@ -1,0 +1,37 @@
+initial pass of a VR viewer for Sousa's geospatial dataservers.
+
+requires OpenSceneGraph to be installed.
+
+essentially a  hacked version of osgviewer that doesn't load a 
+model, instead creates/deletes/moves geometry as instructed by 
+a Sousa federation. 
+
+uses IdolConnection to connect to a Sousa federation, loads
+DataLayers and manipulates them according to commands, sends
+the eyepoint back to the Sousa federation.
+
+
+
+Key bindings (see also osgGA::UFOManipulator):
+
+UpArrow				Acceleration forward. 
+DownArrow			Acceleration backward (or deceleration forward). 
+LeftArrow			Rotate view and direction of travel to the left. 
+RightArrow			Rotate view and direction of travel to the right. 
+SpaceBar			Brake. Gradually decelerates linear and rotational 
+					movement. 
+Shift/UpArrow		Accelerate up. 
+Shift/DownArrow		Accelerate down. 
+Shift/LeftArrow		Accelerate (linearly) left. 
+Shift/RightArrow	Accelerate (linearly) right. 
+Shift/SpaceBar		Instant brake. Immediately stop all linear and 
+					rotational movement.
+
+When the Shift key is released, up, down, linear left and/or linear
+right movement is decelerated.
+
+Ctrl/UpArrow		Rotate view (but not direction of travel) up. 
+Ctrl/DownArrow		Rotate view (but not direction of travel) down. 
+Ctrl/LeftArrow		Rotate view (but not direction of travel) left. 
+Ctrl/RightArrow		Rotate view (but not direction of travel) right. 
+Ctrl/Return			Straightens out the view offset.

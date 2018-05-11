@@ -1,0 +1,1557 @@
+// File: Client.java
+
+package mil.navy.nrl.cmf.sousa.idol.user;
+
+import java.io.IOException;
+import java.lang.reflect.Constructor;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Properties;
+import java.util.Set;
+import java.util.TimeZone;
+import java.util.TreeMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import mil.navy.nrl.cmf.sousa.*;
+import mil.navy.nrl.cmf.sousa.directory.ConsumerViewInterpreter;
+import mil.navy.nrl.cmf.sousa.directory.DirectoryFields;
+import mil.navy.nrl.cmf.sousa.idol.IdolInitializer;
+import mil.navy.nrl.cmf.sousa.idol.util.*;
+import mil.navy.nrl.cmf.sousa.spatiotemporal.*;
+import mil.navy.nrl.cmf.sousa.util.StackTrace;
+import mil.navy.nrl.cmf.sousa.util.Strings;
+
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
+
+/**
+   Client
+*/
+public final class ClientInitializer
+    extends ConsoleBrowserInitializer
+{
+	protected static final Logger _LOG = Logger.getLogger(ClientInitializer.class);
+
+	// Directory fields
+	private final static String ADDED_FIELDNAME = 
+		ViewInterpreter.getQualifiedFieldName(ConsumerViewInterpreter.class,
+											  DirectoryFields.ADDED);
+
+	private final static String REMOVED_FIELDNAME = 
+		ViewInterpreter.getQualifiedFieldName(ConsumerViewInterpreter.class,
+											  DirectoryFields.REMOVED);
+
+	// Query fields
+	private final static String RESULTS_ADDED_FIELDNAME = 
+		ViewInterpreter.getQualifiedFieldName(QueryViewInterpreter.class, 
+											  QueryFields.RESULTS_ADDED);
+	private final static String RESULTS_REMOVED_FIELDNAME = 
+		ViewInterpreter.getQualifiedFieldName(QueryViewInterpreter.class, 
+											  QueryFields.RESULTS_REMOVED);
+	private final static String SERVER_TYPE_FIELDNAME = 
+		ViewInterpreter.getQualifiedFieldName(QueryViewInterpreter.class, 
+											  QueryFields.SERVER_TYPE_FIELDNAME);
+
+	// TODO: Get the time zone from the environment or from a
+	// Property.
+    private static final TimeZone _TZ = TimeZone.getTimeZone("UTC");
+
+    // A comment is any line in which the first non-whitespace
+    // character is a '#'.  handleCommand() uses _commentPattern.
+    private static final Pattern _commentPattern = Pattern.compile("^\\s*#");
+
+    // ****************************************************************
+
+    /**
+       Client_ControlLogic
+    */
+    public static class Client_ControlLogic 
+		extends IdolInitializer.Console_ControlLogic
+		implements Client
+    {
+		/**
+		   the current location of Client.
+		*/
+		private Vector3d _position = new Vector3d();
+
+		/**
+		   the current "aura" of the Client (i.e. query radius).
+		*/
+		private Vector3d _width = new Vector3d();
+
+		/**
+		   lower bound of Client's temporal query.
+		*/
+		private Calendar _timeLower = Calendar.getInstance(_TZ);
+
+		/**
+		   upper bound of Client's temporal query.
+		*/
+		private Calendar _timeUpper = Calendar.getInstance(_TZ);
+
+		/**
+		 * a queue of depth 1.  Holds the position given to
+		 * update() until handle(Clock.Alarm) processes it.
+		 */
+		private Vector3d _newPosition = null;
+
+		/**
+		 * a queue of depth 1.  Holds the width given to
+		 * setWidth() until handle(Clock.Alarm) processes it.
+		 */
+		private Vector3d _newWidth = null;
+
+		/**
+		 * a queue of depth 1.  Holds the time given to
+		 * setLowerTime() until handle(Clock.Alarm) processes it.
+		 */
+		private Calendar _newTimeLower = null;
+
+
+		/**
+		 * a queue of depth 1.  Holds the time given to
+		 * setUpperTime() until handle(Clock.alarm) processes it.
+		 */
+		private Calendar _newTimeUpper = null;
+
+		/**
+		   _mapnameField
+
+		   The name of one of the fields of a QueryResultHandle.  The
+		   value of the field is the name of a model or a raster.
+		*/
+		private final String _mapnameField = "mapname";
+
+		/**
+		   _modelLatitudeField
+
+		   The name of one of the fields of a QueryResultHandle.  When the
+		   ServerType is ServerTypeEnum.MODEL, the value of the
+		   _modelLatitudeField is the latitude portion of the model's
+		   location.
+		*/
+		private final String _modelLatitudeField = "north";
+
+		/**
+		   _modelLongitudeField
+
+		   The name of one of the fields of a QueryResultHandle.  When the
+		   ServerType is ServerTypeEnum.MODEL, the value of the
+		   _modelLongitudeField is the longitude portion of the model's
+		   location.
+		*/
+		private final String _modelLongitudeField = "east";
+
+		/**
+		   _cityPopulationField
+
+		   The name of one of the fields of a QueryResultHandle.  When the
+		   ServerType is ServerTypeEnum.CITY, the value of the
+		   _cityPopulationField is the population of the city.
+		*/
+		private final String _cityPopulationField = "pop";
+
+		private final String _velocityField = "velocity";
+		private final String _typeField = "type";
+
+		/**
+		   _zui
+		*/
+		private ZUI _zui = null;
+
+		/**
+		   _gui
+		*/
+		private GUI _gui = null;
+
+		/**
+		   _updateLock
+		*/
+		private final Object _updateLock = new Object();
+
+		/**
+		   _timeOfLastUpdate the time when handle(Clock.Alarm) last
+		   updated the upper bound and lower bound time fields of the
+		   AuthoritativeState.
+
+		   updateIntervalPassed() limits the rate of time updates to one
+		   per _updateInterval ms.
+		*/
+		private long _timeOfLastUpdate = 0L;
+
+		/**
+		   _elapsedTime is the number of milliseconds since
+		   _timeOfLastUpdate.  It's calculated by
+		   updateIntervalPassed().
+		 */
+		private int _elapsedTime = 0;
+
+		/**
+		   _updateInterval is the number of milliseconds between 
+		   notifications to the ZUI.
+
+		   If _updateInterval is less than zero, the ZUI will not be
+		   notified.
+		*/
+		private int _updateInterval = 1000;
+
+		/**
+		   _alarm is the heartbeat of this Client_ControlLogic.
+		   It expires every _updateInterval
+		 */
+		private Clock.Alarm _alarm = null;
+
+		// _receptorStateListeners maps Receptor into FieldListener.
+		//
+		// For each Receptor there is a FieldListener that monitors
+		// changes in the Receptor's State.
+		//
+		// receptorStateChangeIndication() consults
+		// _receptorStateListeners to obtain the State changes.
+		//
+		// receptorReadyIndication() uses addListener() to insert a
+		// new FieldListener into _receptorStateListeners.
+		//
+		// receptorNotReadyIndication() uses removeListener() to
+		// remove a FieldListener from _receptorStateListeners.
+		private final HashMap _receptorStateListeners = new HashMap();
+
+		// Constructors
+
+		/**
+		   Client_ControlLogic()
+		   @methodtype ctor
+		*/
+		Client_ControlLogic(Properties p)
+		{
+			super(p);
+
+			
+			try {
+				if ("on".equals(p.getProperty("idol.initializer.zui", "off"))) {
+					_zui = new ZUI(p, this, this);
+					_zui.start();
+				}
+			}
+			catch (IOException ex) {
+				_LOG.error(new Strings(new Object[] 
+					{"Error constructing ZUI: ", ex}));
+			}
+
+			if ("on".equals(p.getProperty("idol.initializer.gui", "off"))) {
+				_gui = new GUI(p, this);
+				_gui.start();
+			}
+		}
+
+		// mil.navy.nrl.cmf.sousa.idol.ControlLogic
+
+		public final void receptorReadyIndication(ClientSideFSM fsm) 
+		{
+			Receptor r = fsm.getReceptor();
+			addListener(r);
+
+			// This is the best place to initialize _alarm.  It can't
+			// be done in the ctor because there isn't an Entity at
+			// that time.  It could be done by the creator of the
+			// Initializer but that would require fattening the
+			// ControlLogic interface-- public void setClock(); or 
+			// public void entityIsReady(); or some such.  Ick.
+			//
+			if (null == _alarm) {
+				Clock c = getEntity().getClock();
+				_alarm = c.setAlarm(_updateInterval /* period in milliseconds */, 
+									true /* recurring or not */, 
+									"client heartbeat" /* user data for AlarmHandler.handle() */,
+									this /* the Clock.AlarmHandler */);
+			}
+
+			// Do my own book keeping and whatnot before letting super
+			// have a turn.  This ensures that I'm ready for super to
+			// call receptorStateChangeIndication().
+			super.receptorReadyIndication(fsm);
+		}
+
+		public final void receptorNotReadyIndication(ClientSideFSM fsm) 
+		{
+			Receptor r = fsm.getReceptor();
+			removeListener(r);
+
+			// Since receptorNotReadyIndication() is the inverse of
+			// receptorReadyIndication(), I clean up my local
+			// knowledge of fsm before giving super a turn.
+			super.receptorNotReadyIndication(fsm);
+
+			// TODO: Remove contents of Directory server's Directory field from
+			// _gui.
+		}
+
+		public void receptorStateChangeIndication(Receptor r)
+		{
+			super.receptorStateChangeIndication(r);
+
+			QoS qos = r.getQoS();
+			FieldListener listener = (FieldListener)_receptorStateListeners.get(r);
+			State.ChangeMessage receptorChanges = listener.makeMessage();
+			// List of Field.ChangeMessage
+			if (null != receptorChanges) {
+				List changes = receptorChanges.getMessages(); 
+
+				/* DAVID: ListableQueryViewInterpreter will go away
+				 * soon.  I'm almost sure of it.
+
+				if (qos.contains(ListableQueryViewInterpreter.class)) {
+					updateListable(r, changes);
+				}
+				*/
+				if (qos.contains(QueryViewInterpreter.class)) {
+					updateQuery(r, changes);
+				}
+				if (qos.contains(ConsumerViewInterpreter.class)) {
+					updateDirectory(r, changes);
+				}
+			}
+		}
+
+
+		// Client_ControlLogic
+
+		// Insert a new FieldListener into the _receptorStateListeners
+		// Map.
+		private void addListener(Receptor r) 
+		{
+			State s = r.getState();
+			FieldListener listener = new FieldListener(s);
+
+			s.attachFieldListener(s.getFieldNames(), listener);
+			_receptorStateListeners.put(r, listener);
+		}
+
+		// Remove a FieldListener from the _receptorStateListeners
+		// Map.
+		private void removeListener(Receptor r) 
+		{
+			_receptorStateListeners.remove(r);
+		}
+
+		//
+		// Apply Directory server changes to the AdminPanel
+		//
+		// changes is a List of Field.ChangeMessage.  Each element
+		// contains a HashMap:ServerContact-->String.  The
+		// Field names are mangled with the ViewInterpreter class.
+		//
+		private void updateDirectory(Receptor r, List changes) 
+		{
+			synchronized(_updateLock) {
+				for (Iterator i = changes.iterator(); i.hasNext(); ) {
+					Field.ChangeMessage fcm = (Field.ChangeMessage)i.next();
+
+					if (fcm._fname.equals(ADDED_FIELDNAME)) {
+
+
+						Iterator changed = ((HashMap)fcm._value).entrySet().iterator();
+								
+						while (changed.hasNext()) {
+							Map.Entry x = (Map.Entry)changed.next();
+
+							if (null != _gui) {
+								_gui.addPeer(new Peer((ServerContact)x.getKey(), 
+													  (String)x.getValue()));
+							} else {
+								ServerContact serverAddress = 
+									(ServerContact)x.getKey();
+								// This gets a view with all of the
+								// QoS classes offered by the server.
+								//
+								// TODO: make a new ServerContact with
+								// only the QoS classes that make
+								// sense for a browser without a GUI.
+								getEntity().scheduleConnectTo(serverAddress);
+							}
+
+							if (ClientInitializer._LOG.isEnabledFor(Level.INFO)) {
+								ClientInitializer._LOG.info(new Strings(new Object[] 
+									{this, ": updateDirectory(): ", 
+									 r.getServerContact(),
+									 " adding advertisement ", x.getKey(), 
+									 ":", x.getValue()
+									} ));
+							}
+						}
+					} else if (fcm._fname.equals(REMOVED_FIELDNAME)) {
+
+						Iterator changed = ((HashMap)fcm._value).entrySet().iterator();
+								
+						while (changed.hasNext()) {
+							Map.Entry x = (Map.Entry)changed.next();
+
+							if (null != _gui) {
+								_gui.removePeer(new Peer((ServerContact)x.getKey(), 
+														 (String)x.getValue()));
+							}
+
+							if (ClientInitializer._LOG.isEnabledFor(Level.INFO)) {
+								ClientInitializer._LOG.info(new Strings(new Object[] 
+									{this, ": updateDirectory(): ", 
+									 r.getServerContact(),
+									" removing advertisement ", x.getKey(), 
+									 ":", x.getValue()
+								} ));
+							}
+						}
+					}
+				}
+			}
+		}
+
+		//
+		// Actions for QoS that includes QueryViewInterpreter
+		//
+		// changes is a List of QueryResultHandle.
+		//
+		private void updateQuery(Receptor r, List changes) 
+		{
+			ServerContact serverAddress = r.getServerContact();
+			QoS qos = serverAddress.getQoS();
+			Field.ChangeMessage addedFCM = null;
+			Field.ChangeMessage removedFCM = null;
+
+			for (Iterator i = changes.iterator(); i.hasNext(); ) {
+				Field.ChangeMessage fnotif = (Field.ChangeMessage)i.next();
+
+				if (RESULTS_ADDED_FIELDNAME.equals(fnotif._fname)) {
+
+					ClientInitializer._LOG.debug(new Strings(new Object[]
+						{fnotif}));
+
+					addedFCM = fnotif;
+				} else if (RESULTS_REMOVED_FIELDNAME.equals(fnotif._fname)) {
+					removedFCM = fnotif;
+				} else {
+					ClientInitializer._LOG.warn(new Strings(new Object[]
+						{this, 
+						 ": receptorStateChangeIndication(): expected field",
+						 RESULTS_ADDED_FIELDNAME, " or ",
+						 RESULTS_REMOVED_FIELDNAME, 
+						 " but found ", 
+						 fnotif._fname, " instead."
+						} ));
+				}
+			}
+
+			if (null != removedFCM) {
+				showRemoved(((Set)(removedFCM._value)).iterator(), serverAddress);
+			}
+
+			if (null != addedFCM) {
+				showAdded(((Set)(addedFCM._value)).iterator(), serverAddress);
+			}
+		}
+
+		// TODO: Make this handle(Clock.Alarm alarm)
+		public void handle(Clock.Alarm alarm)
+		{
+			if (alarm == _alarm) {
+				boolean updateNow = updateIntervalPassed();
+				State as = getEntity().getState();
+
+				synchronized (_updateLock) {
+					//
+					// Be smart about reporting the position!  Don't report
+					// the same position.  
+					//
+					// ZUI always reports the position, even if it hasn't
+					// changed.  If Client_ControlLogic reports it without
+					// care, it will cause unnecessary traffic on the network
+					// and unnecessary work at the servers.
+					//
+					if ((null != _newPosition) && !_position.equals(_newPosition)) {
+						// DAVID: Dardo! You must not change this.  The only way to
+						// report changes with meaningful old & new values is to
+						// create a new instance for each new value.  If you merely
+						// change the current value, then the change will be reported
+						// with old.equals(new).
+
+						_position = _newPosition;
+						_newPosition = null;
+			
+						try {
+							as.setField(QueryClientFields.POSITION_FIELDNAME, _position);
+
+							ClientInitializer._LOG.info(new Strings(new Object[] 
+								{this, ": handle(): new position ", 
+								 _position
+								} ));
+						} catch (NoSuchFieldException ex) {
+							ClientInitializer._LOG.error(ex);
+						}
+					}
+
+					//
+					// Smart width reporting for the same reason as smart
+					// position reporting.
+					//
+					if ((null != _newWidth) && !_width.equals(_newWidth)) {
+						// DAVID: Dardo! You must not change this.  The only way to
+						// report changes with meaningful old & new values is to
+						// create a new instance for each new value.  If you merely
+						// change the current value, then the change will be reported
+						// with old.equals(new).
+						_width = _newWidth;
+						_newWidth = null;
+			
+						try {
+							as.setField(QueryClientFields.WIDTH_FIELDNAME, _width);
+
+							ClientInitializer._LOG.info(new Strings(new Object[] 
+								{this, ": handle(): new width ",
+								 _position
+								} ));
+						} catch (NoSuchFieldException ex) {
+							ClientInitializer._LOG.error(ex);
+						}
+					}
+
+					//
+					// Smart time bound reporting for the same reason as
+					// smart position reporting.
+					//
+
+					// If there is a ZUI, then it drives the time.  If
+					// there is no ZUI and time isn't advanced
+					// manually, then the only opportunity to advance
+					// time is here.
+					//
+					// Advance the time by the elapsed time.  This
+					// keeps _timeLower and _timeUpper in the correct
+					// places relative to now.  For example, if the
+					// _timeLower were set to a time in the past,
+					// advancing it by the elapsed time keeps it there
+					// while advancing the clock.
+					//
+ 					if ((null == _zui) && (null == _newTimeLower) && 
+ 						(null == _newTimeUpper) && updateNow) {
+ 						pushTime(_elapsedTime);
+					}
+
+					//
+					// _newTimeLower and _newTimeUpper will be
+					// non-null if the ZUI set the time, if the user
+					// manually set the time, or if pushTime() was
+					// called in the block above.
+					//
+					if ((null != _newTimeLower) && !_timeLower.equals(_newTimeLower)) {
+						// DAVID: Dardo! You must not change this.  The only way to
+						// report changes with meaningful old & new values is to
+						// create a new instance for each new value.  If you merely
+						// change the current value, then the change will be reported
+						// with old.equals(new).
+						_timeLower = _newTimeLower;
+						_newTimeLower = null;
+			
+						try {
+							as.setField(QueryClientFields.TIMELOWERBOUND_FIELDNAME, _timeLower);
+						} catch (NoSuchFieldException ex) {
+							ClientInitializer._LOG.error(ex);
+						}
+					}
+
+					if ((null != _newTimeUpper) && !_timeUpper.equals(_newTimeUpper)) {
+						// DAVID: Dardo! You must not change this.  The only way to
+						// report changes with meaningful old & new values is to
+						// create a new instance for each new value.  If you merely
+						// change the current value, then the change will be reported
+						// with old.equals(new).
+						_timeUpper = _newTimeUpper;
+						_newTimeUpper = null;
+
+						try {
+							as.setField(QueryClientFields.TIMEUPPERBOUND_FIELDNAME, _timeUpper);
+						} catch (NoSuchFieldException ex) {
+							ClientInitializer._LOG.error(ex);
+						}
+					}
+				}
+
+
+				if (null != _zui) {
+					if (updateNow) {
+						synchronized (_zui) {
+							_zui.notify();
+						}
+					}
+				}
+			}
+		}
+
+		// Has the update interval elapsed?  If so, return true.
+		// Otherwise, return false.
+		//
+		// Sets _timeOfLastUpdate and _elapsedTime.
+		private boolean updateIntervalPassed() 
+		{
+			boolean answer = false;
+	
+			synchronized (_updateLock) {
+				long now = System.currentTimeMillis();
+
+				if (_updateInterval >= 0) {
+					_elapsedTime = (int)(now - _timeOfLastUpdate);
+					if (_elapsedTime > _updateInterval) {
+						answer = true;
+						_timeOfLastUpdate = now;
+					}
+				}
+			}
+
+			return answer;
+		}
+
+		private void updateAdminFrame(Peer p, Collection c) 
+		{
+			AdminFrame frame = _gui.getPeerFrame(p);
+			Iterator all = c.iterator();
+			// DAVID: Consider using iteratorAdded() and iteratorRemoved()
+			// instead of iteratorAll().
+			frame.updateStatus(all);
+		}
+
+		//
+		// DAVID: Consider deferring this until handle(Clock.Alarm).
+		//
+		private void showAdded(Iterator added, ServerContact serverAddress)
+		{
+			while (added.hasNext()) {
+				int layer = 1;
+				QueryResultHandle h = (QueryResultHandle)added.next();
+				ServerTypeEnum serverType = (ServerTypeEnum)h.getFieldValue(_typeField);
+
+				if (null != serverType) {
+					String name = (String)h.getFieldValue(_mapnameField);
+
+					ClientInitializer._LOG.info(new Strings(new Object[] 
+						{this, ": ", serverAddress, " Added ", h}));
+
+					if ((null != _gui) && (serverType.equals(ServerTypeEnum.COVERAGE))) {
+						_gui.addPatch(name);
+					}
+
+					// Add images
+					if (null != _zui) {
+
+						// Use name as basepath 
+						if (serverType.equals(ServerTypeEnum.COVERAGE)) {
+							try {
+								ClientInitializer._LOG.info(new Strings(new Object[] 
+									{this, 
+									 ": Telling ZUI to load spherepatch \"",
+									 name, "\" in layer ", new Integer(layer)
+									} ));
+
+								_zui.loadpatch(name, name, layer);
+							} catch (IOException ex) {
+								ClientInitializer._LOG.error(new Strings(new Object[] 
+									{this, ": error loading spherepatch ",
+									 name, ": ", ex
+									} ));
+							}
+						} else if (serverType.equals(ServerTypeEnum.POINT)) {
+							//
+							// DAVID: For now, assume that POINT servers provide
+							// "Position" and "mapname" in their
+							// QueryResultHandles.  Make POINT servers such as
+							// SatelliteDB return the fields that model and raster
+							// servers return: _modelLatitudeField,
+							// _modelLongitudeField, _mapnameField.
+							//
+
+							//
+							// position is in Cartesian coordinates.  It
+							// has to be in spherical coordinates in order
+							// to display on the globe.
+							//
+							// Since the position is in a
+							// QueryResultHandle, the name of the field
+							// isn't mangled with the name of the
+							// ViewInterpreter.
+
+							Vector3d position = (Vector3d)h.getFieldValue(QueryClientFields.POSITION_FIELDNAME);
+							String pointName = (String)h.getFieldValue(_mapnameField); // TODO
+				
+							// Hack to simulate motion.
+							//
+							// 1. Remove the POINT
+							// 2. Add the POINT in its new location.
+							//
+							try {
+								double scale = scaleByElevation(position.z);
+								_zui.unload(name);						
+								_zui.addlabel(name, name, position.x,
+											  position.y, scale);
+
+							} catch (IOException ex) {
+								ClientInitializer._LOG.error(new Strings(new Object[] 
+									{this, ": error displaying label ",
+									 name, ": ", ex
+									} ));
+							}				
+				
+						} else if (serverType.equals(ServerTypeEnum.MODEL)) {
+							// north is latitude
+							// east is longitude
+							//
+							// minelev is elevation
+							// maxelev is elevation, the same value as minelev
+							//
+							// mapname is the name of the model
+							try {
+								Double latitude = 
+									(Double)h.getFieldValue(_modelLatitudeField);
+								Double longitude = 
+									(Double)h.getFieldValue(_modelLongitudeField);
+					
+								ClientInitializer._LOG.info(new Strings(new Object[] 
+									{this, ": Telling ZUI to load model \"", 
+									 name, 
+									 "\" at latitude ", latitude, 
+									 " longitude ", longitude
+									} ));
+
+								_zui.loadmodel(name, name, 
+											   latitude.doubleValue(), 
+											   longitude.doubleValue(), 
+											   0.0000001552D);
+							} catch (IOException ex) {
+								ClientInitializer._LOG.error(new Strings(new Object[] 
+									{this, ": error loading model ",
+									 name, ": ", ex
+									} ));
+							}
+						} else if (serverType.equals(ServerTypeEnum.CITY)) {
+							Double latitude = 
+								(Double)h.getFieldValue(_modelLatitudeField);
+							Double longitude = 
+								(Double)h.getFieldValue(_modelLongitudeField);
+							Integer population =
+								(Integer)h.getFieldValue(_cityPopulationField);
+
+							ClientInitializer._LOG.info(new Strings(new Object[] 
+								{this, ": Telling ZUI to display label \"", 
+								 name, "\" at latitude ", latitude, 
+								 " longitude ", longitude
+								} ));
+
+							try {
+
+								// DAVID: It would be nice to scale the label
+								// as a function of population.
+
+								// Scale values:
+								// 1.0D too big -- labels are way out in space
+								// 0.5D too big -- labels are way out in space
+
+								// 0.0001D a little too big if all labels are that size
+
+								// 0.00005D just right if all labels are that size.
+								// It's best seen at 10000 m.
+
+								// 0.0000001552D too small
+
+								// elevation	scale
+								// 100000000
+								// 10000000
+								// 1000000
+								// 100000	0.00005D
+								// 10000
+								// 1000
+								// 100
+
+								// Patrick wrote: when i made an annotation label, the scale was:
+
+								// float labelScale = lerp(clamp(elev()/2500000.0f, 0.0f, 1.0f), 0.00000015f, 0.011f);
+
+								// elev() is user elevation in meters.  labelScale might have to be scaled by
+								// the earth radius, since globe1 used a unit radius sphereoid, but the new
+								// app uses a real life radius sphereoid.
+
+								// // linear interpolation from start to stop by x
+								// lerp(x, start, stop) = x * (stop-start) + start;
+					
+								// // clamp x to [a,b]
+								// // a <= b
+								// clamp(x, a, b) = min(max(x, a), b);
+
+								double scale = scaleByElevation(population.intValue());
+					
+								_zui.addlabel(name, name, latitude.doubleValue(), 
+											  longitude.doubleValue(), scale);
+
+							} catch (IOException ex) {
+								ClientInitializer._LOG.error(new Strings(new Object[] 
+									{this, ": error displaying label ",
+									 name, ": ", ex
+									} ));
+							}				
+						} else {
+							ClientInitializer._LOG.error(new Strings(new Object[]
+								{this, ": Client doesn't know how to add type-",
+								 new Integer(serverType.asInt()), " data"
+								} ));
+						}
+					}
+				} else {
+					ClientInitializer._LOG.error(new Strings(new Object[] 
+						{this, ": No serverTypeEnum in ", h} ));
+				}
+			}
+		}
+
+
+		private double scaleByElevation(int elevation) 
+		{
+			// Note magic constants here.  If you change them here, change
+			// them in scaleByElevation(double).
+			//
+			return lerp(clamp(elevation/2500000.0D, 0.0D, 1.0D), 0.00000015D, 0.011D);
+		}
+
+		private double scaleByElevation(double elevation) 
+		{
+			// Note magic constants here.  If you change them here, change
+			// them in scaleByElevation(int).
+			//
+			return lerp(clamp(elevation/2500000.0D, 0.0D, 1.0D), 0.00000015D, 0.011D);
+		}
+
+		// clamp x to [a,b]
+		private double clamp(double x, double a, double b) 
+		{
+			return Math.min(Math.max(x, a), b);
+		}
+
+		// Linear interpolation from start to stop by x
+		private double lerp(double x, double start, double stop) 
+		{
+			return x * (stop - start) + start;
+		}
+
+		private void
+			showRemoved(Iterator removed, ServerContact serverAddress)
+		{
+			while (removed.hasNext()) {
+				QueryResultHandle h = (QueryResultHandle)removed.next();
+				if (null != h) {
+					ServerTypeEnum serverType = (ServerTypeEnum)h.getFieldValue(_typeField);
+					String name = (String)h.getFieldValue(_mapnameField);
+
+					ClientInitializer._LOG.info(new Strings(new Object[] 
+						{this, ": stateChangeNotification: ", 
+						 serverAddress, " Removed ", h}));
+
+					//
+					// _gui isn't as smart as _zui when it comes to removing things.
+					//
+					if ((null != _gui) && (serverType.equals(ServerTypeEnum.COVERAGE))) {
+						_gui.removePatch(name);
+					}
+
+					if (null != _zui) {
+						try {
+							_zui.unload(name);	
+						} catch (IOException ex) {
+							ClientInitializer._LOG.error(new Strings(new Object[]
+								{this, ": ZUI error unloading ", serverType, 
+								 " ", name, ": ", ex
+								} ));
+						}
+					}
+				} else {
+					ClientInitializer._LOG.info(new Strings(new Object[]
+						{this, ": null QueryResultHandle" } ));
+				}
+			}
+		}
+
+		// DAVID: So many update() methods!  
+		// TODO: Find the redundant ones and remove them.
+
+		/**
+		   update(Vector3d, Calendar)
+		   @methodtype set
+		   @param position .
+		   @param time .
+		*/
+		void
+			update(Vector3d position, Calendar time)
+		{
+			if (null != _gui) {
+				_gui.updatePosition(position);
+				_gui.updateTime(time); // TODO
+			}
+
+			synchronized (_updateLock) {
+				// DAVID: Dardo! You must not change this.  The only way to
+				// report changes with meaningful old & new values is to
+				// create a new instance for each new value.  If you merely
+				// change the current value, then the change will be reported
+				// with old.equals(new).
+				long timeWidth = _timeUpper.getTimeInMillis() -  // TODO
+					_timeLower.getTimeInMillis(); // TODO
+
+				_newPosition = new Vector3d(position);
+
+				_newTimeLower = Calendar.getInstance(_TZ);
+				_newTimeLower.setTime(time.getTime());
+
+				_newTimeUpper = Calendar.getInstance(_TZ);
+				_newTimeUpper.setTimeInMillis(time.getTimeInMillis() + timeWidth); // TODO
+			}
+		}
+
+		/**
+		   updateTime(Calendar)
+		   @methodtype set
+		   @param time .
+		*/
+		void
+			updateTime(Calendar time)
+		{
+			if (null != _gui) {
+				_gui.updateTime(time); // TODO
+			}
+
+			synchronized (_updateLock) {
+				long timeWidth = _timeUpper.getTimeInMillis() -  // TODO
+					_timeLower.getTimeInMillis(); // TODO
+
+				// DAVID: Dardo! You must not change this.  The only way to
+				// report changes with meaningful old & new values is to
+				// create a new instance for each new value.  If you merely
+				// change the current value, then the change will be reported
+				// with old.equals(new).
+				_newTimeLower = Calendar.getInstance(_TZ);
+				_newTimeLower.setTime(time.getTime());
+
+				_newTimeUpper = Calendar.getInstance(_TZ);
+				_newTimeUpper.setTimeInMillis(time.getTimeInMillis() + timeWidth);
+			}
+		}
+
+
+		/**
+		   pushTime(int)
+		   @methodtype set
+		   @param interval the number of milliseconds to advance time
+		*/
+		void
+			pushTime(int interval)
+		{
+			synchronized (_updateLock) {
+				// DAVID: Dardo! You must not change this.  The only way to
+				// report changes with meaningful old & new values is to
+				// create a new instance for each new value.  If you merely
+				// change the current value, then the change will be reported
+				// with old.equals(new).
+				_newTimeLower = Calendar.getInstance(_TZ);
+				_newTimeLower.setTime(_timeLower.getTime());
+				_newTimeLower.add(Calendar.MILLISECOND, interval);
+
+				_newTimeUpper = Calendar.getInstance(_TZ);
+				_newTimeUpper.setTime(_timeUpper.getTime());
+				_newTimeUpper.add(Calendar.MILLISECOND, interval);
+			}
+		}
+
+		/**
+		   updatePosition(double, double)
+		   @methodtype set
+		   @param lat .
+		   @param lon .
+		*/
+		void
+			updatePosition(double lat, double lon)
+		{
+			if (null != _gui) {
+				_gui.updatePosition(lat, lon);
+			}
+
+			synchronized (_updateLock) {
+				// DAVID: Dardo! You must not change this.  The only way to
+				// report changes with meaningful old & new values is to
+				// create a new instance for each new value.  If you merely
+				// change the current value, then the change will be reported
+				// with old.equals(new).
+				_newPosition = new Vector3d(lat, lon, _position.z);
+			}
+		}
+
+		/**
+		   updatePosition(double, double, double)
+		   @methodtype set
+		   @param lat .
+		   @param lon .
+		   @param elev .
+		*/
+		void
+			updatePosition(double lat, double lon, double elev)
+		{
+			if (null != _gui) {
+				_gui.updatePosition(new Vector3d(lat, lon, elev));
+			}
+
+			synchronized (_updateLock) {
+				// DAVID: Dardo! You must not change this.  The only way to
+				// report changes with meaningful old & new values is to
+				// create a new instance for each new value.  If you merely
+				// change the current value, then the change will be reported
+				// with old.equals(new).
+				_newPosition = new Vector3d(lat, lon, elev);
+			}
+		}
+
+		/**
+		   setWidth(Vector3d)
+		   @methodtype set
+		   @param width .
+		*/
+		void
+			setWidth(Vector3d width)
+		{
+			synchronized (_updateLock) {
+				// DAVID: Dardo! You must not change this.  The only way to
+				// report changes with meaningful old & new values is to
+				// create a new instance for each new value.  If you merely
+				// change the current value, then the change will be reported
+				// with old.equals(new).
+				_newWidth = new Vector3d(width);
+			}
+		}
+
+		/**
+		   setWidth(double, double, double)
+		   @methodtype set
+		   @param x .
+		   @param y .
+		   @param z .
+		*/
+		void
+			setWidth(double x, double y, double z)
+		{
+			synchronized (_updateLock) {
+				// DAVID: Dardo! You must not change this.  The only way to
+				// report changes with meaningful old & new values is to
+				// create a new instance for each new value.  If you merely
+				// change the current value, then the change will be reported
+				// with old.equals(new).
+				_newWidth = new Vector3d(x, y, z);
+			}
+		}
+
+		/**
+		   setUpdateInterval(int)
+
+		   Change the rate at which the ZUI is notified.  The updateInterval
+		   is measured in milliseconds.  The ZUI will be notified every
+		   updateInterval as long as the updateInterval is at least zero.
+		   Negative updateIntervals turn off ZUI notification.
+
+		   @methodtype set
+		   @param newInterval the new update interval
+		*/
+		void setUpdateInterval(int newInterval) 
+		{
+			synchronized (_updateLock) {
+				_updateInterval = newInterval;
+			}
+		}
+
+		// sousa.idol.user.Console$CommandHandler
+
+		/**
+		   @see sousa.idol.user.Console$CommandHandler#handleCommand(String)
+		*/
+		public final void
+			handleCommand(String command)
+		{
+			// A comment is any line in which the first non-whitespace
+			// character is a '#'.  Ignore comments.
+			Matcher m = _commentPattern.matcher(command);
+	
+			if (! m.lookingAt()) {
+				String[] args = command.split("\\s");
+
+				if ("quit".equals(args[0])) {
+					shutdown();
+				} else if ("log4j".equals(args[0])) {
+					// log4j <fully qualified class name> <log level>
+					//
+					// Set the level of messages printed by
+					// <fully qualified class name> to <log level>
+					//
+					// <log level> is a String that corresponds to one of the
+					// values of log4j's Level class.
+
+					String className = args[1];
+					String levelName = args[2];
+
+					try {
+						Class classToLog = Class.forName(className);
+						Logger logger = Logger.getLogger(classToLog);
+						Level levelToLog = Level.toLevel(levelName);
+						logger.setLevel(levelToLog);
+			
+					} catch (ClassNotFoundException ex) {
+						ClientInitializer._LOG.error(new Strings(new Object[] 
+							{ex, " ", className}));
+					}
+				} else if ("wait".equals(args[0])) {
+					// wait <milliseconds>
+					//
+					// Don't do anything for <milliseconds>
+
+					long interval = Long.parseLong(args[1]);
+					try {
+						Thread.sleep(interval);
+					} catch (InterruptedException ex) {
+						// Shouldn't happen!
+						_LOG.error(new Strings(new Object[] 
+							{"Caught exception ", ex, ":",
+							 StackTrace.formatStackTrace(ex)}));
+					}
+				} else if ("gotolatlon".equals(args[0])) {
+					// gotolatlon <lat> <lon>
+					//
+					// Change location to (<lat>, <lon>).
+					// Don't change elevation.
+
+					double lat = Double.parseDouble(args[1]);
+					double lon = Double.parseDouble(args[2]);
+
+					if (null != _zui) {
+						try {
+							_zui.gotolatlon(lat, lon);
+
+							//
+							// Eventually, the ZUI will tell us that he moved to
+							// lat, lon.  He'll read his location from SHMEM and
+							// send us an update.  Client_ControlLogic will read
+							// the new position and set his AuthoritativeState to
+							// it.  That will trigger a query at the various
+							// servers followed by a flood of added and removed
+							// QueryResultHandles in the corresponding
+							// RESULTS fields.
+							//
+						} catch (IOException e) {
+							_LOG.error(new Strings(new Object[] 
+								{this, " caught exception ", e, ":",
+								 StackTrace.formatStackTrace(e)}));
+						}
+					} else {
+						updatePosition(lat, lon);
+					}
+				} else if ("gotolatlonelev".equals(args[0])) {
+					// gotolatlonelev <lat> <lon> <elev>
+					//
+					// Change location to (<lat>, <lon>).
+					// Change elevation to <elev> meters.
+
+					double lat = Double.parseDouble(args[1]);
+					double lon = Double.parseDouble(args[2]);
+					double elev = Double.parseDouble(args[3]);
+
+					if (null != _zui) {
+						try {
+							_zui.gotolatlonelev(lat, lon, elev);
+						} catch (IOException e) {
+							_LOG.error(new Strings(new Object[] 
+								{this, " caught exception ", e, ":",
+								 StackTrace.formatStackTrace(e)}));
+						}
+					} else {
+						updatePosition(lat, lon, elev);
+					}
+				} else if ("settime".equals(args[0])) {
+					// settime <milliseconds since the epoch>
+					//
+					// Set the clock to <milliseconds since the epoch>
+					// With no argument, set the time to now.
+
+					long time = 0L;
+		
+					if (args.length > 1) {
+						time = Long.parseLong(args[1]);
+					} else {
+						time = System.currentTimeMillis();
+					}
+					Calendar cal = Calendar.getInstance(_TZ);
+					cal.setTimeInMillis(time);
+
+					if (null != _zui) {
+						try {
+							_zui.settime(time);
+						} catch (IOException e) {
+							_LOG.error(new Strings(new Object[] 
+								{this, " caught exception ", e, ":",
+								 StackTrace.formatStackTrace(e)}));
+						}
+					} else {
+						updateTime(cal);
+					}
+				} else if ("currenttime".equals(args[0])) {
+					// What time is it now?
+
+					System.out.println(System.currentTimeMillis());
+			
+				} else if ("width".equals(args[0])) {
+					// width <x> <y> <z>
+					double x = Double.parseDouble(args[1]);
+					double y = Double.parseDouble(args[2]);
+					double z = Double.parseDouble(args[3]);
+
+					setWidth(x, y, z);
+				} else if ("connect".equals(args[0])) {
+					// connect <serverName> <port> <viewInterpClassName>
+					//
+					// DAVID: Consider adding <session number> to the
+					// argument list so that Projectors can be shared.
+					String serverName = args[1];
+					int port = Integer.parseInt(args[2]);
+					String viewInterpClassName = args[3];
+
+					scheduleFetch(serverName, port, viewInterpClassName);
+				} else if ("update".equals(args[0])) {
+					int newInterval = Integer.parseInt(args[1]);
+
+					setUpdateInterval(newInterval);
+				} else super.handleCommand(command);
+			} else super.handleCommand(command);
+		}
+
+		protected void help(String command) {
+			super.help(command);
+
+			System.out.println("Client commands:");			
+			System.out.println("# comment");
+			System.out.println("connect <serverName> <port> <viewInterpClassName>");
+			System.out.println("currenttime");
+			System.out.println("gotolatlon <lat> <lon>");
+			System.out.println("gotolatlonelev <lat> <lon> <elev>");
+			System.out.println("log4j <fully qualified class name> DEBUG|INFO|WARN|ERROR|FATAL");
+			System.out.println("quit");
+			System.out.println("settime [<time in milliseconds since the epoch>]");
+			System.out.println("update <milliseconds> (-1 turns off updates)");
+			System.out.println("wait <milliseconds>");
+			System.out.println("width <lat> <lon> <elev>");
+		}
+		// sousa.idol.user.GUI$EventHandler
+
+		/**
+		   @see sousa.idol.user.GUI$EventHandler#handleEvent(GUI.GUIEvent)
+		*/
+		public final void handleEvent(GUI.GUIEvent event)
+		{
+			if (event instanceof GUI.LatLonEvent) {
+				double lat = ((GUI.LatLonEvent)event).lat();
+				double lon = ((GUI.LatLonEvent)event).lon();
+
+				if (null == _zui) {
+					updatePosition(lat, lon);
+				} else {
+					try {
+						_zui.gotolatlon(lat, lon);
+					} catch (IOException e) {
+						_LOG.error(new Strings(new Object[] 
+							{this, " caught exception ", e, ":",
+							 StackTrace.formatStackTrace(e)}));
+					}
+				}
+			} else if (event instanceof GUI.PositionEvent) {
+				Vector3d position = ((GUI.PositionEvent)event).position();
+
+				if (null == _zui) {
+					updatePosition(position.x, position.y, position.z);
+				} else {
+					try {
+						_zui.gotolatlonelev(position.x, position.y, position.z);
+					} catch (IOException e) {
+						_LOG.error(new Strings(new Object[] 
+							{this, " caught exception ", e, ":",
+							 StackTrace.formatStackTrace(e)}));
+					}
+				}
+			} else if (event instanceof GUI.TimeEvent) {
+				Calendar time = ((GUI.TimeEvent)event).time();
+
+				if (null == _zui) {
+					updateTime(time);
+				} else {
+					try {
+						_zui.settime((double)time.getTimeInMillis() / 1000.0);
+					} catch (IOException e) {
+						_LOG.error(new Strings(new Object[] 
+							{this, " caught exception ", e, ":",
+							 StackTrace.formatStackTrace(e)}));
+					}
+				}
+			} else if (event instanceof GUI.SwitchPatchEvent) {
+				String patch = ((GUI.SwitchPatchEvent)event).patch();
+				String mode = ((GUI.SwitchPatchEvent)event).mode();
+
+				if (null != _zui) {
+					try {
+						_zui.switchpatch(patch, mode);
+					} catch (IOException e) {
+						_LOG.error(new Strings(new Object[] 
+							{this, " caught exception ", e, ":",
+							 StackTrace.formatStackTrace(e)}));
+					}
+				}
+			} else if (event instanceof GUI.SendCommandEvent) {
+				Peer peer = ((GUI.SendCommandEvent)event).peer();
+				String command = ((GUI.SendCommandEvent)event).command();
+				// DAVID: I don't know what to do with this yet.
+				//		sendCommand(peer, command);
+				_LOG.error(new Strings(new Object[] 
+					{this, ": handleEvent(GUI.SendCommandEvent): peer=",
+					 peer, " command=", command}));
+		
+			} else if (event instanceof GUI.StatusPollRequestEvent) {
+				Peer peer = ((GUI.StatusPollRequestEvent)event).peer();
+				// DAVID: I don't know what to do with this yet.
+				//		initiateStatusPoll(frame);
+				//
+				// DAVID: Interpret it to mean "fetch"
+				_LOG.debug(new Strings(new Object[] 
+					{this, ": handleEvent(GUI.StatusPollRequestEvent): peer=", 
+					 peer}));
+
+				QoS fqos;
+
+				// TODO: session# 
+				fqos = new QoS(-1, Collections.singleton(QueryViewInterpreter.class));
+
+				_LOG.debug(new Strings(new Object[] 
+					{this, ": handleEvent(GUI.StatusPollRequestEvent): fetching ", 
+					 peer.getContactAddress(), " qos ", fqos}));
+
+
+				ServerContact peerAddress = peer.getContactAddress();
+
+				// DAVID: Consider making a ctor ServerContact(ServerContact, QoS)
+				try {
+					ServerContact newContact = 
+						new ServerContact(peerAddress.getHost(), 
+										  peerAddress.getPort(), fqos);
+
+					getEntity().scheduleConnectTo(newContact);
+				} catch (UnknownHostException ex) {
+					ClientInitializer._LOG.error(ex);
+				}
+		
+			} else if (event instanceof GUI.QuitEvent) {
+				shutdown();
+			}
+		}
+
+		// sousa.idol.user.ZUI$QueryHandler
+
+		/**
+		   @see sousa.idol.user.ZUI$QueryHandler#handleQuery(long, Vector3d, Calendar)
+		*/
+		public final void
+			handleQuery(long tstamp, Vector3d position, Calendar time)
+		{
+			update(position, time);
+		}
+
+		// sousa.idol.user.ZUI$MessageHandler
+
+		/**
+		   @see sousa.idol.user.ZUI$MessageHandler#handleMessage(String, String)
+		*/
+		public final void
+			handleMessage(String source, String message)
+		{
+			if ((null == source) && ("quit".equals(message))) {
+				shutdown();
+			}
+		}
+
+		// Client_ControlLogic
+
+		private void shutdown() 
+		{
+			_LOG.error("Somebody called shutdown()!");
+			if (null != _zui) {
+				try {
+					_zui.shutdown();
+					_LOG.error("ZUI shut down");
+				} catch (IOException e) {
+					_LOG.error(new Strings(new Object[]
+						{this, " caught exception ", e, ":",
+						 StackTrace.formatStackTrace(e)}));
+				}
+			}
+
+			if (null != _gui) {
+				_gui.shutdown();
+				_LOG.error("GUI shut down");
+			}
+
+			quit("Client_ControlLogic");
+
+
+			synchronized (this) {
+				notify();
+				Entity e = getEntity();
+				if (null != e) e.stop();
+				_LOG.error("Entity stop()");
+			}
+
+			_LOG.error("Client_ControlLogic shutdown");
+		}
+
+
+		/**
+		   scheduleFetch(String,int,String)
+		   @methodtype command
+		   @param server .
+		   @param port .
+		   @param viewInterpreterClass .
+		   @param fields .
+		*/
+		// DAVID: Consider adding a session number to the list of
+		// formal arguments.  That would permit Projector sharing.
+		// For now, no Projectors are shared.
+		void
+			scheduleFetch(String server, int port, String viewInterpreterClassName) 
+		{
+			// Forward QoS (as requested by client)
+			try {
+				Class viewInterpreterClass = Class.forName(viewInterpreterClassName);
+				QoS fqos = new QoS(-1, Collections.singleton(viewInterpreterClass));
+
+				// Convert String server into InetAddress serverInet
+				InetAddress serverInet = InetAddress.getByName(server);
+				ServerContact serverAddress = 
+					new ServerContact(serverInet, port, fqos);
+
+				//
+				// DAVID: If there is a GUI, it should schedule the fetch.
+				//
+				getEntity().scheduleConnectTo(serverAddress);
+			} catch (ClassNotFoundException ex) {
+				ClientInitializer._LOG.error(new Strings(new Object[] 
+					{"Unable to find class: ", viewInterpreterClassName}));
+			} catch (UnknownHostException ex) {
+				ClientInitializer._LOG.error(ex);
+			}
+		}
+
+
+    }; // Client_ControlLogic
+
+    // ****************************************************************
+
+    /**
+       ClientInitializer
+    */
+	// Constructors
+
+	public ClientInitializer(Properties p)
+		throws EntityInitializer.InitializationException
+	{
+		super(p);
+	}
+
+
+	// IdolInitializer
+
+	public final ControlLogic
+		initialize_makeControlLogic(Properties p)
+	{
+		ControlLogic cl = new Client_ControlLogic(p);
+		return cl;
+	}
+
+
+    /**
+       initialize_custom(Properties)
+
+       PURPOSE: add any additional fields custom to this particular
+       initializer and perform any other custom initializations.
+
+	   DAVID: This code is nearly identical to
+	   idol.service.ServerInitializer.initialize_custom().
+    */
+    protected void initialize_custom(Properties p) 
+		throws EntityInitializer.InitializationException {
+
+		String directoryAddressString = p.getProperty("idol.directory.address");
+		String directoryPortString = p.getProperty("idol.directory.contactport");
+		int directoryPort = -1;
+	
+		boolean haveDirectory = ((null != directoryAddressString) && 
+								 (null != directoryPortString));
+	
+		this.addQoSClass(SpatiotemporalViewInterpreter.class);
+
+		// If I have a non-null directoryAddressString and a non-null
+		// directoryPortString and directoryPortString represents a
+		// valid integer, I'll schedule a fetch of a
+		// ClientViewInterpreter from the Directory server.  
+		//
+		if (haveDirectory) {
+			try {
+				directoryPort = Integer.parseInt(directoryPortString);
+				// The Directory Server must provide the
+				// ConsumerViewInterpreter interface.  Use the default
+				// QoS constructor to get a shared session.  For now,
+				// sharing is good.
+				//
+				// TODO: Revisit sharing when the Directory server is
+				// spatiotemporally aware.  If it gives answers based
+				// on my location and time, then I shouldn't ask for a
+				// shared session.
+				QoS directoryQoS = new QoS();
+				directoryQoS.add(ConsumerViewInterpreter.class);
+		
+				// Throws UnknownHostException, SecurityException.
+				// Both are caught below.
+				InetAddress directoryAddress = 
+					InetAddress.getByName(directoryAddressString);
+		
+				ServerContact directoryServer = 
+					new ServerContact(directoryAddress, 
+									  directoryPort, directoryQoS);
+		
+				this.scheduleConnectTo(directoryServer);
+		
+				ClientInitializer._LOG.warn(new Strings(new Object[] 
+					{"Using Directory ", directoryServer}));
+			} 
+			catch (NumberFormatException ex) {
+				throw new EntityInitializer.InitializationException("Error initializing directory port", ex);
+			}
+			catch (java.net.UnknownHostException ex) {
+				throw new EntityInitializer.InitializationException("Error initializing directory address", ex);
+			}
+			catch (SecurityException ex) {
+				throw new EntityInitializer.InitializationException("Error initializing directory address", ex);
+			}
+		} else {
+			ClientInitializer._LOG.warn("Continuing without Directory.");
+		}
+    }
+}; // ClientInitializer

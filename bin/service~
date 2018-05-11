@@ -1,0 +1,217 @@
+#!/bin/sh
+
+# Allow group write
+umask 0002
+
+CMDNAME="`basename $0`"
+
+APP_HOME="/afs/cmf.nrl.navy.mil/project/dc/dev/talmage/sousa"
+VERSION="1.0"
+
+UNAME="`uname -s`:`uname -r`:`uname -m`"
+JVMARGS=
+KRB5PRINCIPAL=
+KRB5REALM=
+KRB5KDC=
+CONF=
+
+case "$UNAME" in
+	Linux:2.6.*:i?86)
+		JVMARGS="-server -ea"
+		KRB5PRINCIPAL="idol/`hostname -f`"
+		;;
+	Linux:2.6.*:ia64)
+		JVMARGS="-ea"
+		KRB5PRINCIPAL="idol/`hostname -f`"
+		;;
+	Linux:2.6.*:x86_64)
+		JVMARGS="-ea"
+		KRB5PRINCIPAL="idol/`hostname -f`"
+		;;
+	IRIX*:6.5*:*)
+		KRB5PRINCIPAL="idol/`hostname -f`"
+		;;
+	Darwin:8.*.*:i?86)
+		JVMARGS="-server -ea"
+		KRB5PRINCIPAL="idol/`hostname`"
+		;;
+	*)
+		echo "WARNING: Unknown OS Platform \""$UNAME"\""
+		;;
+esac
+
+help="\
+$CMDNAME is a utility to start or stop an IDOL service agent.
+
+Usage:
+  $CMDNAME start [-J JAVA_HOME] [-p KRB5PRINCIPAL] [-r KRB5REALM] [-d KRB5KDC] [-k KRB5_KTNAME] [-c CONF]
+  $CMDNAME stop  [-J JAVA_HOME]
+
+Common arguments:
+  --help           show this help, then exit.
+  --version        output version information, then exit.
+  -J JAVA_HOME     Java Runtime Environment installation directory (default: ${JAVA_HOME:-\$JAVA_HOME (not set)}).
+
+Arguments for start:
+  -p KRB5PRINCIPAL  the service principal name (default: $KRB5PRINCIPAL).
+  -r KRB5REALM      the service's Kerberos realm.
+  -d KRB5KDC        the realm's KDC.
+  -k KRB5_KTNAME    the service's Kerberos keytab file (default: ${KRB5_KTNAME:-\$KRB5_KTNAME (not set)}).
+  -c CONF           the service's configuration file (default: /etc/idol/idol.properties).
+
+Report bugs to <dc-dev@cmf.nrl.navy.mil>."
+
+advice="\
+Try \"$CMDNAME --help\" for more information."
+
+
+while [ "$#" -gt 0 ] ; do
+	case "$1" in
+		-h|--help|-\?)
+			echo "$help"
+			exit 0
+			;;
+		-V|--version)
+			echo "service (IDOL) $VERSION"
+			exit 0
+			;;
+		-J)
+			shift
+			JAVA_HOME="$1"
+			;;
+		-p)
+			shift
+			KRB5PRINCIPAL="$1"
+			;;
+		-r)
+			shift
+			KRB5REALM="$1"
+			;;
+		-d)
+			shift
+			KRB5KDC="$1"
+			;;
+		-k)
+			shift
+			KRB5_KTNAME="$1"
+			;;
+		-c)
+			shift
+			CONF="$1"
+			;;
+		-*)
+			echo "$CMDNAME: invalid argument: $1" 1>&2
+			echo "$advice" 1>&2
+			exit 1
+			;;
+		start)
+			op="start"
+			;;
+		stop)
+			op="stop"
+			;;
+		*)
+			echo "$CMDNAME: invalid operation mode: $1" 1>&2
+			echo "$advice" 1>&2
+			exit 1
+			;;
+	esac
+	shift
+done
+
+if [ x"$op" = x"" ] ; then
+	echo "$CMDNAME: no operation mode specified" 1>&2
+	echo "$advice" 1>&2
+	exit 1
+fi
+
+if [ -z "$JAVA_HOME" ] ; then
+	echo "$CMDNAME: no Java installation specified and environment variable \$JAVA_HOME is not set" 1>&2
+	echo "$advice" 1>&2
+	exit 1
+fi
+
+if [ "$op" = "stop" ] ; then
+	# op is stop
+
+	# TODO : don't use a shotgun to stop the service
+	killall -KILL java
+	exit 0
+fi
+
+# op is start
+
+if [ -z "$KRB5PRINCIPAL" ] ; then
+	echo "$CMDNAME: no service principal name specified" 1>&2
+	echo "$advice" 1>&2
+	exit 1
+fi
+
+if [ -z "$KRB5REALM" ] ; then
+	echo "$CMDNAME: no Kerberos realm specified" 1>&2
+	echo "$advice" 1>&2
+	exit 1
+fi
+
+if [ -z "$KRB5KDC" ] ; then
+	echo "$CMDNAME: no KDC specified" 1>&2
+	echo "$advice" 1>&2
+	exit 1
+fi
+
+if [ -z "$KRB5_KTNAME" ] ; then
+	echo "$CMDNAME: no Kerberos keytab specified and environment variable \$KRB5_KTNAME is not set" 1>&2
+	echo "$advice" 1>&2
+	echo "INSTALL KERBEROS!"
+#	exit 1
+fi
+
+
+#CLASSPATH="$APP_HOME/classes"
+CLASSPATH=`echo $APP_HOME/lib/*.jar | tr ' ' ':'`
+CLASSPATH=$CLASSPATH:`echo $APP_HOME/lib/service/*.jar | tr ' ' ':'`
+CLASSPATH=$CLASSPATH:`echo $APP_HOME/lib/user/*.jar | tr ' ' ':'`
+CLASSPATH=$CLASSPATH:`echo $APP_HOME/ext/*.jar | tr ' ' ':'`
+
+#JCSI_LIB=/afs/cmf/project/dc/JCSI_Kerberos_2.7/lib
+#CLASSPATH=$CLASSPATH:`echo $JCSI_LIB/*.jar | tr ' ' ':'`
+	#-Dkrb5.login.module=com.dstc.security.kerberos.jaas.KerberosLoginModule
+	#-Djcsi.kerberos.debug=true \
+	#-Djcsi.lib=$JCSI_LIB \
+	#-Djcsi.kerberos.principal=$KRB5PRINCIPAL \
+	#-Djcsi.kerberos.realm=$KRB5REALM \
+	#-Djcsi.kerberos.KDChost=$KRB5KDC \
+	#-Djcsi.kerberos.keytab=$KRB5_KTNAME \
+
+JDBC_DRIVER="org.postgresql.Driver"
+
+IDOL_CONF=
+[ -z "$CONF" ] || IDOL_CONF="-Didol.conf=$CONF" 
+
+# DYLD_LIBRARY_PATH is for Mac OS X.  OS X needs that to find the jnilibs.
+
+    #-DsubvertLogin bypasses all kerberos login stuff
+    # It should't be here in a production system.
+    #
+	#-Djava.security.debug=scl,access,failure \
+	#-Dsun.security.krb5.debug=true \
+env LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$APP_HOME/ext/@sys \
+    DYLD_LIBRARY_PATH=$LD_LIBRARY_PATH:$APP_HOME/ext/@sys \
+	$JAVA_HOME/bin/java \
+	$JVMARGS -Xms1500M -Xmx1500M -cp $CLASSPATH \
+	-DsubvertLogin="true" \
+	-Dapp.home=$APP_HOME \
+	-Djava.library.path=$APP_HOME/ext/@sys \
+	\
+	-Dsun.security.krb5.principal=$KRB5PRINCIPAL \
+	-Dsun.security.krb5.realm=$KRB5REALM \
+	-Dsun.security.krb5.kdc=$KRB5KDC \
+	-Dkrb5.keytab=$KRB5_KTNAME \
+	\
+	-Djava.security.auth.login.config=$APP_HOME/etc/service.jaas.conf \
+	\
+	-Djdbc.drivers=$JDBC_DRIVER \
+	\
+	-Djava.awt.headless=true \
+	\
+	$IDOL_CONF mil.navy.nrl.cmf.sousa.idol.service.Main 

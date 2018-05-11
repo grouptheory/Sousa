@@ -1,0 +1,18 @@
+#!/bin/sh
+
+# Installation prefix
+PREFIX=@PREFIX@
+
+# Java Runtime Environment
+[ -z "$JAVA_HOME" ] && JAVA_HOME=/afs/cmf/project/java/usr/java
+
+# Kerberos bootstrap settings
+KRB5PRINCIPAL=idol/`hostname -f`
+KRB5REALM=CMF.NRL.NAVY.MIL
+KRB5KDC=guardian.cmf.nrl.navy.mil
+KRB5_KTNAME=/etc/idol.keytab
+
+# Service configuration file
+IDOL_CONF=${IDOL_CONF:-$PREFIX/etc/idol/`basename $0`.properties}
+
+$PREFIX/bin/service start -J $JAVA_HOME -p $KRB5PRINCIPAL -r $KRB5REALM -d $KRB5KDC -k $KRB5_KTNAME -c $IDOL_CONF

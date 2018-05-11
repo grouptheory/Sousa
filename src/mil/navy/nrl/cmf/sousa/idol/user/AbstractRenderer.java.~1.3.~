@@ -1,0 +1,143 @@
+package mil.navy.nrl.cmf.sousa.idol.user;
+
+import java.io.IOException;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+import mil.navy.nrl.cmf.annotation.ServerVI;
+import mil.navy.nrl.cmf.sousa.Field;
+import mil.navy.nrl.cmf.sousa.Renderable;
+import mil.navy.nrl.cmf.sousa.Renderer;
+import mil.navy.nrl.cmf.sousa.State;
+import mil.navy.nrl.cmf.sousa.ViewInterpreter;
+import mil.navy.nrl.cmf.sousa.spatiotemporal.QueryFields;
+import mil.navy.nrl.cmf.sousa.spatiotemporal.QueryResultHandle;
+import mil.navy.nrl.cmf.sousa.spatiotemporal.QueryViewInterpreter;
+import mil.navy.nrl.cmf.sousa.util.Strings;
+import org.apache.log4j.Logger;
+
+public abstract class AbstractRenderer implements Renderer {
+	protected static final Logger _LOG = 
+		Logger.getLogger(AbstractRenderer.class);
+
+	/**
+	   The name of the RESULTS_ADDED field provided by a
+	   spatiotemporal server's QueryViewInterpreter
+	 */
+	protected final static String RESULTS_ADDED_FIELDNAME = 
+		ViewInterpreter.getQualifiedFieldName(QueryViewInterpreter.class, 
+											  QueryFields.RESULTS_ADDED);
+	/**
+	   The name of the RESULTS_REMOVED field provided by a
+	   spatiotemporal server's QueryViewInterpreter
+	 */
+	protected final static String RESULTS_REMOVED_FIELDNAME = 
+		ViewInterpreter.getQualifiedFieldName(QueryViewInterpreter.class, 
+											  QueryFields.RESULTS_REMOVED);
+
+	/**
+	   The name of the RESULTS_CHANGED field provided by a
+	   spatiotemporal server's QueryViewInterpreter
+	 */
+	protected final static String RESULTS_CHANGED_FIELDNAME = 
+		ViewInterpreter.getQualifiedFieldName(QueryViewInterpreter.class, 
+											  QueryFields.RESULTS_CHANGED);
+
+	protected final List _renderables = new LinkedList();
+
+	// TODO: Consider a constructor that takes the RFC2045 MIME
+	// Content-Type, either as a String or as two Strings (type and
+	// subtype).
+
+	public final void setRenderables(List renderables) {
+		_renderables.clear();
+		_renderables.addAll(renderables);
+	}
+
+
+	/**
+	   Add something to the scene graph using all of the Renderables.
+
+	   @param h something new for the scene graph
+	 */
+	protected abstract void add(QueryResultHandle h);
+
+	/**
+	   Change something in the scene graph using all of the
+	   Renderables.
+
+	   @param h something that is already in the scene graph and has
+	   changed
+	 */
+	protected abstract void change(QueryResultHandle h);
+
+	/**
+	   Remove something from the scene graph using all of the
+	   Renderables.
+
+	   @param h something to remove from the scene graph.
+	 */
+	protected abstract void remove(QueryResultHandle h);
+
+	public void render(State.ChangeMessage msg) {
+		List changes = msg.getMessages();
+
+		for (Iterator i = changes.iterator(); i.hasNext(); ) {
+			Field.ChangeMessage fnotif = (Field.ChangeMessage)i.next();
+			if (RESULTS_ADDED_FIELDNAME.equals(fnotif._fname)) {
+				showAdded(((Set)(fnotif._value)).iterator());
+			} else if (RESULTS_REMOVED_FIELDNAME.equals(fnotif._fname)) {
+				showRemoved(((Set)(fnotif._value)).iterator());
+			} else if (RESULTS_CHANGED_FIELDNAME.equals(fnotif._fname)) {
+				showChanged(((Set)(fnotif._value)).iterator());
+			} else {
+				ModelRenderer._LOG.warn(new Strings(new Object[] 
+					{this, 
+					 ": render(): expected field",
+					 RESULTS_ADDED_FIELDNAME, " or ",
+					 RESULTS_REMOVED_FIELDNAME, " or ",
+					 RESULTS_CHANGED_FIELDNAME, 
+					 " but found ", 
+					 fnotif._fname, " instead."
+					}));
+			}
+		}
+	}
+
+	protected void showAdded(Iterator it) {
+		while (it.hasNext()) {
+			QueryResultHandle h = (QueryResultHandle)it.next();
+			add(h);
+		}
+	}
+
+	protected void showRemoved(Iterator it) {
+		while (it.hasNext()) {
+			QueryResultHandle h = (QueryResultHandle)it.next();
+			remove(h);
+		}
+	}
+
+	protected void showChanged(Iterator it) {
+		while (it.hasNext()) {
+			QueryResultHandle h = (QueryResultHandle)it.next();
+			change(h);
+		}
+	}
+
+	protected final void removeObject(String layer, String name) {
+		for (Iterator i = _renderables.iterator(); i.hasNext(); ) {
+			Renderable renderable = (Renderable)i.next();
+
+			try {
+				renderable.unloadSceneGraphObject(layer, name);	
+			} catch (IOException ex) {
+				AbstractRenderer._LOG.error(new Strings(new Object[]
+					{this, ": renderer error unloading ", layer, 
+					 " ", name, " from ", renderable, ": ", ex
+					} ));
+			}
+		}
+	}
+}

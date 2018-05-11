@@ -1,0 +1,130 @@
+DEBUG [Entity Multicast Thread] (Entity.java:579) - Attempting connection: dcg6/134.207.1.78:4246{{class mil.navy.nrl.cmf.sousa.Test$TestViewInterpreter, interface mil.navy.nrl.cmf.sousa.Test$Incrementor} Content-Type:null}
+DEBUG [Entity Multicast Thread] (Entity.java:560) - Connection established: P2PChannel to server dcg6/134.207.1.78:4246{{class mil.navy.nrl.cmf.sousa.Test$TestViewInterpreter, interface mil.navy.nrl.cmf.sousa.Test$Incrementor} Content-Type:null}
+ INFO [P2PChannelFactory-NIO] (P2PChannel.java:255) - Time writing 3 ms serializing 48 ms 959 bytes
+ INFO [P2PChannelFactory-NIO] (P2PChannel.java:309) - Time reading 1 ms deserializing 51 ms 4 bytes
+DEBUG [Entity Multicast Thread] (Receptor.java:140) - start(): new NormSession 239.192.100.27:4400
+Receptor(): State: BEGIN
+[mil.navy.nrl.cmf.sousa.Test$TestViewInterpreter_Foo_Bar]=1_BAR
+Receptor(): State: END
+ClientControlLogic says: DEBUG [Entity Multicast Thread] (ControlLogic.java:116) - ClientState ready mil.navy.nrl.cmf.sousa.ClientSideFSM@12dacd1 scanning for dcg6/134.207.1.78:4246{{class mil.navy.nrl.cmf.sousa.Test$TestViewInterpreter, interface mil.navy.nrl.cmf.sousa.Test$Incrementor} Content-Type:null}
+DEBUG [Entity Multicast Thread] (ControlLogic.java:117) - Corresponding ServerSideFSM: null
+Receptor(): State: BEGIN
+[mil.navy.nrl.cmf.sousa.Test$TestViewInterpreter_Foo_Bar]=1_BAR
+Receptor(): State: END
+Receptor(): State: BEGIN
+[mil.navy.nrl.cmf.sousa.Test$TestViewInterpreter_Foo_Bar]=1_BAR
+Receptor(): State: END
+Receptor(): State: BEGIN
+[mil.navy.nrl.cmf.sousa.Test$TestViewInterpreter_Foo_Bar]=1_BAR
+Receptor(): State: END
+ INFO [P2PChannelFactory-NIO] (P2PChannel.java:255) - Time writing 0 ms serializing 12 ms 459 bytes
+ INFO [P2PChannelFactory-NIO] (P2PChannel.java:309) - Time reading 0 ms deserializing 4 ms 4 bytes
+DEBUG [Entity Multicast Thread] (Receptor.java:306) - Looking for SFR with UID 39336be5:1168cb8a447:-8000
+DEBUG [Entity Multicast Thread] (Receptor.java:312) - Found mil.navy.nrl.cmf.sousa.SelectableFutureResult@112f614
+DEBUG [Entity Multicast Thread] (ControlLogic.java:75) - Read 32768
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_LOCAL_SENDER_CLOSED
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_REMOTE_SENDER_NEW
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_REMOTE_SENDER_PURGED
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_RX_OBJECT_INFO
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_RX_OBJECT_UPDATED
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_REMOTE_SENDER_PURGED
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_RX_OBJECT_INFO
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_RX_OBJECT_UPDATED
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_REMOTE_SENDER_PURGED
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_RX_OBJECT_INFO
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_RX_OBJECT_UPDATED
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_REMOTE_SENDER_PURGED
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_RX_OBJECT_INFO
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_RX_OBJECT_UPDATED
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_REMOTE_SENDER_PURGED
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_RX_OBJECT_INFO
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_RX_OBJECT_UPDATED
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_REMOTE_SENDER_PURGED
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_RX_OBJECT_INFO
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_RX_OBJECT_UPDATED
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_REMOTE_SENDER_PURGED
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_RX_OBJECT_INFO
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_RX_OBJECT_UPDATED
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_REMOTE_SENDER_PURGED
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_RX_OBJECT_INFO
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_RX_OBJECT_UPDATED
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_REMOTE_SENDER_PURGED
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_RX_OBJECT_INFO
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_RX_OBJECT_UPDATED
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_REMOTE_SENDER_PURGED
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_RX_OBJECT_INFO
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_RX_OBJECT_UPDATED
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_REMOTE_SENDER_PURGED
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_RX_OBJECT_INFO
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_RX_OBJECT_UPDATED
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_REMOTE_SENDER_PURGED
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_RX_OBJECT_INFO
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_RX_OBJECT_UPDATED
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_REMOTE_SENDER_PURGED
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_RX_OBJECT_INFO
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_RX_OBJECT_UPDATED
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_REMOTE_SENDER_PURGED
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_RX_OBJECT_INFO
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_RX_OBJECT_UPDATED
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_REMOTE_SENDER_PURGED
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_RX_OBJECT_INFO
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_RX_OBJECT_UPDATED
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_REMOTE_SENDER_PURGED
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_RX_OBJECT_INFO
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_RX_OBJECT_UPDATED
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_REMOTE_SENDER_PURGED
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_RX_OBJECT_INFO
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_RX_OBJECT_UPDATED
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_REMOTE_SENDER_PURGED
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_RX_OBJECT_INFO
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_RX_OBJECT_UPDATED
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_REMOTE_SENDER_PURGED
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_RX_OBJECT_INFO
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_RX_OBJECT_UPDATED
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_REMOTE_SENDER_PURGED
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_RX_OBJECT_INFO
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_RX_OBJECT_UPDATED
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_REMOTE_SENDER_PURGED
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_RX_OBJECT_INFO
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_RX_OBJECT_UPDATED
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_REMOTE_SENDER_PURGED
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_RX_OBJECT_INFO
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_RX_OBJECT_UPDATED
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_REMOTE_SENDER_PURGED
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_RX_OBJECT_INFO
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_RX_OBJECT_UPDATED
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_REMOTE_SENDER_PURGED
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_RX_OBJECT_INFO
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_RX_OBJECT_UPDATED
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_REMOTE_SENDER_PURGED
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_RX_OBJECT_INFO
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_RX_OBJECT_UPDATED
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_REMOTE_SENDER_PURGED
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_RX_OBJECT_INFO
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_RX_OBJECT_UPDATED
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_REMOTE_SENDER_PURGED
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_RX_OBJECT_INFO
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_RX_OBJECT_UPDATED
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_REMOTE_SENDER_PURGED
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_RX_OBJECT_INFO
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_RX_OBJECT_UPDATED
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_REMOTE_SENDER_PURGED
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_RX_OBJECT_INFO
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_RX_OBJECT_UPDATED
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_REMOTE_SENDER_PURGED
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_RX_OBJECT_INFO
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_RX_OBJECT_UPDATED
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_REMOTE_SENDER_PURGED
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_RX_OBJECT_INFO
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_RX_OBJECT_UPDATED
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_REMOTE_SENDER_PURGED
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_RX_OBJECT_INFO
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_RX_OBJECT_UPDATED
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_REMOTE_SENDER_PURGED
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_RX_OBJECT_INFO
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_RX_OBJECT_UPDATED
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_REMOTE_SENDER_PURGED
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_RX_OBJECT_INFO
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_RX_OBJECT_UPDATED
+ERROR [P2PChannelFactory-NIO] (P2PChannel.java:329) - Socket closed by remote peer
+ERROR [Entity Multicast Thread] (EntityFSM.java:189) - EntityFSM error: P2PChannel to server dcg6/134.207.1.78:4246{{class mil.navy.nrl.cmf.sousa.Test$TestViewInterpreter, interface mil.navy.nrl.cmf.sousa.Test$Incrementor} Content-Type:null}: java.net.SocketException: Socket closed by remote peer

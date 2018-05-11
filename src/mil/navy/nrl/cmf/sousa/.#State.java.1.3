@@ -1,0 +1,198 @@
+package mil.navy.nrl.cmf.sousa;
+
+import java.io.Serializable;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
+
+/* 
+ * PURPOSE: the authoritative State of an Entity.
+ */
+public final class State implements Serializable {
+
+    //// nested classes
+
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/* 
+     * PURPOSE: a Message which encapsulates an atomic change to the
+     * State.
+     */
+    // DAVID: ChangeMessage must become public in order to make
+    // concrete classes derived from ViewInterpreter.
+    // See ViewInterpreter.interpret().
+    public final static class ChangeMessage implements Serializable {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+		final LinkedList _fcms = new LinkedList(); // FieldChangeMessages
+
+		public ChangeMessage() {}
+
+		public void addFieldChangeMessage(Field.ChangeMessage fcm) {
+			_fcms.addLast(fcm);
+		}
+
+		// PURPOSE: Return an immutable copy of the list of
+		// Field.ChangeMessages.
+		// PRECONDITION: _fcms is not empty
+		// POSTCONDITION: none
+		public List getMessages() {
+			return Collections.unmodifiableList(_fcms);
+		}
+
+		int size() {
+			return _fcms.size();
+		}
+    }
+
+    //// data members
+
+    // A Map from String to Serializable
+    private final TreeMap _fields = new TreeMap();
+
+    //// public methods
+
+    // PURPOSE: add a Field to this Entity's authoritative state
+    // PRECONDITION: The Entity has no Projectors yet
+    // POSTCONDITION: the state has been augmented with a new Field
+    public final void addField(String name, Serializable value) {
+		_fields.put(name, new Field(name, value, this));
+    }
+
+    // PURPOSE: mutate a field in the authoritative state of an Entity
+    // PRECONDITION: The named Field has been added previously.
+    // POSTCONDITION: the state's Field is changed to reflect the new value
+    public final void setField(String name, Serializable value) {
+		// Throws NullPointerException
+		Field f = (Field)_fields.get(name);
+		f.setValue(value);
+    }
+
+	/**
+	   Serializable getField(String)
+
+	   Return the value of a Field in this State.  The Field must
+	   exist.  It is an error to ask for a Field that is not in this
+	   State.
+
+	   <PRE>
+	   PURPOSE: get the value of a field in the authoritative state of
+	   an Entity
+
+	   PRECONDITION: The Field specified has get added previously.
+
+	   POSTCONDITION: the value of the Field is returned.
+	   </PRE>
+
+	   DAVID: Consider changing getField() so that it throws an
+	   Exception if there is no Field.  Consider adding a new method
+	   boolean containsField(String name) which returns true if name
+	   is a Field in this State and false otherwise.  setField() has
+	   the same problem.
+
+	   @methodtype get
+	   @param name the name of the field
+	   @return the value of the field <CODE>name</CODE>
+	*/
+    public final Serializable getField(String name) {
+		// Throws NullPointerException
+		Field f = (Field)_fields.get(name);
+		return f.getValue();
+    }
+
+    // PURPOSE: constructor to make a new authoritative State object
+    // which resides in the Entity
+    // PRECONDITION: Entity e!=null
+    // POSTCONDITION: A State is made, with no Fields, and associated
+    // with the Entity e.
+    public State() {
+    }
+
+    // PURPOSE: attach a listener to a set of Fields
+    // PRECONDITION: The fields in fnames have been previously added
+    // POSTCONDITION: the FieldListener is attached as a listener to
+    // the fields in fnames
+    public final void attachFieldListener(Set fnames, FieldListener fl) {
+		for (Iterator it = fnames.iterator(); it.hasNext();) {
+			String s = (String)it.next();
+			Field f = (Field)_fields.get(s);
+			f.attachFieldListener(fl);
+		}
+    }
+
+    // PURPOSE: detach a listener to a set of Fields
+    // PRECONDITION: The FieldListener was previously attached to the
+    // fields in fnames.
+    // POSTCONDITION: the FieldListener is attached as a listener to
+    // the fields in fnames
+    public final void detachFieldListener(Set fnames, FieldListener fl) {
+		// Doing it this way instead of the idiomatic
+		//   for (Iterator it = fnames.iterator(); it.hasNext(); ) {...}
+		// avoids a ConcurrentModificationException from 
+		// FieldListener.detachFieldNotification()
+		Object[] fieldNames = fnames.toArray();
+		for (int it = 0; it < fieldNames.length; it++) {
+			Field f = (Field)_fields.get((String)fieldNames[it]);
+			f.detachFieldListener(fl);
+		}
+    }
+
+    //// package methods
+
+	/**
+	   Returns a Set of the names of the Fields in the State.
+	   @methodtype get
+	   @return a Set of String
+	 */
+	final Set getFields() {
+		return _fields.keySet();
+	}
+
+    // PURPOSE: build a State.ChangeMessage for changed fields
+    // PRECONDITION: fnames!=null
+    // POSTCONDITION: a State.ChangeMessage is made for the subset of
+    // fields that have changed, or null if none has changed.
+    final State.ChangeMessage makeMessage(Set fnames) {
+		State.ChangeMessage scm = null;
+		for (Iterator it = fnames.iterator(); it.hasNext();) {
+			String s = (String)it.next();
+			Field f = (Field)_fields.get(s);	    
+			Field.ChangeMessage fcm = f.makeMessage();
+			if (scm == null) {
+				scm = new State.ChangeMessage();
+			}
+			scm.addFieldChangeMessage(fcm);
+		}
+		return scm;
+    }
+
+    // PURPOSE: apply a State.ChangeMessage to this State
+    // PRECONDITION: scm!=null, all the Fields referred to in scm are
+    // present in this State
+    // POSTCONDITION: the scm State.ChangeMessage is applied to bring
+    // this State up to date.
+    final void applyMessage(State.ChangeMessage scm) {
+		for (Iterator it = scm._fcms.iterator(); it.hasNext();) {
+			Field.ChangeMessage fcm = (Field.ChangeMessage)it.next();
+			Field f = (Field)_fields.get(fcm._fname);
+			f.applyMessage(fcm);
+		}
+    }
+
+    public void print() {
+		for (Iterator i = _fields.entrySet().iterator(); i.hasNext(); ) {
+			Map.Entry entry = (Map.Entry)i.next();
+			System.out.println("["+entry.getKey() + "]=" + 
+							   ((Field)entry.getValue()).getValue());
+		}
+    }
+}

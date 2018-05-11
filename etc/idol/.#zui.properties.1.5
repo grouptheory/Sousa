@@ -1,0 +1,103 @@
+# General Properties of this Entity
+
+idol.entity.name=ZUI
+idol.entity.contactport=10000
+idol.entity.mcastAddress=234.23.34.20
+idol.entity.mcastBasePort=4400
+idol.entity.initializer=mil.navy.nrl.cmf.sousa.idol.user.ClientInitializer
+
+#idol.initializer.{consol,gui,zui} indicates the presence ("on") or
+#absence ("off") of a {Console,GUI,ZUI}.
+
+idol.initializer.console=on
+
+#
+# When gui is on, you may define idol.user.gui.display, 
+# the number of the display device.  Its default value is 0.
+idol.initializer.gui=on
+
+#
+# When zui is on, you must define idol.user.zui.exec and idol.user.zui.opts
+#
+# idol.user.zui.exe is the full path of the ZUI program.
+#
+# idol.user.zui.opts contains the options for the ZUI program.
+#
+idol.initializer.zui=on
+idol.user.zui.exec=/afs/cmf/project/dc/dev/talmage/sousa/moadb/globe3/globe3
+idol.user.zui.opts=-g1280 -earth
+#idol.user.zui.opts=-gwall -earth
+
+idol.initializer.attributes=mil.navy.nrl.cmf.sousa.spatiotemporal.QueryClientFields
+
+# DAVID: What happens if the factory property is absent?
+idol.mil.navy.nrl.cmf.sousa.spatiotemporal.QueryClientFields.Position.factory=mil.navy.nrl.cmf.sousa.spatiotemporal.Vector3dFactory
+idol.mil.navy.nrl.cmf.sousa.spatiotemporal.QueryClientFields.Position.x=0
+idol.mil.navy.nrl.cmf.sousa.spatiotemporal.QueryClientFields.Position.y=0
+idol.mil.navy.nrl.cmf.sousa.spatiotemporal.QueryClientFields.Position.z=0
+idol.mil.navy.nrl.cmf.sousa.spatiotemporal.QueryClientFields.Width.factory=mil.navy.nrl.cmf.sousa.spatiotemporal.Vector3dFactory
+idol.mil.navy.nrl.cmf.sousa.spatiotemporal.QueryClientFields.Width.x=1
+idol.mil.navy.nrl.cmf.sousa.spatiotemporal.QueryClientFields.Width.y=1
+
+# DAVID: With elevation in Position == 0 and elevation in Width == 1,
+# many queries into the raster databases will fail to return results
+# because the QueryViewInterpreter will set the lower bound elevation
+# of the region of interest to -0.5 (so that Position is in the center
+# of the region) and that puts the elevation less than the minimum
+# elevation, 0, for all of the rasters in our databases.
+#
+# Set the elevation of width to be zero as a work-around.
+# Alternatively, always set the elevation parameter in queries.
+# With the cli, use gotolatlonelev instead of gotolatlon.
+#
+idol.mil.navy.nrl.cmf.sousa.spatiotemporal.QueryClientFields.Width.z=0
+
+idol.mil.navy.nrl.cmf.sousa.spatiotemporal.QueryClientFields.TimeLowerBound.factory=mil.navy.nrl.cmf.sousa.util.CalendarFactory
+# Midnight, January 1, 1900
+#idol.mil.navy.nrl.cmf.sousa.spatiotemporal.QueryClientFields.TimeLowerBound.year=1900
+#idol.mil.navy.nrl.cmf.sousa.spatiotemporal.QueryClientFields.TimeLowerBound.month=1
+#idol.mil.navy.nrl.cmf.sousa.spatiotemporal.QueryClientFields.TimeLowerBound.day=1
+#idol.mil.navy.nrl.cmf.sousa.spatiotemporal.QueryClientFields.TimeLowerBound.hour=0
+#idol.mil.navy.nrl.cmf.sousa.spatiotemporal.QueryClientFields.TimeLowerBound.minute=0
+#idol.mil.navy.nrl.cmf.sousa.spatiotemporal.QueryClientFields.TimeLowerBound.second=0
+
+
+idol.mil.navy.nrl.cmf.sousa.spatiotemporal.QueryClientFields.TimeUpperBound.factory=mil.navy.nrl.cmf.sousa.util.CalendarFactory
+# Midnight, January 1, 2000
+#idol.mil.navy.nrl.cmf.sousa.spatiotemporal.QueryClientFields.TimeUpperBound.year=2000
+#idol.mil.navy.nrl.cmf.sousa.spatiotemporal.QueryClientFields.TimeUpperBound.month=1
+#idol.mil.navy.nrl.cmf.sousa.spatiotemporal.QueryClientFields.TimeUpperBound.day=1
+#idol.mil.navy.nrl.cmf.sousa.spatiotemporal.QueryClientFields.TimeUpperBound.hour=0
+#idol.mil.navy.nrl.cmf.sousa.spatiotemporal.QueryClientFields.TimeUpperBound.minute=0
+#idol.mil.navy.nrl.cmf.sousa.spatiotemporal.QueryClientFields.TimeUpperBound.second=0
+
+# Fields that the client expects in each QueryResultHandle from a spatiotemporal query server.
+idol.mil.navy.nrl.cmf.sousa.spatiotemporal.QueryClientFields.Fields.factory=mil.navy.nrl.cmf.sousa.util.SetFactory
+idol.mil.navy.nrl.cmf.sousa.spatiotemporal.QueryClientFields.Fields.class=java.lang.String
+idol.mil.navy.nrl.cmf.sousa.spatiotemporal.QueryClientFields.Fields.size=11
+idol.mil.navy.nrl.cmf.sousa.spatiotemporal.QueryClientFields.Fields.element.0=mapname
+idol.mil.navy.nrl.cmf.sousa.spatiotemporal.QueryClientFields.Fields.element.1=north
+idol.mil.navy.nrl.cmf.sousa.spatiotemporal.QueryClientFields.Fields.element.2=south
+idol.mil.navy.nrl.cmf.sousa.spatiotemporal.QueryClientFields.Fields.element.3=west
+idol.mil.navy.nrl.cmf.sousa.spatiotemporal.QueryClientFields.Fields.element.4=east
+idol.mil.navy.nrl.cmf.sousa.spatiotemporal.QueryClientFields.Fields.element.5=nrows
+idol.mil.navy.nrl.cmf.sousa.spatiotemporal.QueryClientFields.Fields.element.6=minelev
+idol.mil.navy.nrl.cmf.sousa.spatiotemporal.QueryClientFields.Fields.element.7=maxelev
+idol.mil.navy.nrl.cmf.sousa.spatiotemporal.QueryClientFields.Fields.element.8=pop
+idol.mil.navy.nrl.cmf.sousa.spatiotemporal.QueryClientFields.Fields.element.9=velocity
+idol.mil.navy.nrl.cmf.sousa.spatiotemporal.QueryClientFields.Fields.element.10=type
+
+#
+# Consume the service advertisements provided by this directory
+# service
+#
+idol.directory.address=dcg8.cmf.nrl.navy.mil
+idol.directory.contactport=4400
+
+#
+# initialFields is a comma-separated list of strings.
+# Leading and trailing spaces are significant and not trimmed!
+#
+# Each string names a field of interest at a server.
+#
+#idol.client.initialFields=mapname,north,south,west,east,nrows,minelev,maxelev,pop

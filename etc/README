@@ -1,0 +1,11 @@
+This directory contains the JAAS configuration files use
+to manage the authentication of IDOL service and user agents
+during startup.  Currently configured for Kerberos/GSSAPI,
+they require several system properties to be set as they use
+property expansion:
+
+Both scripts need sun.security.krb5.principal set, i.e.
+-Dsun.security.krb5.principal=user@REALM
+
+For services, the property krb5.keytab is required, and for
+users the property krb5.ccname is required.

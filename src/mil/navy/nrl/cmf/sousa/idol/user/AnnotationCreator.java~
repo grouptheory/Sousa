@@ -1,0 +1,121 @@
+package mil.navy.nrl.cmf.sousa.idol.user;
+
+import java.awt.BorderLayout;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.LinkedList;
+
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JScrollPane;
+
+import mil.navy.nrl.cmf.sousa.spatiotemporal.Vector3d;
+
+/**
+   AnnotationCreator
+*/
+final class AnnotationCreator
+    extends JPanel
+{
+    /**
+       _gui
+    */
+    /*@ non_null */ private final GUI _gui;
+
+    /**
+       Text input area
+     */
+    private final JTextArea _area;
+    /**
+       The client's current location.
+    */
+    private final Vector3d _position = new Vector3d(0.0, 0.0, 0.0);
+
+    // Constructors
+
+    /**
+       AnnotationCreator(GUI)
+       @methodtype ctor
+       @param gui .
+    */
+    AnnotationCreator(/*@ non_null */ GUI gui, String title)
+    {
+	super();
+	this._gui = gui;
+
+	// DAVID: Note magic numbers: 24 rows, 80 columns.
+	// This could be a Property.
+	_area = new JTextArea(24, 80);
+	JButton clear = new JButton("Clear");
+	JButton submit = new JButton("Submit");
+
+	clear.addActionListener(new ActionListener()
+	    {
+		public final void
+		    actionPerformed(ActionEvent event)
+		{
+		    _area.setText(null);
+		}
+	    });
+
+	submit.addActionListener(new ActionListener()
+	    {
+		public final void
+		    actionPerformed(ActionEvent event)
+		{
+		    try {
+			_gui.setAnnotation(_position, _area.getText());
+		    } catch (NullPointerException ex) {
+			// No text in _area.
+
+			// DAVID: What's the right thing
+			// to do?  Send an empty string to the server or
+			// ignore the event?
+		    }
+		}
+	    });
+
+	add(new JScrollPane(_area), BorderLayout.CENTER);
+	add(clear,  BorderLayout.SOUTH);
+	add(submit,  BorderLayout.SOUTH);
+
+    }
+
+    // mil.navy.nrl.cmf.idol.user.AnnotationCreator
+
+    /**
+       update(double, double)
+       @methodtype set
+       @param lat .
+       @param lon .
+    */
+    void update(double lat, double lon)
+    {
+	synchronized (_position) {
+	    _position.x = lat;
+	    _position.y = lon;
+	}
+    }
+
+    /**
+       update(Vector3d)
+       @methodtype set
+       @param position .
+    */
+    void update(/*@ non_null */ Vector3d position)
+    {
+	synchronized (_position) {
+	    _position.set(position);
+	}
+    }
+
+    // ****************************************************************
+
+}; // AnnotationCreator

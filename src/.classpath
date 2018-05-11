@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path=""/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="/afs/cmf/project/dc/dev/talmage/idol/ext/log4j-1.2.4.jar"/>
+	<classpathentry kind="lib" path="/afs/cmf/project/dc/dev/talmage/idol/ext/norm4j.jar"/>
+	<classpathentry kind="lib" path="/afs/cmf/project/dc/dev/talmage/idol/ext/postgis.jar"/>
+	<classpathentry kind="lib" path="/afs/cmf/project/dc/dev/talmage/idol/ext/postgresql.jar"/>
+	<classpathentry kind="lib" path="/afs/cmf/project/dc/dev/talmage/idol/ext/stk.jar"/>
+	<classpathentry kind="lib" path="/afs/cmf/project/dc/dev/talmage/idol/ext/SystemV.jar"/>
+	<classpathentry kind="output" path=""/>
+</classpath>

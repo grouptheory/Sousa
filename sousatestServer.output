@@ -1,0 +1,190 @@
+DEBUG [main] (Entity.java:130) - Adding to Executor
+DEBUG [main] (Executor.java:114) - mil.navy.nrl.cmf.sousa.Executor@1a0c10f:addCommandLogic(): Class=interface mil.navy.nrl.cmf.sousa.Test$Incrementor, Signature=public abstract java.lang.Object mil.navy.nrl.cmf.sousa.Test$Incrementor.increment(java.lang.Number), Method=public abstract java.lang.Object mil.navy.nrl.cmf.sousa.Test$Incrementor.increment(java.lang.Number), Object=mil.navy.nrl.cmf.sousa.Test$IntegerIncrementor@e2eec8
+DEBUG [Entity Multicast Thread] (Entity.java:560) - Connection established: P2PChannel from client
+ INFO [P2PChannelFactory-NIO] (P2PChannel.java:309) - Time reading 3 ms deserializing 84 ms 4 bytes
+DEBUG [Entity Multicast Thread] (ControlLogic.java:174) - admitClient mil.navy.nrl.cmf.sousa.ClientSideFSM$FetchRequest@17943a4 ?
+DEBUG [Entity Multicast Thread] (Projector.java:136) - Projector(): Authoritative state: BEGIN
+[Foo]=1
+DEBUG [Entity Multicast Thread] (Projector.java:138) - Projector(): Authoritative state: END
+DEBUG [Entity Multicast Thread] (Projector.java:176) - Adding to Executor: mil.navy.nrl.cmf.sousa.Test$TestViewInterpreter@93dee9
+ WARN [Entity Multicast Thread] (Entity.java:432) - Entity.createMcastSession(239.192.100.27, 4400)
+ WARN [Entity Multicast Thread] (Projector.java:260) - Projector(): new NormSession 239.192.100.27:4400
+TestViewInterpreter.interpret(): Foo_Bar=1_BAR
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_TX_QUEUE_EMPTY
+DEBUG [Entity Multicast Thread] (ControlLogic.java:91) - ServerState ready mil.navy.nrl.cmf.sousa.ServerSideFSM@18fe7c3 on dcg7.cmf.nrl.navy.mil/134.207.1.79:4247{{} Content-Type:null}
+ INFO [P2PChannelFactory-NIO] (P2PChannel.java:255) - Time writing 1 ms serializing 96 ms 1061 bytes
+ INFO [P2PChannelFactory-NIO] (P2PChannel.java:309) - Time reading 1 ms deserializing 14 ms 4 bytes
+DEBUG [Entity Multicast Thread] (Projector.java:628) - Entity Executing public abstract java.lang.Object mil.navy.nrl.cmf.sousa.Test$Incrementor.increment(java.lang.Number)
+DEBUG [Entity Multicast Thread] (Executor.java:54) - mil.navy.nrl.cmf.sousa.Executor@1a0c10f:execute(public abstract java.lang.Object mil.navy.nrl.cmf.sousa.Test$Incrementor.increment(java.lang.Number), ...) method=public abstract java.lang.Object mil.navy.nrl.cmf.sousa.Test$Incrementor.increment(java.lang.Number)
+DEBUG [Entity Multicast Thread] (Executor.java:62) - mil.navy.nrl.cmf.sousa.Executor@1a0c10f:execute(public abstract java.lang.Object mil.navy.nrl.cmf.sousa.Test$Incrementor.increment(java.lang.Number), ...) returns 32768
+ INFO [P2PChannelFactory-NIO] (P2PChannel.java:255) - Time writing 0 ms serializing 4 ms 305 bytes
+ServerControlLogic: sets field Foo=2
+TestViewInterpreter.interpret(): Foo_Bar=2_BAR
+DEBUG [Entity Multicast Thread] (Projector.java:575) - handle(): writing receptorStateChanges
+ INFO [Entity Multicast Thread] (SelectableNormSession.java:230) - mil.navy.nrl.cmf.sousa.SelectableNormSession@13e8d89: Writing 329 bytes into mil.navy.nrl.cmf.norm4j.NormSession@173831b 1196361820000
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_TX_QUEUE_EMPTY
+ServerControlLogic: sets field Foo=3
+TestViewInterpreter.interpret(): Foo_Bar=3_BAR
+DEBUG [Entity Multicast Thread] (Projector.java:575) - handle(): writing receptorStateChanges
+ INFO [Entity Multicast Thread] (SelectableNormSession.java:230) - mil.navy.nrl.cmf.sousa.SelectableNormSession@13e8d89: Writing 329 bytes into mil.navy.nrl.cmf.norm4j.NormSession@173831b 1196361820993
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_TX_QUEUE_EMPTY
+ServerControlLogic: sets field Foo=4
+TestViewInterpreter.interpret(): Foo_Bar=4_BAR
+DEBUG [Entity Multicast Thread] (Projector.java:575) - handle(): writing receptorStateChanges
+ INFO [Entity Multicast Thread] (SelectableNormSession.java:230) - mil.navy.nrl.cmf.sousa.SelectableNormSession@13e8d89: Writing 329 bytes into mil.navy.nrl.cmf.norm4j.NormSession@173831b 1196361821991
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_TX_QUEUE_EMPTY
+ServerControlLogic: sets field Foo=5
+TestViewInterpreter.interpret(): Foo_Bar=5_BAR
+DEBUG [Entity Multicast Thread] (Projector.java:575) - handle(): writing receptorStateChanges
+ INFO [Entity Multicast Thread] (SelectableNormSession.java:230) - mil.navy.nrl.cmf.sousa.SelectableNormSession@13e8d89: Writing 329 bytes into mil.navy.nrl.cmf.norm4j.NormSession@173831b 1196361822993
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_TX_QUEUE_EMPTY
+ServerControlLogic: sets field Foo=6
+TestViewInterpreter.interpret(): Foo_Bar=6_BAR
+DEBUG [Entity Multicast Thread] (Projector.java:575) - handle(): writing receptorStateChanges
+ INFO [Entity Multicast Thread] (SelectableNormSession.java:230) - mil.navy.nrl.cmf.sousa.SelectableNormSession@13e8d89: Writing 329 bytes into mil.navy.nrl.cmf.norm4j.NormSession@173831b 1196361823995
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_TX_QUEUE_EMPTY
+ServerControlLogic: sets field Foo=7
+TestViewInterpreter.interpret(): Foo_Bar=7_BAR
+DEBUG [Entity Multicast Thread] (Projector.java:575) - handle(): writing receptorStateChanges
+ INFO [Entity Multicast Thread] (SelectableNormSession.java:230) - mil.navy.nrl.cmf.sousa.SelectableNormSession@13e8d89: Writing 329 bytes into mil.navy.nrl.cmf.norm4j.NormSession@173831b 1196361824997
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_TX_QUEUE_EMPTY
+ServerControlLogic: sets field Foo=8
+TestViewInterpreter.interpret(): Foo_Bar=8_BAR
+DEBUG [Entity Multicast Thread] (Projector.java:575) - handle(): writing receptorStateChanges
+ INFO [Entity Multicast Thread] (SelectableNormSession.java:230) - mil.navy.nrl.cmf.sousa.SelectableNormSession@13e8d89: Writing 329 bytes into mil.navy.nrl.cmf.norm4j.NormSession@173831b 1196361825996
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_TX_QUEUE_EMPTY
+ServerControlLogic: sets field Foo=9
+TestViewInterpreter.interpret(): Foo_Bar=9_BAR
+DEBUG [Entity Multicast Thread] (Projector.java:575) - handle(): writing receptorStateChanges
+ INFO [Entity Multicast Thread] (SelectableNormSession.java:230) - mil.navy.nrl.cmf.sousa.SelectableNormSession@13e8d89: Writing 329 bytes into mil.navy.nrl.cmf.norm4j.NormSession@173831b 1196361826997
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_TX_QUEUE_EMPTY
+ServerControlLogic: sets field Foo=10
+TestViewInterpreter.interpret(): Foo_Bar=10_BAR
+DEBUG [Entity Multicast Thread] (Projector.java:575) - handle(): writing receptorStateChanges
+ INFO [Entity Multicast Thread] (SelectableNormSession.java:230) - mil.navy.nrl.cmf.sousa.SelectableNormSession@13e8d89: Writing 330 bytes into mil.navy.nrl.cmf.norm4j.NormSession@173831b 1196361827998
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_TX_QUEUE_EMPTY
+ServerControlLogic: sets field Foo=11
+TestViewInterpreter.interpret(): Foo_Bar=11_BAR
+DEBUG [Entity Multicast Thread] (Projector.java:575) - handle(): writing receptorStateChanges
+ INFO [Entity Multicast Thread] (SelectableNormSession.java:230) - mil.navy.nrl.cmf.sousa.SelectableNormSession@13e8d89: Writing 330 bytes into mil.navy.nrl.cmf.norm4j.NormSession@173831b 1196361828999
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_TX_QUEUE_EMPTY
+ServerControlLogic: sets field Foo=12
+TestViewInterpreter.interpret(): Foo_Bar=12_BAR
+DEBUG [Entity Multicast Thread] (Projector.java:575) - handle(): writing receptorStateChanges
+ INFO [Entity Multicast Thread] (SelectableNormSession.java:230) - mil.navy.nrl.cmf.sousa.SelectableNormSession@13e8d89: Writing 330 bytes into mil.navy.nrl.cmf.norm4j.NormSession@173831b 1196361830000
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_TX_QUEUE_EMPTY
+ServerControlLogic: sets field Foo=13
+TestViewInterpreter.interpret(): Foo_Bar=13_BAR
+DEBUG [Entity Multicast Thread] (Projector.java:575) - handle(): writing receptorStateChanges
+ INFO [Entity Multicast Thread] (SelectableNormSession.java:230) - mil.navy.nrl.cmf.sousa.SelectableNormSession@13e8d89: Writing 330 bytes into mil.navy.nrl.cmf.norm4j.NormSession@173831b 1196361830999
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_TX_QUEUE_EMPTY
+ServerControlLogic: sets field Foo=14
+TestViewInterpreter.interpret(): Foo_Bar=14_BAR
+DEBUG [Entity Multicast Thread] (Projector.java:575) - handle(): writing receptorStateChanges
+ INFO [Entity Multicast Thread] (SelectableNormSession.java:230) - mil.navy.nrl.cmf.sousa.SelectableNormSession@13e8d89: Writing 330 bytes into mil.navy.nrl.cmf.norm4j.NormSession@173831b 1196361832001
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_TX_QUEUE_EMPTY
+ServerControlLogic: sets field Foo=15
+TestViewInterpreter.interpret(): Foo_Bar=15_BAR
+DEBUG [Entity Multicast Thread] (Projector.java:575) - handle(): writing receptorStateChanges
+ INFO [Entity Multicast Thread] (SelectableNormSession.java:230) - mil.navy.nrl.cmf.sousa.SelectableNormSession@13e8d89: Writing 330 bytes into mil.navy.nrl.cmf.norm4j.NormSession@173831b 1196361833001
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_TX_QUEUE_EMPTY
+ServerControlLogic: sets field Foo=16
+TestViewInterpreter.interpret(): Foo_Bar=16_BAR
+DEBUG [Entity Multicast Thread] (Projector.java:575) - handle(): writing receptorStateChanges
+ INFO [Entity Multicast Thread] (SelectableNormSession.java:230) - mil.navy.nrl.cmf.sousa.SelectableNormSession@13e8d89: Writing 330 bytes into mil.navy.nrl.cmf.norm4j.NormSession@173831b 1196361834003
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_TX_QUEUE_EMPTY
+ServerControlLogic: sets field Foo=17
+TestViewInterpreter.interpret(): Foo_Bar=17_BAR
+DEBUG [Entity Multicast Thread] (Projector.java:575) - handle(): writing receptorStateChanges
+ INFO [Entity Multicast Thread] (SelectableNormSession.java:230) - mil.navy.nrl.cmf.sousa.SelectableNormSession@13e8d89: Writing 330 bytes into mil.navy.nrl.cmf.norm4j.NormSession@173831b 1196361835005
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_TX_QUEUE_EMPTY
+ServerControlLogic: sets field Foo=18
+TestViewInterpreter.interpret(): Foo_Bar=18_BAR
+DEBUG [Entity Multicast Thread] (Projector.java:575) - handle(): writing receptorStateChanges
+ INFO [Entity Multicast Thread] (SelectableNormSession.java:230) - mil.navy.nrl.cmf.sousa.SelectableNormSession@13e8d89: Writing 330 bytes into mil.navy.nrl.cmf.norm4j.NormSession@173831b 1196361836006
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_TX_QUEUE_EMPTY
+ServerControlLogic: sets field Foo=19
+TestViewInterpreter.interpret(): Foo_Bar=19_BAR
+DEBUG [Entity Multicast Thread] (Projector.java:575) - handle(): writing receptorStateChanges
+ INFO [Entity Multicast Thread] (SelectableNormSession.java:230) - mil.navy.nrl.cmf.sousa.SelectableNormSession@13e8d89: Writing 330 bytes into mil.navy.nrl.cmf.norm4j.NormSession@173831b 1196361837006
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_TX_QUEUE_EMPTY
+ServerControlLogic: sets field Foo=20
+TestViewInterpreter.interpret(): Foo_Bar=20_BAR
+DEBUG [Entity Multicast Thread] (Projector.java:575) - handle(): writing receptorStateChanges
+ INFO [Entity Multicast Thread] (SelectableNormSession.java:230) - mil.navy.nrl.cmf.sousa.SelectableNormSession@13e8d89: Writing 330 bytes into mil.navy.nrl.cmf.norm4j.NormSession@173831b 1196361838008
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_TX_QUEUE_EMPTY
+ServerControlLogic: sets field Foo=21
+TestViewInterpreter.interpret(): Foo_Bar=21_BAR
+DEBUG [Entity Multicast Thread] (Projector.java:575) - handle(): writing receptorStateChanges
+ INFO [Entity Multicast Thread] (SelectableNormSession.java:230) - mil.navy.nrl.cmf.sousa.SelectableNormSession@13e8d89: Writing 330 bytes into mil.navy.nrl.cmf.norm4j.NormSession@173831b 1196361839007
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_TX_QUEUE_EMPTY
+ServerControlLogic: sets field Foo=22
+TestViewInterpreter.interpret(): Foo_Bar=22_BAR
+DEBUG [Entity Multicast Thread] (Projector.java:575) - handle(): writing receptorStateChanges
+ INFO [Entity Multicast Thread] (SelectableNormSession.java:230) - mil.navy.nrl.cmf.sousa.SelectableNormSession@13e8d89: Writing 330 bytes into mil.navy.nrl.cmf.norm4j.NormSession@173831b 1196361840009
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_TX_QUEUE_EMPTY
+ServerControlLogic: sets field Foo=23
+TestViewInterpreter.interpret(): Foo_Bar=23_BAR
+DEBUG [Entity Multicast Thread] (Projector.java:575) - handle(): writing receptorStateChanges
+ INFO [Entity Multicast Thread] (SelectableNormSession.java:230) - mil.navy.nrl.cmf.sousa.SelectableNormSession@13e8d89: Writing 330 bytes into mil.navy.nrl.cmf.norm4j.NormSession@173831b 1196361841009
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_TX_QUEUE_EMPTY
+ServerControlLogic: sets field Foo=24
+TestViewInterpreter.interpret(): Foo_Bar=24_BAR
+DEBUG [Entity Multicast Thread] (Projector.java:575) - handle(): writing receptorStateChanges
+ INFO [Entity Multicast Thread] (SelectableNormSession.java:230) - mil.navy.nrl.cmf.sousa.SelectableNormSession@13e8d89: Writing 330 bytes into mil.navy.nrl.cmf.norm4j.NormSession@173831b 1196361842012
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_TX_QUEUE_EMPTY
+ServerControlLogic: sets field Foo=25
+TestViewInterpreter.interpret(): Foo_Bar=25_BAR
+DEBUG [Entity Multicast Thread] (Projector.java:575) - handle(): writing receptorStateChanges
+ INFO [Entity Multicast Thread] (SelectableNormSession.java:230) - mil.navy.nrl.cmf.sousa.SelectableNormSession@13e8d89: Writing 330 bytes into mil.navy.nrl.cmf.norm4j.NormSession@173831b 1196361843014
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_TX_QUEUE_EMPTY
+ServerControlLogic: sets field Foo=26
+TestViewInterpreter.interpret(): Foo_Bar=26_BAR
+DEBUG [Entity Multicast Thread] (Projector.java:575) - handle(): writing receptorStateChanges
+ INFO [Entity Multicast Thread] (SelectableNormSession.java:230) - mil.navy.nrl.cmf.sousa.SelectableNormSession@13e8d89: Writing 330 bytes into mil.navy.nrl.cmf.norm4j.NormSession@173831b 1196361844014
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_TX_QUEUE_EMPTY
+ServerControlLogic: sets field Foo=27
+TestViewInterpreter.interpret(): Foo_Bar=27_BAR
+DEBUG [Entity Multicast Thread] (Projector.java:575) - handle(): writing receptorStateChanges
+ INFO [Entity Multicast Thread] (SelectableNormSession.java:230) - mil.navy.nrl.cmf.sousa.SelectableNormSession@13e8d89: Writing 330 bytes into mil.navy.nrl.cmf.norm4j.NormSession@173831b 1196361845015
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_TX_QUEUE_EMPTY
+ServerControlLogic: sets field Foo=28
+TestViewInterpreter.interpret(): Foo_Bar=28_BAR
+DEBUG [Entity Multicast Thread] (Projector.java:575) - handle(): writing receptorStateChanges
+ INFO [Entity Multicast Thread] (SelectableNormSession.java:230) - mil.navy.nrl.cmf.sousa.SelectableNormSession@13e8d89: Writing 330 bytes into mil.navy.nrl.cmf.norm4j.NormSession@173831b 1196361846017
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_TX_QUEUE_EMPTY
+ServerControlLogic: sets field Foo=29
+TestViewInterpreter.interpret(): Foo_Bar=29_BAR
+DEBUG [Entity Multicast Thread] (Projector.java:575) - handle(): writing receptorStateChanges
+ INFO [Entity Multicast Thread] (SelectableNormSession.java:230) - mil.navy.nrl.cmf.sousa.SelectableNormSession@13e8d89: Writing 330 bytes into mil.navy.nrl.cmf.norm4j.NormSession@173831b 1196361847020
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_TX_QUEUE_EMPTY
+ServerControlLogic: sets field Foo=30
+TestViewInterpreter.interpret(): Foo_Bar=30_BAR
+DEBUG [Entity Multicast Thread] (Projector.java:575) - handle(): writing receptorStateChanges
+ INFO [Entity Multicast Thread] (SelectableNormSession.java:230) - mil.navy.nrl.cmf.sousa.SelectableNormSession@13e8d89: Writing 330 bytes into mil.navy.nrl.cmf.norm4j.NormSession@173831b 1196361848017
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_TX_QUEUE_EMPTY
+ServerControlLogic: sets field Foo=31
+TestViewInterpreter.interpret(): Foo_Bar=31_BAR
+DEBUG [Entity Multicast Thread] (Projector.java:575) - handle(): writing receptorStateChanges
+ INFO [Entity Multicast Thread] (SelectableNormSession.java:230) - mil.navy.nrl.cmf.sousa.SelectableNormSession@13e8d89: Writing 330 bytes into mil.navy.nrl.cmf.norm4j.NormSession@173831b 1196361849018
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_TX_QUEUE_EMPTY
+ServerControlLogic: sets field Foo=32
+TestViewInterpreter.interpret(): Foo_Bar=32_BAR
+DEBUG [Entity Multicast Thread] (Projector.java:575) - handle(): writing receptorStateChanges
+ INFO [Entity Multicast Thread] (SelectableNormSession.java:230) - mil.navy.nrl.cmf.sousa.SelectableNormSession@13e8d89: Writing 330 bytes into mil.navy.nrl.cmf.norm4j.NormSession@173831b 1196361850018
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_TX_QUEUE_EMPTY
+ServerControlLogic: sets field Foo=33
+TestViewInterpreter.interpret(): Foo_Bar=33_BAR
+DEBUG [Entity Multicast Thread] (Projector.java:575) - handle(): writing receptorStateChanges
+ INFO [Entity Multicast Thread] (SelectableNormSession.java:230) - mil.navy.nrl.cmf.sousa.SelectableNormSession@13e8d89: Writing 330 bytes into mil.navy.nrl.cmf.norm4j.NormSession@173831b 1196361851018
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_TX_QUEUE_EMPTY
+ServerControlLogic: sets field Foo=34
+TestViewInterpreter.interpret(): Foo_Bar=34_BAR
+DEBUG [Entity Multicast Thread] (Projector.java:575) - handle(): writing receptorStateChanges
+ INFO [Entity Multicast Thread] (SelectableNormSession.java:230) - mil.navy.nrl.cmf.sousa.SelectableNormSession@13e8d89: Writing 330 bytes into mil.navy.nrl.cmf.norm4j.NormSession@173831b 1196361852017
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_TX_QUEUE_EMPTY
+ServerControlLogic: sets field Foo=35
+TestViewInterpreter.interpret(): Foo_Bar=35_BAR
+DEBUG [Entity Multicast Thread] (Projector.java:575) - handle(): writing receptorStateChanges
+ INFO [Entity Multicast Thread] (SelectableNormSession.java:230) - mil.navy.nrl.cmf.sousa.SelectableNormSession@13e8d89: Writing 330 bytes into mil.navy.nrl.cmf.norm4j.NormSession@173831b 1196361853019
+DEBUG [Entity-NORM] (RunnableNormInstance.java:172) - NormEvent.NORM_TX_QUEUE_EMPTY

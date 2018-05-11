@@ -1,0 +1,152 @@
+SOUSA Installation
+==================
+
+Dependencies
+------------
+
+Java Development Kit 1.4+ (http://java.sun.com/)
+
+Apache Ant (http://ant.apache.org/)
+
+Apache Log4j (http://logging.apache.org/)
+
+JDBC database (e.g. PostgreSQL (http://www.postgresql.org/))
+	PostGIS/spatial extension required for raster/city/model services
+	(http://postgis.refractions.net/)
+
+NORM (http://pf.itd.nrl.navy.mil/norm/)
+
+norm4j (???)
+
+sysV4j (http://www.cmf.nrl.navy.mil/ccs/project/public/DC/web/projects/sysV4j/)
+
+stk4j (optional, http://www.cmf.nrl.navy.mil/ccs/project/public/DC/web/projects/stk4j/))
+
+Short instructions
+------------------
+
+1) Unpack sousa distribution into a suitable runtime directory.
+
+1a) Obtain above dependencies and install in runtime sousa/ext directory:
+	log4j.jar
+	postgresql.jar
+	postgis.jar
+	norm4j.jar
+	SystemV.jar
+	stk.jar
+
+2) Run ant, will build the software and process *.in scripts and
+configuration files to encode the runtime directory name.
+
+3) Change to sousa/bin/cmf subdirectory, run make-links.
+
+4) Start the root directory service with sousa/bin/cmf/rootdirectory.
+
+5) Ensure the idol.directory.address property points to the hostname of the
+root directory (from step 4) in all other properties files in sousa/etc/idol.
+
+6) Prepare database backends for services:
+	raster - requires a PostGIS-enabled database, use sousa/etc/raster.sql
+		to build the required table and then populate it with your
+		raster dataset file names.
+	model - requires a PostGIS-enabled database, use sousa/etc/bldg.sql
+		to build the required table and then populate it with your
+		3D model file names.
+	city - requires a PostGIS-enabled database, obtain data from
+		http://geonames.usgs.gov/domestic/index.html and use the
+		scripts in sousa/etc/idol/gnis to populate the database.
+	satellite - requires stk4j, see that package for complete install
+		instructions.
+
+7) Run sousa/bin/cmf/[raster, model, city, satellite] on other machines:
+	raster - Imagery service, requires a JDBC database configured in
+		sousa/etc/idol/raster.properties
+	model - 3D model service, requires a JDBC database configured in
+		sousa/etc/idol/model.properties
+	city - City name service, requires a JDBC database configured in
+		sousa/etc/idol/city.properties
+	satellite - Satellite position service, requires the stk4j package and
+		a JDBC database configured in sousa/etc/idol/satellite.properties
+
+8) Optional: build osgidolviewer, the Open Scene Graph IDOL browser:
+	cd src/mil/navy/nrl/cmf/sousa/idol/VrGeospatialBrowser
+
+	Choose a Makefile (Makefile.linux, Makefile.sgi) and edit
+	CC,LINKFLAGS, CFLAGS as appropriate for your environment.
+	LINKFLAGS must include the directory that contains the OSG libraries.
+	CFLAGS must  include the directory that contains the OSG header files.
+
+	If you want to use this browser as your ZUI (Zoomable User Interface),
+	then edit etc/idol/zui.properties, setting the idol.user.zui.exec
+	property to the full path to osgidolviewer.
+
+
+8) Run sousa/bin/cmf/[cli, gui, zui] for a user interface into the system:
+	cli - Command-line interface
+	gui - Graphical user interface
+	zui - Zoomable user interface
+
+
+Directory Structure
+-------------------
+
+sousa
+	build.xml
+	bin/
+		cmf/
+	classes/
+		*
+	etc/
+		idol/
+	ext/
+	lib/
+		service/
+		user/
+	src/
+		*
+
+sousa/build.xml
+	Main buildfile for the ANT system, compiles the software from the src
+	directory into the classes directory, and subsequently prepares the jar
+	files within the lib directory.  Also preprocesses several scripts and
+	configuration files, in particular encoding the application's
+	deployment path at various locations in these files.
+
+sousa/bin/
+	Contains the generic startup scripts for launching sousa service and
+	user agents.  The top-level build.xml script will process the *.in
+	versions of the scripts, placing the application path into the
+	appropriate variables in the final scripts.  These scripts both have
+	command-line options related to the authentication setup as well as the
+	location of the Java runtime.
+
+
+sousa/bin/cmf/
+	Contains additional service & user "wrapper" scripts that setup the
+	environment suitable for use within the NRL CCS network.  On UNIX
+	systems, or any system capable of symlinks, various links to the
+	service and user wrappers identify the specific configuration file
+	withing the etc/idol subdirectory to pass to the main engine.
+
+sousa/classes/
+sousa/src/
+	Software binary and source trees.
+
+sousa/etc/
+	Contains the JAAS configuration files for setting up authorization
+	within the system.  As deployed SOUSA is configured for Kerberos
+	authentication using the GSSAPI functionality in the Java platform.
+	Alter these files to use a different authentication scheme.
+
+sousa/etc/idol/
+	Contains the service and user-specific configurations for the
+	components in SOUSA.  Scripts in sousa/bin/cmf specify which of these
+	files to include in the startup of the system.
+
+sousa/ext/
+	External dependency libraries (e.g. log4j, stk, etc...)
+
+sousa/lib/
+sousa/lib/service
+sousa/lib/user
+	System libraries, built via ANT

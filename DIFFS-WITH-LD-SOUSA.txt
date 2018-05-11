@@ -1,0 +1,23 @@
+Files sousa/src/log4j.properties and sousa-ld/src/log4j.properties differ
+Y Files sousa/src/mil/navy/nrl/cmf/sousa/idol/service/raster/RasterQueryable.java and sousa-ld/src/mil/navy/nrl/cmf/sousa/idol/service/raster/RasterQueryable.java differ
+Y Files sousa/src/mil/navy/nrl/cmf/sousa/idol/service/raster/RasterServerInitializer.java and sousa-ld/src/mil/navy/nrl/cmf/sousa/idol/service/raster/RasterServerInitializer.java differ
+N Files sousa/src/mil/navy/nrl/cmf/sousa/idol/user/AdminPanel.java and sousa-ld/src/mil/navy/nrl/cmf/sousa/idol/user/AdminPanel.java differ
+N Files sousa/src/mil/navy/nrl/cmf/sousa/idol/user/AnnotationCreator.java and sousa-ld/src/mil/navy/nrl/cmf/sousa/idol/user/AnnotationCreator.java differ
+Y Files sousa/src/mil/navy/nrl/cmf/sousa/idol/user/AnnotationManager.java and sousa-ld/src/mil/navy/nrl/cmf/sousa/idol/user/AnnotationManager.java differ
+Y Files sousa/src/mil/navy/nrl/cmf/sousa/idol/user/AnnotationViewer.java and sousa-ld/src/mil/navy/nrl/cmf/sousa/idol/user/AnnotationViewer.java differ
+N Files sousa/src/mil/navy/nrl/cmf/sousa/idol/user/ClientInitializer.java and sousa-ld/src/mil/navy/nrl/cmf/sousa/idol/user/ClientInitializer.java differ
+N Files sousa/src/mil/navy/nrl/cmf/sousa/idol/user/CLIRenderable.java and sousa-ld/src/mil/navy/nrl/cmf/sousa/idol/user/CLIRenderable.java differ
+N Files sousa/src/mil/navy/nrl/cmf/sousa/idol/user/ContentPanel.java and sousa-ld/src/mil/navy/nrl/cmf/sousa/idol/user/ContentPanel.java differ
+N Files sousa/src/mil/navy/nrl/cmf/sousa/idol/user/GUI.java and sousa-ld/src/mil/navy/nrl/cmf/sousa/idol/user/GUI.java differ
+N Files sousa/src/mil/navy/nrl/cmf/sousa/idol/user/SetPositionAndTimeCommand.java and sousa-ld/src/mil/navy/nrl/cmf/sousa/idol/user/SetPositionAndTimeCommand.java differ
+N Files sousa/src/mil/navy/nrl/cmf/sousa/idol/user/SetPositionCommand.java and sousa-ld/src/mil/navy/nrl/cmf/sousa/idol/user/SetPositionCommand.java differ
+N Files sousa/src/mil/navy/nrl/cmf/sousa/idol/user/SetPosition.java and sousa-ld/src/mil/navy/nrl/cmf/sousa/idol/user/SetPosition.java differ
+Y Files sousa/src/mil/navy/nrl/cmf/sousa/idol/user/SpatialChooser.java and sousa-ld/src/mil/navy/nrl/cmf/sousa/idol/user/SpatialChooser.java differ
+Y Files sousa/src/mil/navy/nrl/cmf/sousa/idol/user/ZUI.java and sousa-ld/src/mil/navy/nrl/cmf/sousa/idol/user/ZUI.java differ
+
+N Files sousa/src/mil/navy/nrl/cmf/sousa/Projector.java and sousa-ld/src/mil/navy/nrl/cmf/sousa/Projector.java differ
+N Files sousa/src/mil/navy/nrl/cmf/sousa/Receptor.java and sousa-ld/src/mil/navy/nrl/cmf/sousa/Receptor.java differ
+N Files sousa/src/mil/navy/nrl/cmf/sousa/Renderable.java and sousa-ld/src/mil/navy/nrl/cmf/sousa/Renderable.java differ
+N Files sousa/src/mil/navy/nrl/cmf/sousa/RunnableNormInstance.java and sousa-ld/src/mil/navy/nrl/cmf/sousa/RunnableNormInstance.java differ
+N Files sousa/src/mil/navy/nrl/cmf/sousa/SelectableNormSession.java and sousa-ld/src/mil/navy/nrl/cmf/sousa/SelectableNormSession.java differ
+N Files sousa/src/mil/navy/nrl/cmf/sousa/Test.java and sousa-ld/src/mil/navy/nrl/cmf/sousa/Test.java differ

@@ -1,0 +1,128 @@
+package mil.navy.nrl.cmf.sousa;
+
+import java.util.HashMap;
+import mil.navy.nrl.cmf.sousa.util.Strings;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
+
+/* 
+ * PURPOSE: Specification the logic of an Entity
+ */
+
+// DAVID: Can we write a universal handle() for ControlLogic?  If not,
+// make ControlLogic an abstract class.
+public class ControlLogic implements Selectable.Handler {
+	private static final Logger _LOG = 
+		Logger.getLogger(ControlLogic.class);
+
+    private Entity _entity;
+    private boolean _running = true;
+
+	// Facilitates the reverse fetch
+	// ServerContact->ServerSideFSM
+	private final HashMap _serverContactToServerSideFSM = new HashMap();
+
+    public ControlLogic() {
+    }
+
+    // PURPOSE: Introduce the ControlLogic to its enclosing Entity.
+    // PRECONDITION: none
+    // POSTCONDITION: _entity is a (possibly null) reference to an Entity.
+    void setEntity(Entity e) {
+		_entity = e;
+    }
+
+    // PURPOSE: Expose the enclosing Entity to other ControlLogics
+    // PRECONDITION: none
+    // POSTCONDITION: none
+    protected Entity getEntity() {
+		return _entity;
+
+    }
+
+    //// Selectable.Handler
+
+    // What kinds of Selectables will ControlLogic want to read?
+    //
+    // SelectableFutureResult.  That's about it, I think.
+    //
+    // TODO: universal handle()
+    public void handle(Selectable sel, SignalType st) {
+		if (SignalType.READ == st) {
+			Object obj = sel.read();
+			_LOG.debug(new Strings(new Object[] {"Read ", obj}));
+		} else if (SignalType.ERROR == st) {
+			_LOG.error(new Strings(new Object[] {
+				sel, " threw exception ", sel.getError()}));
+		} else if (SignalType.WRITE == st) {
+			_LOG.error(new Strings(new Object[] {
+				sel, " is writable. WHY AM I INTERESTED IN THIS?"}));
+		}
+    }
+
+    // PURPOSE: Inform the Entity that it has a new client.  
+    public void projectorReadyIndication(ServerSideFSM fsm) {
+		_LOG.debug(new Strings(new Object[] {"ServerState ready ", fsm}));
+		_serverContactToServerSideFSM.put(fsm.getClientContact(), fsm);
+    }
+
+    // PURPOSE: Inform the Entity that it has one fewer clients.
+    public void projectorNotReadyIndication(ServerSideFSM fsm) {
+		_LOG.debug(new Strings(new Object[] {"ServerState not ready ", fsm}));
+		_serverContactToServerSideFSM.remove(fsm.getClientContact());
+    }
+
+    // PURPOSE: Inform the Entity it has a connection to server.
+	// Introduce the Receptor to its Projector dual, if there is one.
+    public void receptorReadyIndication(ClientSideFSM fsm) {
+		ServerSideFSM serverFSM =
+			(ServerSideFSM)_serverContactToServerSideFSM.get(fsm.getServerContact());
+		Receptor r = fsm.getReceptor();
+
+		_LOG.debug(new Strings(new Object[] {"ClientState ready ", fsm}));
+		_LOG.debug(new Strings(new Object[] {
+			"Corresponding ServerSideFSM: ", serverFSM}));
+
+		if (null != serverFSM) {
+			serverFSM.getProjector().setReceptor(r);
+		}
+
+		// DAVID: This might be temporary.  It gives the ControlLogic
+		// a chance to deal with the initial values in the Receptor's
+		// State.  We don't have to do it this way.  We can make
+		// ClientSideFSM.getReceptor() public instead and let the
+		// ControlLogic developer deal with it.
+		receptorStateChangeIndication(r);
+    }
+
+    // PURPOSE: Inform Entity connection to server disconnected.
+	//
+	// DAVID: Nothing calls receptorNotReadyIndication()
+    public void receptorNotReadyIndication(ClientSideFSM fsm) {
+		_LOG.fatal(new Strings(new Object[] {
+			"ClientState not ready ", fsm,
+			" At last you call me?!  REMOVE COMMENT FROM SOURCE CODE"}));
+    }
+
+    public boolean admitClient(ClientSideFSM.FetchRequest msg) {
+		_LOG.debug(new Strings(new Object[] {"admitClient ", msg, " ?"}));
+		return true;
+    }
+
+	/**
+	   Inform the corresponding Projector of the changed fields and
+	   their values.
+	*/
+    public void receptorStateChangeIndication(Receptor r) {
+		// DAVID: Replace this with something useful
+		if (_LOG.isEnabledFor(Level.DEBUG)) r.print();
+    }
+
+    protected final void stopRunning() {
+	_running = false;
+    }
+
+    protected final boolean isRunning() {
+	return _running;
+    }
+}

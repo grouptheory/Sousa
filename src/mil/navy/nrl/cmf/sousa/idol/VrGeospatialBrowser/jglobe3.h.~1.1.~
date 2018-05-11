@@ -1,0 +1,21 @@
+#ifndef _Included_jglobe3
+#define _Included_jglobe3
+
+#undef jglobe3_NETPORT
+#define jglobe3_NETPORT 12345L
+#undef jglobe3_EXT2DBASEK
+#define jglobe3_EXT2DBASEK 74565LL
+#undef jglobe3_DBASE2EXTK
+#define jglobe3_DBASE2EXTK 274960LL
+#undef jglobe3_SHMK
+#define jglobe3_SHMK 284280LL
+#undef jglobe3_RSEMK
+#define jglobe3_RSEMK 424080LL
+#undef jglobe3_WSEMK
+#define jglobe3_WSEMK 624485LL
+#undef jglobe3_EXT2COMPUTEK
+#define jglobe3_EXT2COMPUTEK 354185LL
+#undef jglobe3_COMPUTE2EXTK
+#define jglobe3_COMPUTE2EXTK 554580LL
+
+#endif

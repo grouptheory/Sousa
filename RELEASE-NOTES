@@ -1,0 +1,55 @@
+Release 1.4.2:
+
+First release that uses ossimPlanet as the Zoomable User Interface
+(ZUI).  This version no longer communicates with the obsolete
+Performer-based ZUI or the interim OpenSceneGraph ZUI.
+
+
+Release 1.4.1:
+
+Fixes a bug that prevented outbound connections.
+
+Includes mil.navy.nrl.cmf.sousa.idol.user.ShutdownCommand.java, which
+was omitted from version 1.4 but necessary to compile package
+mil.navy.nrl.cmf.sousa.idol.user.
+
+Release 1.4:
+
+As of Release 1.4, the package mil.navy.nrl.cmf.sousa.idol.user is
+incompatible with the original SGI Performer-based viewer.  This isn't
+a big deal for most SOUSA users because most don't have that viewer.
+It does, however, reveal a big flaw in the osgidolviewer program: it
+is impossible to control the viewer's location with precision.  Look
+for a remedy in Release 1.5.
+
+
+GUI changes:
+	Annotation viewer and creator panels have been merged into one panel.
+	Temporal chooser permits setting the upper and lower bounds of the 
+	temporal search.
+
+In the IDOL browser,
+mil.navy.nrl.cmf.sousa.idol.user.Client_Initializer$Client_ControlLogic
+is the authority for the state of the Entity, including the current
+time and location.  The GUI and the ZUI change the Entity's state and
+are informed of changes in the Entity's state by a CommandQueue, a
+kind of a router.  CommandQueue directs RoutableCommands to any
+LocalCommandObject (i.e. Client_ControlLogic, GUI, ZUI) that isn't the
+source of the RoutableCommand and RemoteCommands a singleton
+RemoteCommandObject (Client_ControlLogic) for delivery to one of the
+Entity's Receptors.
+
+
+Release 1.3:
+Service Entities can supply Renderer "applets" along with Receptors.
+Client Entities can ask for a Renderer by supplying an RFC2045 MIME
+Content-Type string in the QoS of the FetchRequest.  Client Entities
+can supply their own Renderer "plugin" instead of using the (possibly
+null) one supplied by the service.
+
+IDOL service Entities advertise Content-Type.
+
+The IDOL browser has been refactored considerably.
+
+The HUD of the VRGeospatialBrowser is less obtrusive than it was in
+Release 1.2.

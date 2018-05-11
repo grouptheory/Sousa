@@ -1,0 +1,17 @@
+package mil.navy.nrl.cmf.sousa.idol.user;
+import mil.navy.nrl.cmf.sousa.spatiotemporal.Vector3d;
+
+public class SetPositionCommand extends AbstractLocalCommand {
+	private final Vector3d _position;
+	private final Vector3d _width;
+
+    public SetPositionCommand(Vector3d position, Vector3d width)
+	{
+		_position = new Vector3d(position);
+		_width = new Vector3d(width);
+	}
+
+	public final void execute(LocalCommandObject c) {
+		c.setPosition(_position, _width);
+	}
+}

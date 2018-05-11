@@ -1,0 +1,8 @@
+package mil.navy.nrl.cmf.sousa.idol.user;
+
+new AbstractLocalCommand()
+{
+	public final void execute(LocalCommandObject c) {
+		c.shutdown();
+	}
+}

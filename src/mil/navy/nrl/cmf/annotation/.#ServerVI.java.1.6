@@ -1,0 +1,72 @@
+package mil.navy.nrl.cmf.annotation;
+
+import mil.navy.nrl.cmf.sousa.*;
+import mil.navy.nrl.cmf.sousa.spatiotemporal.*;
+import java.util.*;
+import java.io.Serializable;
+import mil.navy.nrl.cmf.sousa.util.Strings;
+
+public class ServerVI extends QueryViewInterpreter implements ServerSI {
+
+    /**
+       An Insertable. ServerVI input from authoritative State.
+    */
+    public static final String INSERTABLE_FIELDNAME = "Insertable";
+
+    public ServerVI(State s) {
+	super(s);
+	System.out.println("ANNOT: Made ServerVI");
+
+	HashSet fields = new HashSet();
+
+	// These are the Fields of s that interest us.
+	fields.add(ServerVI.INSERTABLE_FIELDNAME);
+
+	// Tell s to notify us whenver one of the Fields changes.
+	s.attachFieldListener(fields, this);
+    }
+
+    /** _insertable performs the spatiotemporal annotation insert. */
+    private AnnotationInsertable _insertable = null;
+    
+    public Object annotate(String note, 
+			   Vector3d position,
+			   Calendar lower, Calendar upper) {
+	System.out.println("ServerVI.annotate called by client");
+	_insertable.insert(note, position, lower, upper);
+	return null;
+    }
+
+    /**
+       Performs a spatiotemporal query using the authoritative State's
+       {@link Queryable} {@link QueryFields#QUERYABLE_FIELDNAME}.
+       Inputs to the query come from <CODE>parameters</CODE>.
+
+       @param fieldChanges the changed fields in the Entity's authoritative State
+       @param parameters inputs to <CODE>query</CODE>
+    */
+    protected State.ChangeMessage interpret(List fieldChanges,
+					    State parameters)
+    {
+	// Watch for changes in the INSERTABLE_FIELDNAME field.
+	// If it changes, update _insertable.
+	Field.ChangeMessage fcm = null;
+	if (null != fieldChanges) {
+	    for (Iterator it = fieldChanges.iterator(); it.hasNext(); ) {
+		fcm = (Field.ChangeMessage)it.next();
+
+		if (fcm._fname.equals(ServerVI.INSERTABLE_FIELDNAME)) {
+		    // Server offers a different StateFactory.
+		    _insertable = (AnnotationInsertable)fcm._value;
+			System.out.println("ANNOT: ServerVI _insertable initialized to "+_insertable);
+		    break;
+		} 
+	    }
+	}
+	State.ChangeMessage answer = super.interpret(fieldChanges, parameters);
+	return answer;
+    }
+
+
+};
+

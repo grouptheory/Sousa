@@ -1,0 +1,31 @@
+package mil.navy.nrl.cmf.policy;
+
+import java.io.Serializable;
+
+public class Identity implements Serializable {
+	private final String _user;
+	private final String _location;
+
+	// Required by the Skaringa XML serialization framework.
+	private Identity() {
+		_user = null;
+		_location = null;
+	}
+
+	public Identity(String user, String location) {
+		_user = user;
+		_location = location;
+	}
+
+	public String user() {
+		return _user;
+	}
+
+	public String location() {
+		return _location;
+	}
+
+	public String toString() {
+		return _user + "@" + _location;
+	}
+}

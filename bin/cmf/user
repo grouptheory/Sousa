@@ -1,0 +1,21 @@
+#!/bin/sh
+
+# Installation prefix
+PREFIX=/afs/cmf/project/dc/dev/talmage/sousa
+
+# Java Runtime Environment
+[ -z "$JAVA_HOME" ] && JAVA_HOME=/afs/cmf/project/java/usr/java
+
+# Kerberos bootstrap settings
+KRB5REALM=CMF.NRL.NAVY.MIL
+KRB5KDC=guardian.cmf.nrl.navy.mil
+
+# User configuration file
+IDOLCONF=${IDOLCONF:-$PREFIX/etc/idol/`basename $0`.properties}
+
+env LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/afs/cmf/projet/dc/moadb/lib \
+	PFLD_LIBRARY_PATH=/afs/cmf/project/dc/moadb/lib \
+	LD_LIBRARY64_PATH=$LD_LIBRARY64_PATH:/afs/cmf/project/dc/moadb/lib \
+	PFLD_LIBRARY64_PATH=/afs/cmf/project/dc/moadb/lib \
+	PATH=/afs/cmf/project/dc/moadb/bin:$PATH \
+	$PREFIX/bin/user -J $JAVA_HOME -r $KRB5REALM -d $KRB5KDC -c $IDOLCONF

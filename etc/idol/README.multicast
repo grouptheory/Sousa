@@ -1,0 +1,15 @@
+Addresses reserved for various Entities
+
+						Multicast				Contact
+Entity			Address			BasePort	Address		Port
+------			------------	--------	-------		----
+cli				239.192.100.20	4400		localhost	10000
+gui				239.192.100.20	4400		localhost	10000
+zui				239.192.100.20	4400		localhost	10000
+rootdirectory	239.192.100.21	4400		localhost	4400
+directory		239.192.100.22	4400		localhost	4400
+raster			239.192.100.23	4400		localhost	4242
+model			239.192.100.24	4400		localhost	4243
+city			239.192.100.25	4400		localhost	4244
+satellite		239.192.100.26	4400		localhost	4245
+annotation		239.192.100.27	4400		localhost	4246

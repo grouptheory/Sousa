@@ -1,0 +1,61 @@
+SOUSA=/afs/cmf/project/dc/dev/${USER}/sousa
+SOUSA_SOURCE=${SOUSA}/src/mil/navy/nrl/cmf/sousa
+EXT_DIR=${SOUSA}/ext
+
+CLASSPATH=./classes
+
+SERVERHOST=paul.cmf.nrl.navy.mil
+
+TEST_CLASS=mil.navy.nrl.cmf.sousa.Test
+LD_LIBRARY_PATH=/afs/cmf/project/dc/dev/${USER}/idol/ext/@sys
+JARS=${EXT_DIR}/log4j-1.2.4.jar:${EXT_DIR}/norm4j.jar:${EXT_DIR}
+
+#SERVERHOST=localhost
+
+# SERVER_SOURCES=idol/service/*.java \
+# 	idol/service/directory/*.java \
+# 	idol/service/raster/*.java \
+# 	idol/service/city/*.java \
+# 	idol/service/model/*.java
+
+SERVER_SOURCES=${SOUSA_SOURCE}/idol/service/*.java \
+	${SOUSA_SOURCE}/idol/service/directory/*.java \
+	${SOUSA_SOURCE}/idol/service/raster/RasterQueryable.java \
+	${SOUSA_SOURCE}/idol/service/raster/RasterServerInitializer.java
+
+USER_SOURCES=${SOUSA_SOURCE}/idol/user/Main.java \
+	${SOUSA_SOURCE}/idol/user/DirectoryClientInitializer.java
+
+
+CORE_SOURCES=${SOUSA_SOURCE}/util/*.java \
+	${SOUSA_SOURCE}/*.java \
+	${SOUSA_SOURCE}/spatiotemporal/*.java \
+	${SOUSA_SOURCE}/directory/*.java \
+	${SOUSA_SOURCE}/idol/*.java \
+	${SOUSA_SOURCE}/idol/util/*.java
+
+
+SOURCES=${CORE_SOURCES} ${USER_SOURCES} ${SERVER_SOURCES}
+
+all:
+	javac -extdirs ${EXT_DIR} -d ./classes -classpath ${CLASSPATH} ${SOURCES}
+
+clean:
+	rm -rf ${SOUSA}/classes
+	mkdir  ${SOUSA}/classes
+	ln -s ${SOUSA}/src/log4j.properties ${SOUSA}/classes
+
+client:
+	echo "Connecting to server on ${SERVERHOST}"
+	env LD_LIBRARY_PATH=${LD_LIBRARY_PATH} \
+	java -cp ${JARS}:${CLASSPATH} ${TEST_CLASS} c 9100 ${SERVERHOST} 9000
+
+server:
+	env LD_LIBRARY_PATH=${LD_LIBRARY_PATH} \
+	java -cp ${JARS}:${CLASSPATH} ${TEST_CLASS} s 9000 234.23.34.21 4444
+
+DIRECTORY_SERVER_CLASS=mil.navy.nrl.cmf.sousa.idol.service.Main
+DIRECTORY_SERVER_ARGS=;;;
+directoryserver:
+	env LD_LIBRARY_PATH=${LD_LIBRARY_PATH} \
+	java -cp ${JARS}:${CLASSPATH} ${DIRECTORY_SERVER_CLASS} s 9000 234.23.34.21 4444

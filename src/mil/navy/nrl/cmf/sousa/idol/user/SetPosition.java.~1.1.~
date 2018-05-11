@@ -1,0 +1,7 @@
+package mil.navy.nrl.cmf.sousa.idol.user;
+
+import mil.navy.nrl.cmf.sousa.spatiotemporal.Vector3d;
+
+public interface SetPosition {
+	public void setPosition(Vector3d position, Vector3d width);
+}

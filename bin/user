@@ -1,0 +1,175 @@
+#!/bin/sh
+
+CMDNAME="`basename $0`"
+
+APP_HOME="/afs/cmf.nrl.navy.mil/project/dc/dev/talmage/sousa"
+VERSION="1.0"
+
+help="\
+$CMDNAME is a utility to start the IDOL user agent.
+
+Usage:
+  $CMDNAME [-J JAVA_HOME] [-p KRB5PRINCIPAL] [-r KRB5REALM] [-d KRB5KDC] [-k KRB5CCNAME] [-c CONF]
+
+Arguments:
+  --help            show this help, then exit.
+  --version         output version information, then exit.
+  -J JAVA_HOME      Java Runtime Environment installation directory (default: ${JAVA_HOME:-\$JAVA_HOME (not set)}).
+  -p KRB5PRINCIPAL  the user principal name (default: ${USER:-\$USER (not set)}).
+  -r KRB5REALM      the user's Kerberos realm.
+  -d KRB5KDC        the realm's KDC.
+  -k KRB5CCNAME     the user's credentials cache (default: ${KRB5CCNAME:-\$KRB5CCNAME (not set)}).
+  -c CONF           the user's configuration file (default: ~/.idol.properties).
+
+Report bugs to <dc-dev@cmf.nrl.navy.mil>."
+
+advice="\
+Try \"$CMDNAME --help\" for more information."
+
+KRB5PRINCIPAL="$USER"
+KRB5REALM=
+KRB5KDC=
+CONF=
+
+while [ "$#" -gt 0 ] ; do
+	case "$1" in
+		-h|--help|-\?)
+			echo "$help"
+			exit 0
+			;;
+		-V|--version)
+			echo "user (IDOL) $VERSION"
+			exit 0
+			;;
+		-J)
+			shift
+			JAVA_HOME="$1"
+			;;
+		-p)
+			shift
+			KRB5PRINCIPAL="$1"
+			;;
+		-r)
+			shift
+			KRB5REALM="$1"
+			;;
+		-d)
+			shift
+			KRB5KDC="$1"
+			;;
+		-k)
+			shift
+			KRB5CCNAME="$1"
+			;;
+		-c)
+			shift
+			CONF="$1"
+			;;
+		*)
+			echo "$CMDNAME: invalid argument: $1" 1>&2
+			echo "$advice" 1>&2
+			exit 1
+			;;
+	esac
+	shift
+done
+
+if [ -z "$JAVA_HOME" ] ; then
+	echo "$CMDNAME: no Java installation specified and environment variable \$JAVA_HOME is not set" 1>&2
+	echo "$advice" 1>&2
+	exit 1
+fi
+
+if [ -z "$KRB5PRINCIPAL" ] ; then
+	echo "$CMDNAME: no user principal name specified and environment variable \$USER is not set" 1>&2
+	echo "$advice" 1>&2
+	exit 1
+fi
+
+if [ -z "$KRB5REALM" ] ; then
+	echo "$CMDNAME: no Kerberos realm specified" 1>&2
+	echo "$advice" 1>&2
+	exit 1
+fi
+
+if [ -z "$KRB5KDC" ] ; then
+	echo "$CMDNAME: no KDC specified" 1>&2
+	echo "$advice" 1>&2
+	exit 1
+fi
+
+if [ -z "$KRB5CCNAME" ] ; then
+	echo "$CMDNAME: no Kerberos credentials cache specified and environment variable \$KRB5CCNAME is not set" 1>&2
+	echo "$advice" 1>&2
+	echo "INSTALL KERBEROS!"
+#	exit 1
+fi
+
+UNAME="`uname -s`:`uname -r`:`uname -m`"
+JVMARGS=
+case "$UNAME" in
+	Linux:2.6.*:i?86)
+		JVMARGS="-server -ea"
+		;;
+	Linux:2.6.*:ia64)
+		JVMARGS="-ea"
+		;;
+	Linux:2.6.*:x86_64)
+		JVMARGS="-ea"
+		;;
+	IRIX*:6.5*:*)
+		;;
+	Darwin:8.*.*:i?86)
+		JVMARGS="-server -ea"
+		;;
+	*)
+		echo "WARNING: Unknown OS Platform \""$UNAME"\""
+		;;
+esac
+
+#CLASSPATH="$APP_HOME/classes"
+CLASSPATH=`echo $APP_HOME/lib/*.jar | tr ' ' ':'`
+CLASSPATH=$CLASSPATH:`echo $APP_HOME/lib/user/*.jar | tr ' ' ':'`
+CLASSPATH=$CLASSPATH:`echo $APP_HOME/ext/*.jar | tr ' ' ':'`
+
+#JCSI_LIB=/afs/cmf/project/dc/JCSI_Kerberos_2.7/lib
+#CLASSPATH=$CLASSPATH:`echo $JCSI_LIB/*.jar | tr ' ' ':'`
+	#-Dkrb5.login.module=com.dstc.security.kerberos.jaas.KerberosLoginModule
+	#-Djcsi.kerberos.debug=true \
+	#-Djcsi.lib=$JCSI_LIB \
+	#-Djcsi.kerberos.principal=$KRB5PRINCIPAL \
+	#-Djcsi.kerberos.realm=$KRB5REALM \
+	#-Djcsi.kerberos.KDChost=$KRB5KDC \
+	#-Djcsi.kerberos.ccache=`echo $KRB5CCNAME | sed 's/FILE://g'` \
+
+JDBC_DRIVER="org.postgresql.Driver"
+
+IDOL_CONF=
+[ -z "$CONF" ] || IDOL_CONF="-Didol.conf=$CONF"
+
+# DYLD_LIBRARY_PATH is for Mac OS X.  OS X needs that to find the jnilibs.
+
+    #-DsubvertLogin bypasses all kerberos login stuff
+    # It should't be here in a production system.
+    #
+	#-Djava.security.debug=scl,access,failure \
+	#-Dsun.security.krb5.debug=true \
+env LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$APP_HOME/ext/@sys:/usr/lib:/afs/cmf/project/dc/sys/lib \
+	LD_LIBRARYN32_PATH=$LD_LIBRARY_PATH:$APP_HOME/ext/@sys \
+    DYLD_LIBRARY_PATH=$LD_LIBRARY_PATH:$APP_HOME/ext/@sys:/usr/lib:/afs/cmf/project/dc/sys/lib \
+	$JAVA_HOME/bin/java \
+	$JVMARGS -Xms1000M -Xmx1000M -cp $CLASSPATH \
+	-DsubvertLogin="true" \
+	-Dapp.home=$APP_HOME \
+	-Djava.library.path=$APP_HOME/ext/@sys \
+	\
+	-Dsun.security.krb5.principal=$KRB5PRINCIPAL \
+	-Dsun.security.krb5.realm=$KRB5REALM \
+	-Dsun.security.krb5.kdc=$KRB5KDC \
+	-Dkrb5.ccname=`echo $KRB5CCNAME | sed 's/FILE://g'` \
+	\
+	-Djava.security.auth.login.config=$APP_HOME/etc/user.jaas.conf \
+	\
+	-Djdbc.drivers=$JDBC_DRIVER \
+	\
+	$IDOL_CONF mil.navy.nrl.cmf.sousa.idol.user.Main

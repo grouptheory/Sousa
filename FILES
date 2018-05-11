@@ -1,0 +1,1044 @@
+bin:
+total 23
+drwxr-xr-x  3 talmage users 2048 Mar  1 10:15 cmf
+drwxr-xr-x  2 talmage users 2048 Mar  1 10:12 CVS
+-rwxr-xr-x  1 talmage users  663 Feb  1 11:24 README
+-rwxr-xr-x  1 talmage users 4326 Mar  1 10:13 service
+-rwxr-xr-x  1 talmage users 4297 Feb  1 11:24 service.in
+-rwxr-xr-x  1 talmage users 3895 Mar  1 10:13 user
+-rwxr-xr-x  1 talmage users 3866 Mar  1 10:12 user.in
+
+bin/cmf:
+total 18
+lrwxr-xr-x  1 talmage users    7 Mar  1 10:15 city -> service
+lrwxr-xr-x  1 talmage users    4 Mar  1 10:15 cli -> user
+drwxr-xr-x  2 talmage users 2048 Mar  1 10:14 CVS
+lrwxr-xr-x  1 talmage users    7 Mar  1 10:15 directory -> service
+lrwxr-xr-x  1 talmage users    4 Mar  1 10:15 gui -> user
+-rwxr-xr-x  1 talmage users  213 Feb  1 11:24 make-links
+lrwxr-xr-x  1 talmage users    7 Mar  1 10:15 model -> service
+lrwxr-xr-x  1 talmage users    7 Mar  1 10:15 raster -> service
+-rwxr-xr-x  1 talmage users  904 Feb  1 11:24 README
+lrwxr-xr-x  1 talmage users    7 Mar  1 10:15 rootdirectory -> service
+lrwxr-xr-x  1 talmage users    7 Mar  1 10:15 satellite -> service
+-rwxr-xr-x  1 talmage users  535 Mar  1 10:15 service
+-rwxr-xr-x  1 talmage users  506 Mar  1 10:14 service.in
+lrwxr-xr-x  1 talmage users    7 Mar  1 10:15 trail -> service
+-rwxr-xr-x  1 talmage users  675 Mar  1 10:15 user
+-rwxr-xr-x  1 talmage users  646 Mar  1 10:14 user.in
+lrwxr-xr-x  1 talmage users    4 Mar  1 10:15 zui -> user
+
+bin/cmf/CVS:
+total 3
+-rw-r--r--  1 talmage users 210 Mar  1 10:14 Entries
+-rw-r--r--  1 talmage users  14 Oct 31 11:54 Repository
+-rw-r--r--  1 talmage users  32 Oct 31 11:54 Root
+
+bin/CVS:
+total 3
+-rw-r--r--  1 talmage users 175 Mar  1 10:12 Entries
+-rw-r--r--  1 talmage users  10 Oct 28 11:11 Repository
+-rw-r--r--  1 talmage users  32 Oct 28 11:11 Root
+
+docs:
+total 299
+drwxr-xr-x  2 talmage users   2048 Apr  3 11:29 CVS
+drwxr-xr-x  4 talmage users   2048 Apr  3 11:28 javadoc
+-rw-r--r--  1 talmage users 302015 Apr  3 11:28 SOUSA Developer.odt
+
+docs/CVS:
+total 3
+-rw-r--r--  1 talmage users 54 Apr  3 11:29 Entries
+-rw-r--r--  1 talmage users 11 Apr  3 11:10 Repository
+-rw-r--r--  1 talmage users 32 Apr  3 11:10 Root
+
+docs/javadoc:
+total 780
+-rw-r--r--  1 talmage users  24560 Apr  3 11:25 allclasses-frame.html
+-rw-r--r--  1 talmage users  21620 Apr  3 11:25 allclasses-noframe.html
+-rw-r--r--  1 talmage users  70017 Apr  3 11:25 constant-values.html
+-rw-r--r--  1 talmage users   4868 Apr  3 11:25 deprecated-list.html
+-rw-r--r--  1 talmage users   8863 Apr  3 11:25 help-doc.html
+-rw-r--r--  1 talmage users 540334 Apr  3 11:25 index-all.html
+-rw-r--r--  1 talmage users    871 Apr  3 11:25 index.html
+drwxr-xr-x  3 talmage users   2048 Apr  3 11:25 mil
+-rw-r--r--  1 talmage users   3189 Apr  3 11:25 overview-frame.html
+-rw-r--r--  1 talmage users   8328 Apr  3 11:25 overview-summary.html
+-rw-r--r--  1 talmage users  58861 Apr  3 11:25 overview-tree.html
+-rw-r--r--  1 talmage users    516 Apr  3 11:25 package-list
+-rw-r--r--  1 talmage users    812 Apr  3 11:25 packages.html
+drwxr-xr-x  2 talmage users   2048 Apr  3 11:25 resources
+-rw-r--r--  1 talmage users  43407 Apr  3 11:25 serialized-form.html
+-rw-r--r--  1 talmage users   1202 Apr  3 11:25 stylesheet.css
+
+docs/javadoc/mil:
+total 2
+drwxr-xr-x  3 talmage users 2048 Apr  3 11:25 navy
+
+docs/javadoc/mil/navy:
+total 2
+drwxr-xr-x  3 talmage users 2048 Apr  3 11:25 nrl
+
+docs/javadoc/mil/navy/nrl:
+total 2
+drwxr-xr-x  3 talmage users 2048 Apr  3 11:25 cmf
+
+docs/javadoc/mil/navy/nrl/cmf:
+total 4
+drwxr-xr-x  7 talmage users 4096 Apr  3 11:25 sousa
+
+docs/javadoc/mil/navy/nrl/cmf/sousa:
+total 1240
+-rw-r--r--  1 talmage users 14146 Apr  3 11:25 ByteArray.html
+drwxr-xr-x  2 talmage users  4096 Apr  3 11:25 class-use
+-rw-r--r--  1 talmage users 15174 Apr  3 11:25 ClientSideFSM.FetchRequest.html
+-rw-r--r--  1 talmage users 31210 Apr  3 11:25 ClientSideFSM.html
+-rw-r--r--  1 talmage users 10118 Apr  3 11:25 Clock.AlarmHandler.html
+-rw-r--r--  1 talmage users 20732 Apr  3 11:25 Clock.Alarm.html
+-rw-r--r--  1 talmage users 20629 Apr  3 11:25 Clock.html
+-rw-r--r--  1 talmage users  7494 Apr  3 11:25 CommandLogic.html
+-rw-r--r--  1 talmage users 25138 Apr  3 11:25 ControlLogic.html
+drwxr-xr-x  3 talmage users  2048 Apr  3 11:25 directory
+-rw-r--r--  1 talmage users 31157 Apr  3 11:25 EntityFSM.html
+-rw-r--r--  1 talmage users 12679 Apr  3 11:25 EntityFSM.Request.html
+-rw-r--r--  1 talmage users 12697 Apr  3 11:25 EntityFSM.Response.html
+-rw-r--r--  1 talmage users 16072 Apr  3 11:25 EntityFSM.State.html
+-rw-r--r--  1 talmage users 54461 Apr  3 11:25 Entity.html
+-rw-r--r--  1 talmage users 17820 Apr  3 11:25 EntityInitializer.html
+-rw-r--r--  1 talmage users 17822 Apr  3 11:25 EntityInitializer.InitializationException.html
+-rw-r--r--  1 talmage users 24301 Apr  3 11:25 Executor.html
+-rw-r--r--  1 talmage users 14671 Apr  3 11:25 Field.ChangeMessage.html
+-rw-r--r--  1 talmage users 22660 Apr  3 11:25 Field.html
+-rw-r--r--  1 talmage users 22544 Apr  3 11:25 FieldListener.html
+-rw-r--r--  1 talmage users 16743 Apr  3 11:25 Focus.html
+drwxr-xr-x  6 talmage users  2048 Apr  3 11:25 idol
+-rw-r--r--  1 talmage users 18870 Apr  3 11:25 MethodInvocationMessage.html
+-rw-r--r--  1 talmage users 20077 Apr  3 11:25 MethodResponseMessage.html
+-rw-r--r--  1 talmage users 22050 Apr  3 11:25 Nimbus.html
+-rw-r--r--  1 talmage users 23347 Apr  3 11:25 NonBlockingObjectChannel.html
+-rw-r--r--  1 talmage users 40112 Apr  3 11:25 P2PChannelFactory.html
+-rw-r--r--  1 talmage users 41565 Apr  3 11:25 P2PChannel.html
+-rw-r--r--  1 talmage users  6936 Apr  3 11:25 package-frame.html
+-rw-r--r--  1 talmage users 21614 Apr  3 11:25 package-summary.html
+-rw-r--r--  1 talmage users 20790 Apr  3 11:25 package-tree.html
+-rw-r--r--  1 talmage users 56565 Apr  3 11:25 package-use.html
+-rw-r--r--  1 talmage users 42246 Apr  3 11:25 Projector.html
+-rw-r--r--  1 talmage users 13973 Apr  3 11:25 QoS.ClassComparator.html
+-rw-r--r--  1 talmage users 27424 Apr  3 11:25 QoS.html
+-rw-r--r--  1 talmage users 33499 Apr  3 11:25 Receptor.html
+-rw-r--r--  1 talmage users 19633 Apr  3 11:25 RunnableNormInstance.html
+-rw-r--r--  1 talmage users 20320 Apr  3 11:25 SelectableFutureResult.html
+-rw-r--r--  1 talmage users 10330 Apr  3 11:25 Selectable.Handler.html
+-rw-r--r--  1 talmage users 36921 Apr  3 11:25 Selectable.html
+-rw-r--r--  1 talmage users 33299 Apr  3 11:25 SelectableNormSession.html
+-rw-r--r--  1 talmage users 45964 Apr  3 11:25 SelectableSet.html
+-rw-r--r--  1 talmage users 26345 Apr  3 11:25 ServerContact.html
+-rw-r--r--  1 talmage users 13743 Apr  3 11:25 ServerSideFSM.FetchResponse.html
+-rw-r--r--  1 talmage users 29153 Apr  3 11:25 ServerSideFSM.html
+-rw-r--r--  1 talmage users 17212 Apr  3 11:25 SignalType.html
+drwxr-xr-x  3 talmage users  2048 Apr  3 11:26 spatiotemporal
+-rw-r--r--  1 talmage users 15848 Apr  3 11:25 State.ChangeMessage.html
+-rw-r--r--  1 talmage users 26219 Apr  3 11:25 State.html
+-rw-r--r--  1 talmage users 19625 Apr  3 11:25 Test.ClientControlLogic.html
+-rw-r--r--  1 talmage users 18299 Apr  3 11:25 Test.html
+-rw-r--r--  1 talmage users  9534 Apr  3 11:25 Test.Incrementor.html
+-rw-r--r--  1 talmage users 13154 Apr  3 11:25 Test.IntegerIncrementor.html
+-rw-r--r--  1 talmage users 22643 Apr  3 11:25 Test.ServerControlLogic.html
+-rw-r--r--  1 talmage users 22544 Apr  3 11:25 Test.TestViewInterpreter.html
+drwxr-xr-x  3 talmage users  2048 Apr  3 11:26 util
+-rw-r--r--  1 talmage users 30048 Apr  3 11:25 ViewInterpreter.html
+
+docs/javadoc/mil/navy/nrl/cmf/sousa/class-use:
+total 762
+-rw-r--r--  1 talmage users  5684 Apr  3 11:25 ByteArray.html
+-rw-r--r--  1 talmage users  8498 Apr  3 11:25 ClientSideFSM.FetchRequest.html
+-rw-r--r--  1 talmage users 21254 Apr  3 11:25 ClientSideFSM.html
+-rw-r--r--  1 talmage users 28775 Apr  3 11:25 Clock.AlarmHandler.html
+-rw-r--r--  1 talmage users 23636 Apr  3 11:25 Clock.Alarm.html
+-rw-r--r--  1 talmage users 10130 Apr  3 11:25 Clock.html
+-rw-r--r--  1 talmage users  9920 Apr  3 11:25 CommandLogic.html
+-rw-r--r--  1 talmage users 40214 Apr  3 11:25 ControlLogic.html
+-rw-r--r--  1 talmage users 12154 Apr  3 11:25 EntityFSM.html
+-rw-r--r--  1 talmage users 11943 Apr  3 11:25 EntityFSM.Request.html
+-rw-r--r--  1 talmage users  7636 Apr  3 11:25 EntityFSM.Response.html
+-rw-r--r--  1 talmage users 17770 Apr  3 11:25 EntityFSM.State.html
+-rw-r--r--  1 talmage users 16414 Apr  3 11:25 Entity.html
+-rw-r--r--  1 talmage users 22141 Apr  3 11:25 EntityInitializer.html
+-rw-r--r--  1 talmage users 48979 Apr  3 11:25 EntityInitializer.InitializationException.html
+-rw-r--r--  1 talmage users  7996 Apr  3 11:25 Executor.html
+-rw-r--r--  1 talmage users  9312 Apr  3 11:25 Field.ChangeMessage.html
+-rw-r--r--  1 talmage users  5652 Apr  3 11:25 Field.html
+-rw-r--r--  1 talmage users 15951 Apr  3 11:25 FieldListener.html
+-rw-r--r--  1 talmage users  8974 Apr  3 11:25 Focus.html
+-rw-r--r--  1 talmage users  8010 Apr  3 11:25 MethodInvocationMessage.html
+-rw-r--r--  1 talmage users  9157 Apr  3 11:25 MethodResponseMessage.html
+-rw-r--r--  1 talmage users  9124 Apr  3 11:25 Nimbus.html
+-rw-r--r--  1 talmage users  8225 Apr  3 11:25 NonBlockingObjectChannel.html
+-rw-r--r--  1 talmage users 11625 Apr  3 11:25 P2PChannelFactory.html
+-rw-r--r--  1 talmage users 12935 Apr  3 11:25 P2PChannel.html
+-rw-r--r--  1 talmage users 11255 Apr  3 11:25 Projector.html
+-rw-r--r--  1 talmage users  5764 Apr  3 11:25 QoS.ClassComparator.html
+-rw-r--r--  1 talmage users 17442 Apr  3 11:25 QoS.html
+-rw-r--r--  1 talmage users 19055 Apr  3 11:25 Receptor.html
+-rw-r--r--  1 talmage users 10264 Apr  3 11:25 RunnableNormInstance.html
+-rw-r--r--  1 talmage users 11505 Apr  3 11:25 SelectableFutureResult.html
+-rw-r--r--  1 talmage users 31334 Apr  3 11:25 Selectable.Handler.html
+-rw-r--r--  1 talmage users 24988 Apr  3 11:25 Selectable.html
+-rw-r--r--  1 talmage users  8720 Apr  3 11:25 SelectableNormSession.html
+-rw-r--r--  1 talmage users 13438 Apr  3 11:25 SelectableSet.html
+-rw-r--r--  1 talmage users 32161 Apr  3 11:25 ServerContact.html
+-rw-r--r--  1 talmage users  5828 Apr  3 11:25 ServerSideFSM.FetchResponse.html
+-rw-r--r--  1 talmage users 30654 Apr  3 11:25 ServerSideFSM.html
+-rw-r--r--  1 talmage users 32565 Apr  3 11:25 SignalType.html
+-rw-r--r--  1 talmage users 24255 Apr  3 11:25 State.ChangeMessage.html
+-rw-r--r--  1 talmage users 36111 Apr  3 11:25 State.html
+-rw-r--r--  1 talmage users  5796 Apr  3 11:25 Test.ClientControlLogic.html
+-rw-r--r--  1 talmage users  5644 Apr  3 11:25 Test.html
+-rw-r--r--  1 talmage users  7627 Apr  3 11:25 Test.Incrementor.html
+-rw-r--r--  1 talmage users  5796 Apr  3 11:25 Test.IntegerIncrementor.html
+-rw-r--r--  1 talmage users  5796 Apr  3 11:25 Test.ServerControlLogic.html
+-rw-r--r--  1 talmage users  5804 Apr  3 11:25 Test.TestViewInterpreter.html
+-rw-r--r--  1 talmage users 12929 Apr  3 11:25 ViewInterpreter.html
+
+docs/javadoc/mil/navy/nrl/cmf/sousa/directory:
+total 82
+-rw-r--r--  1 talmage users 10093 Apr  3 11:25 Advertiser.html
+drwxr-xr-x  2 talmage users  2048 Apr  3 11:25 class-use
+-rw-r--r--  1 talmage users 29332 Apr  3 11:25 ConsumerViewInterpreter.html
+-rw-r--r--  1 talmage users 16369 Apr  3 11:25 DirectoryFields.html
+-rw-r--r--  1 talmage users  1438 Apr  3 11:25 package-frame.html
+-rw-r--r--  1 talmage users  8632 Apr  3 11:25 package-summary.html
+-rw-r--r--  1 talmage users  7061 Apr  3 11:25 package-tree.html
+-rw-r--r--  1 talmage users  6816 Apr  3 11:25 package-use.html
+
+docs/javadoc/mil/navy/nrl/cmf/sousa/directory/class-use:
+total 23
+-rw-r--r--  1 talmage users 11148 Apr  3 11:25 Advertiser.html
+-rw-r--r--  1 talmage users  5927 Apr  3 11:25 ConsumerViewInterpreter.html
+-rw-r--r--  1 talmage users  5863 Apr  3 11:25 DirectoryFields.html
+
+docs/javadoc/mil/navy/nrl/cmf/sousa/idol:
+total 172
+drwxr-xr-x  2 talmage users  2048 Apr  3 11:25 class-use
+-rw-r--r--  1 talmage users  9103 Apr  3 11:25 Console.CommandHandler.html
+-rw-r--r--  1 talmage users 24375 Apr  3 11:25 Console.html
+-rw-r--r--  1 talmage users 29015 Apr  3 11:25 IdolInitializer.Console_ControlLogic.html
+-rw-r--r--  1 talmage users 60148 Apr  3 11:25 IdolInitializer.html
+-rw-r--r--  1 talmage users  1558 Apr  3 11:25 package-frame.html
+-rw-r--r--  1 talmage users  9201 Apr  3 11:25 package-summary.html
+-rw-r--r--  1 talmage users  7948 Apr  3 11:25 package-tree.html
+-rw-r--r--  1 talmage users 22244 Apr  3 11:25 package-use.html
+drwxr-xr-x  9 talmage users  2048 Apr  3 11:25 service
+drwxr-xr-x  3 talmage users  4096 Apr  3 11:25 user
+drwxr-xr-x  3 talmage users  2048 Apr  3 11:26 util
+
+docs/javadoc/mil/navy/nrl/cmf/sousa/idol/class-use:
+total 78
+-rw-r--r--  1 talmage users 26686 Apr  3 11:25 Console.CommandHandler.html
+-rw-r--r--  1 talmage users  7830 Apr  3 11:25 Console.html
+-rw-r--r--  1 talmage users 22221 Apr  3 11:25 IdolInitializer.Console_ControlLogic.html
+-rw-r--r--  1 talmage users 20503 Apr  3 11:25 IdolInitializer.html
+
+docs/javadoc/mil/navy/nrl/cmf/sousa/idol/service:
+total 125
+drwxr-xr-x  3 talmage users  2048 Apr  3 11:25 city
+drwxr-xr-x  2 talmage users  2048 Apr  3 11:25 class-use
+drwxr-xr-x  3 talmage users  2048 Apr  3 11:25 computeserver
+drwxr-xr-x  3 talmage users  2048 Apr  3 11:25 directory
+-rw-r--r--  1 talmage users 16215 Apr  3 11:25 Main.html
+drwxr-xr-x  3 talmage users  2048 Apr  3 11:25 model
+-rw-r--r--  1 talmage users  1291 Apr  3 11:25 package-frame.html
+-rw-r--r--  1 talmage users  8424 Apr  3 11:25 package-summary.html
+-rw-r--r--  1 talmage users  8196 Apr  3 11:25 package-tree.html
+-rw-r--r--  1 talmage users 15705 Apr  3 11:25 package-use.html
+drwxr-xr-x  3 talmage users  2048 Apr  3 11:25 raster
+-rw-r--r--  1 talmage users 24647 Apr  3 11:25 ServerInitializer.html
+-rw-r--r--  1 talmage users 34458 Apr  3 11:25 ServerInitializer.Server_ControlLogic.html
+drwxr-xr-x  3 talmage users  2048 Apr  3 11:25 trail
+
+docs/javadoc/mil/navy/nrl/cmf/sousa/idol/service/city:
+total 109
+-rw-r--r--  1 talmage users 29249 Apr  3 11:25 CityQueryable.html
+-rw-r--r--  1 talmage users 21951 Apr  3 11:25 CityServerInitializer.CityServer_ControlLogic.html
+-rw-r--r--  1 talmage users 29571 Apr  3 11:25 CityServerInitializer.html
+drwxr-xr-x  2 talmage users  2048 Apr  3 11:25 class-use
+-rw-r--r--  1 talmage users  1374 Apr  3 11:25 package-frame.html
+-rw-r--r--  1 talmage users  7476 Apr  3 11:25 package-summary.html
+-rw-r--r--  1 talmage users  9300 Apr  3 11:25 package-tree.html
+-rw-r--r--  1 talmage users  7027 Apr  3 11:25 package-use.html
+
+docs/javadoc/mil/navy/nrl/cmf/sousa/idol/service/city/class-use:
+total 22
+-rw-r--r--  1 talmage users 8193 Apr  3 11:25 CityQueryable.html
+-rw-r--r--  1 talmage users 6269 Apr  3 11:25 CityServerInitializer.CityServer_ControlLogic.html
+-rw-r--r--  1 talmage users 6077 Apr  3 11:25 CityServerInitializer.html
+
+docs/javadoc/mil/navy/nrl/cmf/sousa/idol/service/class-use:
+total 42
+-rw-r--r--  1 talmage users  5850 Apr  3 11:25 Main.html
+-rw-r--r--  1 talmage users 17177 Apr  3 11:25 ServerInitializer.html
+-rw-r--r--  1 talmage users 18650 Apr  3 11:25 ServerInitializer.Server_ControlLogic.html
+
+docs/javadoc/mil/navy/nrl/cmf/sousa/idol/service/computeserver:
+total 249
+-rw-r--r--  1 talmage users 35259 Apr  3 11:25 AbstractCalcDB.html
+-rw-r--r--  1 talmage users 30922 Apr  3 11:25 AbstractCalcObject.html
+-rw-r--r--  1 talmage users 10090 Apr  3 11:25 CalcDB.html
+-rw-r--r--  1 talmage users 10734 Apr  3 11:25 CalcObject.html
+drwxr-xr-x  2 talmage users  2048 Apr  3 11:25 class-use
+-rw-r--r--  1 talmage users 17659 Apr  3 11:25 DateUtils.html
+-rw-r--r--  1 talmage users  2478 Apr  3 11:25 package-frame.html
+-rw-r--r--  1 talmage users  9375 Apr  3 11:25 package-summary.html
+-rw-r--r--  1 talmage users 11837 Apr  3 11:25 package-tree.html
+-rw-r--r--  1 talmage users  8012 Apr  3 11:25 package-use.html
+-rw-r--r--  1 talmage users 23661 Apr  3 11:25 SatelliteDB.html
+-rw-r--r--  1 talmage users 34489 Apr  3 11:25 Satellite.html
+-rw-r--r--  1 talmage users 29043 Apr  3 11:25 SatelliteServerInitializer.html
+-rw-r--r--  1 talmage users 22255 Apr  3 11:25 SatelliteServerInitializer.SatelliteServer_ControlLogic.html
+
+docs/javadoc/mil/navy/nrl/cmf/sousa/idol/service/computeserver/class-use:
+total 68
+-rw-r--r--  1 talmage users 8237 Apr  3 11:25 AbstractCalcDB.html
+-rw-r--r--  1 talmage users 8303 Apr  3 11:25 AbstractCalcObject.html
+-rw-r--r--  1 talmage users 8614 Apr  3 11:25 CalcDB.html
+-rw-r--r--  1 talmage users 8688 Apr  3 11:25 CalcObject.html
+-rw-r--r--  1 talmage users 6053 Apr  3 11:25 DateUtils.html
+-rw-r--r--  1 talmage users 6069 Apr  3 11:25 SatelliteDB.html
+-rw-r--r--  1 talmage users 6053 Apr  3 11:25 Satellite.html
+-rw-r--r--  1 talmage users 6189 Apr  3 11:25 SatelliteServerInitializer.html
+-rw-r--r--  1 talmage users 6421 Apr  3 11:25 SatelliteServerInitializer.SatelliteServer_ControlLogic.html
+
+docs/javadoc/mil/navy/nrl/cmf/sousa/idol/service/directory:
+total 208
+drwxr-xr-x  2 talmage users  2048 Apr  3 11:25 class-use
+-rw-r--r--  1 talmage users 19266 Apr  3 11:25 DirectoryServerInitializer.AdvertiserBridge.html
+-rw-r--r--  1 talmage users 43781 Apr  3 11:25 DirectoryServerInitializer.DirectoryServer_ControlLogic.html
+-rw-r--r--  1 talmage users 28953 Apr  3 11:25 DirectoryServerInitializer.html
+-rw-r--r--  1 talmage users 20258 Apr  3 11:25 MapTransactions.AbstractMapTransaction.html
+-rw-r--r--  1 talmage users 16709 Apr  3 11:25 MapTransactions.Add.html
+-rw-r--r--  1 talmage users 19433 Apr  3 11:25 MapTransactions.html
+-rw-r--r--  1 talmage users  9550 Apr  3 11:25 MapTransactions.MapTransaction.html
+-rw-r--r--  1 talmage users 16001 Apr  3 11:25 MapTransactions.Remove.html
+-rw-r--r--  1 talmage users  2486 Apr  3 11:25 package-frame.html
+-rw-r--r--  1 talmage users  9426 Apr  3 11:25 package-summary.html
+-rw-r--r--  1 talmage users 11581 Apr  3 11:25 package-tree.html
+-rw-r--r--  1 talmage users  7710 Apr  3 11:25 package-use.html
+
+docs/javadoc/mil/navy/nrl/cmf/sousa/idol/service/directory/class-use:
+total 61
+-rw-r--r--  1 talmage users 6293 Apr  3 11:25 DirectoryServerInitializer.AdvertiserBridge.html
+-rw-r--r--  1 talmage users 6389 Apr  3 11:25 DirectoryServerInitializer.DirectoryServer_ControlLogic.html
+-rw-r--r--  1 talmage users 6157 Apr  3 11:25 DirectoryServerInitializer.html
+-rw-r--r--  1 talmage users 8937 Apr  3 11:25 MapTransactions.AbstractMapTransaction.html
+-rw-r--r--  1 talmage users 6101 Apr  3 11:25 MapTransactions.Add.html
+-rw-r--r--  1 talmage users 8540 Apr  3 11:25 MapTransactions.html
+-rw-r--r--  1 talmage users 9368 Apr  3 11:25 MapTransactions.MapTransaction.html
+-rw-r--r--  1 talmage users 6125 Apr  3 11:25 MapTransactions.Remove.html
+
+docs/javadoc/mil/navy/nrl/cmf/sousa/idol/service/model:
+total 108
+drwxr-xr-x  2 talmage users  2048 Apr  3 11:25 class-use
+-rw-r--r--  1 talmage users 28171 Apr  3 11:25 ModelQueryable.html
+-rw-r--r--  1 talmage users 29596 Apr  3 11:25 ModelServerInitializer.html
+-rw-r--r--  1 talmage users 22003 Apr  3 11:25 ModelServerInitializer.ModelServer_ControlLogic.html
+-rw-r--r--  1 talmage users  1389 Apr  3 11:25 package-frame.html
+-rw-r--r--  1 talmage users  7452 Apr  3 11:25 package-summary.html
+-rw-r--r--  1 talmage users  9326 Apr  3 11:25 package-tree.html
+-rw-r--r--  1 talmage users  7029 Apr  3 11:25 package-use.html
+
+docs/javadoc/mil/navy/nrl/cmf/sousa/idol/service/model/class-use:
+total 22
+-rw-r--r--  1 talmage users 8233 Apr  3 11:25 ModelQueryable.html
+-rw-r--r--  1 talmage users 6093 Apr  3 11:25 ModelServerInitializer.html
+-rw-r--r--  1 talmage users 6293 Apr  3 11:25 ModelServerInitializer.ModelServer_ControlLogic.html
+
+docs/javadoc/mil/navy/nrl/cmf/sousa/idol/service/raster:
+total 110
+drwxr-xr-x  2 talmage users  2048 Apr  3 11:25 class-use
+-rw-r--r--  1 talmage users  1404 Apr  3 11:25 package-frame.html
+-rw-r--r--  1 talmage users  7460 Apr  3 11:25 package-summary.html
+-rw-r--r--  1 talmage users  9336 Apr  3 11:25 package-tree.html
+-rw-r--r--  1 talmage users  7042 Apr  3 11:25 package-use.html
+-rw-r--r--  1 talmage users 30283 Apr  3 11:25 RasterQueryable.html
+-rw-r--r--  1 talmage users 29661 Apr  3 11:25 RasterServerInitializer.html
+-rw-r--r--  1 talmage users 22055 Apr  3 11:25 RasterServerInitializer.RasterServer_ControlLogic.html
+
+docs/javadoc/mil/navy/nrl/cmf/sousa/idol/service/raster/class-use:
+total 22
+-rw-r--r--  1 talmage users 8275 Apr  3 11:25 RasterQueryable.html
+-rw-r--r--  1 talmage users 6109 Apr  3 11:25 RasterServerInitializer.html
+-rw-r--r--  1 talmage users 6317 Apr  3 11:25 RasterServerInitializer.RasterServer_ControlLogic.html
+
+docs/javadoc/mil/navy/nrl/cmf/sousa/idol/service/trail:
+total 101
+drwxr-xr-x  2 talmage users  2048 Apr  3 11:25 class-use
+-rw-r--r--  1 talmage users  1389 Apr  3 11:25 package-frame.html
+-rw-r--r--  1 talmage users  7445 Apr  3 11:25 package-summary.html
+-rw-r--r--  1 talmage users  9300 Apr  3 11:25 package-tree.html
+-rw-r--r--  1 talmage users  7026 Apr  3 11:25 package-use.html
+-rw-r--r--  1 talmage users 21160 Apr  3 11:25 TrailQueryable.html
+-rw-r--r--  1 talmage users 29618 Apr  3 11:25 TrailServerInitializer.html
+-rw-r--r--  1 talmage users 22003 Apr  3 11:25 TrailServerInitializer.TrailServer_ControlLogic.html
+
+docs/javadoc/mil/navy/nrl/cmf/sousa/idol/service/trail/class-use:
+total 22
+-rw-r--r--  1 talmage users 8233 Apr  3 11:25 TrailQueryable.html
+-rw-r--r--  1 talmage users 6093 Apr  3 11:25 TrailServerInitializer.html
+-rw-r--r--  1 talmage users 6293 Apr  3 11:25 TrailServerInitializer.TrailServer_ControlLogic.html
+
+docs/javadoc/mil/navy/nrl/cmf/sousa/idol/user:
+total 1073
+-rw-r--r--  1 talmage users  23299 Apr  3 11:25 AdminFrame.AdminFrameTableModel.html
+-rw-r--r--  1 talmage users  27625 Apr  3 11:25 AdminFrame.html
+-rw-r--r--  1 talmage users  18194 Apr  3 11:25 AdminFrame.RasterEntry.html
+-rw-r--r--  1 talmage users  22145 Apr  3 11:25 AdminPanel.AdminPanelTableModel.html
+-rw-r--r--  1 talmage users  91767 Apr  3 11:25 AdminPanel.html
+drwxr-xr-x  2 talmage users   4096 Apr  3 11:25 class-use
+-rw-r--r--  1 talmage users  12398 Apr  3 11:25 Client.html
+-rw-r--r--  1 talmage users 116706 Apr  3 11:25 ClientInitializer.Client_ControlLogic.html
+-rw-r--r--  1 talmage users  31244 Apr  3 11:25 ClientInitializer.html
+-rw-r--r--  1 talmage users  23678 Apr  3 11:25 ConsoleBrowserInitializer.html
+-rw-r--r--  1 talmage users  23298 Apr  3 11:25 ContentPanel.ContentPanelTableModel.html
+-rw-r--r--  1 talmage users  85057 Apr  3 11:25 ContentPanel.html
+-rw-r--r--  1 talmage users  13947 Apr  3 11:25 ContentPanel.PatchEntry.html
+-rw-r--r--  1 talmage users   9568 Apr  3 11:25 GUI.EventHandler.html
+-rw-r--r--  1 talmage users   8670 Apr  3 11:25 GUI.GUIEvent.html
+-rw-r--r--  1 talmage users  39309 Apr  3 11:25 GUI.html
+-rw-r--r--  1 talmage users  14787 Apr  3 11:25 GUI.LatLonEvent.html
+-rw-r--r--  1 talmage users  14730 Apr  3 11:25 GUI.PositionEvent.html
+-rw-r--r--  1 talmage users  11431 Apr  3 11:25 GUI.QuitEvent.html
+-rw-r--r--  1 talmage users  16541 Apr  3 11:25 GUI.SendCommandEvent.html
+-rw-r--r--  1 talmage users  14700 Apr  3 11:25 GUI.StatusPollRequestEvent.html
+-rw-r--r--  1 talmage users  16387 Apr  3 11:25 GUI.SwitchPatchEvent.html
+-rw-r--r--  1 talmage users  14346 Apr  3 11:25 GUI.TimeEvent.html
+-rw-r--r--  1 talmage users  16457 Apr  3 11:25 Main.html
+-rw-r--r--  1 talmage users   4512 Apr  3 11:25 package-frame.html
+-rw-r--r--  1 talmage users  13666 Apr  3 11:25 package-summary.html
+-rw-r--r--  1 talmage users  25036 Apr  3 11:25 package-tree.html
+-rw-r--r--  1 talmage users  11916 Apr  3 11:25 package-use.html
+-rw-r--r--  1 talmage users  17408 Apr  3 11:25 Peer.html
+-rw-r--r--  1 talmage users  85865 Apr  3 11:25 SpatialChooser.html
+-rw-r--r--  1 talmage users  98530 Apr  3 11:25 TemporalChooser.html
+-rw-r--r--  1 talmage users  70904 Apr  3 11:25 ZUI.html
+-rw-r--r--  1 talmage users   9875 Apr  3 11:25 ZUI.MessageHandler.html
+-rw-r--r--  1 talmage users  16041 Apr  3 11:25 ZUI.MessageQueueReader.html
+-rw-r--r--  1 talmage users   9809 Apr  3 11:25 ZUI.QueryHandler.html
+-rw-r--r--  1 talmage users  26308 Apr  3 11:25 ZUI.SHMDateFormat.html
+-rw-r--r--  1 talmage users  18841 Apr  3 11:25 ZUI.SHMQueryReader.html
+
+docs/javadoc/mil/navy/nrl/cmf/sousa/idol/user/class-use:
+total 269
+-rw-r--r--  1 talmage users  8181 Apr  3 11:25 AdminFrame.AdminFrameTableModel.html
+-rw-r--r--  1 talmage users  9535 Apr  3 11:25 AdminFrame.html
+-rw-r--r--  1 talmage users  8084 Apr  3 11:25 AdminFrame.RasterEntry.html
+-rw-r--r--  1 talmage users  8181 Apr  3 11:25 AdminPanel.AdminPanelTableModel.html
+-rw-r--r--  1 talmage users  9549 Apr  3 11:25 AdminPanel.html
+-rw-r--r--  1 talmage users  9248 Apr  3 11:25 Client.html
+-rw-r--r--  1 talmage users  6090 Apr  3 11:25 ClientInitializer.Client_ControlLogic.html
+-rw-r--r--  1 talmage users  5930 Apr  3 11:25 ClientInitializer.html
+-rw-r--r--  1 talmage users  7995 Apr  3 11:25 ConsoleBrowserInitializer.html
+-rw-r--r--  1 talmage users  8245 Apr  3 11:25 ContentPanel.ContentPanelTableModel.html
+-rw-r--r--  1 talmage users  7888 Apr  3 11:25 ContentPanel.html
+-rw-r--r--  1 talmage users  5978 Apr  3 11:25 ContentPanel.PatchEntry.html
+-rw-r--r--  1 talmage users 10180 Apr  3 11:25 GUI.EventHandler.html
+-rw-r--r--  1 talmage users 13714 Apr  3 11:25 GUI.GUIEvent.html
+-rw-r--r--  1 talmage users 12155 Apr  3 11:25 GUI.html
+-rw-r--r--  1 talmage users  5914 Apr  3 11:25 GUI.LatLonEvent.html
+-rw-r--r--  1 talmage users  5930 Apr  3 11:25 GUI.PositionEvent.html
+-rw-r--r--  1 talmage users  5898 Apr  3 11:25 GUI.QuitEvent.html
+-rw-r--r--  1 talmage users  5954 Apr  3 11:25 GUI.SendCommandEvent.html
+-rw-r--r--  1 talmage users  6002 Apr  3 11:25 GUI.StatusPollRequestEvent.html
+-rw-r--r--  1 talmage users  5954 Apr  3 11:25 GUI.SwitchPatchEvent.html
+-rw-r--r--  1 talmage users  5898 Apr  3 11:25 GUI.TimeEvent.html
+-rw-r--r--  1 talmage users  5826 Apr  3 11:25 Main.html
+-rw-r--r--  1 talmage users 22069 Apr  3 11:25 Peer.html
+-rw-r--r--  1 talmage users  7921 Apr  3 11:25 SpatialChooser.html
+-rw-r--r--  1 talmage users  7936 Apr  3 11:25 TemporalChooser.html
+-rw-r--r--  1 talmage users  7840 Apr  3 11:25 ZUI.html
+-rw-r--r--  1 talmage users 11649 Apr  3 11:25 ZUI.MessageHandler.html
+-rw-r--r--  1 talmage users  5970 Apr  3 11:25 ZUI.MessageQueueReader.html
+-rw-r--r--  1 talmage users 11601 Apr  3 11:25 ZUI.QueryHandler.html
+-rw-r--r--  1 talmage users  5930 Apr  3 11:25 ZUI.SHMDateFormat.html
+-rw-r--r--  1 talmage users  5938 Apr  3 11:25 ZUI.SHMQueryReader.html
+
+docs/javadoc/mil/navy/nrl/cmf/sousa/idol/util:
+total 237
+drwxr-xr-x  2 talmage users  2048 Apr  3 11:25 class-use
+-rw-r--r--  1 talmage users 14651 Apr  3 11:25 CommandMessage.html
+-rw-r--r--  1 talmage users 26315 Apr  3 11:25 ImageParams.html
+-rw-r--r--  1 talmage users 18410 Apr  3 11:25 ImageUpdateMessage.html
+-rw-r--r--  1 talmage users 18212 Apr  3 11:25 KeyUpdateMessage.html
+-rw-r--r--  1 talmage users 13658 Apr  3 11:25 Login.html
+-rw-r--r--  1 talmage users  2603 Apr  3 11:25 package-frame.html
+-rw-r--r--  1 talmage users  9414 Apr  3 11:25 package-summary.html
+-rw-r--r--  1 talmage users 10126 Apr  3 11:25 package-tree.html
+-rw-r--r--  1 talmage users  8078 Apr  3 11:25 package-use.html
+-rw-r--r--  1 talmage users  9624 Apr  3 11:25 ServerEventListener.html
+-rw-r--r--  1 talmage users 19415 Apr  3 11:25 ServiceEntry.html
+-rw-r--r--  1 talmage users 12708 Apr  3 11:25 StatusRequestMessage.html
+-rw-r--r--  1 talmage users 18796 Apr  3 11:25 StatusUpdateMessage.html
+-rw-r--r--  1 talmage users 25509 Apr  3 11:25 StreamHandlerThread.html
+-rw-r--r--  1 talmage users 10408 Apr  3 11:25 StreamHandlerThread.StreamHandler.html
+-rw-r--r--  1 talmage users 15466 Apr  3 11:25 Task.html
+
+docs/javadoc/mil/navy/nrl/cmf/sousa/idol/util/class-use:
+total 82
+-rw-r--r--  1 talmage users  5906 Apr  3 11:25 CommandMessage.html
+-rw-r--r--  1 talmage users  8907 Apr  3 11:25 ImageParams.html
+-rw-r--r--  1 talmage users  5938 Apr  3 11:25 ImageUpdateMessage.html
+-rw-r--r--  1 talmage users  5922 Apr  3 11:25 KeyUpdateMessage.html
+-rw-r--r--  1 talmage users  5834 Apr  3 11:25 Login.html
+-rw-r--r--  1 talmage users  5966 Apr  3 11:25 ServerEventListener.html
+-rw-r--r--  1 talmage users  5890 Apr  3 11:25 ServiceEntry.html
+-rw-r--r--  1 talmage users  5954 Apr  3 11:25 StatusRequestMessage.html
+-rw-r--r--  1 talmage users  5946 Apr  3 11:25 StatusUpdateMessage.html
+-rw-r--r--  1 talmage users  8042 Apr  3 11:25 StreamHandlerThread.html
+-rw-r--r--  1 talmage users 11025 Apr  3 11:25 StreamHandlerThread.StreamHandler.html
+-rw-r--r--  1 talmage users  5826 Apr  3 11:25 Task.html
+
+docs/javadoc/mil/navy/nrl/cmf/sousa/spatiotemporal:
+total 262
+-rw-r--r--  1 talmage users 17351 Apr  3 11:25 BrowserFields.html
+drwxr-xr-x  2 talmage users  2048 Apr  3 11:25 class-use
+-rw-r--r--  1 talmage users  2390 Apr  3 11:25 package-frame.html
+-rw-r--r--  1 talmage users 10780 Apr  3 11:25 package-summary.html
+-rw-r--r--  1 talmage users  9598 Apr  3 11:25 package-tree.html
+-rw-r--r--  1 talmage users 16871 Apr  3 11:25 package-use.html
+-rw-r--r--  1 talmage users 14836 Apr  3 11:25 Queryable.html
+-rw-r--r--  1 talmage users 17551 Apr  3 11:25 QueryClientFields.html
+-rw-r--r--  1 talmage users 19375 Apr  3 11:25 QueryFields.html
+-rw-r--r--  1 talmage users 19896 Apr  3 11:25 QueryResultHandle.html
+-rw-r--r--  1 talmage users 37055 Apr  3 11:25 QueryViewInterpreter.html
+-rw-r--r--  1 talmage users 22872 Apr  3 11:25 ServerTypeEnum.html
+-rw-r--r--  1 talmage users 23854 Apr  3 11:25 SpatiotemporalViewInterpreter.html
+-rw-r--r--  1 talmage users 14077 Apr  3 11:25 Vector3dFactory.html
+-rw-r--r--  1 talmage users 32435 Apr  3 11:25 Vector3d.html
+
+docs/javadoc/mil/navy/nrl/cmf/sousa/spatiotemporal/class-use:
+total 140
+-rw-r--r--  1 talmage users  5887 Apr  3 11:25 BrowserFields.html
+-rw-r--r--  1 talmage users 18281 Apr  3 11:25 Queryable.html
+-rw-r--r--  1 talmage users  5919 Apr  3 11:25 QueryClientFields.html
+-rw-r--r--  1 talmage users  5871 Apr  3 11:25 QueryFields.html
+-rw-r--r--  1 talmage users  8706 Apr  3 11:25 QueryResultHandle.html
+-rw-r--r--  1 talmage users  5943 Apr  3 11:25 QueryViewInterpreter.html
+-rw-r--r--  1 talmage users 11560 Apr  3 11:25 ServerTypeEnum.html
+-rw-r--r--  1 talmage users  6015 Apr  3 11:25 SpatiotemporalViewInterpreter.html
+-rw-r--r--  1 talmage users  5903 Apr  3 11:25 Vector3dFactory.html
+-rw-r--r--  1 talmage users 66414 Apr  3 11:25 Vector3d.html
+
+docs/javadoc/mil/navy/nrl/cmf/sousa/util:
+total 197
+-rw-r--r--  1 talmage users 15542 Apr  3 11:25 CalendarFactory.html
+drwxr-xr-x  2 talmage users  2048 Apr  3 11:25 class-use
+-rw-r--r--  1 talmage users 16172 Apr  3 11:25 DuplicateEnumIdException.html
+-rw-r--r--  1 talmage users 17677 Apr  3 11:25 Enum.html
+-rw-r--r--  1 talmage users 19794 Apr  3 11:25 HashCodeUtil.html
+-rw-r--r--  1 talmage users 18730 Apr  3 11:25 MapUtil.html
+-rw-r--r--  1 talmage users 16650 Apr  3 11:25 NonExistentEnumException.html
+-rw-r--r--  1 talmage users  9417 Apr  3 11:25 ObjectFactory.html
+-rw-r--r--  1 talmage users  2379 Apr  3 11:25 package-frame.html
+-rw-r--r--  1 talmage users  9030 Apr  3 11:25 package-summary.html
+-rw-r--r--  1 talmage users  9591 Apr  3 11:25 package-tree.html
+-rw-r--r--  1 talmage users  8924 Apr  3 11:25 package-use.html
+-rw-r--r--  1 talmage users 15714 Apr  3 11:25 SetFactory.html
+-rw-r--r--  1 talmage users 13258 Apr  3 11:25 StackTrace.html
+-rw-r--r--  1 talmage users 18956 Apr  3 11:25 Strings.html
+
+docs/javadoc/mil/navy/nrl/cmf/sousa/util/class-use:
+total 72
+-rw-r--r--  1 talmage users 5823 Apr  3 11:25 CalendarFactory.html
+-rw-r--r--  1 talmage users 9461 Apr  3 11:25 DuplicateEnumIdException.html
+-rw-r--r--  1 talmage users 7759 Apr  3 11:25 Enum.html
+-rw-r--r--  1 talmage users 5799 Apr  3 11:25 HashCodeUtil.html
+-rw-r--r--  1 talmage users 5759 Apr  3 11:25 MapUtil.html
+-rw-r--r--  1 talmage users 7871 Apr  3 11:25 NonExistentEnumException.html
+-rw-r--r--  1 talmage users 9971 Apr  3 11:25 ObjectFactory.html
+-rw-r--r--  1 talmage users 5783 Apr  3 11:25 SetFactory.html
+-rw-r--r--  1 talmage users 5783 Apr  3 11:25 StackTrace.html
+-rw-r--r--  1 talmage users 5759 Apr  3 11:25 Strings.html
+
+docs/javadoc/resources:
+total 1
+-rw-r--r--  1 talmage users 57 Apr  3 11:25 inherit.gif
+
+etc:
+total 7
+drwxr-xr-x  2 talmage users 2048 Feb  1 11:49 CVS
+drwxr-xr-x  3 talmage users 2048 Apr  3 11:53 idol
+-rw-r--r--  1 talmage users  461 Feb  1 11:38 README
+-rw-r--r--  1 talmage users  215 Oct 28 12:35 service.jaas.conf
+-rw-r--r--  1 talmage users  208 Oct 31 14:26 user.jaas.conf
+
+etc/CVS:
+total 3
+-rw-r--r--  1 talmage users 147 Feb  1 11:50 Entries
+-rw-r--r--  1 talmage users  10 Oct 28 11:17 Repository
+-rw-r--r--  1 talmage users  32 Oct 28 11:17 Root
+
+etc/idol:
+total 29
+-rw-r--r--  1 talmage users  924 Feb  1 11:53 city.properties
+-rw-r--r--  1 talmage users 4463 Jan  3 11:22 cli.properties
+drwxr-xr-x  2 talmage users 2048 Feb  1 11:55 CVS
+-rw-r--r--  1 talmage users 1134 Dec 15 11:22 directory.properties
+-rw-r--r--  1 talmage users 4343 Feb  1 11:50 gui.properties
+-rw-r--r--  1 talmage users  929 Dec 15 11:20 model.properties
+-rw-r--r--  1 talmage users  936 Dec 15 11:20 raster.properties
+-rw-r--r--  1 talmage users  545 Jan  3 11:21 README.multicast
+-rw-r--r--  1 talmage users 1257 Dec 15 11:23 rootdirectory.properties
+-rw-r--r--  1 talmage users 1168 Dec 16 11:26 satellite.properties
+-rw-r--r--  1 talmage users  885 Dec 23 15:00 trail.properties
+-rw-r--r--  1 talmage users 5432 Feb  1 11:53 zui.properties
+
+etc/idol/CVS:
+total 3
+-rw-r--r--  1 talmage users 551 Feb  1 11:55 Entries
+-rw-r--r--  1 talmage users  15 Oct 28 11:17 Repository
+-rw-r--r--  1 talmage users  32 Oct 28 11:17 Root
+
+ext:
+total 1556
+drwxr-xr-x  2 talmage users   2048 Oct 19 16:32 CVS
+drwxr-xr-x  3 talmage users   2048 Oct 19 16:31 i386_linux24
+lrwxr-xr-x  1 talmage users     12 Dec  1 11:43 i386_linux26 -> i386_linux24
+-rw-r--r--  1 talmage users  15277 Dec 30 14:23 jsci-astro.jar
+-rw-r--r--  1 talmage users   4243 Dec 30 14:23 jsci-beans.jar
+-rwx------  1 talmage users  12001 Dec 30 14:23 jsci-bio.jar
+-rwx------  1 talmage users 242163 Dec 30 14:23 jsci-core.jar
+-rw-r--r--  1 talmage users  88144 Dec 30 14:23 jsci-instr.jar
+-rw-r--r--  1 talmage users  37263 Dec 30 14:23 jsci-mathmlimpl.jar
+-rwx------  1 talmage users 134847 Dec 30 14:23 jsci-sci.jar
+-rw-r--r--  1 talmage users 107200 Dec 30 14:23 jsci-wavelet.jar
+-rwx------  1 talmage users 119773 Dec 30 14:23 jsci-xtra.jar
+-rw-r--r--  1 talmage users 378778 Oct 19 16:28 log4j-1.2.4.jar
+-rw-r--r--  1 talmage users  13033 Oct 28 14:57 norm4j.jar
+-rw-r--r--  1 talmage users  30479 Oct 19 16:28 postgis.jar
+-rw-r--r--  1 talmage users 324822 Oct 19 16:28 postgresql.jar
+drwxr-xr-x  3 talmage users   2048 Oct 19 16:33 ppc_darwin_70
+-rw-r--r--  1 talmage users    604 Oct 19 16:33 README
+drwxr-xr-x  3 talmage users   2048 Oct 19 16:31 sgi_65
+-rw-r--r--  1 talmage users  54964 Dec 16 10:54 stk.jar
+drwxr-xr-x  3 talmage users   2048 Oct 19 16:32 sun4_55
+lrwxr-xr-x  1 talmage users      7 Oct 19 16:30 sun4x_55 -> sun4_55
+lrwxr-xr-x  1 talmage users      7 Oct 19 16:30 sun4x_56 -> sun4_55
+lrwxr-xr-x  1 talmage users      7 Oct 19 16:30 sun4x_57 -> sun4_55
+lrwxr-xr-x  1 talmage users      7 Oct 19 16:30 sun4x_58 -> sun4_55
+-rw-r--r--  1 talmage users   7512 Oct 19 16:28 SystemV.jar
+
+ext/CVS:
+total 3
+-rw-r--r--  1 talmage users 66 Oct 19 16:32 Entries
+-rw-r--r--  1 talmage users 10 Oct 19 16:27 Repository
+-rw-r--r--  1 talmage users 32 Oct 19 16:27 Root
+
+ext/i386_linux24:
+total 2135
+drwxr-xr-x  2 talmage users    2048 Oct 19 16:41 CVS
+-rwxr-xr-x  1 talmage users    8798 Oct 19 16:31 libKrb5Client.so
+-rwxr-xr-x  1 talmage users  401416 Oct 28 14:55 libNorm4j.so
+-rwxr-xr-x  1 talmage users 1166855 Oct 28 14:53 libnorm.so
+-rwxr-xr-x  1 talmage users  542581 Oct 28 14:52 libProtokit.so
+-rwxr-xr-x  1 talmage users   61980 Oct 19 16:31 libSystemV.so
+
+ext/i386_linux24/CVS:
+total 3
+-rw-r--r--  1 talmage users  2 Oct 19 16:41 Entries
+-rw-r--r--  1 talmage users 23 Oct 19 16:30 Repository
+-rw-r--r--  1 talmage users 32 Oct 19 16:30 Root
+
+ext/ppc_darwin_70:
+total 16
+drwxr-xr-x  2 talmage users  2048 Oct 19 16:41 CVS
+-rwxr-xr-x  1 talmage users 14212 Oct 19 16:32 libKrb5Client.jnilib
+
+ext/ppc_darwin_70/CVS:
+total 3
+-rw-r--r--  1 talmage users  2 Oct 19 16:41 Entries
+-rw-r--r--  1 talmage users 24 Oct 19 16:32 Repository
+-rw-r--r--  1 talmage users 32 Oct 19 16:32 Root
+
+ext/sgi_65:
+total 1625
+drwxr-xr-x  2 talmage users    2048 Oct 19 16:41 CVS
+-rwxr-xr-x  1 talmage users   20232 Oct 19 16:31 libKrb5Client.so
+-rwxr-xr-x  1 talmage users   86560 Oct 19 16:31 libNorm4j.so
+-rwxr-xr-x  1 talmage users 1061080 Oct 19 16:31 libnorm.so
+-rwxr-xr-x  1 talmage users  405936 Oct 19 16:31 libProtokit.so
+-rwxr-xr-x  1 talmage users   85548 Oct 19 16:31 libSystemV.so
+
+ext/sgi_65/CVS:
+total 3
+-rw-r--r--  1 talmage users  2 Oct 19 16:41 Entries
+-rw-r--r--  1 talmage users 17 Oct 19 16:30 Repository
+-rw-r--r--  1 talmage users 32 Oct 19 16:30 Root
+
+ext/sun4_55:
+total 4253
+drwxr-xr-x  2 talmage users    2048 Oct 19 16:41 CVS
+-rwxr-xr-x  1 talmage users  795008 Oct 19 16:31 libNorm4j.so
+-rwxr-xr-x  1 talmage users 2292880 Oct 19 16:31 libnorm.so
+-rwxr-xr-x  1 talmage users 1263280 Oct 19 16:31 libProtokit.so
+
+ext/sun4_55/CVS:
+total 3
+-rw-r--r--  1 talmage users  2 Oct 19 16:41 Entries
+-rw-r--r--  1 talmage users 18 Oct 19 16:30 Repository
+-rw-r--r--  1 talmage users 32 Oct 19 16:30 Root
+
+lib:
+total 149
+-rw-r--r--  1 talmage users 148371 Apr  3 11:25 IDOL_util.jar
+drwxr-xr-x  2 talmage users   2048 Apr  3 11:25 service
+drwxr-xr-x  2 talmage users   2048 Apr  3 11:25 user
+
+lib/service:
+total 66
+-rw-r--r--  1 talmage users 66657 Apr  3 11:25 IDOL_service.jar
+
+lib/user:
+total 99
+-rw-r--r--  1 talmage users 101105 Apr  3 11:25 IDOL_user.jar
+
+src:
+total 14
+-rw-r--r--  1 talmage users  339 Nov 23 12:52 build.pass
+drwxr-xr-x  2 talmage users 2048 Feb  1 11:57 CVS
+-rw-r--r--  1 talmage users 6507 Feb  1 11:59 log4j.properties
+drwxr-xr-x  4 talmage users 2048 Oct 19 16:26 mil
+-rw-r--r--  1 talmage users 1262 Nov 23 12:52 source.keystore
+
+src/CVS:
+total 3
+-rw-r--r--  1 talmage users 245 Feb  1 11:58 Entries
+-rw-r--r--  1 talmage users  10 Oct 19 16:26 Repository
+-rw-r--r--  1 talmage users  32 Oct 19 16:26 Root
+
+src/mil:
+total 4
+drwxr-xr-x  2 talmage users 2048 Oct 19 16:26 CVS
+drwxr-xr-x  4 talmage users 2048 Oct 19 16:26 navy
+
+src/mil/CVS:
+total 3
+-rw-r--r--  1 talmage users 11 Oct 19 16:26 Entries
+-rw-r--r--  1 talmage users 14 Oct 19 16:26 Repository
+-rw-r--r--  1 talmage users 32 Oct 19 16:26 Root
+
+src/mil/navy:
+total 4
+drwxr-xr-x  2 talmage users 2048 Oct 19 16:26 CVS
+drwxr-xr-x  4 talmage users 2048 Oct 19 16:26 nrl
+
+src/mil/navy/CVS:
+total 3
+-rw-r--r--  1 talmage users 10 Oct 19 16:26 Entries
+-rw-r--r--  1 talmage users 19 Oct 19 16:26 Repository
+-rw-r--r--  1 talmage users 32 Oct 19 16:26 Root
+
+src/mil/navy/nrl:
+total 4
+drwxr-xr-x  4 talmage users 2048 Oct 19 16:26 cmf
+drwxr-xr-x  2 talmage users 2048 Oct 19 16:26 CVS
+
+src/mil/navy/nrl/cmf:
+total 6
+drwxr-xr-x  2 talmage users 2048 Oct 19 16:26 CVS
+drwxr-xr-x  7 talmage users 4096 Apr  3 11:53 sousa
+
+src/mil/navy/nrl/cmf/CVS:
+total 3
+-rw-r--r--  1 talmage users 12 Oct 19 16:26 Entries
+-rw-r--r--  1 talmage users 27 Oct 19 16:26 Repository
+-rw-r--r--  1 talmage users 32 Oct 19 16:26 Root
+
+src/mil/navy/nrl/cmf/sousa:
+total 237
+-rw-r--r--  1 talmage users  1982 Jan 31 12:14 ByteArray.java
+-rw-r--r--  1 talmage users 10705 Apr  3 11:39 ClientSideFSM.java
+-rw-r--r--  1 talmage users  5468 Jan 31 12:14 Clock.java
+-rw-r--r--  1 talmage users   262 Jan 31 12:14 CommandLogic.java
+-rw-r--r--  1 talmage users  5063 Mar 22 12:04 ControlLogic.java
+drwxr-xr-x  2 talmage users  2048 Apr  3 11:39 CVS
+drwxr-xr-x  3 talmage users  2048 Apr  3 11:53 directory
+-rw-r--r--  1 talmage users  8367 Jan 31 12:14 EntityFSM.java
+-rw-r--r--  1 talmage users  3494 Jan 31 17:42 EntityInitializer.java
+-rw-r--r--  1 talmage users 15375 Jan 31 14:07 Entity.java
+-rw-r--r--  1 talmage users  5674 Jan 31 14:07 Executor.java
+-rw-r--r--  1 talmage users  3204 Jan 31 14:08 Field.java
+-rw-r--r--  1 talmage users  4622 Jan 31 14:08 FieldListener.java
+-rw-r--r--  1 talmage users  1681 Jan 31 14:08 Focus.java
+drwxr-xr-x  6 talmage users  2048 Apr  3 11:53 idol
+-rw-r--r--  1 talmage users   309 Nov 23 14:51 manifest
+-rw-r--r--  1 talmage users  1261 Jan 31 12:14 MethodInvocationMessage.java
+-rw-r--r--  1 talmage users  1796 Jan 31 12:14 MethodResponseMessage.java
+-rw-r--r--  1 talmage users  4179 Jan 31 14:06 Nimbus.java
+-rw-r--r--  1 talmage users  2312 Jan 31 14:08 NonBlockingObjectChannel.java
+-rw-r--r--  1 talmage users  9107 Jan 31 14:09 P2PChannelFactory.java
+-rw-r--r--  1 talmage users 11857 Feb  8 15:38 P2PChannel.java
+-rw-r--r--  1 talmage users  1098 Mar  1 11:07 package.html
+-rw-r--r--  1 talmage users 19754 Jan 31 14:09 Projector.java
+-rw-r--r--  1 talmage users  4612 Jan 31 14:09 QoS.java
+-rw-r--r--  1 talmage users  8614 Jan 31 12:58 Receptor.java
+-rw-r--r--  1 talmage users  9008 Jan 31 22:13 RunnableNormInstance.java
+-rw-r--r--  1 talmage users  1046 Jan 31 14:10 SelectableFutureResult.java
+-rw-r--r--  1 talmage users  7978 Jan 31 19:04 Selectable.java
+-rw-r--r--  1 talmage users  5451 Jan 31 21:59 SelectableNormSession.java
+-rw-r--r--  1 talmage users 12527 Jan 31 21:35 SelectableSet.java
+-rw-r--r--  1 talmage users  8360 Jan 31 14:10 ServerContact.java
+-rw-r--r--  1 talmage users  8945 Mar 30 13:25 ServerSideFSM.java
+-rw-r--r--  1 talmage users   931 Oct 19 16:26 SignalType.java
+drwxr-xr-x  3 talmage users  2048 Apr  3 11:53 spatiotemporal
+-rw-r--r--  1 talmage users  7029 Jan 31 14:11 State.java
+-rw-r--r--  1 talmage users 15080 Mar 30 13:58 Test.java
+drwxr-xr-x  3 talmage users  2048 Apr  3 11:53 util
+-rw-r--r--  1 talmage users  6778 Mar 29 14:13 ViewInterpreter.java
+
+src/mil/navy/nrl/cmf/sousa/CVS:
+total 4
+-rw-r--r--  1 talmage users 1710 Apr  3 11:39 Entries
+-rw-r--r--  1 talmage users   33 Oct 19 16:26 Repository
+-rw-r--r--  1 talmage users   32 Oct 19 16:26 Root
+
+src/mil/navy/nrl/cmf/sousa/directory:
+total 15
+-rw-r--r--  1 talmage users  817 Jan 25 15:04 Advertiser.java
+-rw-r--r--  1 talmage users 7602 Jan 27 15:27 ConsumerViewInterpreter.java
+drwxr-xr-x  2 talmage users 2048 Jan 27 16:43 CVS
+-rw-r--r--  1 talmage users 1055 Jan 26 12:04 DirectoryFields.java
+-rw-r--r--  1 talmage users 1469 Mar  1 11:32 package.html
+
+src/mil/navy/nrl/cmf/sousa/directory/CVS:
+total 3
+-rw-r--r--  1 talmage users 165 Jan 27 16:44 Entries
+-rw-r--r--  1 talmage users  43 Oct 19 16:26 Repository
+-rw-r--r--  1 talmage users  32 Oct 19 16:26 Root
+
+src/mil/navy/nrl/cmf/sousa/idol:
+total 40
+-rwxr-xr-x  1 talmage users  3072 Jan 19 17:22 Console.java
+drwxr-xr-x  2 talmage users  2048 Jan 27 16:44 CVS
+-rw-r--r--  1 talmage users 24657 Jan 25 16:45 IdolInitializer.java
+-rw-r--r--  1 talmage users  1634 Jan 19 19:47 package.html
+drwxr-xr-x  9 talmage users  2048 Apr  3 11:53 service
+drwxr-xr-x  4 talmage users  4096 Apr  3 11:53 user
+drwxr-xr-x  3 talmage users  2048 Nov 22 14:22 util
+
+src/mil/navy/nrl/cmf/sousa/idol/CVS:
+total 3
+-rw-r--r--  1 talmage users 134 Jan 27 16:44 Entries
+-rw-r--r--  1 talmage users  38 Oct 19 16:26 Repository
+-rw-r--r--  1 talmage users  32 Oct 19 16:26 Root
+
+src/mil/navy/nrl/cmf/sousa/idol/service:
+total 38
+drwxr-xr-x  3 talmage users  2048 Mar  1 12:19 city
+drwxr-xr-x  3 talmage users  2048 Mar  1 10:42 computeserver
+drwxr-xr-x  2 talmage users  2048 Jan 27 16:44 CVS
+drwxr-xr-x  3 talmage users  2048 Mar 22 11:59 directory
+-rw-r--r--  1 talmage users  5236 Jan 24 16:32 Main.java
+-rw-r--r--  1 talmage users   318 Nov 23 14:50 manifest
+drwxr-xr-x  3 talmage users  2048 Jan 31 10:53 model
+-rw-r--r--  1 talmage users  1405 Jan 19 19:46 package.html
+drwxr-xr-x  3 talmage users  2048 Jan 31 10:51 raster
+-rw-r--r--  1 talmage users 14554 Jan 25 15:01 ServerInitializer.java
+drwxr-xr-x  3 talmage users  2048 Apr  3 11:53 trail
+
+src/mil/navy/nrl/cmf/sousa/idol/service/city:
+total 16
+-rw-r--r--  1 talmage users 8474 Jan 30 14:13 CityQueryable.java
+-rw-r--r--  1 talmage users 4337 Jan 31 10:51 CityServerInitializer.java
+drwxr-xr-x  2 talmage users 2048 Jan 31 12:22 CVS
+
+src/mil/navy/nrl/cmf/sousa/idol/service/city/CVS:
+total 3
+-rw-r--r--  1 talmage users 112 Jan 31 12:22 Entries
+-rw-r--r--  1 talmage users  51 Oct 19 16:26 Repository
+-rw-r--r--  1 talmage users  32 Oct 19 16:26 Root
+
+src/mil/navy/nrl/cmf/sousa/idol/service/computeserver:
+total 33
+-rw-r--r--  1 talmage users 8406 Dec 15 14:48 AbstractCalcDB.java
+-rw-r--r--  1 talmage users 3404 Dec 19 15:26 AbstractCalcObject.java
+-rw-r--r--  1 talmage users  241 Dec 15 14:25 CalcDB.java
+-rw-r--r--  1 talmage users  412 Dec 15 14:27 CalcObject.java
+drwxr-xr-x  2 talmage users 2048 Mar  1 10:50 CVS
+-rw-r--r--  1 talmage users 1988 Dec 15 14:27 DateUtils.java
+-rw-r--r--  1 talmage users 3422 Dec 22 14:13 SatelliteDB.java
+-rw-r--r--  1 talmage users 4809 Mar  1 10:42 Satellite.java
+-rw-r--r--  1 talmage users 4461 Jan 31 10:54 SatelliteServerInitializer.java
+
+src/mil/navy/nrl/cmf/sousa/idol/service/computeserver/CVS:
+total 3
+-rw-r--r--  1 talmage users 409 Mar  1 10:50 Entries
+-rw-r--r--  1 talmage users  60 Dec 15 14:13 Repository
+-rw-r--r--  1 talmage users  32 Dec 15 14:13 Root
+
+src/mil/navy/nrl/cmf/sousa/idol/service/CVS:
+total 3
+-rw-r--r--  1 talmage users 223 Jan 27 16:44 Entries
+-rw-r--r--  1 talmage users  46 Oct 19 16:26 Repository
+-rw-r--r--  1 talmage users  32 Oct 19 16:26 Root
+
+src/mil/navy/nrl/cmf/sousa/idol/service/directory:
+total 23
+drwxr-xr-x  2 talmage users  2048 Jan 27 16:44 CVS
+-rw-r--r--  1 talmage users 18741 Jan 25 16:44 DirectoryServerInitializer.java
+-rw-r--r--  1 talmage users  1614 Dec 13 16:51 MapTransactions.java
+
+src/mil/navy/nrl/cmf/sousa/idol/service/directory/CVS:
+total 3
+-rw-r--r--  1 talmage users 120 Jan 27 16:44 Entries
+-rw-r--r--  1 talmage users  56 Oct 19 16:26 Repository
+-rw-r--r--  1 talmage users  32 Oct 19 16:26 Root
+
+src/mil/navy/nrl/cmf/sousa/idol/service/model:
+total 15
+drwxr-xr-x  2 talmage users 2048 Jan 31 12:22 CVS
+-rw-r--r--  1 talmage users 7685 Jan 30 14:11 ModelQueryable.java
+-rw-r--r--  1 talmage users 4267 Jan 31 10:54 ModelServerInitializer.java
+
+src/mil/navy/nrl/cmf/sousa/idol/service/model/CVS:
+total 3
+-rw-r--r--  1 talmage users 114 Jan 31 12:22 Entries
+-rw-r--r--  1 talmage users  52 Oct 19 16:26 Repository
+-rw-r--r--  1 talmage users  32 Oct 19 16:26 Root
+
+src/mil/navy/nrl/cmf/sousa/idol/service/raster:
+total 16
+drwxr-xr-x  2 talmage users 2048 Jan 31 12:22 CVS
+-rw-r--r--  1 talmage users 8929 Jan 30 14:15 RasterQueryable.java
+-rw-r--r--  1 talmage users 4317 Jan 31 10:51 RasterServerInitializer.java
+
+src/mil/navy/nrl/cmf/sousa/idol/service/raster/CVS:
+total 3
+-rw-r--r--  1 talmage users 117 Jan 31 12:22 Entries
+-rw-r--r--  1 talmage users  53 Oct 19 16:26 Repository
+-rw-r--r--  1 talmage users  32 Oct 19 16:26 Root
+
+src/mil/navy/nrl/cmf/sousa/idol/service/trail:
+total 10
+drwxr-xr-x  2 talmage users 2048 Jan 31 12:22 CVS
+-rw-r--r--  1 talmage users 3683 Jan 30 14:46 TrailQueryable.java
+-rw-r--r--  1 talmage users 4017 Jan 31 10:52 TrailServerInitializer.java
+
+src/mil/navy/nrl/cmf/sousa/idol/service/trail/CVS:
+total 3
+-rw-r--r--  1 talmage users 114 Jan 31 12:22 Entries
+-rw-r--r--  1 talmage users  52 Dec 23 16:01 Repository
+-rw-r--r--  1 talmage users  32 Dec 23 16:01 Root
+
+src/mil/navy/nrl/cmf/sousa/idol/user:
+total 162
+-rw-r--r--  1 talmage users  7150 Dec 20 11:44 AdminFrame.java
+-rw-r--r--  1 talmage users  7256 Dec 23 16:32 AdminPanel.java
+-rw-r--r--  1 talmage users 10063 Jan  6 18:02 BarGraphPlugin.java.J3D
+-rw-r--r--  1 talmage users  6935 Jan  3 17:32 BarGraphPlugin.java.original
+-rw-r--r--  1 talmage users 65999 Feb  1 11:50 ClientInitializer.java
+-rw-r--r--  1 talmage users   265 Dec  1 17:33 Client.java
+-rw-r--r--  1 talmage users  1393 Jan 23 10:33 ConsoleBrowserInitializer.java
+-rw-r--r--  1 talmage users  4452 Nov 15 11:47 ContentPanel.java
+drwxr-xr-x  2 talmage users  2048 Feb  1 11:49 CVS
+-rw-r--r--  1 talmage users 10851 Nov 23 14:56 GUI.java
+drwxr-xr-x  3 talmage users  2048 Nov 23 14:48 images
+-rw-r--r--  1 talmage users  5664 Jan 24 16:35 Main.java
+-rw-r--r--  1 talmage users   329 Nov 23 14:48 manifest
+-rw-r--r--  1 talmage users  1016 Dec 20 11:44 Peer.java
+-rw-r--r--  1 talmage users  4201 Nov 15 11:50 SpatialChooser.java
+-rw-r--r--  1 talmage users  7203 Nov 15 11:51 TemporalChooser.java
+-rw-r--r--  1 talmage users 21212 Jan 31 11:36 ZUI.java
+
+src/mil/navy/nrl/cmf/sousa/idol/user/CVS:
+total 3
+-rw-r--r--  1 talmage users 635 Feb  1 11:50 Entries
+-rw-r--r--  1 talmage users  43 Oct 19 16:26 Repository
+-rw-r--r--  1 talmage users  32 Oct 19 16:26 Root
+
+src/mil/navy/nrl/cmf/sousa/idol/user/images:
+total 21
+drwxr-xr-x  2 talmage users  2048 Nov 23 14:48 CVS
+-rw-r--r--  1 talmage users 17401 Nov 23 14:48 earth.jpg
+-rw-r--r--  1 talmage users   172 Nov 23 14:48 left.gif
+-rw-r--r--  1 talmage users   172 Nov 23 14:48 right.gif
+
+src/mil/navy/nrl/cmf/sousa/idol/user/images/CVS:
+total 3
+-rw-r--r--  1 talmage users 136 Nov 23 14:48 Entries
+-rw-r--r--  1 talmage users  50 Oct 19 16:26 Repository
+-rw-r--r--  1 talmage users  32 Oct 19 16:26 Root
+
+src/mil/navy/nrl/cmf/sousa/idol/util:
+total 25
+-rw-r--r--  1 talmage users  644 Oct 19 16:26 CommandMessage.java
+drwxr-xr-x  2 talmage users 2048 Nov 22 14:22 CVS
+-rw-r--r--  1 talmage users 2519 Oct 19 16:26 ImageParams.java
+-rw-r--r--  1 talmage users 1114 Oct 19 16:26 ImageUpdateMessage.java
+-rw-r--r--  1 talmage users 1198 Oct 19 16:26 KeyUpdateMessage.java
+-rw-r--r--  1 talmage users 2170 Oct 19 16:26 Login.java
+-rw-r--r--  1 talmage users  311 Oct 19 16:26 manifest
+-rw-r--r--  1 talmage users  507 Oct 19 16:26 ServerEventListener.java
+-rw-r--r--  1 talmage users 1497 Nov 14 15:24 ServiceEntry.java
+-rw-r--r--  1 talmage users  410 Oct 19 16:26 StatusRequestMessage.java
+-rw-r--r--  1 talmage users 1196 Oct 19 16:26 StatusUpdateMessage.java
+-rw-r--r--  1 talmage users 3269 Nov 15 11:54 StreamHandlerThread.java
+-rw-r--r--  1 talmage users  932 Oct 19 16:26 Task.java
+
+src/mil/navy/nrl/cmf/sousa/idol/util/CVS:
+total 3
+-rw-r--r--  1 talmage users 662 Nov 22 14:22 Entries
+-rw-r--r--  1 talmage users  43 Oct 19 16:26 Repository
+-rw-r--r--  1 talmage users  32 Oct 19 16:26 Root
+
+src/mil/navy/nrl/cmf/sousa/spatiotemporal:
+total 42
+-rw-r--r--  1 talmage users   923 Nov  9 11:28 BrowserFields.java
+drwxr-xr-x  2 talmage users  2048 Jan 31 12:22 CVS
+-rw-r--r--  1 talmage users  1210 Mar  1 11:36 package.html
+-rw-r--r--  1 talmage users  2337 Jan 30 11:44 Queryable.java
+-rw-r--r--  1 talmage users  1169 Jan 27 14:37 QueryClientFields.java
+-rw-r--r--  1 talmage users  1370 Jan 27 14:43 QueryFields.java
+-rw-r--r--  1 talmage users  2668 Jan 27 15:59 QueryResultHandle.java
+-rw-r--r--  1 talmage users 12484 Jan 27 16:15 QueryViewInterpreter.java
+-rw-r--r--  1 talmage users  1804 Jan 27 16:27 ServerTypeEnum.java
+-rw-r--r--  1 talmage users  4699 Jan 27 15:53 SpatiotemporalViewInterpreter.java
+-rw-r--r--  1 talmage users  1797 Jan 27 16:41 Vector3dFactory.java
+-rw-r--r--  1 talmage users  5083 Jan 27 14:12 Vector3d.java
+
+src/mil/navy/nrl/cmf/sousa/spatiotemporal/CVS:
+total 3
+-rw-r--r--  1 talmage users 535 Jan 31 12:22 Entries
+-rw-r--r--  1 talmage users  48 Oct 19 16:26 Repository
+-rw-r--r--  1 talmage users  32 Oct 19 16:26 Root
+
+src/mil/navy/nrl/cmf/sousa/util:
+total 25
+-rw-r--r--  1 talmage users 2345 Nov 22 18:06 CalendarFactory.java
+drwxr-xr-x  2 talmage users 2048 Dec 15 13:48 CVS
+-rw-r--r--  1 talmage users  417 Oct 19 16:26 DuplicateEnumIdException.java
+-rw-r--r--  1 talmage users 1795 Oct 19 16:26 Enum.java
+-rw-r--r--  1 talmage users 2787 Nov  1 16:01 HashCodeUtil.java
+-rw-r--r--  1 talmage users 2492 Dec 15 12:31 MapUtil.java
+-rw-r--r--  1 talmage users  496 Oct 19 16:26 NonExistentEnumException.java
+-rw-r--r--  1 talmage users  407 Nov 22 16:00 ObjectFactory.java
+-rw-r--r--  1 talmage users   35 Oct 19 16:26 package.html
+-rw-r--r--  1 talmage users 3444 Nov 22 17:25 SetFactory.java
+-rw-r--r--  1 talmage users  822 Oct 19 16:26 StackTrace.java
+-rw-r--r--  1 talmage users 2090 Oct 19 16:26 Strings.java
+
+src/mil/navy/nrl/cmf/sousa/util/CVS:
+total 3
+-rw-r--r--  1 talmage users 577 Dec 15 13:48 Entries
+-rw-r--r--  1 talmage users  38 Oct 19 16:26 Repository
+-rw-r--r--  1 talmage users  32 Oct 19 16:26 Root
+
+src/mil/navy/nrl/CVS:
+total 3
+-rw-r--r--  1 talmage users 10 Oct 19 16:26 Entries
+-rw-r--r--  1 talmage users 23 Oct 19 16:26 Repository
+-rw-r--r--  1 talmage users 32 Oct 19 16:26 Root
+51	bin
+7053	docs
+55	etc
+9602	ext
+316	lib
+878	src

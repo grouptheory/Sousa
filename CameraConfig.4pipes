@@ -1,0 +1,88 @@
+Visual "theVisual" 
+{ 
+    DOUBLEBUFFER,
+    RGBA,
+    DEPTH_SIZE 1,
+    RED_SIZE 8,
+    GREEN_SIZE 8,
+    BLUE_SIZE 8,
+    ALPHA_SIZE 8
+}
+
+Camera "Camera 1"
+{
+    RenderSurface "Pipe 0"
+    {
+        Visual "theVisual";
+        Screen 0;
+        Border off;
+        WindowRect 0 0 640 480;
+        InputRectangle 0.0 0.5 0.0 0.5;
+    }
+    Lens {
+        Frustum -0.32 0.32 -0.26 0.26 1.0 100.0;
+    }
+}
+
+Camera "Camera 2"
+{
+    RenderSurface "Pipe 1"
+    {
+        Visual "theVisual";
+        Screen 0;
+        Border off;
+        WindowRect 640 0 640 480;
+        InputRectangle 0.5 1.0 0.0 0.5;
+    }
+    Lens {
+        Frustum -0.32 0.32 -0.26 0.26 1.0 100.0;
+    }
+}
+
+Camera "Camera 3" 
+{
+    RenderSurface "Pipe 2"
+    {
+        //Hostname "sunny";
+        Visual "theVisual";
+        Screen 0;
+        Border off;
+        WindowRect 0 480 640 480;
+        InputRectangle 0.0 0.5 0.5 1.0;
+    }
+    Lens {
+        Frustum -0.32 0.32 -0.26 0.26 1.0 100.0;
+    }
+
+    Offset {
+        Shear 1.0 0.0;
+    }
+}
+
+Camera "Camera 4" 
+{
+    RenderSurface "Pipe 3"
+    {
+        //Hostname "sunny";
+        Visual "theVisual";
+        Screen 0;
+        Border off;
+        WindowRect 640 480 640 480;
+        InputRectangle 0.5 1.0 0.5 1.0;
+    }
+    Lens {
+        Frustum -0.32 0.32 -0.26 0.26 1.0 100.0;
+    }
+    Offset {
+        Shear -1.0 0.0;
+    }
+}
+
+
+
+InputArea {
+    RenderSurface "Pipe 0";
+    RenderSurface "Pipe 1";
+    RenderSurface "Pipe 2";
+    RenderSurface "Pipe 3";
+}

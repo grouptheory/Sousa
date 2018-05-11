@@ -1,0 +1,275 @@
+package mil.navy.nrl.cmf.sousa.idol.user;
+import java.awt.Color;
+import java.io.File;
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.HashSet;
+import java.util.Properties;
+import java.util.Set;
+import java.util.TimeZone;
+import mil.navy.nrl.cmf.sousa.Renderable;
+import mil.navy.nrl.cmf.sousa.ServerContact;
+import mil.navy.nrl.cmf.sousa.idol.util.StreamHandlerThread;
+import mil.navy.nrl.cmf.sousa.spatiotemporal.Vector3d;
+import mil.navy.nrl.cmf.sousa.util.StackTrace;
+import mil.navy.nrl.cmf.sousa.util.Strings;
+import mil.navy.nrl.cmf.sysv.SysVConstants;
+import mil.navy.nrl.cmf.sysv.SysVMessageQueue;
+import mil.navy.nrl.cmf.sysv.SysVSemaphore;
+import mil.navy.nrl.cmf.sysv.SysVSharedMemory;
+import mil.navy.nrl.cmf.stk.XYZd;
+import org.apache.log4j.*;
+
+/**
+   CLIRenderable
+*/
+final class CLIRenderable
+    implements Renderable
+{
+	/**
+	   _LOG
+	*/
+	private static final Logger _LOG = Logger.getLogger(CLIRenderable.class);
+
+	/**
+	   Part of a hack that assumes that the first image drawn on the
+	   scene graph is the base earth image and ensures that the base
+	   image is drawn as far from the viewer as possible.  This
+	   eliminates flimmer.
+	*/
+	private boolean _nolayers = true;
+
+	/**
+	   Message terminator
+	*/
+	static final String EOC = new String(new char[] { 0 });
+
+
+	// Constructors
+
+	/**
+	   CLIRenderable(Properties, QueryHandler, LocalCommandObject)
+	   @methodtype ctor
+	   @param p .
+	   @param qh .
+	   @param commandQueue .
+	   @throws IOException .
+	*/
+	CLIRenderable(/*@ non_null */ Properties p)
+		throws IOException
+	{
+
+	}
+
+
+	// mil.navy.nrl.cmf.sousa.Renderer
+
+
+	final public void
+		createlayer(String layername, String bookmark)
+		throws IOException
+	{
+		sendToDBASE(":DBASE create " + layername + " {" + bookmark + "}");
+	}
+
+	final public void
+		loadstaticmodel(String layername, String name, String filename, 
+						double scale, XYZd position)
+		throws IOException
+	{
+		String mangledName = name.replaceAll(" ", "_").replaceAll(":", "_");
+		sendToDBASE(":DBASE modify " + layername + " addchild " + mangledName +
+					" {static " + position.getY() + " " + position.getX() + 
+					" " + position.getZ() + "}" +
+					" {model " + filename + " " + scale + "}" );
+	}
+
+	final public void
+		loaddynamicmodel(String layername, String name, String filename, 
+						 double scale, XYZd position)
+		throws IOException
+	{
+		String mangledName = name.replaceAll(" ", "_").replaceAll(":", "_");
+		sendToDBASE(":DBASE modify " + layername + " addchild " + mangledName +
+					" {dynamic " + position.getY() + " " + position.getX() + 
+					" " + position.getZ() + "}" +
+					" {model " + filename + " " + scale + "}" );
+	}
+
+	final public void
+		loadfluxedmodel(String layername, String name, String filename, 
+						double scale, double time, XYZd position, XYZd velocity)
+		throws IOException
+	{
+		String mangledName = name.replaceAll(" ", "_").replaceAll(":", "_");
+		sendToDBASE(":DBASE modify " + layername + " addchild " + mangledName +
+					" {fluxed " + time + " " +
+					position.getY() + " " + position.getX() + " " + 
+					position.getZ() + " " +
+					velocity.getY() + " " + velocity.getX() + " " + 
+					velocity.getZ() + "}" +
+					" {model " + filename + " " + scale + "}" );
+	}
+
+	final public void
+		loadstatictext(String layername, String name, String text, Color color,
+					   double scale, XYZd position)
+		throws IOException
+	{
+		String mangledName = name.replaceAll(" ", "_").replaceAll(":", "_");
+		sendToDBASE(":DBASE modify " + layername + " addchild " + mangledName +
+					" {static " + position.getY() + " " + position.getX() + 
+					" " + position.getZ() + "}" +
+					" {text {" + text + "} " + color.getRed() + " " + 
+					color.getGreen() + " " + color.getBlue() + " " + 
+					color.getAlpha() + " " + scale + "}" );
+	}
+
+	final public void
+		loaddynamictext(String layername, String name, String text, Color color, 
+						double scale, XYZd position)
+		throws IOException
+	{
+		String mangledName = name.replaceAll(" ", "_").replaceAll(":", "_");
+		sendToDBASE(":DBASE modify " + layername + " addchild " + mangledName +
+					" {dynamic " + position.getY() + " " + position.getX() + 
+					" " + position.getZ() + "}" +
+					" {text {" + text + "} " + color.getRed() + " " + 
+					color.getGreen() + " " + color.getBlue() + " " + 
+					color.getAlpha() + " " + scale + "}" );
+	}
+
+	final public void
+		loadfluxedtext(String layername, String name, String text, Color color, 
+					   double scale, double time, XYZd position, XYZd velocity)
+		throws IOException
+	{
+		String mangledName = name.replaceAll(" ", "_").replaceAll(":", "_");
+		sendToDBASE(":DBASE modify " + layername + " addchild " + mangledName +
+					" {fluxed " + time + " " +
+					position.getY() + " " + position.getX() + " " + 
+					position.getZ() + " " +
+					velocity.getY() + " " + velocity.getX() + " " + 
+					velocity.getZ() + "}" +
+					" {text {" + text + "} " + color.getRed() + " " + 
+					color.getGreen() + " " + color.getBlue() + " " + 
+					color.getAlpha() + " " + scale + "}" );
+	}
+
+	final public void
+		updatedynamicobject(String layername, String name, XYZd position)
+		throws IOException
+	{
+		String mangledName = name.replaceAll(" ", "_").replaceAll(":", "_");
+		sendToDBASE(":ge change " + layername + " set " + mangledName + " " +
+					" {dynamic " + position.getY() + " " + position.getX() + 
+					" " + position.getZ() + "}");
+	}
+
+	final public void
+		updatefluxedobject(String layername, String name, double time, 
+						   XYZd position, XYZd velocity)
+		throws IOException
+	{
+		String mangledName = name.replaceAll(" ", "_").replaceAll(":", "_");
+		sendToCOMPUTE(":COMPUTE update " + layername + " set " + mangledName +
+					  " " +
+					  " {fluxed " + time + " " +
+					  position.getY() + " " + position.getX() + " " + 
+					  position.getZ() + " " +
+					  velocity.getY() + " " + velocity.getX() + " " + 
+					  velocity.getZ() + "}");
+	}
+
+	final public void
+		loadpatch(String layername, String name, String filename, 
+				  int displacement)
+		throws IOException
+	{
+		String mangledName = name.replaceAll(" ", "_").replaceAll(":", "_");
+
+		// Assuming that the first patch is the base imagery, this hack
+		// ensures that it is drawn as far away from the viewer as
+		// possible.  All other patches will be drawn at the displacement
+		// specified by the caller.  This eliminates flimmer.
+		if (_nolayers) {
+			displacement = 0;
+			_nolayers = false;
+		}
+
+		sendToDBASE(":ge change " + layername + " loadpatch " + mangledName + " " + 
+					filename + " " + displacement);
+	}
+
+	final public void
+		unloadSceneGraphObject(String layername, String name)
+		throws IOException
+	{
+		String mangledName = name.replaceAll(" ", "_").replaceAll(":", "_");
+		sendToDBASE(":ge change " + layername + " removechild " + mangledName);
+	}
+
+	public void 
+		loadObject(String layername, Object obj)
+		throws IOException {}
+
+	public void 
+		unloadObject(String layername, Object obj)
+		throws IOException {}
+
+
+	/**
+	   deletelayer(String, String)
+	   @methodtype command
+	   @param layername .
+	   @throws IOException .
+	*/
+	final public void
+		deletelayer(String layername)
+		throws IOException
+	{
+		sendToDBASE(":DBASE delete " + layername);
+	}
+
+	final public Set getContentTypes() {
+		Set answer = new HashSet();
+		answer.add("x-idol/x-city");
+		answer.add("x-idol/x-coverage");
+		answer.add("x-idol/x-model");
+		answer.add("x-idol/x-point");
+
+		return answer;
+	}
+	// Utility
+
+	/**
+	   sendToDBASE(String)
+	   @methodtype command
+	   @param message .
+	   @throws IOException .
+	*/
+	private void
+		sendToDBASE(String message)
+		throws IOException
+	{
+		System.out.println(message);
+	}
+
+	/**
+	   sendToCOMPUTE(String)
+	   @methodtype command
+	   @param message .
+	   @throws IOException .
+	*/
+	private void
+		sendToCOMPUTE(String message)
+		throws IOException
+	{
+		System.out.println(message);
+	}
+
+}; // CLIRenderable

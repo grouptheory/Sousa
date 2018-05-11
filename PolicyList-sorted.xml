@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mil.navy.nrl.cmf.policy.PolicyList xsi:type="mil.navy.nrl.cmf.policy.PolicyList"
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                                    xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <cel id="i0" xsi:type="mil.navy.nrl.cmf.policy.PolicyElement">
+    <_identities xsi:type="java.util.LinkedList">
+      <cel id="i2" xsi:type="mil.navy.nrl.cmf.policy.Identity">
+        <_user xsi:type="xsd:string">user_2</_user>
+
+        <_location xsi:type="xsd:string">192.168.0.2</_location>
+      </cel>
+    </_identities>
+
+    <_results xsi:type="java.util.LinkedList">
+      <cel id="i5"
+           xsi:type="mil.navy.nrl.cmf.sousa.spatiotemporal.QueryResultHandle">
+        <_id xsi:type="xsd:int">1</_id>
+
+        <_fields xsi:type="java.util.HashMap">
+          <mapentry xsi:type="MapEntry">
+            <key xsi:type="xsd:string">west</key>
+
+            <value xsi:type="xsd:double">-77.060216</value>
+          </mapentry>
+
+          <mapentry xsi:type="MapEntry">
+            <key xsi:type="xsd:string">east</key>
+
+            <value xsi:type="xsd:double">-77.05855</value>
+          </mapentry>
+
+          <mapentry xsi:type="MapEntry">
+            <key xsi:type="xsd:string">policy</key>
+
+            <value xsi:type="xsd:string">POLICY_1</value>
+          </mapentry>
+
+          <mapentry xsi:type="MapEntry">
+            <key xsi:type="xsd:string">south</key>
+
+            <value xsi:type="xsd:double">38.825246</value>
+          </mapentry>
+
+          <mapentry xsi:type="MapEntry">
+            <key xsi:type="xsd:string">mapname</key>
+
+            <value
+            xsi:type="xsd:string">this/that/the-other-thing/file_1.nui</value>
+          </mapentry>
+
+          <mapentry xsi:type="MapEntry">
+            <key xsi:type="xsd:string">north</key>
+
+            <value xsi:type="xsd:double">38.825997</value>
+          </mapentry>
+        </_fields>
+      </cel>
+
+      <cel id="i7"
+           xsi:type="mil.navy.nrl.cmf.sousa.spatiotemporal.QueryResultHandle">
+        <_id xsi:type="xsd:int">3</_id>
+
+        <_fields xsi:type="java.util.HashMap">
+          <mapentry xsi:type="MapEntry">
+            <key xsi:type="xsd:string">west</key>
+
+            <value xsi:type="xsd:double">-77.06021399999999</value>
+          </mapentry>
+
+          <mapentry xsi:type="MapEntry">
+            <key xsi:type="xsd:string">east</key>
+
+            <value xsi:type="xsd:double">-77.05854799999999</value>
+          </mapentry>
+
+          <mapentry xsi:type="MapEntry">
+            <key xsi:type="xsd:string">policy</key>
+
+            <value xsi:type="xsd:string">POLICY_3</value>
+          </mapentry>
+
+          <mapentry xsi:type="MapEntry">
+            <key xsi:type="xsd:string">south</key>
+
+            <value xsi:type="xsd:double">38.825248</value>
+          </mapentry>
+
+          <mapentry xsi:type="MapEntry">
+            <key xsi:type="xsd:string">mapname</key>
+
+            <value
+            xsi:type="xsd:string">this/that/the-other-thing/file_3.nui</value>
+          </mapentry>
+
+          <mapentry xsi:type="MapEntry">
+            <key xsi:type="xsd:string">north</key>
+
+            <value xsi:type="xsd:double">38.825999</value>
+          </mapentry>
+        </_fields>
+      </cel>
+
+      <cel id="i9"
+           xsi:type="mil.navy.nrl.cmf.sousa.spatiotemporal.QueryResultHandle">
+        <_id xsi:type="xsd:int">5</_id>
+
+        <_fields xsi:type="java.util.HashMap">
+          <mapentry xsi:type="MapEntry">
+            <key xsi:type="xsd:string">west</key>
+
+            <value xsi:type="xsd:double">-77.06021199999999</value>
+          </mapentry>
+
+          <mapentry xsi:type="MapEntry">
+            <key xsi:type="xsd:string">east</key>
+
+            <value xsi:type="xsd:double">-77.05854599999999</value>
+          </mapentry>
+
+          <mapentry xsi:type="MapEntry">
+            <key xsi:type="xsd:string">policy</key>
+
+            <value xsi:type="xsd:string">POLICY_5</value>
+          </mapentry>
+
+          <mapentry xsi:type="MapEntry">
+            <key xsi:type="xsd:string">south</key>
+
+            <value xsi:type="xsd:double">38.825250000000004</value>
+          </mapentry>
+
+          <mapentry xsi:type="MapEntry">
+            <key xsi:type="xsd:string">mapname</key>
+
+            <value
+            xsi:type="xsd:string">this/that/the-other-thing/file_5.nui</value>
+          </mapentry>
+
+          <mapentry xsi:type="MapEntry">
+            <key xsi:type="xsd:string">north</key>
+
+            <value xsi:type="xsd:double">38.826001000000005</value>
+          </mapentry>
+        </_fields>
+      </cel>
+
+      <cel id="i10"
+           xsi:type="mil.navy.nrl.cmf.sousa.spatiotemporal.QueryResultHandle">
+        <_id xsi:type="xsd:int">6</_id>
+
+        <_fields xsi:type="java.util.HashMap">
+          <mapentry xsi:type="MapEntry">
+            <key xsi:type="xsd:string">west</key>
+
+            <value xsi:type="xsd:double">-77.060211</value>
+          </mapentry>
+
+          <mapentry xsi:type="MapEntry">
+            <key xsi:type="xsd:string">east</key>
+
+            <value xsi:type="xsd:double">-77.058545</value>
+          </mapentry>
+
+          <mapentry xsi:type="MapEntry">
+            <key xsi:type="xsd:string">policy</key>
+
+            <value xsi:type="xsd:string">POLICY_6</value>
+          </mapentry>
+
+          <mapentry xsi:type="MapEntry">
+            <key xsi:type="xsd:string">south</key>
+
+            <value xsi:type="xsd:double">38.825251</value>
+          </mapentry>
+
+          <mapentry xsi:type="MapEntry">
+            <key xsi:type="xsd:string">mapname</key>
+
+            <value
+            xsi:type="xsd:string">this/that/the-other-thing/file_6.nui</value>
+          </mapentry>
+
+          <mapentry xsi:type="MapEntry">
+            <key xsi:type="xsd:string">north</key>
+
+            <value xsi:type="xsd:double">38.826002</value>
+          </mapentry>
+        </_fields>
+      </cel>
+    </_results>
+  </cel>
+
+  <cel id="j1" xsi:type="mil.navy.nrl.cmf.policy.PolicyElement">
+    <_identities xsi:type="java.util.LinkedList">
+      <cel id="i1" xsi:type="mil.navy.nrl.cmf.policy.Identity">
+        <_user xsi:type="xsd:string">user_1</_user>
+
+        <_location xsi:type="xsd:string">192.168.0.1</_location>
+      </cel>
+    </_identities>
+
+    <_results xsi:type="java.util.LinkedList">
+      <cel id="i6"
+           xsi:type="mil.navy.nrl.cmf.sousa.spatiotemporal.QueryResultHandle">
+        <_id xsi:type="xsd:int">2</_id>
+
+        <_fields xsi:type="java.util.HashMap">
+          <mapentry xsi:type="MapEntry">
+            <key xsi:type="xsd:string">west</key>
+
+            <value xsi:type="xsd:double">-77.060215</value>
+          </mapentry>
+
+          <mapentry xsi:type="MapEntry">
+            <key xsi:type="xsd:string">east</key>
+
+            <value xsi:type="xsd:double">-77.058549</value>
+          </mapentry>
+
+          <mapentry xsi:type="MapEntry">
+            <key xsi:type="xsd:string">policy</key>
+
+            <value xsi:type="xsd:string">POLICY_2</value>
+          </mapentry>
+
+          <mapentry xsi:type="MapEntry">
+            <key xsi:type="xsd:string">south</key>
+
+            <value xsi:type="xsd:double">38.825247000000005</value>
+          </mapentry>
+
+          <mapentry xsi:type="MapEntry">
+            <key xsi:type="xsd:string">mapname</key>
+
+            <value
+            xsi:type="xsd:string">this/that/the-other-thing/file_2.nui</value>
+          </mapentry>
+
+          <mapentry xsi:type="MapEntry">
+            <key xsi:type="xsd:string">north</key>
+
+            <value xsi:type="xsd:double">38.825998000000006</value>
+          </mapentry>
+        </_fields>
+      </cel>
+
+      <cel id="i7"
+           xsi:type="mil.navy.nrl.cmf.sousa.spatiotemporal.QueryResultHandle">
+        <_id xsi:type="xsd:int">3</_id>
+
+        <_fields xsi:type="java.util.HashMap">
+          <mapentry xsi:type="MapEntry">
+            <key xsi:type="xsd:string">west</key>
+
+            <value xsi:type="xsd:double">-77.06021399999999</value>
+          </mapentry>
+
+          <mapentry xsi:type="MapEntry">
+            <key xsi:type="xsd:string">east</key>
+
+            <value xsi:type="xsd:double">-77.05854799999999</value>
+          </mapentry>
+
+          <mapentry xsi:type="MapEntry">
+            <key xsi:type="xsd:string">policy</key>
+
+            <value xsi:type="xsd:string">POLICY_3</value>
+          </mapentry>
+
+          <mapentry xsi:type="MapEntry">
+            <key xsi:type="xsd:string">south</key>
+
+            <value xsi:type="xsd:double">38.825248</value>
+          </mapentry>
+
+          <mapentry xsi:type="MapEntry">
+            <key xsi:type="xsd:string">mapname</key>
+
+            <value
+            xsi:type="xsd:string">this/that/the-other-thing/file_3.nui</value>
+          </mapentry>
+
+          <mapentry xsi:type="MapEntry">
+            <key xsi:type="xsd:string">north</key>
+
+            <value xsi:type="xsd:double">38.825999</value>
+          </mapentry>
+        </_fields>
+      </cel>
+
+      <cel id="i8"
+           xsi:type="mil.navy.nrl.cmf.sousa.spatiotemporal.QueryResultHandle">
+        <_id xsi:type="xsd:int">4</_id>
+
+        <_fields xsi:type="java.util.HashMap">
+          <mapentry xsi:type="MapEntry">
+            <key xsi:type="xsd:string">west</key>
+
+            <value xsi:type="xsd:double">-77.06021299999999</value>
+          </mapentry>
+
+          <mapentry xsi:type="MapEntry">
+            <key xsi:type="xsd:string">east</key>
+
+            <value xsi:type="xsd:double">-77.05854699999999</value>
+          </mapentry>
+
+          <mapentry xsi:type="MapEntry">
+            <key xsi:type="xsd:string">policy</key>
+
+            <value xsi:type="xsd:string">POLICY_4</value>
+          </mapentry>
+
+          <mapentry xsi:type="MapEntry">
+            <key xsi:type="xsd:string">south</key>
+
+            <value xsi:type="xsd:double">38.825249</value>
+          </mapentry>
+
+          <mapentry xsi:type="MapEntry">
+            <key xsi:type="xsd:string">mapname</key>
+
+            <value
+            xsi:type="xsd:string">this/that/the-other-thing/file_4.nui</value>
+          </mapentry>
+
+          <mapentry xsi:type="MapEntry">
+            <key xsi:type="xsd:string">north</key>
+
+            <value xsi:type="xsd:double">38.826</value>
+          </mapentry>
+        </_fields>
+      </cel>
+    </_results>
+  </cel>
+
+  <cel id="j2" xsi:type="mil.navy.nrl.cmf.policy.PolicyElement">
+    <_identities xsi:type="java.util.LinkedList">
+      <cel id="i2" xsi:type="mil.navy.nrl.cmf.policy.Identity">
+        <_user xsi:type="xsd:string">user_2</_user>
+
+        <_location xsi:type="xsd:string">192.168.0.2</_location>
+      </cel>
+
+      <cel id="i3" xsi:type="mil.navy.nrl.cmf.policy.Identity">
+        <_user xsi:type="xsd:string">user_3</_user>
+
+        <_location xsi:type="xsd:string">192.168.0.3</_location>
+      </cel>
+    </_identities>
+
+    <_results xsi:type="java.util.LinkedList">
+      <cel id="i9"
+           xsi:type="mil.navy.nrl.cmf.sousa.spatiotemporal.QueryResultHandle">
+        <_id xsi:type="xsd:int">5</_id>
+
+        <_fields xsi:type="java.util.HashMap">
+          <mapentry xsi:type="MapEntry">
+            <key xsi:type="xsd:string">west</key>
+
+            <value xsi:type="xsd:double">-77.06021199999999</value>
+          </mapentry>
+
+          <mapentry xsi:type="MapEntry">
+            <key xsi:type="xsd:string">east</key>
+
+            <value xsi:type="xsd:double">-77.05854599999999</value>
+          </mapentry>
+
+          <mapentry xsi:type="MapEntry">
+            <key xsi:type="xsd:string">policy</key>
+
+            <value xsi:type="xsd:string">POLICY_5</value>
+          </mapentry>
+
+          <mapentry xsi:type="MapEntry">
+            <key xsi:type="xsd:string">south</key>
+
+            <value xsi:type="xsd:double">38.825250000000004</value>
+          </mapentry>
+
+          <mapentry xsi:type="MapEntry">
+            <key xsi:type="xsd:string">mapname</key>
+
+            <value
+            xsi:type="xsd:string">this/that/the-other-thing/file_5.nui</value>
+          </mapentry>
+
+          <mapentry xsi:type="MapEntry">
+            <key xsi:type="xsd:string">north</key>
+
+            <value xsi:type="xsd:double">38.826001000000005</value>
+          </mapentry>
+        </_fields>
+      </cel>
+
+      <cel id="i10"
+           xsi:type="mil.navy.nrl.cmf.sousa.spatiotemporal.QueryResultHandle">
+        <_id xsi:type="xsd:int">6</_id>
+
+        <_fields xsi:type="java.util.HashMap">
+          <mapentry xsi:type="MapEntry">
+            <key xsi:type="xsd:string">west</key>
+
+            <value xsi:type="xsd:double">-77.060211</value>
+          </mapentry>
+
+          <mapentry xsi:type="MapEntry">
+            <key xsi:type="xsd:string">east</key>
+
+            <value xsi:type="xsd:double">-77.058545</value>
+          </mapentry>
+
+          <mapentry xsi:type="MapEntry">
+            <key xsi:type="xsd:string">policy</key>
+
+            <value xsi:type="xsd:string">POLICY_6</value>
+          </mapentry>
+
+          <mapentry xsi:type="MapEntry">
+            <key xsi:type="xsd:string">south</key>
+
+            <value xsi:type="xsd:double">38.825251</value>
+          </mapentry>
+
+          <mapentry xsi:type="MapEntry">
+            <key xsi:type="xsd:string">mapname</key>
+
+            <value
+            xsi:type="xsd:string">this/that/the-other-thing/file_6.nui</value>
+          </mapentry>
+
+          <mapentry xsi:type="MapEntry">
+            <key xsi:type="xsd:string">north</key>
+
+            <value xsi:type="xsd:double">38.826002</value>
+          </mapentry>
+        </_fields>
+      </cel>
+    </_results>
+  </cel>
+</mil.navy.nrl.cmf.policy.PolicyList>

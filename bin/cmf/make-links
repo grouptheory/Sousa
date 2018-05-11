@@ -1,0 +1,13 @@
+#!/bin/sh
+
+ln -s user cli
+ln -s user gui
+ln -s user zui
+
+ln -s service city
+ln -s service directory
+ln -s service model
+ln -s service raster
+ln -s service rootdirectory
+ln -s service satellite
+ln -s service trail

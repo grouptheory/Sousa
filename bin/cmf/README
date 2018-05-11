@@ -1,0 +1,22 @@
+This directory contains "wrapper" scripts for the main bin
+scripts.
+
+NOTE: The top-level Ant build script will filter the *.in
+files replacing the @PREFIX@ with the actual installation
+path.
+
+These wrappers serve several purposes:
+1) They contain the CMF-specific Kerberos parameters.
+2) They contain the CMF-specific Java deployment directory.
+3) They facilitate automatic configuration file selection
+through the use of symlinks, e.g. linking to the "user"
+script with a link named "gui" will invoke the main bin
+script with a configuration file argument of
+"@PREFIX@/etc/idol/gui.properties" (where @PREFIX@ is the
+installed directory).  Since CVS does not manage symlinks,
+these links must be created using the make-links script.
+
+NOTE: Although not mandatory, it is suggested that this
+directory *NOT* be world-readable, as it contains
+potentially sensitive site-specific configuration
+information.

@@ -1,0 +1,41 @@
+#1 - 2006/01/30 - dkleiner
+ERROR [Entity Multicast Thread] (EntityFSM.java:99) - EntityFSM error
+java.lang.NullPointerException
+        at mil.navy.nrl.cmf.sousa.ServerSideFSM.deregister(ServerSideFSM.java:216)
+        at mil.navy.nrl.cmf.sousa.EntityFSM.dispatch(EntityFSM.java:100)
+        at mil.navy.nrl.cmf.sousa.ServerSideFSM$1.handle(ServerSideFSM.java:36)
+        at mil.navy.nrl.cmf.sousa.EntityFSM.handle(EntityFSM.java:151)
+        at mil.navy.nrl.cmf.sousa.Entity.run(Entity.java:237)
+        at java.lang.Thread.run(Thread.java:534)
+
+unable to reproduce reliably...
+
+------------------------------------------------------------------------------
+
+#2 - 2006/01/30 - dkleiner
+ERROR [Entity Multicast Thread] (ControlLogic.java:108) - admitClient mil.navy.nrl.cmf.sousa.ClientSideFSM$FetchRequest@15bdc50 ?
+
+is this an ERROR?
+
+DAVID: No, it's not an error.  I was lazy when debugging ControlLogic.
+I needed a debugging message but didn't want the DEBUG level because
+it was too chatty.  Log4J always prints messages at the ERROR level,
+so I used that.  That message is now at the DEBUG level, where it
+should be.
+
+------------------------------------------------------------------------------
+
+#3 - 2006/02/08 - dkleiner
+
+java.lang.NullPointerException
+        at mil.navy.nrl.cmf.sousa.P2PChannel.register(P2PChannel.java:124)
+        at mil.navy.nrl.cmf.sousa.P2PChannelFactory.register(P2PChannelFactory.java:230)
+        at mil.navy.nrl.cmf.sousa.P2PChannelFactory.run(P2PChannelFactory.java:132)
+        at java.lang.Thread.run(Thread.java:534)
+NormServerNode::OnActivityTimeout() node>1256314123 server>1256314121 gone inactive?
+
+DAVID: Fixed.  In register(), the SocketChannel's register() can throw
+ClosedChannelException.  register() catches it and calls deregister(),
+which sets _skread to null.  register() then continues as if _skread
+is not null.  Now register() pays attention to the values of _skread.
+There is a similar solution for _skwrite.

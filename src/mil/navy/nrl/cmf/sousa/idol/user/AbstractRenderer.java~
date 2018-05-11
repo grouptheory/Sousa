@@ -1,0 +1,88 @@
+package mil.navy.nrl.cmf.sousa.idol.user;
+
+import java.io.IOException;
+import mil.navy.nrl.cmf.annotation.ServerVI;
+import mil.navy.nrl.cmf.sousa.Renderable;
+import mil.navy.nrl.cmf.sousa.Renderer;
+import mil.navy.nrl.cmf.sousa.State;
+import mil.navy.nrl.cmf.sousa.ViewInterpreter;
+import mil.navy.nrl.cmf.sousa.spatiotemporal.QueryFields;
+import mil.navy.nrl.cmf.sousa.spatiotemporal.QueryViewInterpreter;
+import mil.navy.nrl.cmf.sousa.util.Strings;
+import org.apache.log4j.Logger;
+
+public abstract class AbstractRenderer implements Renderer {
+	protected static final Logger _LOG = 
+		Logger.getLogger(AbstractRenderer.class);
+
+	/**
+	   The name of the RESULTS_ADDED field provided by a
+	   spatiotemporal server's QueryViewInterpreter
+	 */
+	protected final static String RESULTS_ADDED_FIELDNAME = 
+		ViewInterpreter.getQualifiedFieldName(QueryViewInterpreter.class, 
+											  QueryFields.RESULTS_ADDED);
+	/**
+	   The name of the RESULTS_REMOVED field provided by a
+	   spatiotemporal server's QueryViewInterpreter
+	 */
+	protected final static String RESULTS_REMOVED_FIELDNAME = 
+		ViewInterpreter.getQualifiedFieldName(QueryViewInterpreter.class, 
+											  QueryFields.RESULTS_REMOVED);
+
+	/**
+	   The name of the RESULTS_CHANGED field provided by a
+	   spatiotemporal server's QueryViewInterpreter
+	 */
+	protected final static String RESULTS_CHANGED_FIELDNAME = 
+		ViewInterpreter.getQualifiedFieldName(QueryViewInterpreter.class, 
+											  QueryFields.RESULTS_CHANGED);
+
+	// DAVID: SERVERVI_*_FIELDNAME probably shouldn't exist.  I
+	// created them so that updateQuery() can recognize the ADDED and
+	// REMOVED fields provided by ServerVI, which extends
+	// QueryViewInterpreter.  There must be a better way.
+
+	/**
+	   The name of the RESULTS_ADDED field provided by a
+	   spatiotemporal server's ServerVI.
+	 */
+	protected final static String SERVERVI_RESULTS_ADDED_FIELDNAME = 
+		ViewInterpreter.getQualifiedFieldName(ServerVI.class, 
+											  QueryFields.RESULTS_ADDED);
+	/**
+	   The name of the RESULTS_REMOVED field provided by a
+	   spatiotemporal server's ServerVI
+	 */
+	protected final static String SERVERVI_RESULTS_REMOVED_FIELDNAME = 
+		ViewInterpreter.getQualifiedFieldName(ServerVI.class, 
+											  QueryFields.RESULTS_REMOVED);
+
+	/**
+	   The name of the RESULTS_CHANGED field provided by a
+	   spatiotemporal server's ServerVI
+	 */
+	protected final static String SERVERVI_RESULTS_CHANGED_FIELDNAME = 
+		ViewInterpreter.getQualifiedFieldName(ServerVI.class, 
+											  QueryFields.RESULTS_CHANGED);
+
+	protected Renderable _renderable;
+
+	public final void setRenderable(Renderable r) {
+		_renderable = r;
+	}
+
+	protected final void removeObject(String layer, String name) {
+		if (null != _renderable) {
+			try {
+				_renderable.unloadobject(layer, name);	
+			} catch (IOException ex) {
+				AbstractRenderer._LOG.error(new Strings(new Object[]
+					{this, ": renderer error unloading ", layer, 
+					 " ", name, ": ", ex
+					} ));
+			}
+		}
+	}
+
+}

@@ -1,0 +1,12 @@
+package mil.navy.nrl.cmf.sousa.idol.user;
+
+import java.util.Calendar;
+import mil.navy.nrl.cmf.sousa.spatiotemporal.Vector3d;
+
+public interface LocalCommandObject {
+	public void update(Vector3d position, Calendar time);
+	public void updateTime(Calendar time);
+	public void updatePosition(double lat, double lon, double elev);
+	public void setWidth(double x, double y, double z);
+	public void setUpdateInterval(int newInterval);
+}

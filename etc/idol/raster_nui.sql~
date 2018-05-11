@@ -1,0 +1,13 @@
+select dropgeometrytable('raster_nui');
+
+create table raster_nui
+(
+	mapname varchar(50) not null unique primary key,
+);
+
+select addgeometrycolumn('idol', 'raster_nui', 'bounds', 4326, 'MULTIPOINT', 2);
+alter table raster_nui alter column bounds set not null;
+
+create index raster_nui_bounds_idx on raster_nui using gist (bounds gist_geometry_ops);
+
+alter table raster_nui owner to idol;

@@ -1,0 +1,5 @@
+store.pass=12345678
+key.pass=23456789
+
+# keytool -genkey -keystore source.keystore -storepass 12345678 -alias DCG -keypass 23456789 -validity 9999 -dname "CN=Distributed Computing Group, OU=CMF, O=NRL, L=Washington, ST=DC, C=US"
+# keytool -selfcert -keystore source.keystore -storepass 12345678 -alias DCG -keypass 23456789 -validity 9999

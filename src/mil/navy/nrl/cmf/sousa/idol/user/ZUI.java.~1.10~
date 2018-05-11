@@ -1,0 +1,935 @@
+package mil.navy.nrl.cmf.sousa.idol.user;
+
+import java.awt.Color;
+import java.io.File;
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.HashSet;
+import java.util.Properties;
+import java.util.Set;
+import java.util.TimeZone;
+import mil.navy.nrl.cmf.sousa.Renderable;
+import mil.navy.nrl.cmf.sousa.idol.util.StreamHandlerThread;
+import mil.navy.nrl.cmf.sousa.spatiotemporal.Vector3d;
+import mil.navy.nrl.cmf.sousa.util.StackTrace;
+import mil.navy.nrl.cmf.sousa.util.Strings;
+import mil.navy.nrl.cmf.sysv.SysVConstants;
+import mil.navy.nrl.cmf.sysv.SysVMessageQueue;
+import mil.navy.nrl.cmf.sysv.SysVSemaphore;
+import mil.navy.nrl.cmf.sysv.SysVSharedMemory;
+import mil.navy.nrl.cmf.stk.XYZd;
+import org.apache.log4j.*;
+
+/**
+   ZUI
+*/
+final class ZUI
+	extends Thread
+	implements Renderable
+{
+	/**
+	   _LOG
+	*/
+	private static final Logger _LOG = Logger.getLogger(ZUI.class);
+
+	/**
+	   Part of a hack that assumes that the first image drawn on the
+	   scene graph is the base earth image and ensures that the base
+	   image is drawn as far from the viewer as possible.  This
+	   eliminates flimmer.
+	*/
+	private boolean _nolayers = true;
+
+	/**
+	   Message terminator
+	*/
+	static final String EOC = new String(new char[] { 0 });
+
+	/**
+	   Internal message separator
+	*/
+	static final String SPACE = " ";
+
+	// Shmem segment and associated semaphores
+	static final long SHMK = 0x45678;
+	static final long RSEMK = 0x67890;
+	static final long WSEMK = 0x98765;
+
+	// Message queues to/from DBASE process
+	static final long EXT2DBASEK = 0x12345;
+	static final long DBASE2EXTK = 0x43210;
+
+	// Message queus to/from COMPUTE process
+	static final long EXT2COMPUTEK = 0x56789;
+	static final long COMPUTE2EXTK = 0x87654;
+
+	/**
+	   _e2d
+	*/
+	private final SysVMessageQueue _e2d = new SysVMessageQueue();
+
+	/**
+	   _e2c
+	*/
+	private final SysVMessageQueue _e2c = new SysVMessageQueue();
+
+	/**
+	   _shuttingdown
+	*/
+	private boolean _shuttingdown = false;
+
+	/**
+	   _process
+	*/
+	/*@ non_null */ private final Process _process;
+
+	/**
+	   _queryhandler
+	*/
+	/*@ non_null */ private final QueryHandler _queryhandler;
+
+	/**
+	   _messagehandler
+	*/
+	/*@ non_null */ private final MessageHandler _messagehandler;
+
+	// Constructors
+
+	/**
+	   ZUI(Properties, QueryHandler, MessageHandler)
+	   @methodtype ctor
+	   @param p .
+	   @param qh .
+	   @param mh .
+	   @throws IOException .
+	*/
+	ZUI(/*@ non_null */ Properties p, 
+		/*@ non_null */ QueryHandler qh, 
+		/*@ non_null */ MessageHandler mh)
+		throws IOException
+	{
+		super("ZUI");
+
+		bindIPC();
+
+		String zui_exec = p.getProperty("idol.user.zui.exec", "");
+		String zui_dir = p.getProperty("idol.user.zui.dir", "");
+		String zui_opts = p.getProperty("idol.user.zui.opts", "");
+
+		this._process = Runtime.getRuntime().exec(zui_exec + " " + zui_opts, 
+												  null, new File(zui_dir));
+
+		this._queryhandler = qh;
+		this._messagehandler = mh;
+
+		new StreamHandlerThread("ZUI-INPUT", _process.getInputStream(),
+								StreamHandlerThread.INPUTHANDLER).priority(Thread.MIN_PRIORITY).start();
+		new StreamHandlerThread("ZUI-ERROR", _process.getErrorStream(),
+								StreamHandlerThread.ERRORHANDLER).priority(Thread.MIN_PRIORITY).start();
+
+		try {
+			Thread.sleep(2000L);
+		} catch (InterruptedException e) {
+			_LOG.error(new Strings(new Object[] {
+									   this, " caught exception ", e, ":",
+									   StackTrace.formatStackTrace(e)}));
+		}
+	}
+
+	// ****************************************************************
+	// ****************************************************************
+
+	/**
+	   QueryHandler
+	*/
+	public interface
+		QueryHandler
+	{
+		/**
+		   handleQuery(long, Vector3d, Calendar)
+		   @methodtype handler
+		   @param tstamp .
+		   @param position .
+		   @param time .
+		*/
+		public void
+			handleQuery(long tstamp, 
+						/*@ non_null */ Vector3d position, 
+						/*@ non_null */ Calendar time);
+	}; // QueryHandler
+
+	// ****************************************************************
+
+	/**
+	   MessageHandler
+	*/
+	public interface
+		MessageHandler
+	{
+		/**
+		   handleMessage(String, String)
+		   @methodtype handler
+		   @param source .
+		   @param message .
+		*/
+		public void
+			handleMessage(String source, /*@ non_null */ String message);
+	}; // MessageHandler
+
+	// ****************************************************************
+	// ****************************************************************
+
+	/**
+	   SHMDateFormat
+	*/
+	static class SHMDateFormat
+		extends SimpleDateFormat
+	{
+		// Constructors
+
+		/**
+		   SHMDateFormat(Calendar)
+		   @methodtype ctor
+		   @param cal .
+		*/
+		SHMDateFormat(/*@ non_null */ Calendar cal)
+		{
+			super("yyyyMMddHHmmssSSS");
+			setCalendar(cal);
+		}
+	}; // SHMDateFormat
+
+	// ****************************************************************
+
+	/**
+	   SHMQueryReader
+	*/
+	abstract class SHMQueryReader
+		implements Runnable
+	{
+		// Semaphore ops
+		private static final short RSEM_WAIT = (short)-1;
+		private static final short WSEM_LOCK = (short)-1;
+		private static final short WSEM_UNLOCK = (short)1;
+
+		/**
+		   _shm
+		*/
+		protected final SysVSharedMemory _shm = new SysVSharedMemory();
+
+		/**
+		   _rsem
+		*/
+		protected final SysVSemaphore _rsem = new SysVSemaphore();
+
+		/**
+		   _wsem
+		*/
+		protected final SysVSemaphore _wsem = new SysVSemaphore();
+
+		/**
+		   _mem
+		*/
+		/*@ non_null */ private final byte[] _mem;
+
+		// Constructors
+
+		/**
+		   SHMQueryReader(long, long, long, byte[])
+		   @methodtype ctor
+		   @param shmk .
+		   @param rsemk .
+		   @param wsemk .
+		   @param mem .
+		   @throws IOException .
+		*/
+		SHMQueryReader(long shmk, 
+					   long rsemk, 
+					   long wsemk, 
+					   /*@ non_null */ byte[] mem)
+			throws IOException
+		{
+			_shm.open(shmk, true, false, SysVConstants.S_IRWXU, mem.length);
+			_rsem.open(rsemk, true, false, SysVConstants.S_IRWXU);
+			_wsem.open(wsemk, true, false, SysVConstants.S_IRWXU);
+
+			this._mem = mem;
+		}
+
+		// java.lang.Runnable
+
+		/**
+		   @see Runnable#run()
+		*/
+		public synchronized final void
+			run()
+		{
+			Arrays.fill(_mem, (byte)0);
+			try {
+				synchronized (ZUI.this) {
+					try {
+						// Wait for first notification
+						ZUI.this.wait();
+					} catch (InterruptedException e) {
+						e.printStackTrace(System.err);
+					}
+				}
+
+				while (true) {
+					// Wait for flag
+					_rsem.op(RSEM_WAIT);
+
+					// Lock shmem
+					_wsem.op(WSEM_LOCK);
+					try {
+						// Read shmem
+						_shm.read(_mem);
+					} finally {
+						// Unlock shmem
+						_wsem.op(WSEM_UNLOCK);
+					}
+
+					synchronized (ZUI.this) {
+						// Parse query data and send to handler
+						if (handle(_mem)) {
+							try {
+								// Wait for data to be handled
+								ZUI.this.wait();
+							} catch (InterruptedException e) {
+								_LOG.fatal(new Strings(new Object[] 
+									{this, " caught exception ", e, ":",
+									 StackTrace.formatStackTrace(e)}));
+							}
+						}
+					}
+				}
+			} catch (IOException e) {
+				if (!_shuttingdown) {
+					_LOG.error(new Strings(new Object[] 
+						{this, " caught exception ", e, ":",
+						 StackTrace.formatStackTrace(e)}));
+				}
+			} finally {
+				try {
+					_shm.close();
+				} catch (IOException e) {
+					_LOG.warn(new Strings(new Object[] 
+						{this, " caught exception ", e, ":",
+						 StackTrace.formatStackTrace(e)}));
+				}
+				try {
+					_rsem.close();
+				} catch (IOException e) {
+					_LOG.warn(new Strings(new Object[] 
+						{this, " caught exception ", e, ":",
+						 StackTrace.formatStackTrace(e)}));
+				}
+				try {
+					_wsem.close();
+				} catch (IOException e) {
+					_LOG.warn(new Strings(new Object[] 
+						{this, " caught exception ", e, ":",
+						 StackTrace.formatStackTrace(e)}));
+				}
+			}
+		}
+
+		// SHMQueryReader
+
+		/**
+		   handle(byte[])
+		   @methodtype handler
+		   @param mem .
+		   @return boolean
+		*/
+		abstract boolean
+			handle(/*@ non_null */ byte[] mem);
+	}; // SHMQueryReader
+
+	// ****************************************************************
+
+	/**
+	   startQueryReader(String)
+	   @methodtype factory
+	   @param name .
+	   @throws IOException .
+	*/
+	private void
+		startQueryReader(/*@ non_null */ String name)
+		throws IOException
+	{
+		Thread t = new Thread(new SHMQueryReader(SHMK, RSEMK, WSEMK, 
+												 new byte[32 /* 3 floats 
+																(IEEE 754) 
+																and a char[17]
+															 */])
+			{
+				/**
+				   _parsebuf
+				*/
+				private final StringBuffer _parsebuf = new StringBuffer();	
+
+				/**
+				   _pos
+				*/
+				private final Vector3d _pos = new Vector3d();
+
+				/**
+				   _t
+				*/
+				private final Calendar _t = 
+					Calendar.getInstance(TimeZone.getTimeZone("UTC"));
+
+				/**
+				   _df
+				*/
+				private final DateFormat _df = new SHMDateFormat(_t);
+
+				// SHMQueryReader
+
+				/**
+				   @see SHMQueryReader#handle(byte[])
+				*/
+				final boolean
+					handle(byte[] mem)
+				{
+					// Parse the byte array into _parsebuf string representation
+					if (parse(mem)) {
+						// Split _parsebuf into constituent strings
+						String[] qs = _parsebuf.toString().split(SPACE);
+
+						if (qs.length == 5) {
+							try {
+								// "String2Long"
+								long tstamp = Long.parseLong(qs[0]); // query timestamp
+
+								// "Strings2Vector3d"
+								_pos.set(Double.parseDouble(qs[1]), // latitude
+										 Double.parseDouble(qs[2]), // longitude
+										 Double.parseDouble(qs[3])); // elevation
+
+								// "String2Date"
+								_t.setTime(_df.parse(qs[4])); // time
+
+								_queryhandler.handleQuery(tstamp, _pos, _t);
+							} catch (NumberFormatException e) {
+								_LOG.error(new Strings(new Object[] 
+									{this, " caught exception ", e, ":",
+									 StackTrace.formatStackTrace(e)}));
+							} catch (ParseException e) {
+								_LOG.error(new Strings(new Object[] 
+									{ this, " caught exception ", e, ":",
+									  StackTrace.formatStackTrace(e)}));
+							}
+						} else {
+							System.err.println("Bad shmem update: " + 
+											   _parsebuf);
+						}
+						return true;
+					}
+					return false;
+				}
+
+				// Utility
+
+				/**
+				   parse(byte[])
+				   @methodtype handler
+				   @param mem .
+				*/
+				private boolean
+					parse(/*@ non_null */ byte[] mem)
+				{
+					float lat = parseFloat(mem, 0); // lat
+					float lon = parseFloat(mem, 4); // long
+					float elev = parseFloat(mem, 8); // elev
+
+					//      yyyyMMddhhmmssSSS
+					// e.g. 20031031160854410
+					String time = new String(mem, 12, 17).trim(); // time
+
+					_parsebuf.delete(0, _parsebuf.length());
+					_parsebuf.append(System.currentTimeMillis()).append(SPACE)
+						.append(lat).append(SPACE)
+						.append(lon).append(SPACE)
+						.append(elev).append(SPACE)
+						.append(time).append(EOC);
+
+					return (time.length() > 0);
+				}
+
+				/**
+				   parseFloat(byte[], int)
+				   @methodtype handler
+				   @param mem .
+				   @param start .
+				*/
+				private float
+					parseFloat(byte[] mem, int start)
+				{
+					int bits;
+					if (SysVSharedMemory.IS_BIG_ENDIAN) {
+						bits = ((mem[start++] & 0xff) << 24) |
+							((mem[start++] & 0xff) << 16) |
+							((mem[start++] & 0xff) << 8) |
+							((mem[start++] & 0xff));
+					} else {
+						bits = ((mem[start++] & 0xff)) |
+							((mem[start++] & 0xff) << 8) |
+							((mem[start++] & 0xff) << 16) |
+							((mem[start++] & 0xff) << 24);
+					}
+					return Float.intBitsToFloat(bits);
+				}
+			}, name);
+		t.setPriority(Thread.MIN_PRIORITY);
+		t.start();
+	}
+
+	// ****************************************************************
+	// ****************************************************************
+
+	/**
+	   MessageQueueReader
+	*/
+	abstract class MessageQueueReader
+		implements Runnable
+	{
+		/**
+		   _msq
+		*/
+		protected final SysVMessageQueue _msq = new SysVMessageQueue();
+
+		/**
+		   _msgtype
+		*/
+		private final int _msgtype;
+
+		// Constructors
+
+		/** 
+			MessageQueueReader(long, int)
+			@methodtype ctor
+			@param msqk .
+			@param msgtype .
+			@throws IOException .
+		*/
+		MessageQueueReader(long msqk, int msgtype)
+			throws IOException
+		{
+			_msq.open(msqk, true, false, SysVConstants.S_IRWXU);
+
+			this._msgtype = msgtype;
+		}
+
+		// java.lang.Runnable
+
+		/** 
+			@see Runnable#run()
+		*/
+		public synchronized final void
+			run()
+		{
+			try {
+				byte[] buffer = new byte[1024];
+				int count;
+				while ((count = _msq.receive(_msgtype, buffer)) >= 0) {
+					handle(_msgtype, buffer, count);
+				}
+			} catch (IOException e) {
+				if (!_shuttingdown) {
+					_LOG.error(new Strings(new Object[] 
+						{this, " caught exception ", e, ":",
+						 StackTrace.formatStackTrace(e)}));
+				}
+			} finally {
+				try {
+					_msq.close();
+				} catch (IOException e) {
+					_LOG.error(new Strings(new Object[] 
+						{this, " caught exception ", e, ":",
+						 StackTrace.formatStackTrace(e)}));
+				}
+			}
+		}
+
+		// MessageQueueReader
+
+		/**
+		   handle(int, byte[], int)
+		   @methodtype handler
+		   @param msgtype .
+		   @param buffer .
+		   @param count .
+		*/
+		abstract void
+			handle(int msgtype, byte[] buffer, int count);
+	}; // MessageQueueReader
+
+	// ****************************************************************
+
+	/**
+	   startMessageQueueReader(String, long)
+	   @methodtype factory
+	   @param name .
+	   @param inqk .
+	   @throws IOException .
+	*/
+	private void
+		startMessageQueueReader(/*@ non_null */ final String name, long inqk)
+		throws IOException
+	{
+		new Thread(new MessageQueueReader(inqk, 1)
+			{
+				// MessageQueueReader
+
+				/**
+				   @see MessageQueueReader#handle(int, byte[], int)
+				*/
+				final void
+					handle(int msgtype, byte[] buffer, int count)
+				{
+					_messagehandler.handleMessage(name, 
+												  new String(buffer, 0, count));
+				}
+			}, name).start();
+	}
+
+	// ****************************************************************
+
+	// java.lang.Thread
+
+	/**
+	   @see Thread#run()
+	*/
+	public final void
+		run()
+	{
+		try {
+			_process.waitFor();
+		} catch (InterruptedException e) {
+			_LOG.error(new Strings(new Object[] 
+				{this, " caught exception ", e, ":",
+				 StackTrace.formatStackTrace(e)}));
+		}
+
+		_messagehandler.handleMessage(null, "quit");
+	}
+
+	// mil.navy.nrl.cmf.idol.user.ZUI
+
+	/**
+	   gotolatlon(double, double)
+	   @methodtype command
+	   @param lat .
+	   @param lon .
+	   @throws IOException .
+	*/
+	final void
+		gotolatlon(double lat, double lon)
+		throws IOException
+	{
+		sendToDBASE(":nav gotolatlon " + lat + " " + lon);
+	}
+
+	/**
+	   gotolatlonelev(double, double, double)
+	   @methodtype command
+	   @param lat .
+	   @param lon .
+	   @param elev .
+	   @throws IOException .
+	*/
+	final void
+		gotolatlonelev(double lat, double lon, double elev)
+		throws IOException
+	{
+		sendToDBASE(":nav gotolatlonelev " + lat + " " + lon + " " + elev);
+	}
+
+	/**
+	   settime(double)
+	   @methodtype command
+	   @param time .
+	   @throws IOException .
+	*/
+	final void
+		settime(double time)
+		throws IOException
+	{
+		sendToDBASE(": settime " + time);
+	}
+
+	/**
+	   settimerate(double)
+	   @methodtype command
+	   @param timerate .
+	   @throws IOException .
+	*/
+	final void
+		settimerate(double timerate)
+		throws IOException
+	{
+		sendToDBASE(": settimerate " + timerate);
+	}
+
+
+	// mil.navy.nrl.cmf.sousa.Renderer
+
+
+	final public void
+		createlayer(String layername, String bookmark)
+		throws IOException
+	{
+		sendToDBASE(":DBASE create " + layername + " {" + bookmark + "}");
+	}
+
+	final public void
+		loadstaticmodel(String layername, String name, String filename, 
+						double scale, XYZd position)
+		throws IOException
+	{
+		String mangledName = name.replaceAll(" ", "_").replaceAll(":", "_");
+		sendToDBASE(":DBASE modify " + layername + " addchild " + mangledName +
+					" {static " + position.getY() + " " + position.getX() + 
+					" " + position.getZ() + "}" +
+					" {model " + filename + " " + scale + "}" );
+	}
+
+	final public void
+		loaddynamicmodel(String layername, String name, String filename, 
+						 double scale, XYZd position)
+		throws IOException
+	{
+		String mangledName = name.replaceAll(" ", "_").replaceAll(":", "_");
+		sendToDBASE(":DBASE modify " + layername + " addchild " + mangledName +
+					" {dynamic " + position.getY() + " " + position.getX() + 
+					" " + position.getZ() + "}" +
+					" {model " + filename + " " + scale + "}" );
+	}
+
+	final public void
+		loadfluxedmodel(String layername, String name, String filename, 
+						double scale, double time, XYZd position, XYZd velocity)
+		throws IOException
+	{
+		String mangledName = name.replaceAll(" ", "_").replaceAll(":", "_");
+		sendToDBASE(":DBASE modify " + layername + " addchild " + mangledName +
+					" {fluxed " + time + " " +
+					position.getY() + " " + position.getX() + " " + 
+					position.getZ() + " " +
+					velocity.getY() + " " + velocity.getX() + " " + 
+					velocity.getZ() + "}" +
+					" {model " + filename + " " + scale + "}" );
+	}
+
+	final public void
+		loadstatictext(String layername, String name, String text, Color color,
+					   double scale, XYZd position)
+		throws IOException
+	{
+		String mangledName = name.replaceAll(" ", "_").replaceAll(":", "_");
+		sendToDBASE(":DBASE modify " + layername + " addchild " + mangledName +
+					" {static " + position.getY() + " " + position.getX() + 
+					" " + position.getZ() + "}" +
+					" {text {" + text + "} " + color.getRed() + " " + 
+					color.getGreen() + " " + color.getBlue() + " " + 
+					color.getAlpha() + " " + scale + "}" );
+	}
+
+	final public void
+		loaddynamictext(String layername, String name, String text, Color color, 
+						double scale, XYZd position)
+		throws IOException
+	{
+		String mangledName = name.replaceAll(" ", "_").replaceAll(":", "_");
+		sendToDBASE(":DBASE modify " + layername + " addchild " + mangledName +
+					" {dynamic " + position.getY() + " " + position.getX() + 
+					" " + position.getZ() + "}" +
+					" {text {" + text + "} " + color.getRed() + " " + 
+					color.getGreen() + " " + color.getBlue() + " " + 
+					color.getAlpha() + " " + scale + "}" );
+	}
+
+	final public void
+		loadfluxedtext(String layername, String name, String text, Color color, 
+					   double scale, double time, XYZd position, XYZd velocity)
+		throws IOException
+	{
+		String mangledName = name.replaceAll(" ", "_").replaceAll(":", "_");
+		sendToDBASE(":DBASE modify " + layername + " addchild " + mangledName +
+					" {fluxed " + time + " " +
+					position.getY() + " " + position.getX() + " " + 
+					position.getZ() + " " +
+					velocity.getY() + " " + velocity.getX() + " " + 
+					velocity.getZ() + "}" +
+					" {text {" + text + "} " + color.getRed() + " " + 
+					color.getGreen() + " " + color.getBlue() + " " + 
+					color.getAlpha() + " " + scale + "}" );
+	}
+
+	final public void
+		updatedynamicobject(String layername, String name, XYZd position)
+		throws IOException
+	{
+		String mangledName = name.replaceAll(" ", "_").replaceAll(":", "_");
+		sendToDBASE(":ge change " + layername + " set " + mangledName + " " +
+					" {dynamic " + position.getY() + " " + position.getX() + 
+					" " + position.getZ() + "}");
+	}
+
+	final public void
+		updatefluxedobject(String layername, String name, double time, 
+						   XYZd position, XYZd velocity)
+		throws IOException
+	{
+		String mangledName = name.replaceAll(" ", "_").replaceAll(":", "_");
+		sendToCOMPUTE(":COMPUTE update " + layername + " set " + mangledName +
+					  " " +
+					  " {fluxed " + time + " " +
+					  position.getY() + " " + position.getX() + " " + 
+					  position.getZ() + " " +
+					  velocity.getY() + " " + velocity.getX() + " " + 
+					  velocity.getZ() + "}");
+	}
+
+	final public void
+		loadpatch(String layername, String name, String filename, 
+				  int displacement)
+		throws IOException
+	{
+		String mangledName = name.replaceAll(" ", "_").replaceAll(":", "_");
+
+		// Assuming that the first patch is the base imagery, this hack
+		// ensures that it is drawn as far away from the viewer as
+		// possible.  All other patches will be drawn at the displacement
+		// specified by the caller.  This eliminates flimmer.
+		if (_nolayers) {
+			displacement = 0;
+			_nolayers = false;
+		}
+
+		sendToDBASE(":ge change " + layername + " loadpatch " + mangledName + " " + 
+					filename + " " + displacement);
+	}
+
+	final public void
+		unloadSceneGraphObject(String layername, String name)
+		throws IOException
+	{
+		String mangledName = name.replaceAll(" ", "_").replaceAll(":", "_");
+		sendToDBASE(":ge change " + layername + " removechild " + mangledName);
+	}
+
+	public void 
+		loadObject(String layername, Object obj)
+		throws IOException {}
+
+	public void 
+		unloadObject(String layername, Object obj)
+		throws IOException {}
+
+
+	/**
+	   deletelayer(String, String)
+	   @methodtype command
+	   @param layername .
+	   @throws IOException .
+	*/
+	final public void
+		deletelayer(String layername)
+		throws IOException
+	{
+		sendToDBASE(":DBASE delete " + layername);
+	}
+
+	final public Set getContentTypes() {
+		Set answer = new HashSet();
+		answer.add("x-idol/x-city");
+		answer.add("x-idol/x-coverage");
+		answer.add("x-idol/x-model");
+		answer.add("x-idol/x-point");
+
+		return answer;
+	}
+	/**
+	   shutdown()
+	   @methodtype command
+	   @throws IOException .
+	*/
+	final void
+		shutdown()
+		throws IOException
+	{
+		_shuttingdown = true;
+
+		sendToDBASE(":ge quit");
+	}
+
+	// Utility
+
+	/**
+	   sendToDBASE(String)
+	   @methodtype command
+	   @param message .
+	   @throws IOException .
+	*/
+	private void
+		sendToDBASE(String message)
+		throws IOException
+	{
+		_LOG.debug(new Strings(new Object[] {
+								   "sendToDBASE(\"", message, "\")"
+							   }));
+
+		synchronized (_e2d) {
+			_e2d.send(1, (message + EOC).getBytes());
+		}
+	}
+
+	/**
+	   sendToCOMPUTE(String)
+	   @methodtype command
+	   @param message .
+	   @throws IOException .
+	*/
+	private void
+		sendToCOMPUTE(String message)
+		throws IOException
+	{
+		_LOG.debug(new Strings(new Object[] {
+								   "sendToCOMPUTE(\"", message, "\")"
+							   }));
+
+		synchronized (_e2c) {
+			_e2c.send(1, (message + EOC).getBytes());
+		}
+	}
+
+	/**
+	   bindIPC()
+	   @methodtype command
+	   @throws IOException .
+	*/
+	private void
+		bindIPC()
+		throws IOException
+	{
+		// SHM query reader
+		startQueryReader("SHM");
+
+		// DBASE message queue reader
+		startMessageQueueReader("DBASE", DBASE2EXTK);
+
+		// COMPUTE message queue reader
+		startMessageQueueReader("COMPUTE", COMPUTE2EXTK);
+
+		// Create/Open outbound message queues
+		_e2d.open(EXT2DBASEK, true, false, SysVConstants.S_IRWXU);
+		_e2c.open(EXT2COMPUTEK, true, false, SysVConstants.S_IRWXU);
+	}
+}; // ZUI

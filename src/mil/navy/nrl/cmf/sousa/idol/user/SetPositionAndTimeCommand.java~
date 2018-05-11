@@ -1,0 +1,31 @@
+package mil.navy.nrl.cmf.sousa.idol.user;
+import java.util.Calendar;
+import mil.navy.nrl.cmf.sousa.spatiotemporal.Vector3d;
+
+/**
+ * Set Time and Position atomically
+ */
+public final class SetPositionAndTimeCommand extends AbstractLocalCommand {
+	private final Calendar _timeLower;
+	private final Calendar _timeUpper;
+	private final Vector3d _position;
+	private final Vector3d _width;
+
+	public SetTimeAndPositionCommand(Calendar timeLowerBound, Calendar timeUpperBound,
+									 Vector3d position, Vector3d width) {
+		try {
+			_timeLower = timeLowerBound.clone();
+			_timeUpper = timeUpperBound.clone();
+		} catch (CloneNotSupportedException ex) {
+			System.err.println("CAN'T HAPPEN! " + ex);
+		}
+
+		_position = new Vector3d(position);
+		_width = new Vector3d(width);
+	}
+
+	public void execute(LocalCommandObject c) {
+		c.setTime(_timeLower, _timeUpper);
+		c.setPosition(_position, _width);
+	}
+}

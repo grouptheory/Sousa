@@ -1,0 +1,83 @@
+package mil.navy.nrl.cmf.sousa;
+
+/* 
+ * PURPOSE: Specification the logic of an Entity
+ */
+
+// DAVID: Can we write a universal handle() for ControlLogic?  If not,
+// make ControlLogic an abstract class.
+public class ControlLogic implements Selectable.Handler {
+
+    private Entity _entity;
+
+    public ControlLogic() {
+    }
+
+    // PURPOSE: Introduce the ControlLogic to its enclosing Entity.
+    // PRECONDITION: none
+    // POSTCONDITION: _entity is a (possibly null) reference to an Entity.
+    void setEntity(Entity e) {
+		_entity = e;
+    }
+
+    // PURPOSE: Expose the enclosing Entity to other ControlLogics
+    // PRECONDITION: none
+    // POSTCONDITION: none
+    protected Entity getEntity() {
+		return _entity;
+
+    }
+
+    //// Selectable.Handler
+
+    // What kinds of Selectables will ControlLogic want to read?
+    //
+    // SelectableFutureResult.  That's about it, I think.
+    //
+    // TODO: universal handle()
+    public void handle(Selectable sel, SignalType st) {
+		if (SignalType.READ == st) {
+			Object obj = sel.read();
+			System.out.println("Read " + obj);
+		} else if (SignalType.ERROR == st) {
+			System.out.println(sel + " threw exception " + sel.getError());
+		} else if (SignalType.WRITE == st) {
+			System.out.println(sel + 
+							   " is writable. WHY AM I INTERESTED IN THIS?");
+		}
+    }
+
+    // PURPOSE: Inform the Entity that it has a new client.  Projector
+    // p may be unique but it need not be.
+    public void projectorReadyIndication(Projector p, 
+										 ServerContact clientContact) {
+		System.out.println("Projector ready " + p);
+		System.out.println("Client is " + clientContact);
+    }
+
+    // PURPOSE: Inform the Entity that it has one fewer clients.
+    // Projector p may be unique but it need not be.
+    public void projectorNotReadyIndication(Projector p,
+										 ServerContact clientContact) {
+		System.out.println("Projector not ready " + p);
+		System.out.println("Client is " + clientContact);
+    }
+
+    // PURPOSE: Inform the Entity that it has a reliable connection to
+    // a server.
+    public void receptorReadyIndication(Receptor r) {
+		System.out.println("Receptor ready " + r);
+		r.print();
+    }
+
+    // PURPOSE: Inform the Entity that its reliable connection to
+    // a server has been disconnected.
+    public void receptorNotReadyIndication(Receptor r) {
+		System.out.println("Receptor not ready " + r);
+    }
+
+    public void receptorStateChangeIndication(Receptor r) {
+		// DAVID: Replace this with something useful
+		r.print();
+    }
+}

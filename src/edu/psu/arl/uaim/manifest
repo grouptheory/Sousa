@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Created-By: 1.0 (DCG)
+Extension-Name: edu.psu.arl.uaim
+Specification-Title: SOUSA/UAIM extension
+Specification-Vendor: ARL
+Specification-Version: 1.0
+Implementation-Title: SOUSA/UAIM extension
+Implementation-Vendor: ARL
+Implementation-Vendor-Id: edu.psu.arl.uaim
+Implementation-Version: 1.0
